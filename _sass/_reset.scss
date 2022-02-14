@@ -49,16 +49,27 @@ q:before, q:after {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
 
-table{
+table {
 	border-collapse: collapse;
-	border-spacing: 0;
-	border:2px solid #ff0000;
+	margin: 25px 0;
+	font-family: sans-serif;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
   
-th{
-	border:2px solid #000000;
+th, td {
+    padding: 12px 15px;
 }
   
-td{
-	border:1px solid #000000;
+tr {
+	background-color: #009879;
+	color: #ffffff;
+	text-align: left;
+}
+
+tr:nth-of-type(even) {
+	background-color: #f3f3f3;
+}
+
+tr:last-of-type {
+	border-bottom: 2px solid #009879;
 }
