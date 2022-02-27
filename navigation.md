@@ -6,6 +6,7 @@ permalink: /navigation/
 
 ### Website Served By Alex
 
+| [Alex Mail](https://mail.alex2blog.eu.org/webmail/) | 我私人搭建的邮件服务 |
 | [Up Time Kuma](https://uptime-kuma.alex2blog.eu.org/dashboard) | 一个用于监控别的网站运营信息的网站 |
 | [Accounting](https://accounting.alex2blog.eu.org) | 用于记账的网站 |
 | [qbittorrent](https://qbittorrent.alex2blog.eu.org) | 一个Alex私人的qbittorrent的监控网站 |
