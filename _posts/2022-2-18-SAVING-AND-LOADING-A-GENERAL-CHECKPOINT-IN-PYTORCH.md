@@ -11,7 +11,7 @@ title: SAVING AND LOADING A GENERAL CHECKPOINT IN PYTORCH
 
 ### 创建模型及optimizer
 
-```
+```python
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
