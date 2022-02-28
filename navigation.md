@@ -21,19 +21,15 @@ permalink: /navigation/
 <details>
       <summary>NSFW</summary>
       <table>
-      <tbody>
-      <tr>
-            <td><a href="http://qqdk2019.ml">qqdk2019</a></td>
-            <td>涩图，google drive的高清图包</td>
-      </tr>
-      </tbody>
-      </table>
-      <table>
-      <tbody>
-      <tr>
-            <td><a href="https://cosindex.251.sh/#/Cosersets">cosersets</a></td>
-            <td>涩图，onedrive的福利姬图包</td>
-      </tr>
-      </tbody>
+            <tbody>
+                  <tr>
+                        <td><a href="http://qqdk2019.ml">qqdk2019</a></td>
+                        <td>涩图，google drive的高清图包</td>
+                  </tr>
+                  <tr>
+                        <td><a href="https://cosindex.251.sh/#/Cosersets">cosersets</a></td>
+                        <td>涩图，onedrive的福利姬图包</td>
+                  </tr>
+            </tbody>
       </table>
 </details>
