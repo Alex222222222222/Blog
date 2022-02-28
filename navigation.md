@@ -13,13 +13,27 @@ permalink: /navigation/
 | [blog](https://alex2blog.eu.org) | 本博客 |
 | [tr server](alex2blog.eu.org:7777) | terraria server |
 
-### NSFW
-
-| [qqdk2019](http://qqdk2019.ml) | 涩图，google drive的高清图包 |
-| [cosersets](https://cosindex.251.sh/#/Cosersets) | 涩图，onedrive的福利姬图包 |
-
-
 ### Work
 
 | [eu.org](https://nic.eu.org) | 一个免费的域名提供网站 |
 | [online tools](https://emn178.github.io/online-tools/index.html) | 包含各种md5, hash, html encode decode |
+
+<details>
+      <summary>NSFW</summary>
+      <table>
+      <tbody>
+      <tr>
+            <td><a href="http://qqdk2019.ml">qqdk2019</a></td>
+            <td>涩图，google drive的高清图包</td>
+      </tr>
+      </tbody>
+      </table>
+      <table>
+      <tbody>
+      <tr>
+            <td><a href="https://cosindex.251.sh/#/Cosersets">cosersets</a></td>
+            <td>涩图，onedrive的福利姬图包</td>
+      </tr>
+      </tbody>
+      </table>
+</details>
