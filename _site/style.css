@@ -9,7 +9,7 @@ small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
+caption, tbody, tfoot, thead, tr,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
@@ -45,15 +45,35 @@ q:before, q:after {
   content: none;
 }
 
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-family: sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+th, td {
+  padding: 12px 15px;
+}
+
+tr {
+  background-color: #f7f6bc;
+  color: #1a0303;
+  text-align: left;
+}
+
+tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+tr:last-of-type {
+  border-bottom: 2px solid #009879;
 }
 
 /**************/
