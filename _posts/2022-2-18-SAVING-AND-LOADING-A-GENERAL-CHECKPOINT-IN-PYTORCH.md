@@ -7,7 +7,7 @@ title: SAVING AND LOADING A GENERAL CHECKPOINT IN PYTORCH
 
 保存和读取pytorch model
 
-[pytorch 官方 turorial](https://pytorch.org/tutorials/recipes/recipes/saving_and_loading_a_general_checkpoint.html)
+[pytorch 官方 tutorials](https://pytorch.org/tutorials/recipes/recipes/saving_and_loading_a_general_checkpoint.html)
 
 ### 创建模型及optimizer
 
