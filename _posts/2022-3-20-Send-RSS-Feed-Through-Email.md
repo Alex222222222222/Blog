@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title: Send RSS Feed Through Email
 author: Zifan Hua
 tags:

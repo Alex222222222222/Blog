@@ -268,9 +268,9 @@ jekyll-archives:
   layouts:
     category: archive-taxonomy
     tag: archive-taxonomy
-    year: year-archive
-    month: month-archive
-    day: day-archive
+    year: archive-taxonomy
+    month: archive-taxonomy
+    day: archive-taxonomy
   permalinks:
     category: /categories/:name/
     tag: /tags/:name/
