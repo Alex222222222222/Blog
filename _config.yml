@@ -103,7 +103,7 @@ analytics:
 # Site Author
 author:
   name             : "Alex Hua"
-  avatar           : "/assets/images/icon.png# path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/icon.png" # path of avatar image, e.g. " /assets/images/bio-photo.jpg"
   bio              : "I am an **math** student."
   location         : "Ningbo"
   email            : "huazifan@gmail.com"
