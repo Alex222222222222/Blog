@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title: The First Post
 author: Zifan Hua
 tags:

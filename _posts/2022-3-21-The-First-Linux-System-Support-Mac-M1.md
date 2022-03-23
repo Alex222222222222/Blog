@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title: The First Linux System Support Mac M1
 author: Zifan Hua
 tags:

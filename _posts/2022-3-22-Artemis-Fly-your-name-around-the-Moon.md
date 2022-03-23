@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title: Artemis! Fly your name around the Moon!
 author: Zifan Hua
 tags:
