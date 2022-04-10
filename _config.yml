@@ -138,7 +138,7 @@ footer:
     #  # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
+      url: "https://github.com/Alex222222222222"
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:huazifan@gmail.com"
