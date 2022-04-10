@@ -3,8 +3,7 @@ layout: posts
 title: DevToys Swift Army Knife DevTools For Mac
 author: Zifan Hua
 tags:
-- tag1
-- tag2
+- Software
 categories: post
 ---
 

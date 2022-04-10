@@ -3,8 +3,7 @@ layout: posts
 title: Artemis! Fly your name around the Moon!
 author: Zifan Hua
 tags:
-- tag1
-- tag2
+- News
 categories: post
 ---
 

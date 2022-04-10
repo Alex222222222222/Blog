@@ -3,8 +3,8 @@ layout: posts
 title: SAVING AND LOADING A GENERAL CHECKPOINT IN PYTORCH
 author: Zifan Hua
 tags:
-- tag1
-- tag2
+- Computer Science
+- Tutorial
 categories: post
 ---
 

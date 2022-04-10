@@ -3,8 +3,7 @@ layout: posts
 title: Send RSS Feed Through Email
 author: Zifan Hua
 tags:
-- tag1
-- tag2
+- Software
 categories: post
 ---
 
