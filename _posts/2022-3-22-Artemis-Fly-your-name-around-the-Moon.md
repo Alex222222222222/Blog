@@ -4,7 +4,7 @@ title: Artemis! Fly your name around the Moon!
 author: Zifan Hua
 tags:
 - News
-categories: post
+categories: Post
 ---
 
 NASA 邀请民众把自己的名字加入 Artemis 宇宙飞船
