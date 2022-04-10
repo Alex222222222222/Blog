@@ -5,7 +5,7 @@ author: Zifan Hua
 tags:
 - Computer Science
 - Tutorial
-categories: post
+categories: Post
 ---
 
 ### SAVING AND LOADING A GENERAL CHECKPOINT IN PYTORCH
