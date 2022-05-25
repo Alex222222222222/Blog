@@ -18,14 +18,14 @@
 
       <li>
         <a>
-          Visited <a id="visited_counter">
+          Visited <code id="visited_counter">
             <script>
               $.getJSON("https://api.countapi.xyz/hit/blog.alex2blog.eu.org/home", function(response) {
                 $("#visited_counter").text(response.value);
                 // document.write(response.value);
               });
             </script>
-          </a> times.
+          </code> times.
         </a>
       </li>
   </ul>
