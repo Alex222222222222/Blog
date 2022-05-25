@@ -15,6 +15,19 @@
     {% unless site.atom_feed.hide %}
       <li><a href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].feed_label | default: "Feed" }}</a></li>
     {% endunless %}
+
+      <li>
+        <a>
+          Visited <a id="visited_counter">
+            <script>
+              $.getJSON("https://api.countapi.xyz/hit/blog.alex2blog.eu.org/home", function(response) {
+                // $("#visited_counter").text(response.value);
+                document.write(response.value);
+              });
+            </script>
+          </a> times.
+        </a>
+      </li>
   </ul>
 </div>
 
