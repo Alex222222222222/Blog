@@ -4,7 +4,7 @@ title: Lapsus$黑客入侵T-Mobile的系统并窃取其源代码
 author: Zifan Hua
 tags:
 - News
-categories: Post
+categories: News
 ---
 
 ### Lapsus$黑客入侵T-Mobile的系统并窃取其源代码
