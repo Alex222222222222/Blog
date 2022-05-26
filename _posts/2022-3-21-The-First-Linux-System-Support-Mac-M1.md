@@ -5,7 +5,7 @@ author: Zifan Hua
 tags:
 - Computer Science
 - News
-categories: Post
+categories: News
 ---
 
 ### The first Asahi Linux Alpha Release is here!
