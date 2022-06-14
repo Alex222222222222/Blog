@@ -1,2 +1,2 @@
-cd /root/blog
+cd /root/Blog
 git pull
