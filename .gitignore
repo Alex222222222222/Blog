@@ -6,6 +6,9 @@
 *.sublime-project
 *.sublime-workspace
 
+# VSCode
+.vscode
+
 # Ruby Gem
 *.gem
 .bundle

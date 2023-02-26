@@ -1,3 +1,108 @@
-baseURL = 'http://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = "https://blog.huazifan.eu.org"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+title = "Alex Blog"
+# donot use the if use hugo submodules
+# theme = "cupper-hugo-theme"
+# googleAnalytics = "UA-123456789-1"
+# disqusShortname = "yourdiscussshortname"
+enableGitInfo = true
+
+[taxonomies]
+tag = "tags"
+
+[permalinks]
+post = "/:filename/"
+
+[imaging]
+quality = 99
+
+[params]
+description = "Alex personal Blog. Contain math, programming, and other things."
+homeMetaContent = "Alex personal Blog. Contain math, programming, and other things."
+footer = "By [Alex222222222222](https://github.com/Alex222222222222). [Open Source](https://github.com/Alex222222222222/Blog). Powered by [Hugo](https://gohugo.io/). Ported from [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme)."
+# For more date formats see https://gohugo.io/functions/format/
+dateFormat = "Jan 2, 2006"
+codePenUser = "someUser"
+katex = true
+hideHeaderLinks = false
+search = true
+showThemeSwitcher = true
+defaultDarkTheme = false
+moveFooterToHeader = false
+# navTitleText: Cupper Theme
+logoAlt = "Alex Blog"
+customCss = [ "css/custom_01.css", "css/custom_02.css" ]
+customJs = [ "js/custom_01.js", "js/custom_02.js" ]
+
+  [params.utterances]
+  repo = "https://github.com/Alex222222222222/Blog"
+  issueTerm = "title"
+  theme = "github-light"
+
+[[menu.nav]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.nav]]
+name = "Blog"
+url = "/post/"
+weight = 2
+
+[[menu.nav]]
+name = "Tags"
+url = "/tags/"
+weight = 3
+
+[[menu.nav]]
+name = "About"
+url = "/about/"
+weight = 4
+
+[[menu.nav]]
+name = "RSS"
+url = "/index.xml"
+weight = 5
+
+[markup]
+defaultMarkdownHandler = "goldmark"
+
+[markup.goldmark.extensions]
+definitionList = true
+footnote = true
+linkify = true
+strikethrough = true
+table = true
+taskList = true
+typographer = true
+
+[markup.goldmark.parser]
+attribute = true
+autoHeadingID = true
+
+[markup.goldmark.renderer]
+hardWraps = false
+unsafe = true
+xHTML = false
+
+  [markup.highlight]
+  codeFences = false
+  hl_Lines = ""
+  lineNoStart = 1
+  lineNos = false
+  lineNumbersInTable = true
+  noClasses = true
+  style = "monokai"
+  tabWidth = 4
+
+  [markup.tableOfContents]
+  endLevel = 6
+  startLevel = 2
+
+
+[module]
+  # this is needed when you fetch the theme as a submodule to your repo.
+  # replacements = "github.com/panr/hugo-theme-terminal -> themes/terminal"
+[[module.imports]]
+  path = 'github.com/Alex222222222222/cupper-hugo-theme'
