@@ -1,18 +1,20 @@
 ---
-layout: posts
 title: The First Linux System Support Mac M1
-author: Zifan Hua
-tags:
-- Computer Science
-- News
-categories: News
+date: "2022-03-21"
+tags: ["Computer Science", "ARM", "Linux"]
+toc: false
+categories: ["News"]
 ---
 
 ### The first Asahi Linux Alpha Release is here!
 
 [Asahi Linux](https://asahilinux.org/2022/03/asahi-linux-alpha-release/)
 
-![Asahi Linux]({{ site.baseurl }}/assets/images/2022-03-21-Asahi-Linux.jpg)
+{{< figureCupper
+img="2022-03-21-Asahi-Linux.jpg" 
+caption="Asahi Linux" 
+command="Resize" 
+options="700x" >}}
 
 首个支持苹果 M1 / Pro / Max Mac 的 Linux 发行版发布，面向所有用户开放下载
 https://asahilinux.org/2022/03/asahi-linux-alpha-release/

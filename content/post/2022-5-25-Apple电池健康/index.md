@@ -1,16 +1,18 @@
 ---
-layout: posts
 title: Apple电池健康
-author: Zifan Hua
-tags:
-- Software
-- News
-categories: News
+date: "2022-05-25"
+tags: ["Battery", "Tools"]
+toc: false
+categories: ["End Machine"]
 ---
 
 ### Apple电池健康 
 
-![Apple电池健康]({{ site.baseurl }}/assets/images/2022-05-25-Apple-Battery-Health.jpeg)
+{{< figureCupper
+img="2022-05-25-Apple-Battery-Health.jpeg" 
+caption="Apple电池健康" 
+command="Resize" 
+options="700x" >}}
 
 #### 🔋 关于电池健康度
 
