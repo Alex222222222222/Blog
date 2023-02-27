@@ -3,6 +3,7 @@ date: "2023-02-26"
 tags: ["hugo", "theme"]
 title: "Beautiful Hugo Theme"
 toc: false
+categories: [hugo-tutorial]
 ---
 
 A personal collection of beautiful hugo themes.

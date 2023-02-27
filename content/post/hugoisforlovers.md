@@ -3,6 +3,7 @@ date: "2014-04-02"
 tags: ["hugo", "git", "fun"]
 title: "Getting Started with Hugo"
 toc: true
+categories: [hugo-tutorial]
 ---
 
 {{< blockquote author="Zachary Betz" >}}

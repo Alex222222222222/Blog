@@ -11,6 +11,7 @@ tags:
 - templates
 title: Migrate to Hugo from Jekyll
 toc: true
+categories: [hugo-tutorial]
 ---
 
 {{< blockquote author="Zachary Betz" >}}

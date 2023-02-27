@@ -2,6 +2,7 @@
 title: "Katex Math Typesetting"
 date: 2019-03-28
 tags: [katex, math, typesetting, hugo]
+categories: [hugo-tutorial]
 ---
 
 {{< blockquote author="Zachary Betz" >}}
