@@ -1,10 +1,9 @@
 ---
-layout: posts
 title: Artemis! Fly your name around the Moon!
-author: Zifan Hua
-tags:
-- News
-categories: News
+date: "2022-03-22"
+tags: ["News", "Fun", "NASA", "Virtual Guests"]
+toc: false
+categories: ["News"]
 ---
 
 NASA 邀请民众把自己的名字加入 Artemis 宇宙飞船
@@ -15,9 +14,10 @@ NASA 邀请民众把自己的名字加入 Artemis 宇宙飞船
 
 [登记](https://www.nasa.gov/send-your-name-with-artemis/)
 
-![登机牌]({{ site.baseurl }}/assets/images/2022-03-22-NASA.jpg)
-
-首个支持苹果 M1 / Pro / Max Mac 的 Linux 发行版发布，面向所有用户开放下载
-https://asahilinux.org/2022/03/asahi-linux-alpha-release/
+{{< figureCupper
+img="2022-03-22-NASA.jpg" 
+caption="登机牌" 
+command="Resize" 
+options="700x" >}}
 
 
