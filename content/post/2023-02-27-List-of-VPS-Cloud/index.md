@@ -8,8 +8,10 @@ categories: ["VPS"]
 
 ## Hetzner
 
+http://hetzner.com
+
 Supported Payment Method:
-- Paypal (With Chinese Card Supported)
+- Paypal (Chinese Card Supported)
 - Credit/Debit Card
 
 Locations:
@@ -31,5 +33,19 @@ Volume:
 
 Date: 2023-02-27
 
+## Gullo
+
+https://hosting.gullo.me/order/main/index/nat-vps
+
+Supported Payment Method:
+- Paypal (Chinese Card Not Supported)
+- Offline Payment
+- BTC (BTCPay, seems only support bitcoin network)
+
+TODO: add Gullo pricing
+
+TODO: https://clients.mrvm.net/cart.php
+
+TODO: https://my.webhorizon.net/order/main/index/nat
 
 
