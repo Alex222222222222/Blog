@@ -61,15 +61,15 @@ name = "Categories"
 url = "/categories/"
 weight = 4
 
-[[menu.nav]]
-name = "About"
-url = "/about/"
-weight = 5
+# [[menu.nav]]
+# name = "About"
+# url = "/about/"
+# weight = 5
 
 [[menu.nav]]
 name = "RSS"
 url = "/index.xml"
-weight = 6
+weight = 5
 
 [markup]
 defaultMarkdownHandler = "goldmark"
