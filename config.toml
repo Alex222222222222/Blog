@@ -109,6 +109,6 @@ xHTML = false
 
 [module]
   # this is needed when you fetch the theme as a submodule to your repo.
-  # replacements = "github.com/panr/hugo-theme-terminal -> themes/terminal"
+  # replacements = "github.com/Alex222222222222/cupper-hugo-theme -> /Users/zifanhua/Code/cupper-hugo-theme"
 [[module.imports]]
   path = 'github.com/Alex222222222222/cupper-hugo-theme'
