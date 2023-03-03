@@ -31,7 +31,7 @@ search = true
 showThemeSwitcher = true
 defaultDarkTheme = false
 moveFooterToHeader = false
-# navTitleText: Cupper Theme
+navTitleText= "The Knot"
 logoAlt = "Alex Blog"
 customCss = [ "css/custom_01.css", "css/custom_02.css" ]
 customJs = [ "js/custom_01.js", "js/custom_02.js" ]

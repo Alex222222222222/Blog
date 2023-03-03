@@ -23,3 +23,4 @@ Contact Me At:
 Useful Links:
 - [IskCXr Blog](https://iskxcr.github.io/blog/p/introduction-to-mikos-library/), [GitHub](https://github.com/IskXCr)
   - Miko's Library - CG, Math, and a bit of CV and AI.
+- [Rotating Knot](https://github.com/stewdio/cornell-torus), by [stewdio](https://github.com/stewdio)
