@@ -20,3 +20,6 @@ Contact Me At:
 - zifan.hua@icloud.com Personal Address
 
 
+Useful Links:
+- [IskCXr Blog](https://iskxcr.github.io/blog/p/introduction-to-mikos-library/), [GitHub](https://github.com/IskXCr)
+  - Miko's Library - CG, Math, and a bit of CV and AI.
