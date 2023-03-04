@@ -44,3 +44,30 @@ command="Resize"
 options="700x" >}}
 
 File: 1
+
+## Functional Analysis
+
+Name: Functional Analysis
+
+ISBN-10: 0070619883
+
+ISBN-13: 978-0070619883
+
+Language: English
+
+Author: [Walter Rudin](https://en.wikipedia.org/wiki/Walter_Rudin)
+
+Date of Publication: 2007
+
+Area: Math, Functional Analysis
+
+Review / Description: Not finished reading yet.
+
+Preview Image:
+{{< figureCupper
+img="img/2.jpg" 
+caption="Functional Analysis" 
+command="Resize" 
+options="700x" >}}
+
+File: 2
