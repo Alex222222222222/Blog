@@ -17,4 +17,3 @@ categories: ["News"]
 [Code](https://github.com/yu-takagi/StableDiffusionReconstruction)
 
 [Paper](https://www.biorxiv.org/content/10.1101/2022.11.18.517004v2)
-

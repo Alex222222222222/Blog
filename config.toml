@@ -37,8 +37,8 @@ customCss = [ "css/custom_01.css", "css/custom_02.css" ]
 customJs = [ "js/custom_01.js", "js/custom_02.js" ]
 
   [params.utterances]
-  repo = "https://github.com/Alex222222222222/Blog"
-  issueTerm = "title"
+  repo = "Alex222222222222/Blog"
+  issueTerm = "pathname"
   theme = "github-light"
 
 [[menu.nav]]
