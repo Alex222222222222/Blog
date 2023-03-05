@@ -4,7 +4,7 @@ defaultContentLanguage = "en"
 title = "Alex Blog"
 # donot use the if use hugo submodules
 # theme = "cupper-hugo-theme"
-# googleAnalytics = "UA-123456789-1"
+googleAnalytics = "G-NC257QNMB6"
 # disqusShortname = "yourdiscussshortname"
 enableGitInfo = true
 
