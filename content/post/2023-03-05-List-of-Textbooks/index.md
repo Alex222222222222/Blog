@@ -71,3 +71,30 @@ command="Resize"
 options="700x" >}}
 
 File: 2
+
+## Abstract Algebra
+
+Name: Abstract Algebra
+
+ISBN-10: 0471368792
+
+ISBN-13: 978-0471368793
+
+Language: English
+
+Author: [Israel Nathan Herstein](https://en.wikipedia.org/wiki/Israel_Nathan_Herstein)
+
+Date of Publication: 1996
+
+Area: Math, Abstract Algebra
+
+Review / Description: Not finished reading yet.
+
+Preview Image:
+{{< figureCupper
+img="img/3.png" 
+caption="Abstract Algebra" 
+command="Resize" 
+options="700x" >}}
+
+File: 3
