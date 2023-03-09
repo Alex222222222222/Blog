@@ -43,7 +43,7 @@ caption="Elements of Algebraic Topology"
 command="Resize" 
 options="700x" >}}
 
-File: 1
+<!-- File: 1 -->
 
 ## Functional Analysis
 
@@ -70,7 +70,7 @@ caption="Functional Analysis"
 command="Resize" 
 options="700x" >}}
 
-File: 2
+<!-- File: 2 -->
 
 ## Abstract Algebra
 
@@ -97,4 +97,4 @@ caption="Abstract Algebra"
 command="Resize" 
 options="700x" >}}
 
-File: 3
+<!-- File: 3 -->
