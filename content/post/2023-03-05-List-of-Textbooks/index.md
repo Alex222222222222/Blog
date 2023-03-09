@@ -16,7 +16,7 @@ Each book contains:
 - Area
 - Review / Description
 - Preview Image
-- File
+<!-- - File -->
 
 ## Elements of Algebraic Topology
 
