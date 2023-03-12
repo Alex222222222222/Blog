@@ -128,3 +128,31 @@ options="700x" >}}
 Solution Manual: [Check](https://minds.wisconsin.edu/handle/1793/67009) <!-- File: 5 -->
 
 <!-- File: 4 -->
+
+
+## Real and Complex Analysis
+
+Name: Real and Complex Analysis
+
+ISBN-10: 0070542341
+
+ISBN-13: 978-0070542341
+
+Language: English
+
+Author: [Walter Rudin](https://en.wikipedia.org/wiki/Walter_Rudin)
+
+Date of Publication: 1976
+
+Area: Math, Mathematical Analysis
+
+Review / Description: Not finished reading yet.
+
+Preview Image:
+{{< figureCupper
+img="img/5.png" 
+caption="Principles of Mathematical Analysis" 
+command="Resize" 
+options="700x" >}}
+
+<!-- File: 6 -->
