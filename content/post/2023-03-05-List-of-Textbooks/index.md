@@ -16,6 +16,7 @@ Each book contains:
 - Area
 - Review / Description
 - Preview Image
+- Solution Manual (if available)
 <!-- - File -->
 
 ## Elements of Algebraic Topology
@@ -98,3 +99,32 @@ command="Resize"
 options="700x" >}}
 
 <!-- File: 3 -->
+
+## Principles of Mathematical Analysis / Baby Rudin
+
+Name: Principles of Mathematical Analysis
+
+ISBN-10: 007054235X
+
+ISBN-13: 978-0070542358
+
+Language: English
+
+Author: [Walter Rudin](https://en.wikipedia.org/wiki/Walter_Rudin)
+
+Date of Publication: 1976
+
+Area: Math, Mathematical Analysis
+
+Review / Description: Good book. Rudin's style.
+
+Preview Image:
+{{< figureCupper
+img="img/4.png" 
+caption="Principles of Mathematical Analysis" 
+command="Resize" 
+options="700x" >}}
+
+Solution Manual: [Check](https://minds.wisconsin.edu/handle/1793/67009) <!-- File: 5 -->
+
+<!-- File: 4 -->
