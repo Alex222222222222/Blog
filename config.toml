@@ -43,6 +43,12 @@ customJs = [ "js/custom_01.js", "js/custom_02.js" ]
   pNum = 3 # p num represents the number of knots in the p direction
   qNum = 7 # q num represents the number of knots in the q direction
 
+  [params.viewCounter]
+  baseURL = "https://view-counter.workers.huazifan.eu.org/site/view"
+  enable = true
+  password = "asdfghjk"
+  username = "blog"
+
   [params.utterances]
   repo = "Alex222222222222/Blog"
   issueTerm = "pathname"
