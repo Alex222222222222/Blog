@@ -207,3 +207,37 @@ options="700x" >}}
 <!-- File: 7 -->
 <!-- File: 8 -->
 <!-- File: 9 -->
+
+## Algebra
+
+Name: Algebra
+
+ISBN-10: 0132413779
+ISBN-13: 9780132413770
+
+Language: English
+
+Author: [Michael Artin](https://en.wikipedia.org/wiki/Michael_Artin)
+
+Date of Publication: 2010
+
+Area: Math, Abstract Algebra, Linear Algebra
+
+Review / Description: 
+
+Algebra is a comprehensive textbook on algebraic structures, including groups, rings, and fields. The book covers topics such as group actions, Galois theory, and homological algebra. The text is known for its clear and concise explanations, as well as its emphasis on geometric interpretations of algebraic concepts.
+
+The book is well-regarded by many mathematicians and educators, and is often used as a textbook for advanced undergraduate or graduate-level courses in algebra. It is particularly popular among students and researchers interested in algebraic geometry and number theory.
+
+One potential drawback of the book for some readers is that it may be too advanced for those without a strong mathematical background. Additionally, some readers may prefer a more traditional approach to algebra, rather than the geometric viewpoint presented in the book.
+
+Overall, Algebra by Michael Artin is a highly respected textbook on algebra, and would likely be a valuable resource for students and educators looking to gain a deep understanding of the subject.
+
+Preview Image:
+{{< figureCupper
+img="img/7.jpg" 
+caption="微积分学教程" 
+command="Resize" 
+options="700x" >}}
+
+<!-- File: 10 -->
