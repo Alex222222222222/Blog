@@ -236,7 +236,7 @@ Overall, Algebra by Michael Artin is a highly respected textbook on algebra, and
 Preview Image:
 {{< figureCupper
 img="img/7.jpg" 
-caption="微积分学教程" 
+caption="Algebra" 
 command="Resize" 
 options="700x" >}}
 
