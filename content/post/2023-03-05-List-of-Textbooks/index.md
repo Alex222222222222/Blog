@@ -156,3 +156,54 @@ command="Resize"
 options="700x" >}}
 
 <!-- File: 6 -->
+
+## 微积分学教程
+
+Name: 微积分学教程
+
+第一卷：
+
+ISBN-10: 704018303X
+
+ISBN-13: 9787040183030
+
+第二卷：
+
+ISBN-10: 7040183048
+
+ISBN-13: 9787040183047
+
+第三卷：
+
+ISBN-10: 7040183056
+
+ISBN-13: 9787040183054
+
+Language: Chinese
+
+Author: [Grigorii Fichtenholz](https://en.wikipedia.org/wiki/Grigorii_Fichtenholz)
+
+Date of Publication: 2008
+
+Area: Math, Mathematical Analysis
+
+Review / Description: 
+
+微积分学教程 is a Chinese translation of the original Russian textbook "Курс дифференциального и интегрального исчисления" (Course of Differential and Integral Calculus) by Grigorii Fichtenholz. The book is a comprehensive introduction to calculus and covers topics such as limits, derivatives, integrals, applications of calculus, and series.
+
+The book is well-regarded by many mathematicians and educators, and is often used as a textbook for calculus courses in universities in Russia and China. The book is known for its clear and concise explanations, rigorous proofs, and wide range of examples and exercises.
+
+One potential drawback of the book for some readers is that it is quite dense and may require a strong mathematical background to fully understand. Additionally, some readers may prefer a more modern approach to teaching calculus that incorporates more visual aids or real-world applications.
+
+Overall, 微积分学教程 by Grigorii Fichtenholz is a highly respected textbook on calculus, and would likely be a valuable resource for students and educators looking to gain a deep understanding of the subject.
+
+Preview Image:
+{{< figureCupper
+img="img/6.jpg" 
+caption="微积分学教程" 
+command="Resize" 
+options="700x" >}}
+
+<!-- File: 7 -->
+<!-- File: 8 -->
+<!-- File: 9 -->
