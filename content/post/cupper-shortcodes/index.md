@@ -221,6 +221,18 @@ caption="The Sun is the star at the center of the Solar System. It is a nearly p
 command="Resize" 
 options="700x" >}}
 
+## fileCupper
+
+```
+{{</* fileCupper
+img="sun.jpg"
+caption="sun" */>}}
+```
+
+{{< fileCupper
+img="sun.jpg"
+caption="sun" >}}
+
 ## principles
 
 See the [full principles list](https://github.com/zwbetz-gh/cupper-hugo-theme/blob/master/data/principles.json).
