@@ -14,13 +14,20 @@ Personal Interest:
 * VPS
 {{< /ticks >}}
 
-Contact Me At:
-- smyzh5@nottingham.edu.cn Work Address
-- huazifan@gmail.com Personal Address
-- zifan.hua@icloud.com Personal Address
-
+Contact Me:
+- smyzh5@nottingham.edu.cn
+  - Work Address
+- huazifan@gmail.com
+  - Personal Address
+  - [GPGKey](/file/gmail_key.asc)
+  - [OpenPGP](https://keys.openpgp.org/search?q=huazifan%40gmail.com)
+- zifan.hua@icloud.com
+  - Personal Address
+  - [GPGKey](/file/icloud_key.asc)
+  - [OpenPGP](https://keys.openpgp.org/search?q=zifan.hua%40icloud.com)
 
 Useful Links:
 - [IskCXr Blog](https://iskxcr.github.io/blog/p/introduction-to-mikos-library/), [GitHub](https://github.com/IskXCr)
   - Miko's Library - CG, Math, and a bit of CV and AI.
 - [Rotating Knot](https://github.com/stewdio/cornell-torus), by [stewdio](https://github.com/stewdio)
+- [OpenPGP Project](https://keys.openpgp.org/about)
