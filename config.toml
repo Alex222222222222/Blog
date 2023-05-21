@@ -19,6 +19,7 @@ post = "/:filename/"
 quality = 99
 
 [params]
+googleSiteVerification = "XcsB45FLCfR9sqEnXrtI_9MjGI6VgAG5o2F_7hdjToQ"
 description = "Alex personal Blog. Contain math, programming, and other things."
 homeMetaContent = "Alex personal Blog. Contain math, programming, and other things."
 footer = "By [Alex222222222222](https://github.com/Alex222222222222). [Open Source](https://github.com/Alex222222222222/Blog). Powered by [Hugo](https://gohugo.io/). Ported from [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme)."
