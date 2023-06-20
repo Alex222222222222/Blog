@@ -10,11 +10,27 @@ categories: ["NixOS"]
 
 Some note for NixOS configurations.
 
+### Useful Commands
+
+#### Rebuild the System
+
+Need `sudo`.
+
+```bash
+# test the configuration
+sudo nixos-rebuild test --flake "/path/to/config#tag" --show-trace
+
+# switch to the configuration
+sudo nixos-rebuild switch --flake "/path/to/config#tag" --show-trace
+```
+
 ### Useful Websites
 
 [NixOS Full Options List](https://nixos.org/manual/nixos/stable/options.html#opt-environment.etc)
 
 [NixOS Package List](https://search.nixos.org)
+
+[GitHub User Public Key](https://github.com/Alex222222222222.keys)
 
 ### Put File Under /etc
 
@@ -215,4 +231,56 @@ This will mount your `WebDav` to `/mnt/{{ mount-dir }}`.
     autoMaster = "/mnt/ /etc/davfs2/auto.mount";
   };
 }
+```
+
+### Clean the System & Nix Store
+
+```nix
+# clean journalctl
+services.cron = {
+  enable = true;
+  systemCronJobs = [
+    "0 0 * * * journalctl --vacuum-time=7d 1>/dev/null"
+  ];
+};
+
+# garbange collection check https://nixos.wiki/wiki/Nix_Cookbook#Reclaim_space_on_Nix_install.3F
+nix.gc.automatic = true;
+nix.settings.auto-optimise-store = true;
+```
+
+### Enable the Mosh Server
+
+```nix
+# Enable mosh, the ssh alternative when client has bad connection
+# Opens UDP ports 60000 ... 61000
+programs.mosh.enable = true;
+networking.firewall.allowedTCPPortRanges = [
+  {
+    from = 60000;
+    to = 61000;
+  }
+];
+networking.firewall.allowedUDPPortRanges = [
+  {
+    from = 60000;
+    to = 61000;
+  }
+];
+```
+
+### Enable Fail2Ban
+
+```nix
+services.fail2ban = {
+  enable = true;
+  maxretry = 5;
+  ignoreIP = [
+    "127.0.0.0/8" 
+    "10.0.0.0/8" 
+    "172.16.0.0/12" 
+    "192.168.0.0/16"
+    "8.8.8.8"
+  ];
+};
 ```
