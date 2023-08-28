@@ -15,6 +15,8 @@ Personal Interest:
 {{< /ticks >}}
 
 Contact Me:
+- smyzh5@nottingham.ac.uk
+  - Work Address
 - smyzh5@nottingham.edu.cn
   - Work Address
 - huazifan@gmail.com
