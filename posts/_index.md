@@ -8,11 +8,9 @@ Welcome to **Alex blog**.
 Personal blog for [Alex222222222222](https://github.com/Alex222222222222)
 
 Personal Interest:
-{{< ticks >}}
 * Math
 * Computer Science
 * VPS
-{{< /ticks >}}
 
 Contact Me:
 - smyzh5@nottingham.ac.uk

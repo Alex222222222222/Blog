@@ -1,0 +1,33 @@
+{
+    "pageTitle": "The Knot",
+    "pageDescription": "",
+    "pageKeywords": "",
+    "baseUrl": "",
+    "name": "Alex Hua",
+    "contact": [
+        {
+            "type": "email",
+            "link": "huazifan@gmail.com"
+        },
+        {
+            "type": "github",
+            "link": "Alex222222222222"
+        },
+        {
+            "type": "twitter",
+            "link": ""
+        },
+        {
+            "type": "linkedin",
+            "link": ""
+        },
+        {
+            "type": "facebook",
+            "link": ""
+        },
+        {
+            "type": "instagram",
+            "link": ""
+        }
+    ]
+}
