@@ -1,5 +1,5 @@
 // pages/index.tsx
-import "../styles/globals.css";
+import "@/styles/globals.css";
 import fs from "fs";
 import path from "path";
 import { ParsedUrlQuery } from "querystring";
@@ -34,9 +34,15 @@ export default Home;
 
 export const getStaticProps = async (context: ParsedUrlQuery) => {
   const files = fs.readdirSync(path.join("posts"));
-
   const posts: (Post | null)[] = files.map((filename) => {
     return get_markdown_data(filename);
+  });
+  // set the content of posts to "",
+  // as this is not needed for the home page
+  posts.forEach((post) => {
+    if (post) {
+      post.content = "";
+    }
   });
 
   const config = JSON.parse(
