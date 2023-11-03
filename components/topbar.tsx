@@ -26,6 +26,9 @@ const TopBar: React.FC<TopBarProps> = ({ config }) => {
         <li style={{ marginRight: "10px" }}>
           <Link href="/categories/">{"Categories"}</Link>
         </li>
+        <li style={{ marginRight: "10px" }}>
+          <Link href="/tags/">{"Tags"}</Link>
+        </li>
         {config.contact.map((c, index) => {
           if (!c.link) {
             return null;
