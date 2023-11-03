@@ -6,6 +6,16 @@ import { get_markdown_data } from "@/lib/markdown_file_meta";
 import React from "react";
 import Config from "@/interfaces/config";
 import Layout from "@/components/layout";
+import styled from "styled-components";
+
+const TagList = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  list-style: none;
+  margin-left: 20px;
+  color: #000;
+  text-decoration: underline;
+`;
 
 interface TagsHomeProps {
   tags: string[];
@@ -49,20 +59,13 @@ export async function getStaticProps() {
 const CategoriesPage: React.FC<TagsHomeProps> = ({ tags, config }) => (
   <Layout config={config}>
     <h1>Tags:</h1>
-    <ul
-      style={{
-        listStyle: "none",
-        marginLeft: 20,
-        color: "#000",
-        textDecoration: "underline",
-      }}
-    >
+    <TagList>
       {tags.map((tag, index) => (
         <li key={index}>
           <a href={`/tags/${tag}`}>{tag}</a>
         </li>
       ))}
-    </ul>
+    </TagList>
   </Layout>
 );
 

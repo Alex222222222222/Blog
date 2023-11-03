@@ -1,25 +1,45 @@
 // pages/posts/[id].tsx
+import "@/styles/post.css";
+import "@/styles/globals.css";
 import fs from "fs";
 import path from "path";
-import matter from "gray-matter";
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { ParsedUrlQuery } from "querystring";
-
-interface Post {
-  title: string;
-  // Add other properties as needed
-}
+import Post from "@/interfaces/post";
+import { get_markdown_data } from "@/lib/markdown_file_meta";
+import Layout from "@/components/layout";
+import Config from "@/interfaces/config";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import remarkToc from "remark-toc";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import "katex/dist/katex.min.css"; // Import KaTeX styles
 
 interface PostProps {
   post: Post;
+  config: Config;
 }
 
-const PostPage: React.FC<PostProps> = ({ post }) => {
+const PostPage: React.FC<PostProps> = ({ post, config }) => {
+  const remarkPlugins = post.toc
+    ? [remarkGfm, remarkToc, remarkMath]
+    : [remarkGfm, remarkMath];
+
+    const content = post.toc ? `## Contents\n\n${post.content}` : post.content;
+
   return (
-    <div>
-      <h1>{post.title}</h1>
-      {/* Render other post properties as needed */}
-    </div>
+    <Layout config={config}>
+      <div className="post-content">
+        <h1>{post.title}</h1>
+        <ReactMarkdown
+          remarkPlugins={remarkPlugins}
+          rehypePlugins={[rehypeKatex]}
+        >
+          {content}
+        </ReactMarkdown>
+      </div>
+    </Layout>
   );
 };
 
@@ -42,66 +62,16 @@ export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext<ParsedUrlQuery>
 ) => {
   const { id } = context.params as { id: string };
+  const post = get_markdown_data(id);
 
-  // test filename to see if it's a dir
-  // if it is, read the dir and get the index.md file or filename.md file
-  // if it's not a dir, test if it's an md file
-  // if it is, read the file
-  // if it's not, redirect to 404
-
-  const isDir = fs.lstatSync(path.join("posts", `${id}`)).isDirectory();
-  if (isDir) {
-    const dir = fs.readdirSync(path.join("posts", `${id}`));
-    const mdFile = dir.find(
-      (file) => file === "index.md" || file === `${id}.md`
-    );
-    if (mdFile) {
-      const markdownWithMeta = fs.readFileSync(
-        path.join("posts", `${id}`, mdFile),
-        "utf-8"
-      );
-      const { data: frontmatter } = matter(markdownWithMeta);
-      const post: Post = {
-        title: frontmatter.title,
-        // Add other properties as needed
-      };
-      return {
-        props: {
-          post,
-        },
-      };
-    } else {
-      return {
-        redirect: {
-          destination: "/404",
-          permanent: false,
-        },
-      };
-    }
-  }
-
-  const isMdFile = id.endsWith(".md");
-  if (!isMdFile) {
-    return {
-      redirect: {
-        destination: "/404",
-        permanent: false,
-      },
-    };
-  }
-
-  const markdownWithMeta = fs.readFileSync(path.join("posts", id), "utf-8");
-
-  const { data: frontmatter } = matter(markdownWithMeta);
-
-  const post: Post = {
-    title: frontmatter.title,
-    // Add other properties as needed
-  };
+  const config = JSON.parse(
+    fs.readFileSync(path.join(process.cwd(), "config.json"), "utf8")
+  );
 
   return {
     props: {
       post,
+      config,
     },
   };
 };

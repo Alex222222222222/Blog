@@ -21,12 +21,7 @@ Locations:
 - Hillsboro, OR (US West)
 - Ashburn, VA (US West)
 
-Servers:
-{{< figureCupper
-img="img/ScreenShot Mon Feb 27 13:11:46 CST 2023.png" 
-caption="Hetzner" 
-command="Resize" 
-options="700x" >}}
+![Hetzner](/static/img/2023-02-27-List-of-VPS-Cloud/1.png)
 
 Volume:
 - 0.44 Euro/Month 10GB

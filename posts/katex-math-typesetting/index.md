@@ -5,11 +5,6 @@ tags: [katex, math, typesetting, hugo]
 categories: [hugo-tutorial]
 ---
 
-{{< blockquote author="Zachary Betz" >}}
-This is originally written by [Zachary Betz](https://zwbetz.com/).
-Find this thing really useful, so just keep it here.
-{{< /blockquote >}}
-
 Enable Katex in the config file by setting the `katex` param to `true`. This will import the necessary Katex CSS/JS. 
 
 **Note:** Use the online reference of [supported TeX functions](https://katex.org/docs/supported.html). 

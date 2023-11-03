@@ -28,11 +28,7 @@ such as journalists, activists, and government officials.
 It is available for free download and use,
 although users can make a donation to support the ongoing development of the software.
 
-{{< figureCupper
-img="img/1.png"
-caption="Screenshot of GPG Suite"
-command="Resize"
-options="1500x" >}}
+![Screenshot of GPG Suite](/static/img/2023-04-17-GPGMail-Mac/1.png)
 
 ## Installation
 

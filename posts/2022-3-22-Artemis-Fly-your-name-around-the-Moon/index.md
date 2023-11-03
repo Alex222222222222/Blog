@@ -14,10 +14,7 @@ NASA 邀请民众把自己的名字加入 Artemis 宇宙飞船
 
 [登记](https://www.nasa.gov/send-your-name-with-artemis/)
 
-{{< figureCupper
-img="2022-03-22-NASA.jpg" 
-caption="登机牌" 
-command="Resize" 
-options="700x" >}}
+
+![登机牌](/static/img/2022-3-22-Artemis-Fly-your-name-around-the-Moon/2022-03-22-NASA.jpg)
 
 

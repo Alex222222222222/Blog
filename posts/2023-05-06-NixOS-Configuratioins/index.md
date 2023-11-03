@@ -6,13 +6,13 @@ toc: true
 categories: ["NixOS"]
 ---
 
-## NixOS Configurations | NixOS 不完全手记
+## Intro
 
 Some note for NixOS configurations.
 
-### Useful Commands
+## Useful Commands
 
-#### Rebuild the System
+### Rebuild the System
 
 Need `sudo`.
 
@@ -24,7 +24,7 @@ sudo nixos-rebuild test --flake "/path/to/config#tag" --show-trace
 sudo nixos-rebuild switch --flake "/path/to/config#tag" --show-trace
 ```
 
-### Useful Websites
+## Useful Websites
 
 [NixOS Full Options List](https://nixos.org/manual/nixos/stable/options.html#opt-environment.etc)
 
@@ -32,7 +32,7 @@ sudo nixos-rebuild switch --flake "/path/to/config#tag" --show-trace
 
 [GitHub User Public Key](https://github.com/Alex222222222222.keys)
 
-### Put File Under /etc
+## Put File Under /etc
 
 Check [ ](https://nixos.org/manual/nixos/stable/options.html#opt-environment.etc)
 
@@ -47,7 +47,7 @@ Check [ ](https://nixos.org/manual/nixos/stable/options.html#opt-environment.etc
 }
 ```
 
-### Reference Store Path of a Nix Package
+## Reference Store Path of a Nix Package
 
 ```nix
 ''
@@ -55,11 +55,11 @@ ${pkgs.hello}/bin/hello
 ''
 ```
 
-### Use Agenix to Manage Secrets
+## Use Agenix to Manage Secrets
 
 Check [`agenix GitHub`](https://github.com/ryantm/agenix#age-module-reference).
 
-#### Install Agenix Via Flakes
+### Install Agenix Via Flakes
 
 ```nix
 {
@@ -83,7 +83,7 @@ Check [`agenix GitHub`](https://github.com/ryantm/agenix#age-module-reference).
 }
 ```
 
-#### Get Secrets
+### Get Secrets
 
 `agenix` use `ssh keys` as keys.
 
@@ -91,13 +91,13 @@ System host `ssh key` is at `/etc/ssh/`.
 
 User's `ssh key` is at `~/.ssh`.
 
-#### Mkdir For Agenix
+### Mkdir For Agenix
 
 ```bash
 mkdir -p ./secrets
 ```
 
-#### Add Secrets Keys
+### Add Secrets Keys
 
 Keys should be put at `./secrets/secrets.nix`.
 
@@ -121,7 +121,7 @@ in
 This file declare that the `secret1.age` can be decrypted by `user1` and `system1`.
 `secret2.age` can be decrypted by all users in `users` and `systems`.
 
-#### Add Secrets
+### Add Secrets
 
 ```bash
 # You need to be in the same directory as secrets.nix
@@ -131,7 +131,7 @@ cd ./secrets
 agenix -e secret1.age
 ```
 
-#### Add Secrets to NixOS Configurations
+### Add Secrets to NixOS Configurations
 
 ```nix
 {
@@ -155,9 +155,9 @@ Or,
 }
 ```
 
-#### Use Secrets
+### Use Secrets
 
-##### Use Path of Secrets
+#### Use Path of Secrets
 
 ```nix
 {
@@ -168,7 +168,7 @@ Or,
 }
 ```
 
-##### Replace Inplace Strings With Secrets
+#### Replace Inplace Strings With Secrets
 
 Considering that there still might be some modules which doesn't support reading secrets from a file, you could provide a placeholder string instead of a clear-text password and replace this placeholder with the secret provided by Agenix.
 
@@ -182,7 +182,7 @@ system.activationScripts."dex-user-secret" = ''
 '';
 ```
 
-### Mount WebDav Using AutoFS
+## Mount WebDav Using AutoFS
 
 I found this two links really helpful.
 
@@ -233,7 +233,7 @@ This will mount your `WebDav` to `/mnt/{{ mount-dir }}`.
 }
 ```
 
-### Clean the System & Nix Store
+## Clean the System & Nix Store
 
 ```nix
 # clean journalctl
@@ -249,7 +249,7 @@ nix.gc.automatic = true;
 nix.settings.auto-optimise-store = true;
 ```
 
-### Enable the Mosh Server
+## Enable the Mosh Server
 
 ```nix
 # Enable mosh, the ssh alternative when client has bad connection
@@ -269,7 +269,7 @@ networking.firewall.allowedUDPPortRanges = [
 ];
 ```
 
-### Enable Fail2Ban
+## Enable Fail2Ban
 
 ```nix
 services.fail2ban = {

@@ -6,6 +6,8 @@ toc: True
 categories: ["Tutorial", "Academic"]
 ---
 
+## Intro
+
 This is a personal collection of math and computer science textbooks.
 Each book contains:
 - Name
@@ -17,7 +19,6 @@ Each book contains:
 - Review / Description
 - Preview Image
 - Solution Manual (if available)
-<!-- - File -->
 
 ## Elements of Algebraic Topology
 
@@ -37,14 +38,7 @@ Area: Math, Algebraic Topology
 
 Review / Description: Not finished reading yet.
 
-Preview Image:
-{{< figureCupper
-img="img/1.jpg" 
-caption="Elements of Algebraic Topology" 
-command="Resize" 
-options="700x" >}}
-
-<!-- File: 1 -->
+![Elements of Algebraic Topology](/static/img/2023-03-05-List-of-Textbooks/1.jpg)
 
 ## Functional Analysis
 
@@ -64,14 +58,7 @@ Area: Math, Functional Analysis
 
 Review / Description: Not finished reading yet.
 
-Preview Image:
-{{< figureCupper
-img="img/2.jpg" 
-caption="Functional Analysis" 
-command="Resize" 
-options="700x" >}}
-
-<!-- File: 2 -->
+![Functional Analysis](/static/img/2023-03-05-List-of-Textbooks/2.jpg)
 
 ## Abstract Algebra
 
@@ -91,14 +78,7 @@ Area: Math, Abstract Algebra
 
 Review / Description: Not finished reading yet.
 
-Preview Image:
-{{< figureCupper
-img="img/3.png" 
-caption="Abstract Algebra" 
-command="Resize" 
-options="700x" >}}
-
-<!-- File: 3 -->
+![Abstract Algebra](/static/img/2023-03-05-List-of-Textbooks/3.png)
 
 ## Principles of Mathematical Analysis / Baby Rudin
 
@@ -119,15 +99,10 @@ Area: Math, Mathematical Analysis
 Review / Description: Good book. Rudin's style.
 
 Preview Image:
-{{< figureCupper
-img="img/4.png" 
-caption="Principles of Mathematical Analysis" 
-command="Resize" 
-options="700x" >}}
 
-Solution Manual: [Check](https://minds.wisconsin.edu/handle/1793/67009) <!-- File: 5 -->
+![Principles of Mathematical Analysis](/static/img/2023-03-05-List-of-Textbooks/4.png)
 
-<!-- File: 4 -->
+Solution Manual: [Check](https://minds.wisconsin.edu/handle/1793/67009)
 
 
 ## Real and Complex Analysis
@@ -148,14 +123,7 @@ Area: Math, Mathematical Analysis
 
 Review / Description: Not finished reading yet.
 
-Preview Image:
-{{< figureCupper
-img="img/5.png" 
-caption="Principles of Mathematical Analysis" 
-command="Resize" 
-options="700x" >}}
-
-<!-- File: 6 -->
+![Real and Complex Analysis](/static/img/2023-03-05-List-of-Textbooks/5.png)
 
 ## 微积分学教程
 
@@ -197,16 +165,7 @@ One potential drawback of the book for some readers is that it is quite dense an
 
 Overall, 微积分学教程 by Grigorii Fichtenholz is a highly respected textbook on calculus, and would likely be a valuable resource for students and educators looking to gain a deep understanding of the subject.
 
-Preview Image:
-{{< figureCupper
-img="img/6.jpg" 
-caption="微积分学教程" 
-command="Resize" 
-options="700x" >}}
-
-<!-- File: 7 -->
-<!-- File: 8 -->
-<!-- File: 9 -->
+![微积分学教程](/static/img/2023-03-05-List-of-Textbooks/6.jpg)
 
 ## Algebra
 
@@ -233,11 +192,4 @@ One potential drawback of the book for some readers is that it may be too advanc
 
 Overall, Algebra by Michael Artin is a highly respected textbook on algebra, and would likely be a valuable resource for students and educators looking to gain a deep understanding of the subject.
 
-Preview Image:
-{{< figureCupper
-img="img/7.jpg" 
-caption="Algebra" 
-command="Resize" 
-options="700x" >}}
-
-<!-- File: 10 -->
+![Algebra](/static/img/2023-03-05-List-of-Textbooks/7.jpg)
