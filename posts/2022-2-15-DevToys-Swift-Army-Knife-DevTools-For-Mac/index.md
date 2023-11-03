@@ -10,20 +10,8 @@ categories: ["Open Source"]
 
 [DevToys](https://github.com/ObuchiYuki/DevToysMac/)
 
-{{< figureCupper
-img="2022-02-15_1.png" 
-caption="DevToys" 
-command="Resize" 
-options="700x" >}}
+![DevToys](/static/img/2022-2-15-DevToys-Swift-Army-Knife-DevTools-For-Mac/2022-02-15_1.png)
 
-{{< figureCupper
-img="2022-02-15_2.png" 
-caption="DevToys-Preview1" 
-command="Resize" 
-options="700x" >}}
+![DevToys](/static/img/2022-2-15-DevToys-Swift-Army-Knife-DevTools-For-Mac/2022-02-15_2.png)
 
-{{< figureCupper
-img="2022-02-15_3.png" 
-caption="DevToys-Preview2" 
-command="Resize" 
-options="700x" >}}
+![DevToys](/static/img/2022-2-15-DevToys-Swift-Army-Knife-DevTools-For-Mac/2022-02-15_3.png)

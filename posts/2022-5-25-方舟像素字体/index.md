@@ -8,11 +8,7 @@ categories: ["Open Source"]
 
 ### 方舟像素字体 / Ark Pixel Font 
 
-{{< figureCupper
-img="2022-05-25-itch-io-banner.png" 
-caption="方舟像素字体" 
-command="Resize" 
-options="700x" >}}
+![方舟像素字体](/static/img/2022-5-25-方舟像素字体/2022-05-25-itch-io-banner.png)
 
 开源的泛中日韩像素字体。支持 10、12 和 16 像素。目标是为像素风格的游戏开发提供一套可用于正文的开箱即用的字体解决方案。
 

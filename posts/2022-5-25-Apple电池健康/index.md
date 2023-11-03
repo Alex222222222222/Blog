@@ -6,13 +6,9 @@ toc: false
 categories: ["End Machine"]
 ---
 
-### Apple电池健康 
+### Apple电池健康
 
-{{< figureCupper
-img="2022-05-25-Apple-Battery-Health.jpeg" 
-caption="Apple电池健康" 
-command="Resize" 
-options="700x" >}}
+![Apple电池健康](/static/img/2022-5-25-Apple电池健康/2022-05-25-Apple-Battery-Health.jpeg)
 
 #### 🔋 关于电池健康度
 

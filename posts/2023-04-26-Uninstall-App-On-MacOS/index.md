@@ -40,13 +40,6 @@ The [AppCleaner](https://freemacsoft.net/appcleaner/).
 Just go to the webpage [AppCleaner](https://freemacsoft.net/appcleaner/),
 and select the latest version.
 
-If you have trouble accessing the website,
-you could use the
-{{< fileCupper
-img="file/AppCleaner_3.6.7.zip"
-caption="file" >}}
-that download by me.
-
 ## Uninstall App
 
 Open the app,
@@ -58,8 +51,4 @@ then AppCleaner will search for all the files of the App,
 you could unselect the files you do not want to delete.
 Click remove, then, you are all set.
 
-{{< figureCupper
-img="img/1.png"
-caption="Steam Sample"
-command="Resize"
-options="700x" >}}
+![Steam Sample](/static/img/2023-04-26-Uninstall-App-On-MacOS/1.png)

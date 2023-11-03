@@ -25,18 +25,6 @@ Download Map:
 [Link5](https://01c16de193.acl.multichain.storage/ipfs/QmRwB777gUymVb3td3UJLoExW5uiHZSeXAdZQ2MqNdyvxN?filename=Greenfield.zip)
 [Link6](https://01c16de193.acl.multichain.storage/ipfs/QmVkh2Fs7K77QsuuUAPEAAdp9C4q8wQRntCUstYVE5P8A4?filename=Greenfield_v0.5.4.zip)
 
-
-<!-- Associated web3.storage email: gnat_fader_0w@icloud.com -->
-<!-- Associated multichain storage wallet: 0x0d5cAA8994C9abd61cA723a6E563F6B0e454ad87 -->
-
-{{< figureCupper
-img="img/1.png" 
-caption="[GreenField](https://www.greenfieldmc.net/about/)." 
-command="Resize" 
-options="700x" >}}
-
-{{< figureCupper
-img="img/2.png"
-caption="[GreenField](https://www.greenfieldmc.net/about/)."
-command="Resize"
-options="700x" >}}
+[GreenField](https://www.greenfieldmc.net/about/)
+![GreenField Image](/static/img/2023-06-05-greenfield-city-in-minecraft/1.png)
+![GreenField Image](/static/img/2023-06-05-greenfield-city-in-minecraft/2.png)

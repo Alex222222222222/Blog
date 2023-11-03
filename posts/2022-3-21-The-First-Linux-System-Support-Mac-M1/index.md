@@ -10,11 +10,7 @@ categories: ["News"]
 
 [Asahi Linux](https://asahilinux.org/2022/03/asahi-linux-alpha-release/)
 
-{{< figureCupper
-img="2022-03-21-Asahi-Linux.jpg" 
-caption="Asahi Linux" 
-command="Resize" 
-options="700x" >}}
+![Asahi Linux](/static/img/2022-3-21-The-First-Linux-System-Support-Mac-M1/2022-03-21-Asahi-Linux.jpg)
 
 首个支持苹果 M1 / Pro / Max Mac 的 Linux 发行版发布，面向所有用户开放下载
 https://asahilinux.org/2022/03/asahi-linux-alpha-release/
