@@ -1,8 +1,6 @@
 // components/TopBar.tsx
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import fs from "fs";
-import path from "path";
 import Config from "@/interfaces/config";
 import ContactBadge from "./contactBadge";
 
@@ -24,6 +22,9 @@ const TopBar: React.FC<TopBarProps> = ({ config }) => {
       >
         <li style={{ marginRight: "10px" }}>
           <Link href="/">{config.pageTitle}</Link>
+        </li>
+        <li style={{ marginRight: "10px" }}>
+          <Link href="/categories/">{"Categories"}</Link>
         </li>
         {config.contact.map((c, index) => {
           if (!c.link) {

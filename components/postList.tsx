@@ -55,12 +55,18 @@ const PostList: React.FC<PostListProps> = ({
           key={"post" + post.title}
           style={{
             display: "flex",
-            // justifyContent: "space-between",
-            // alignItems: "center",
           }}
         >
           <a style={{ marginRight: "20px" }}>{post.date}</a>
-          <Link href={`/posts/${post.filename}`}>{post.title}</Link>
+          <Link
+            href={`/posts/${post.filename}`}
+            style={{
+              color: "#000",
+              textDecoration: "underline",
+            }}
+          >
+            {post.title}
+          </Link>
         </div>
       ))}
     </div>
