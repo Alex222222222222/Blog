@@ -30,6 +30,9 @@ const TopBar: React.FC<TopBarProps> = ({ config }) => {
           <Link href="/tags/">{"Tags"}</Link>
         </li>
         <li style={{ marginRight: "10px" }}>
+          <Link href="/tools/">{"Tools"}</Link>
+        </li>
+        <li style={{ marginRight: "10px" }}>
           <Link href="/rss.xml">{"RSS"}</Link>
         </li>
       </ul>
