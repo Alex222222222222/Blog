@@ -2,12 +2,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { ParsedUrlQuery } from "querystring";
-import Link from "next/link";
-import Layout from "@/components/layout";
-import Config from "@/interfaces/config";
 import Post from "@/interfaces/post";
-import { get } from "http";
 
 export function getLastModifiedDate(filePath: string): Date {
   const stats = fs.statSync(filePath);
