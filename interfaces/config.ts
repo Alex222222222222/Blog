@@ -3,7 +3,7 @@ import { ContactType } from "./contactBadge";
 interface Config {
   pageTitle: string;
   pageDescription: string;
-  pageKeywords: string;
+  pageKeywords: string[];
   baseUrl: string;
   contact: Contact[];
 }
