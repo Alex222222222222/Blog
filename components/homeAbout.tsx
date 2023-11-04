@@ -89,7 +89,7 @@ const HomeAbout = () => {
           >
             GitHub
           </a>{" "}
-          - Miko's Library - CG, Math, and a bit of CV and AI.
+          {"- Miko's Library - CG, Math, and a bit of CV and AI."}
         </li>
       </ul>
     </div>

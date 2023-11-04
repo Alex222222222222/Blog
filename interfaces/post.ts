@@ -8,6 +8,8 @@ interface Post {
   description: string;
   content: string;
   toc: boolean;
+  // read_time in minutes
+  read_time: number;
 }
 
 export default Post;

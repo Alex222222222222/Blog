@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Post from "@/interfaces/post";
+import readTime from "./read_time";
 
 export function getLastModifiedDate(filePath: string): Date {
   const stats = fs.statSync(filePath);
@@ -86,6 +87,7 @@ export function get_markdown_data(filename: string): Post | null {
     add_0_to_date(date.getMonth()) +
     "/" +
     add_0_to_date(date.getDate());
+  const read_time = readTime(content);
 
   return {
     filename: filename,
@@ -97,5 +99,6 @@ export function get_markdown_data(filename: string): Post | null {
     description: description,
     content,
     toc,
+    read_time,
   };
 }
