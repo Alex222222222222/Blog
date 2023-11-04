@@ -12,6 +12,10 @@
         "url encode"
     ],
     "baseUrl": "https://alex1222.com/",
+    "sitemapBaseUrl": [
+        "https://blog.huazifan.eu.org/",
+        "https://alex1222.com/"
+    ],
     "name": "Alex Hua",
     "contact": [
         {

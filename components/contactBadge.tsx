@@ -1,6 +1,11 @@
 // components/ContactBadge.tsx
 import React from "react";
-import { ContactBadgeProps, ContactType } from "../interfaces/contactBadge";
+import { ContactType } from "../interfaces/contactBadge";
+
+export interface ContactBadgeProps {
+  type: ContactType;
+  link: string;
+}
 
 const ContactBadge: React.FC<ContactBadgeProps> = ({ type, link }) => {
   if (type == ContactType.EMAIL) {

@@ -7,7 +7,6 @@ import { ParsedUrlQuery } from "querystring";
 import Post from "@/interfaces/post";
 import { get_markdown_data } from "@/lib/markdown_file_meta";
 import Layout from "@/components/layout";
-import Config from "@/interfaces/config";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
@@ -18,10 +17,9 @@ import Head from "next/head";
 
 interface PostProps {
   post: Post;
-  config: Config;
 }
 
-const PostPage: React.FC<PostProps> = ({ post, config }) => {
+const PostPage: React.FC<PostProps> = ({ post }) => {
   const remarkPlugins = post.toc
     ? [remarkGfm, remarkToc, remarkMath]
     : [remarkGfm, remarkMath];
@@ -29,7 +27,7 @@ const PostPage: React.FC<PostProps> = ({ post, config }) => {
   const content = post.toc ? `## Contents\n\n${post.content}` : post.content;
 
   return (
-    <Layout config={config}>
+    <Layout>
       {
         // if the post has a description, add it to the head
         post.description && (
@@ -94,14 +92,9 @@ export const getStaticProps: GetStaticProps = async (
   const { id } = context.params as { id: string };
   const post = get_markdown_data(id);
 
-  const config = JSON.parse(
-    fs.readFileSync(path.join(process.cwd(), "config.json"), "utf8")
-  );
-
   return {
     props: {
       post,
-      config,
     },
   };
 };

@@ -1,18 +1,15 @@
-
 import fs from "fs";
 import path from "path";
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { ParsedUrlQuery } from "querystring";
 import { get_markdown_data } from "@/lib/markdown_file_meta";
 import Post from "@/interfaces/post";
-import Config from "@/interfaces/config";
 import React from "react";
 import PostList from "@/components/postList";
 import Layout from "@/components/layout";
 
 interface CategoryProps {
   posts: Post[];
-  config: Config;
   tag: string;
 }
 
@@ -28,7 +25,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const tags = filteredPosts.map((post) => post?.tags).flat();
   // filter out null categories
   const filteredTags = tags.filter((tag) => tag !== null);
-  const tagsWithNull = filteredTags.map((tag) => (tag!).toLowerCase());
+  const tagsWithNull = filteredTags.map((tag) => tag!.toLowerCase());
 
   // Remove duplicates
   let uniqueTags: String[] = [];
@@ -63,22 +60,17 @@ export const getStaticProps: GetStaticProps = async (
     }
   });
 
-  const config = JSON.parse(
-    fs.readFileSync(path.join(process.cwd(), "config.json"), "utf8")
-  );
-
   return {
     props: {
       posts: posts.filter((post) => post !== null),
       tag,
-      config,
     },
   };
 };
 
-const CategoryPage: React.FC<CategoryProps> = ({ posts, tag, config }) => {
+const CategoryPage: React.FC<CategoryProps> = ({ posts, tag }) => {
   return (
-    <Layout config={config}>
+    <Layout>
       <h1>Posts in tag: {tag}</h1>
       <div>
         {

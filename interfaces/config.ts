@@ -6,6 +6,7 @@ interface Config {
   pageKeywords: string[];
   baseUrl: string;
   contact: Contact[];
+  sitemapBaseUrl: string[];
 }
 
 interface Contact {

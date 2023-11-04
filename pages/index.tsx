@@ -2,7 +2,6 @@
 import fs from "fs";
 import path from "path";
 import Layout from "@/components/layout";
-import Config from "@/interfaces/config";
 import Post from "@/interfaces/post";
 import { get_markdown_data } from "@/lib/markdown_file_meta";
 import PostList from "@/components/postList";
@@ -14,12 +13,11 @@ import getConfig from "@/lib/config";
 
 interface HomeProps {
   posts: Post[];
-  config: Config;
 }
 
-const Home: React.FC<HomeProps> = ({ posts, config }) => {
+const Home: React.FC<HomeProps> = ({ posts }) => {
   return (
-    <Layout config={config}>
+    <Layout>
       <div>
         <HomeAbout />
       </div>
@@ -51,8 +49,8 @@ export const getStaticProps = async () => {
 
   const rss_feed = await generateFeed(valid_posts, config);
   fs.writeFileSync("public/rss.xml", rss_feed);
+  fs.writeFileSync("public/index.xml", rss_feed);
 
-  // TODO add other pages such as /categories, /tags, /about, etc.
   // TODO add multiple baseUrls for sitemap
   const sitemap = await generateSitemap(valid_posts, config);
   fs.writeFileSync("public/sitemap.xml", sitemap);
@@ -60,7 +58,6 @@ export const getStaticProps = async () => {
   return {
     props: {
       posts: valid_posts,
-      config,
     },
   };
 };

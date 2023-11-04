@@ -1,5 +1,6 @@
 import Config from "@/interfaces/config";
 import Post from "@/interfaces/post";
+import concatenateUrls from "./url";
 
 const otherPages = [
   {
@@ -41,25 +42,36 @@ const otherPages = [
 ];
 
 const generateSitemap = async (posts: Post[], config: Config) => {
+  let baseUrls = config.sitemapBaseUrl;
+  if (!baseUrls) {
+    baseUrls = [config.baseUrl];
+  }
+  if (!baseUrls.includes(config.baseUrl)) {
+    baseUrls.push(config.baseUrl);
+  }
+
   let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">`;
 
-  posts.forEach((post) => {
-    sitemap += `
+  baseUrls.forEach((baseUrl) => {
+    posts.forEach((post) => {
+      const url = concatenateUrls(baseUrl, `/posts/${post.filename}`);
+      sitemap += `
         <url>
-          <loc>${config.baseUrl}/posts/${post.filename}</loc>
+          <loc>${url}</loc>
           <lastmod>${new Date(post.date).toISOString()}</lastmod>
         </url>`;
-  });
+    });
 
-  otherPages.forEach((page) => {
-    sitemap += `
+    otherPages.forEach((page) => {
+      const url = concatenateUrls(baseUrl, page.url);
+      sitemap += `
         <url>
-          <loc>${config.baseUrl}${page.url}</loc>
+          <loc>${url}</loc>
           <lastmod>${page.lastmod}</lastmod>
         </url>`;
+    });
   });
-
   sitemap += `</urlset>`;
 
   return sitemap;

@@ -1,13 +1,10 @@
 // components/TopBar.tsx
 import Link from "next/link";
-import Config from "@/interfaces/config";
 import ContactBadge from "./contactBadge";
+import config from "@/config.json";
+import { stringToContactType } from "@/lib/contactType";
 
-interface TopBarProps {
-  config: Config;
-}
-
-const TopBar: React.FC<TopBarProps> = ({ config }) => {
+const TopBar: React.FC = () => {
   return (
     <div className="topbar">
       <ul
@@ -50,7 +47,7 @@ const TopBar: React.FC<TopBarProps> = ({ config }) => {
 
           return (
             <li key={index}>
-              <ContactBadge type={c.type} link={c.link} />
+              <ContactBadge type={stringToContactType(c.type)} link={c.link} />
             </li>
           );
         })}

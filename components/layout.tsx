@@ -1,16 +1,15 @@
 // components/Layout.tsx
 import React, { ReactNode } from "react";
 import TopBar from "./topbar";
-import Config from "@/interfaces/config";
 import SeparateLine from "./hr";
 import Head from "next/head";
+import config from "@/config.json";
 
 interface LayoutProps {
-  config: Config;
   children: ReactNode;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, config }) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <Head>
@@ -38,7 +37,7 @@ const Layout: React.FC<LayoutProps> = ({ children, config }) => {
           padding: "0 20px",
         }}
       >
-        <TopBar config={config} />
+        <TopBar />
         <SeparateLine />
         <div className="content">{children}</div>
         <SeparateLine />
