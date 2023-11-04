@@ -65,5 +65,3 @@ export const getStaticProps = async (context: ParsedUrlQuery) => {
     },
   };
 };
-
-// TODO add seo
