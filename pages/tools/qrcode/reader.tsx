@@ -10,7 +10,7 @@ interface IntroPageProps {
 
 const QRReaderPage: React.FC<IntroPageProps> = ({ config }) => {
   const [result, setResult] = useState("");
-  const [file, setFile] = useState<File | null>(null);
+  const [, setFile] = useState<File | null>(null);
 
   const handleScan = (data: string | null) => {
     if (data) {
