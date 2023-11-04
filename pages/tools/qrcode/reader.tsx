@@ -1,14 +1,8 @@
 import React, { useState } from "react";
 import QRScanner from "qr-scanner";
-import Config from "@/interfaces/config";
 import Layout from "@/components/layout";
-import getConfig from "@/lib/config";
 
-interface IntroPageProps {
-  config: Config;
-}
-
-const QRReaderPage: React.FC<IntroPageProps> = ({ config }) => {
+const QRReaderPage: React.FC = ({}) => {
   const [result, setResult] = useState("");
   const [, setFile] = useState<File | null>(null);
 
@@ -32,7 +26,7 @@ const QRReaderPage: React.FC<IntroPageProps> = ({ config }) => {
   };
 
   return (
-    <Layout config={config}>
+    <Layout>
       <h1>QR Code Reader</h1>
       {
         // ask user to upload a file
@@ -48,16 +42,6 @@ const QRReaderPage: React.FC<IntroPageProps> = ({ config }) => {
       </p>
     </Layout>
   );
-};
-
-export const getStaticProps = async () => {
-  const config = getConfig();
-
-  return {
-    props: {
-      config,
-    },
-  };
 };
 
 export default QRReaderPage;

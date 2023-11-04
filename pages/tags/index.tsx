@@ -1,10 +1,8 @@
-
 import fs from "fs";
 import path from "path";
 import Post from "@/interfaces/post";
 import { get_markdown_data } from "@/lib/markdown_file_meta";
 import React from "react";
-import Config from "@/interfaces/config";
 import Layout from "@/components/layout";
 import styled from "styled-components";
 
@@ -19,7 +17,6 @@ const TagList = styled.ul`
 
 interface TagsHomeProps {
   tags: string[];
-  config: Config;
 }
 
 export async function getStaticProps() {
@@ -33,7 +30,7 @@ export async function getStaticProps() {
   const tags = filteredPosts.map((post) => post?.tags).flat();
   // filter out null categories
   const filteredTags = tags.filter((tag) => tag !== null);
-  const tagsWithNull = filteredTags.map((tag) => (tag!).toLowerCase());
+  const tagsWithNull = filteredTags.map((tag) => tag!.toLowerCase());
 
   // Remove duplicates
   let uniqueTags: String[] = [];
@@ -43,21 +40,16 @@ export async function getStaticProps() {
     }
   }
 
-  const config = JSON.parse(
-    fs.readFileSync(path.join(process.cwd(), "config.json"), "utf8")
-  );
-
   // Return categories as props
   return {
     props: {
       tags: uniqueTags,
-      config,
     },
   };
 }
 
-const CategoriesPage: React.FC<TagsHomeProps> = ({ tags, config }) => (
-  <Layout config={config}>
+const CategoriesPage: React.FC<TagsHomeProps> = ({ tags }) => (
+  <Layout>
     <h1>Tags:</h1>
     <TagList>
       {tags.map((tag, index) => (

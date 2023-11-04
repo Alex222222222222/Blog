@@ -3,7 +3,6 @@ import path from "path";
 import Post from "@/interfaces/post";
 import { get_markdown_data } from "@/lib/markdown_file_meta";
 import React from "react";
-import Config from "@/interfaces/config";
 import Layout from "@/components/layout";
 import styled from "styled-components";
 
@@ -18,7 +17,6 @@ const CategoryList = styled.ul`
 
 interface CategoriesHomeProps {
   categories: string[];
-  config: Config;
 }
 
 export async function getStaticProps() {
@@ -44,24 +42,16 @@ export async function getStaticProps() {
     }
   }
 
-  const config = JSON.parse(
-    fs.readFileSync(path.join(process.cwd(), "config.json"), "utf8")
-  );
-
   // Return categories as props
   return {
     props: {
       categories: uniqueCategories,
-      config,
     },
   };
 }
 
-const CategoriesPage: React.FC<CategoriesHomeProps> = ({
-  categories,
-  config,
-}) => (
-  <Layout config={config}>
+const CategoriesPage: React.FC<CategoriesHomeProps> = ({ categories }) => (
+  <Layout>
     <h1>Categories:</h1>
     <CategoryList>
       {categories.map((category, index) => (

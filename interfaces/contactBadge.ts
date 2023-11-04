@@ -8,8 +8,3 @@ export enum ContactType {
   EMAIL = "email",
   OTHER = "other",
 }
-
-export interface ContactBadgeProps {
-  type: ContactType;
-  link: string;
-}

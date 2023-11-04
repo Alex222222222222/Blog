@@ -1,15 +1,9 @@
 import Layout from "@/components/layout";
-import Config from "@/interfaces/config";
-import getConfig from "@/lib/config";
 import Link from "next/link";
 
-interface IntroPageProps {
-  config: Config;
-}
-
-const IntroPage: React.FC<IntroPageProps> = ({ config }) => {
+const IntroPage: React.FC = ({}) => {
   return (
-    <Layout config={config}>
+    <Layout>
       Here is some tools on the site.
       <br />
       All the tools are run in the browser, so no data is sent to the server.
@@ -55,16 +49,6 @@ const IntroPage: React.FC<IntroPageProps> = ({ config }) => {
       }
     </Layout>
   );
-};
-
-export const getStaticProps = async () => {
-  const config = getConfig();
-
-  return {
-    props: {
-      config,
-    },
-  };
 };
 
 export default IntroPage;

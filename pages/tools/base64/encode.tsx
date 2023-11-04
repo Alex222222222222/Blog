@@ -1,14 +1,8 @@
 // pages/encode.tsx
 import Layout from "@/components/layout";
-import Config from "@/interfaces/config";
-import getConfig from "@/lib/config";
 import React, { useState } from "react";
 
-interface IntroPageProps {
-  config: Config;
-}
-
-const EncodePage: React.FC<IntroPageProps> = ({ config }) => {
+const EncodePage: React.FC = ({}) => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
 
@@ -18,7 +12,7 @@ const EncodePage: React.FC<IntroPageProps> = ({ config }) => {
   };
 
   return (
-    <Layout config={config}>
+    <Layout>
       <h1>Online Base64 Encoder</h1>
       <textarea
         value={input}
@@ -34,21 +28,11 @@ const EncodePage: React.FC<IntroPageProps> = ({ config }) => {
         className="w-full border-2 border-gray-300"
       />
       <br />
-      <button onClick={handleEncode}
-        className="border-2 border-gray-300 mb-2"
-      >Encode</button>
+      <button onClick={handleEncode} className="border-2 border-gray-300 mb-2">
+        Encode
+      </button>
     </Layout>
   );
-};
-
-export const getStaticProps = async () => {
-  const config = getConfig();
-
-  return {
-    props: {
-      config,
-    },
-  };
 };
 
 export default EncodePage;
