@@ -10,6 +10,7 @@ import { get_markdown_data } from "@/lib/markdown_file_meta";
 import PostList from "@/components/postList";
 import HomeAbout from "@/components/homeAbout";
 import SeparateLine from "@/components/hr";
+import generateFeed from "@/lib/feed";
 
 interface HomeProps {
   posts: Post[];
@@ -44,15 +45,23 @@ export const getStaticProps = async (context: ParsedUrlQuery) => {
       post.content = "";
     }
   });
+  const valid_posts = posts.filter((post) => post !== null) as Post[];
 
   const config = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), "config.json"), "utf8")
   );
 
+  const rss_feed = await generateFeed(valid_posts, config);
+  fs.writeFileSync("public/rss.xml", rss_feed);
+
   return {
     props: {
-      posts: posts.filter((post) => post !== null),
+      posts: valid_posts,
       config,
     },
   };
 };
+
+// TODO add sitemap
+// TODO add robots.txt
+// TODO add seo
