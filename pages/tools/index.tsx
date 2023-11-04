@@ -1,7 +1,6 @@
 import Layout from "@/components/layout";
 import Config from "@/interfaces/config";
 import getConfig from "@/lib/config";
-import Head from "next/head";
 import Link from "next/link";
 
 interface IntroPageProps {
@@ -27,18 +26,33 @@ const IntroPage: React.FC<IntroPageProps> = ({ config }) => {
             Base64 Decode
           </Link>
         </li>
-        {
-          // TODO qrcode generator
-          // TODO qrcode reader
-          // TODO add inch to cm
-          // TODO add cm to inch
-          // TODO add fahrenheit to celsius
-          // TODO add celsius to fahrenheit
-          // TODO url encode
-          // TODO url decode
-          // TODO regex tester
-        }
       </ul>
+      <br />
+      QRCode:
+      <ul className="ml-5">
+        <li>
+          <Link href="/tools/qrcode/generator" className="underline">
+            QRCode Generator
+          </Link>
+        </li>
+        <li>
+          <Link href="/tools/qrcode/reader" className="underline">
+            QRCode Reader
+          </Link>
+        </li>
+      </ul>
+      {
+        // TODO qrcode generator
+        // TODO qrcode reader
+        // TODO add inch to cm
+        // TODO add cm to inch
+        // TODO add fahrenheit to celsius
+        // TODO add celsius to fahrenheit
+        // TODO url encode
+        // TODO url decode
+        // TODO regex tester
+        // TODO base32 encode/decode
+      }
     </Layout>
   );
 };
