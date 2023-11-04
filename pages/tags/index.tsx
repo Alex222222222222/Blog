@@ -1,4 +1,4 @@
-import "@/styles/globals.css";
+
 import fs from "fs";
 import path from "path";
 import Post from "@/interfaces/post";

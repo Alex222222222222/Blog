@@ -1,6 +1,5 @@
 // pages/posts/[id].tsx
-import "@/styles/post.css";
-import "@/styles/globals.css";
+import styles from "@/components/post.module.css";
 import fs from "fs";
 import path from "path";
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
@@ -39,7 +38,7 @@ const PostPage: React.FC<PostProps> = ({ post, config }) => {
           </Head>
         )
       }
-      <div className="post-content">
+      <div className={styles.post_content}>
         <h1>{post.title}</h1>
         Date: {post.date}
         <br />
