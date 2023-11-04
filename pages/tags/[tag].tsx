@@ -28,7 +28,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const tags = filteredPosts.map((post) => post?.tags).flat();
   // filter out null categories
   const filteredTags = tags.filter((tag) => tag !== null);
-  const tagsWithNull = filteredTags.map((tag) => tag!);
+  const tagsWithNull = filteredTags.map((tag) => (tag!).toLowerCase());
 
   // Remove duplicates
   let uniqueTags: String[] = [];

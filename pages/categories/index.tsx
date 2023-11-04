@@ -33,7 +33,9 @@ export async function getStaticProps() {
   const categories = filteredPosts.map((post) => post?.categories).flat();
   // filter out null categories
   const filteredCategories = categories.filter((category) => category !== null);
-  const categoriesWithNull = filteredCategories.map((category) => category!);
+  const categoriesWithNull = filteredCategories.map((category) =>
+    category!.toLowerCase()
+  );
 
   // Remove duplicates
   let uniqueCategories: String[] = [];

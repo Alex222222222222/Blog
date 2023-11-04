@@ -3,7 +3,7 @@ title: Apple电池健康
 date: "2022-05-25"
 tags: ["Battery", "Tools"]
 toc: false
-categories: ["End Machine"]
+categories: ["Tools"]
 ---
 
 ### Apple电池健康

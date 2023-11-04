@@ -15,6 +15,7 @@ import remarkToc from "remark-toc";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css"; // Import KaTeX styles
+import Head from "next/head";
 
 interface PostProps {
   post: Post;
@@ -26,12 +27,42 @@ const PostPage: React.FC<PostProps> = ({ post, config }) => {
     ? [remarkGfm, remarkToc, remarkMath]
     : [remarkGfm, remarkMath];
 
-    const content = post.toc ? `## Contents\n\n${post.content}` : post.content;
+  const content = post.toc ? `## Contents\n\n${post.content}` : post.content;
 
   return (
     <Layout config={config}>
+      {
+        // if the post has a description, add it to the head
+        post.description && (
+          <Head>
+            <meta name="description" content={post.description} />
+          </Head>
+        )
+      }
       <div className="post-content">
         <h1>{post.title}</h1>
+        Date: {post.date}
+        <br />
+        Last Updated: {post.last_modified}
+        <br />
+        Categories:{" "}
+        {post.categories.map((category, index) => (
+          <span key={index}>
+            <a href={`/categories/${category.toLowerCase()}`}>{category}</a>
+            {index !== post.categories.length - 1 ? ", " : ""}
+          </span>
+        ))}
+        <br />
+        Tags:{" "}
+        {post.tags.map((tag, index) => (
+          <span key={index}>
+            <a href={`/tags/${tag.toLowerCase()}`}>{tag}</a>
+            {index !== post.tags.length - 1 ? ", " : ""}
+          </span>
+        ))}
+        <br />
+        Read Time: {post.read_time} minutes
+        <br />
         <ReactMarkdown
           remarkPlugins={remarkPlugins}
           rehypePlugins={[rehypeKatex]}
@@ -75,3 +106,5 @@ export const getStaticProps: GetStaticProps = async (
     },
   };
 };
+
+// TODO tools page

@@ -35,12 +35,24 @@ const PostList: React.FC<PostListProps> = ({
   }
   if (categories.length != 0) {
     filteredPosts = filteredPosts.filter((post) =>
-      categories.some((category) => post.categories.includes(category))
+      categories.some((category) => {
+        for (let i = 0; i < post.categories.length; i++) {
+          if (post.categories[i].toLowerCase() == category.toLowerCase()) {
+            return true;
+          }
+        }
+      })
     );
   }
   if (tags.length != 0) {
     filteredPosts = filteredPosts.filter((post) =>
-      tags.some((tag) => post.tags.includes(tag))
+      tags.some((tag) => {
+        for (let i = 0; i < post.tags.length; i++) {
+          if (post.tags[i].toLowerCase() == tag.toLowerCase()) {
+            return true;
+          }
+        }
+      })
     );
   }
 
