@@ -1,12 +1,15 @@
 {
     "pageTitle": "The Knot",
-    "pageDescription": "Alex personal Blog. Contain math, programming, and other things.",
+    "pageDescription": "Alex personal Blog. Contain math, programming, and other things. Also contain some tools including base64 encoder/decoder, and some converter.",
     "pageKeywords": [
         "programming",
         "math",
         "blog",
         "fun",
-        "Alex"
+        "base64",
+        "converter",
+        "regex",
+        "url encode"
     ],
     "baseUrl": "https://alex1222.com/",
     "name": "Alex Hua",
