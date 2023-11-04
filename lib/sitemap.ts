@@ -22,6 +22,22 @@ const otherPages = [
     url: "/tools/base64/encode",
     lastmod: new Date().toISOString(),
   },
+  {
+    url: "/tools/base64/decode",
+    lastmod: new Date().toISOString(),
+  },
+  {
+    url: "/tools/base64/encode",
+    lastmod: new Date().toISOString(),
+  },
+  {
+    url: "tools/qrcode/generator",
+    lastmod: new Date().toISOString(),
+  },
+  {
+    url: "tools/qrcode/reader",
+    lastmod: new Date().toISOString(),
+  },
 ];
 
 const generateSitemap = async (posts: Post[], config: Config) => {
@@ -33,6 +49,14 @@ const generateSitemap = async (posts: Post[], config: Config) => {
         <url>
           <loc>${config.baseUrl}/posts/${post.filename}</loc>
           <lastmod>${new Date(post.date).toISOString()}</lastmod>
+        </url>`;
+  });
+
+  otherPages.forEach((page) => {
+    sitemap += `
+        <url>
+          <loc>${config.baseUrl}${page.url}</loc>
+          <lastmod>${page.lastmod}</lastmod>
         </url>`;
   });
 

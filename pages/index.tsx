@@ -1,7 +1,6 @@
 // pages/index.tsx
 import fs from "fs";
 import path from "path";
-import { ParsedUrlQuery } from "querystring";
 import Layout from "@/components/layout";
 import Config from "@/interfaces/config";
 import Post from "@/interfaces/post";
@@ -34,7 +33,7 @@ const Home: React.FC<HomeProps> = ({ posts, config }) => {
 
 export default Home;
 
-export const getStaticProps = async (context: ParsedUrlQuery) => {
+export const getStaticProps = async () => {
   const files = fs.readdirSync(path.join("posts"));
   const posts: (Post | null)[] = files.map((filename) => {
     return get_markdown_data(filename);

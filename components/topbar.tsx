@@ -1,5 +1,4 @@
 // components/TopBar.tsx
-import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Config from "@/interfaces/config";
 import ContactBadge from "./contactBadge";
