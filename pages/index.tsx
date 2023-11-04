@@ -1,5 +1,4 @@
 // pages/index.tsx
-import "@/styles/globals.css";
 import fs from "fs";
 import path from "path";
 import { ParsedUrlQuery } from "querystring";

@@ -1,4 +1,3 @@
-import "@/styles/globals.css";
 import fs from "fs";
 import path from "path";
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
