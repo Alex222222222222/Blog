@@ -11,6 +11,7 @@ import PostList from "@/components/postList";
 import HomeAbout from "@/components/homeAbout";
 import SeparateLine from "@/components/hr";
 import generateFeed from "@/lib/feed";
+import generateSitemap from "@/lib/sitemap";
 
 interface HomeProps {
   posts: Post[];
@@ -54,6 +55,9 @@ export const getStaticProps = async (context: ParsedUrlQuery) => {
   const rss_feed = await generateFeed(valid_posts, config);
   fs.writeFileSync("public/rss.xml", rss_feed);
 
+  const sitemap = await generateSitemap(valid_posts, config);
+  fs.writeFileSync("public/sitemap.xml", sitemap);
+
   return {
     props: {
       posts: valid_posts,
@@ -62,6 +66,4 @@ export const getStaticProps = async (context: ParsedUrlQuery) => {
   };
 };
 
-// TODO add sitemap
-// TODO add robots.txt
 // TODO add seo
