@@ -11,6 +11,7 @@ import HomeAbout from "@/components/homeAbout";
 import SeparateLine from "@/components/hr";
 import generateFeed from "@/lib/feed";
 import generateSitemap from "@/lib/sitemap";
+import getConfig from "@/lib/config";
 
 interface HomeProps {
   posts: Post[];
@@ -47,13 +48,13 @@ export const getStaticProps = async (context: ParsedUrlQuery) => {
   });
   const valid_posts = posts.filter((post) => post !== null) as Post[];
 
-  const config = JSON.parse(
-    fs.readFileSync(path.join(process.cwd(), "config.json"), "utf8")
-  );
+  const config = getConfig();
 
   const rss_feed = await generateFeed(valid_posts, config);
   fs.writeFileSync("public/rss.xml", rss_feed);
 
+  // TODO add other pages such as /categories, /tags, /about, etc.
+  // TODO add multiple baseUrls for sitemap
   const sitemap = await generateSitemap(valid_posts, config);
   fs.writeFileSync("public/sitemap.xml", sitemap);
 
