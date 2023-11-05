@@ -5,6 +5,7 @@ import SeparateLine from "./hr";
 import Head from "next/head";
 import config from "@/config.json";
 import FootBar from "./footbar";
+import Comments from "./comments";
 
 interface LayoutProps {
   children: ReactNode;
@@ -41,6 +42,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <TopBar />
         <SeparateLine />
         <div className="content">{children}</div>
+        <Comments />
         <SeparateLine />
         <FootBar />
       </div>
