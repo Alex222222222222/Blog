@@ -14,7 +14,8 @@
     "baseUrl": "https://alex1222.com/",
     "sitemapBaseUrl": [
         "https://blog.huazifan.eu.org/",
-        "https://alex1222.com/"
+        "https://alex1222.com/",
+        "https://blog.alex1222.com/"
     ],
     "name": "Alex Hua",
     "contact": [
