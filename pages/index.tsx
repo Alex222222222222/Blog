@@ -51,9 +51,10 @@ export const getStaticProps = async () => {
   fs.writeFileSync("public/rss.xml", rss_feed);
   fs.writeFileSync("public/index.xml", rss_feed);
 
-  // TODO add multiple baseUrls for sitemap
   const sitemap = await generateSitemap(valid_posts, config);
   fs.writeFileSync("public/sitemap.xml", sitemap);
+
+  // TODO add comments
 
   return {
     props: {
