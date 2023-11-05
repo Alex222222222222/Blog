@@ -6,7 +6,7 @@ const Comments: React.FC = () => {
             <script
               src="https://utteranc.es/client.js"
               repo="Alex222222222222/Blog"
-              issue-term="url"
+              issue-term="pathname"
               theme="boxy-light"
               crossorigin="anonymous"
               async
