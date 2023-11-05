@@ -64,31 +64,28 @@ const HomeAbout = () => {
             href="https://www.eaimty.com"
             className="underline"
           >
-            EAimTY's Blog
+            EAimTY&apos;s Blog
           </a>
         </li>
         <li>
           Build on{" "}
           <a target="_blank" href="https://nextjs.org/" className="underline">
             Next.js
-          </a>{" "}
-          ,{" "}
+          </a>,{" "}
           <a
             target="_blank"
             href="https://tailwindcss.com/"
             className="underline"
           >
             Tailwind CSS
-          </a>{" "}
-          ,{" "}
+          </a>,{" "}
           <a
             target="_blank"
             href="https://pages.cloudflare.com"
             className="underline"
           >
             Cloudflare Pages
-          </a>
-          .
+          </a>.
         </li>
       </ul>
 
@@ -102,6 +99,11 @@ const HomeAbout = () => {
         <li>
           <a href="https://blog.huazifan.eu.org" className="underline">
             https://blog.huazifan.eu.org
+          </a>
+        </li>
+        <li>
+          <a href="https://blog.alex1222.com" className="underline">
+            https://blog.alex1222.com
           </a>
         </li>
       </ul>
