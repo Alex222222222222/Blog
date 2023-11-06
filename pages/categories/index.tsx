@@ -4,16 +4,6 @@ import Post from "@/interfaces/post";
 import { get_markdown_data } from "@/lib/markdown_file_meta";
 import React from "react";
 import Layout from "@/components/layout";
-import styled from "styled-components";
-
-const CategoryList = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  list-style: none;
-  margin-left: 20px;
-  color: #000;
-  text-decoration: underline;
-`;
 
 interface CategoriesHomeProps {
   categories: string[];
@@ -53,13 +43,13 @@ export async function getStaticProps() {
 const CategoriesPage: React.FC<CategoriesHomeProps> = ({ categories }) => (
   <Layout>
     <h1>Categories:</h1>
-    <CategoryList>
+    <ul className="grid grid-cols-2 ml-5 underline">
       {categories.map((category, index) => (
         <li key={index}>
           <a href={`/categories/${category}`}>{category}</a>
         </li>
       ))}
-    </CategoryList>
+    </ul>
   </Layout>
 );
 
