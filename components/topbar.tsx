@@ -7,39 +7,24 @@ import { stringToContactType } from "@/lib/contactType";
 const TopBar: React.FC = () => {
   return (
     <div className="topbar">
-      <ul
-        style={{
-          display: "flex",
-          listStyle: "none",
-          paddingLeft: 0,
-          color: "#000",
-          textDecoration: "underline",
-        }}
-      >
-        <li style={{ marginRight: "10px" }}>
+      <ul className="flex underline">
+        <li className="mr-3">
           <Link href="/">{config.pageTitle}</Link>
         </li>
-        <li style={{ marginRight: "10px" }}>
+        <li className="mr-3">
           <Link href="/categories/">{"Categories"}</Link>
         </li>
-        <li style={{ marginRight: "10px" }}>
+        <li className="mr-3">
           <Link href="/tags/">{"Tags"}</Link>
         </li>
-        <li style={{ marginRight: "10px" }}>
+        <li className="mr-3">
           <Link href="/tools/">{"Tools"}</Link>
         </li>
-        <li style={{ marginRight: "10px" }}>
+        <li className="mr-3">
           <Link href="/rss.xml">{"RSS"}</Link>
         </li>
       </ul>
-      <ul
-        style={{
-          display: "flex",
-          listStyle: "none",
-          paddingLeft: 0,
-          color: "#000",
-        }}
-      >
+      <ul className="flex underline">
         {config.contact.map((c, index) => {
           if (!c.link) {
             return null;

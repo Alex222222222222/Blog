@@ -63,20 +63,9 @@ const PostList: React.FC<PostListProps> = ({
   return (
     <div>
       {filteredPosts.map((post) => (
-        <div
-          key={"post" + post.title}
-          style={{
-            display: "flex",
-          }}
-        >
-          <a style={{ marginRight: "20px" }}>{post.date}</a>
-          <Link
-            href={`/posts/${post.filename}`}
-            style={{
-              color: "#000",
-              textDecoration: "underline",
-            }}
-          >
+        <div key={"post" + post.title} className="flex">
+          <a className="mr-5">{post.date}</a>
+          <Link href={`/posts/${post.filename}`} className="underline">
             {post.title}
           </Link>
         </div>

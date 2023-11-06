@@ -35,8 +35,7 @@ const QRReaderPage: React.FC = ({}) => {
       <br />
       Result:
       <p
-        className="border-2 border-gray-300 p-2 mb-2"
-        style={{ wordWrap: "break-word" }}
+        className="border-2 border-gray-300 p-2 mb-2 break-words"
       >
         {result}
       </p>

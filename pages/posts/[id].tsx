@@ -14,7 +14,6 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css"; // Import KaTeX styles
 import Head from "next/head";
-import Comments from "@/components/comments";
 
 interface PostProps {
   post: Post;

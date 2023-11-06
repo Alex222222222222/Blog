@@ -39,21 +39,12 @@ const HomeAbout = () => {
         <li>
           <a
             href="https://iskxcr.github.io/blog/p/introduction-to-mikos-library/"
-            style={{
-              color: "#000",
-              textDecoration: "underline",
-            }}
+            className="underline"
           >
             IskCXr Blog
           </a>
           ,
-          <a
-            href="https://github.com/IskXCr"
-            style={{
-              color: "#000",
-              textDecoration: "underline",
-            }}
-          >
+          <a href="https://github.com/IskXCr" className="underline">
             GitHub
           </a>{" "}
           {"- Miko's Library - CG, Math, and a bit of CV and AI."}
@@ -71,21 +62,24 @@ const HomeAbout = () => {
           Build on{" "}
           <a target="_blank" href="https://nextjs.org/" className="underline">
             Next.js
-          </a>,{" "}
+          </a>
+          ,{" "}
           <a
             target="_blank"
             href="https://tailwindcss.com/"
             className="underline"
           >
             Tailwind CSS
-          </a>,{" "}
+          </a>
+          ,{" "}
           <a
             target="_blank"
             href="https://pages.cloudflare.com"
             className="underline"
           >
             Cloudflare Pages
-          </a>.
+          </a>
+          .
         </li>
       </ul>
 

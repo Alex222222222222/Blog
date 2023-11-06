@@ -36,8 +36,6 @@ const IntroPage: React.FC = ({}) => {
         </li>
       </ul>
       {
-        // TODO qrcode generator
-        // TODO qrcode reader
         // TODO add inch to cm
         // TODO add cm to inch
         // TODO add fahrenheit to celsius

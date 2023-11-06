@@ -1,5 +1,7 @@
 const SeparateLine: React.FC = () => {
-  return <hr style={{ borderTop: "2px dashed #000" }} />;
+  return (
+    <hr className=" border-0 border-t-2 border-dashed border-black my-1" />
+  );
 };
 
 export default SeparateLine;

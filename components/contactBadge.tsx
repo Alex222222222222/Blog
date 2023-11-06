@@ -10,14 +10,7 @@ export interface ContactBadgeProps {
 const ContactBadge: React.FC<ContactBadgeProps> = ({ type, link }) => {
   if (type == ContactType.EMAIL) {
     return (
-      <a
-        href={`mailto:${link}`}
-        style={{
-          color: "#000",
-          marginRight: "10px",
-          textDecoration: "underline",
-        }}
-      >
+      <a href={`mailto:${link}`} className="underline mr-3">
         Email
       </a>
     );
@@ -48,12 +41,7 @@ const ContactBadge: React.FC<ContactBadgeProps> = ({ type, link }) => {
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      // textDecoration underline
-      style={{
-        color: "#000",
-        marginRight: "10px",
-        textDecoration: "underline",
-      }}
+      className="underline mr-3"
     >
       {renderLabel()}
     </a>
