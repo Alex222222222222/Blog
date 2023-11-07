@@ -1,0 +1,47 @@
+{
+    "pageTitle": "The Knot",
+    "pageDescription": "Alex personal Blog. Contain math, programming, and other things. Also contain some tools including base64 encoder/decoder, and some converter.",
+    "pageKeywords": [
+        "programming",
+        "math",
+        "blog",
+        "fun",
+        "base64",
+        "converter",
+        "regex",
+        "url encode"
+    ],
+    "baseUrl": "https://alex1222.com/",
+    "sitemapBaseUrl": [
+        "https://blog.huazifan.eu.org/",
+        "https://alex1222.com/",
+        "https://blog.alex1222.com/"
+    ],
+    "name": "Alex Hua",
+    "contact": [
+        {
+            "type": "email",
+            "link": "huazifan@gmail.com"
+        },
+        {
+            "type": "github",
+            "link": "https://github.com/Alex222222222222"
+        },
+        {
+            "type": "twitter",
+            "link": ""
+        },
+        {
+            "type": "linkedin",
+            "link": ""
+        },
+        {
+            "type": "facebook",
+            "link": ""
+        },
+        {
+            "type": "instagram",
+            "link": ""
+        }
+    ]
+}
