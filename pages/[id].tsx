@@ -62,7 +62,7 @@ export const getStaticProps: GetStaticProps = async (
     if (id_lowercase === f_lowercase) {
       return {
         props: {
-          filename,
+          id: filename,
         },
       };
     } else if (filename.toLowerCase() === id_lowercase) {
