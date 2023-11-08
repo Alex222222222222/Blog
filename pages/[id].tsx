@@ -21,6 +21,7 @@ const PostPage: React.FC<PostProps> = ({ id }) => {
 export default PostPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  // TODO add these to sitemaps
   let paths: { params: { id: string } }[] = [];
 
   get_posts_paths().forEach((filename) => {
@@ -61,7 +62,7 @@ export const getStaticProps: GetStaticProps = async (
     if (id_lowercase === f_lowercase) {
       return {
         props: {
-          id,
+          filename,
         },
       };
     } else if (filename.toLowerCase() === id_lowercase) {
