@@ -16,7 +16,22 @@ export function get_date_from_filename(filename: string): Date {
   const month = date_split[1];
   const day = date_split[2];
 
-  return new Date(`${year}-${month}-${day}`);
+  const year_int = parseInt(year);
+  const month_int = parseInt(month);
+  const day_int = parseInt(day);
+
+  if (
+    isNaN(year_int) ||
+    isNaN(month_int) ||
+    isNaN(day_int) ||
+    year_int <= 0 ||
+    month_int <= 0 ||
+    day_int <= 0
+  ) {
+    return new Date();
+  }
+
+  return new Date(`${year_int}-${month_int}-${day_int}`);
 }
 
 export function get_markdown_file(filename: string): [string | null, string] {
@@ -84,7 +99,7 @@ export function get_markdown_data(filename: string): Post | null {
   const date_string =
     date.getFullYear() +
     "/" +
-    add_0_to_date(date.getMonth()) +
+    add_0_to_date(date.getMonth() + 1) +
     "/" +
     add_0_to_date(date.getDate());
   const read_time = readTime(content);
@@ -101,4 +116,38 @@ export function get_markdown_data(filename: string): Post | null {
     toc,
     read_time,
   };
+}
+
+/// get all posts
+export function get_all_posts(): Post[] {
+  const files = fs.readdirSync(path.join("posts"));
+  const posts: (Post | null)[] = files.map((filename) => {
+    return get_markdown_data(filename);
+  });
+  const valid_posts = posts.filter((post) => post !== null) as Post[];
+  // sort by date descending
+  valid_posts.sort((a, b) => {
+    const date_a = new Date(a.date);
+    const date_b = new Date(b.date);
+    return date_b.getTime() - date_a.getTime();
+  });
+
+  return valid_posts;
+}
+
+/// get empty posts
+export function get_empty_posts(): Post[] {
+  const posts = get_all_posts();
+  const empty_posts = posts.filter((post) => post.content === "");
+  return empty_posts;
+}
+
+/// get posts paths
+export function get_posts_paths(): string[] {
+  const posts = get_all_posts();
+  const paths = posts.map((post) => {
+    return post.filename;
+  });
+
+  return paths;
 }
