@@ -151,3 +151,49 @@ export function get_posts_paths(): string[] {
 
   return paths;
 }
+
+/// get all posts paths with alias
+export function get_posts_paths_with_alias(): string[] {
+  const paths = get_posts_paths();
+  let paths_with_alias: string[] = [];
+  paths.forEach((path) => {
+    const i = path.toLowerCase();
+    const j = i.endsWith(".md") ? i.slice(0, -3) : i + ".md";
+    paths_with_alias.push(i);
+    paths_with_alias.push(j);
+  });
+  return paths;
+}
+
+/// export find matching paths with alias
+export function find_matching_paths_with_alias(
+  path: string
+): string | undefined {
+  path = path.toLowerCase();
+  const paths = get_posts_paths();
+  for (let i = 0; i < paths.length; i++) {
+    if (path === paths[i]) {
+      return path;
+    }
+    const i_new = paths[i].toLowerCase();
+    if (path === i_new) {
+      return paths[i];
+    }
+    const j = i_new.endsWith(".md") ? i_new.slice(0, -3) : i + ".md";
+    if (path === j) {
+      return paths[i];
+    }
+  }
+  return undefined;
+}
+
+/// export get previous and next posts
+export function get_previous_and_next_posts(
+  path: string
+): [string | null, string | null] {
+  const paths = get_posts_paths();
+  const index = paths.indexOf(path);
+  const previous = index > 0 ? paths[index - 1] : null;
+  const next = index < paths.length - 1 ? paths[index + 1] : null;
+  return [previous, next];
+}

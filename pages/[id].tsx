@@ -1,50 +1,45 @@
 // pages/posts/[id].tsx
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { ParsedUrlQuery } from "querystring";
-import { get_posts_paths } from "@/lib/markdown_file_meta";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import Post from "@/interfaces/post";
+import {
+  find_matching_paths_with_alias,
+  get_markdown_data,
+  get_posts_paths_with_alias,
+  get_previous_and_next_posts,
+} from "@/lib/markdown_file_meta";
+import Layout from "@/components/layout";
+import "katex/dist/katex.min.css"; // Import KaTeX styles
+import PostPageContent from "@/components/post";
 
 interface PostProps {
-  id: string;
+  post: Post;
+  previous_post: string | null;
+  next_post: string | null;
 }
 
-const PostPage: React.FC<PostProps> = ({ id }) => {
-  const router = useRouter();
-  useEffect(() => {
-    router.push(`/posts/${id}`);
-  });
-
-  return <div>Redirecting...</div>;
+const PostPage: React.FC<PostProps> = ({ post, previous_post, next_post }) => {
+  return (
+    <Layout>
+      <PostPageContent
+        post={post}
+        previous_post={previous_post}
+        next_post={next_post}
+      />
+    </Layout>
+  );
 };
 
 export default PostPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // TODO add these to sitemaps
-  let paths: { params: { id: string } }[] = [];
-
-  get_posts_paths().forEach((filename) => {
-    // remove the .md extension if it exists
-    const id = filename.replace(/\.md$/, "");
-    paths.push({
-      params: { id: id.toLowerCase() },
-    });
-    paths.push({
-      params: { id: filename.toLowerCase() },
-    });
-  });
-
-  const path_set = new Set(paths);
-
-  const paths_new = Array.from(path_set).map((path) => {
-    return {
-      params: path.params,
-    };
-  });
+  const files = get_posts_paths_with_alias();
+  const paths = files.map((filename) => ({
+    params: { id: filename },
+  }));
 
   return {
-    paths: paths_new,
+    paths,
     fallback: false,
   };
 };
@@ -53,32 +48,21 @@ export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext<ParsedUrlQuery>
 ) => {
   const { id } = context.params as { id: string };
-  const id_lowercase = id.toLowerCase();
-  let paths = get_posts_paths();
-  for (let i = 0; i < paths.length; i++) {
-    const filename = paths[i];
-    const f = filename.replace(/\.md$/, "");
-    const f_lowercase = f.toLowerCase();
-    if (id_lowercase === f_lowercase) {
-      return {
-        props: {
-          id: filename,
-        },
-      };
-    } else if (filename.toLowerCase() === id_lowercase) {
-      return {
-        props: {
-          id: filename,
-        },
-      };
-    }
+  const path = find_matching_paths_with_alias(id);
+  if (!path) {
+    return {
+      notFound: true,
+    };
   }
+  const post = get_markdown_data(path);
+
+  const [previous_post, next_post] = get_previous_and_next_posts(path);
 
   return {
     props: {
-      id,
+      post,
+      previous_post,
+      next_post,
     },
   };
 };
-
-// TODO tools page
