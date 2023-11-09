@@ -3,12 +3,13 @@ import Config from "@/interfaces/config";
 import Post from "@/interfaces/post";
 import { renderToString } from "react-dom/server";
 import RSS from "rss";
+import concatenateUrls from "./url";
 
 const generateFeed = async (posts: Post[], config: Config) => {
   const feed = new RSS({
     title: config.pageTitle,
     description: "The latest posts from my blog",
-    feed_url: `${config.baseUrl}/rss`,
+    feed_url: concatenateUrls(config.baseUrl, "/rss"),
     site_url: config.baseUrl,
   });
 
@@ -18,7 +19,10 @@ const generateFeed = async (posts: Post[], config: Config) => {
     feed.item({
       title: post.title,
       description: description,
-      url: `${config.baseUrl}/posts/${post.filename}`,
+      url: concatenateUrls(
+        concatenateUrls(config.baseUrl, "/posts/"),
+        post.filename
+      ),
       date: post.date,
       categories: post.categories,
       author: config.author,

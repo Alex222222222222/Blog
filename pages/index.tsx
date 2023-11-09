@@ -2,10 +2,7 @@
 import fs from "fs";
 import Layout from "@/components/layout";
 import Post from "@/interfaces/post";
-import {
-  get_all_posts,
-  get_empty_posts,
-} from "@/lib/markdown_file_meta";
+import { get_all_posts, get_empty_posts } from "@/lib/markdown_file_meta";
 import PostList from "@/components/postList";
 import HomeAbout from "@/components/homeAbout";
 import SeparateLine from "@/components/hr";
@@ -45,7 +42,7 @@ export const getStaticProps = async () => {
   const sitemap = await generateSitemap(posts, config);
   fs.writeFileSync("public/sitemap.xml", sitemap);
 
-  // TODO add comments
+  // TODO add search whole site
 
   return {
     props: {

@@ -56,10 +56,6 @@ const PostList: React.FC<PostListProps> = ({
     );
   }
 
-  filteredPosts = filteredPosts.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
-
   return (
     <div>
       {filteredPosts.map((post) => (
