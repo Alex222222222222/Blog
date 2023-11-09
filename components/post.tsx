@@ -16,17 +16,15 @@ interface PostProps {
   next_post: string | null;
 }
 
+interface PostContentProps {
+  post: Post;
+}
+
 const PostPageContent: React.FC<PostProps> = ({
   post,
   previous_post,
   next_post,
 }) => {
-  const remarkPlugins = post.toc
-    ? [remarkGfm, remarkToc, remarkMath]
-    : [remarkGfm, remarkMath];
-
-  const content = post.toc ? `## Contents\n\n${post.content}` : post.content;
-
   return (
     <>
       {
@@ -61,16 +59,8 @@ const PostPageContent: React.FC<PostProps> = ({
         <br />
         Read Time: {post.read_time} minutes
         <br />
-        <ReactMarkdown
-          remarkPlugins={remarkPlugins}
-          rehypePlugins={[rehypeKatex]}
-        >
-          {content}
-        </ReactMarkdown>
+        <PostContentReal post={post} />
       </div>
-      {
-        // TODO Add link to next and previous posts if they exist
-      }
       <div className="flex justify-between">
         {previous_post ? (
           <Link href={`/posts/${previous_post}`} className="underline">
@@ -94,6 +84,20 @@ const PostPageContent: React.FC<PostProps> = ({
         }
       </div>
     </>
+  );
+};
+
+export const PostContentReal: React.FC<PostContentProps> = ({ post }) => {
+  const remarkPlugins = post.toc
+    ? [remarkGfm, remarkToc, remarkMath]
+    : [remarkGfm, remarkMath];
+
+  const content = post.toc ? `## Contents\n\n${post.content}` : post.content;
+
+  return (
+    <ReactMarkdown remarkPlugins={remarkPlugins} rehypePlugins={[rehypeKatex]}>
+      {content}
+    </ReactMarkdown>
   );
 };
 
