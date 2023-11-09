@@ -172,15 +172,15 @@ export function find_matching_paths_with_alias(
   path = path.toLowerCase();
   const paths = get_posts_paths();
   for (let i = 0; i < paths.length; i++) {
-    if (path === paths[i]) {
-      return path;
+    let path_new = paths[i].toLowerCase();
+    if (path_new.endsWith(".md")) {
+      path_new = path_new.slice(0, -3);
     }
-    const i_new = paths[i].toLowerCase();
-    if (path === i_new) {
-      return paths[i];
+    let path_new_2 = path.toLowerCase();
+    if (path_new_2.endsWith(".md")) {
+      path_new_2 = path_new_2.slice(0, -3);
     }
-    const j = i_new.endsWith(".md") ? i_new.slice(0, -3) : i + ".md";
-    if (path === j) {
+    if (path_new === path_new_2) {
       return paths[i];
     }
   }
