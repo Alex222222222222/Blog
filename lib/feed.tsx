@@ -1,5 +1,7 @@
+import { PostContentReal } from "@/components/post";
 import Config from "@/interfaces/config";
 import Post from "@/interfaces/post";
+import { renderToString } from "react-dom/server";
 import RSS from "rss";
 
 const generateFeed = async (posts: Post[], config: Config) => {
@@ -11,11 +13,15 @@ const generateFeed = async (posts: Post[], config: Config) => {
   });
 
   posts.forEach((post) => {
+    const description = renderToString(<PostContentReal post={post} />);
+
     feed.item({
       title: post.title,
-      description: post.description,
+      description: description,
       url: `${config.baseUrl}/posts/${post.filename}`,
       date: post.date,
+      categories: post.categories,
+      author: config.author,
     });
   });
 
