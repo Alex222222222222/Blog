@@ -127,9 +127,17 @@ export function get_all_posts(): Post[] {
   const valid_posts = posts.filter((post) => post !== null) as Post[];
   // sort by date descending
   valid_posts.sort((a, b) => {
-    const date_a = new Date(a.date);
-    const date_b = new Date(b.date);
-    return date_b.getTime() - date_a.getTime();
+    let date_a = new Date(a.date);
+    let date_b = new Date(b.date);
+    if (date_b.getTime() - date_a.getTime() !== 0) {
+      return date_b.getTime() - date_a.getTime();
+    }
+    date_a = new Date(a.last_modified);
+    date_b = new Date(b.last_modified);
+    if (date_b.getTime() - date_a.getTime() !== 0) {
+      return date_b.getTime() - date_a.getTime();
+    }
+    return a.filename.localeCompare(b.filename);
   });
 
   return valid_posts;
@@ -138,8 +146,10 @@ export function get_all_posts(): Post[] {
 /// get empty posts
 export function get_empty_posts(): Post[] {
   const posts = get_all_posts();
-  const empty_posts = posts.filter((post) => post.content === "");
-  return empty_posts;
+  for (let i = 0; i < posts.length; i++) {
+    posts[i].content = "";
+  }
+  return posts;
 }
 
 /// get posts paths
@@ -196,4 +206,34 @@ export function get_previous_and_next_posts(
   const previous = index > 0 ? paths[index - 1] : null;
   const next = index < paths.length - 1 ? paths[index + 1] : null;
   return [previous, next];
+}
+
+export function get_all_tags(): string[] {
+  const posts = get_all_posts();
+  let tags: string[] = [];
+  posts.forEach((post) => {
+    post.tags.forEach((tag) => {
+      tag = tag.toLowerCase();
+      if (!tags.includes(tag)) {
+        tags.push(tag);
+      }
+    });
+  });
+  tags.sort();
+  return tags;
+}
+
+export function get_all_categories(): string[] {
+  const posts = get_all_posts();
+  let categories: string[] = [];
+  posts.forEach((post) => {
+    post.categories.forEach((category) => {
+      category = category.toLowerCase();
+      if (!categories.includes(category)) {
+        categories.push(category);
+      }
+    });
+  });
+  categories.sort();
+  return categories;
 }

@@ -1,4 +1,237 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[The Knot]]></title><description><![CDATA[The latest posts from my blog]]></description><link>https://alex1222.com/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 09 Nov 2023 21:45:26 GMT</lastBuildDate><atom:link href="https://alex1222.com//rss" rel="self" type="application/rss+xml"/><item><title><![CDATA[NixOS Configurations | NixOS 不完全手记]]></title><description><![CDATA[<h2>Contents</h2>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[The Knot]]></title><description><![CDATA[The latest posts from my blog]]></description><link>https://alex1222.com/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 09 Nov 2023 22:16:40 GMT</lastBuildDate><atom:link href="https://alex1222.com/rss" rel="self" type="application/rss+xml"/><item><title><![CDATA[《爱国主义教育法》即将施行]]></title><description><![CDATA[<p>十四届全国人大常委会第六次会议10月24日表决通过《中华人民共和国爱国主义教育法》，
+自2024年1月1日起施行。
+这部旨在加强爱国主义教育、传承和弘扬爱国主义精神的法律，
+共5章40条，包括总则、职责任务、实施措施、支持保障、附则。</p>
+<p>以下为《爱国主义教育法》全文：</p>
+<blockquote>
+<p>中华人民共和国爱国主义教育法</p>
+</blockquote>
+<blockquote>
+<p>（2023年10月24日第十四届全国人民代表大会常务委员会第六次会议通过）</p>
+</blockquote>
+<blockquote>
+<p>目录</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>第一章 总则</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>第二章 职责任务</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>第三章 实施措施</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>第四章 支持保障</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>第五章 附则</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>第一章 总则</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>第一条 为了加强新时代爱国主义教育，传承和弘扬爱国主义精神，凝聚全面建设社会主义现代化国家、
+全面推进中华民族伟大复兴的磅礴力量，根据宪法，制定本法。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>第二条 中国是世界上历史最悠久的国家之一，中国各族人民共同创造了光辉灿烂的文化、
+共同缔造了统一的多民族国家。国家在全体人民中开展爱国主义教育，
+培育和增进对中华民族和伟大祖国的情感，传承民族精神、增强国家观念，
+壮大和团结一切爱国力量，使爱国主义成为全体人民的坚定信念、精神力量和自觉行动。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>第三条 爱国主义教育应当高举中国特色社会主义伟大旗帜，坚持以马克思列宁主义、
+毛泽东思想、邓小平理论、“三个代表”重要思想、科学发展观、
+习近平新时代中国特色社会主义思想为指导，坚持爱国和爱党、爱社会主义相统一，
+以维护国家统一和民族团结为着力点，把全面建成社会主义现代化强国、
+实现中华民族伟大复兴作为鲜明主题。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>第四条 爱国主义教育坚持中国共产党的领导，健全统一领导、齐抓共管、
+各方参与、共同推进的工作格局。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>第五条 爱国主义教育应当坚持思想引领、文化涵育，教育引导、实践养成，
+主题鲜明、融入日常，因地制宜、注重实效。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>第六条 爱国主义教育的主要内容是：</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>（一）马克思列宁主义、毛泽东思想、邓小平理论、“三个代表”重要思想、科学发展观、
+习近平新时代中国特色社会主义思想；</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>（二）中国共产党史、新中国史、改革开放史、社会主义发展史、中华民族发展史；</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>（三）中国特色社会主义制度，中国共产党带领人民团结奋斗的重大成就、历史经验和生动实践；</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>（四）中华优秀传统文化、革命文化、社会主义先进文化；</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>（五）国旗、国歌、国徽等国家象征和标志；</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>（六）祖国的壮美河山和历史文化遗产；</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>（七）宪法和法律，国家统一和民族团结、国家安全和国防等方面的意识和观念；</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>（八）英雄烈士和先进模范人物的事迹及体现的民族精神、时代精神；</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>（九）其他富有爱国主义精神的内容。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>第七条 国家开展铸牢中华民族共同体意识教育，促进各民族交往交流交融，增进对伟大祖国、
+中华民族、中华文化、中国共产党、中国特色社会主义的认同，构筑中华民族共有精神家园。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>第八条 爱国主义教育应当坚持传承和发展中华优秀传统文化，弘扬社会主义核心价值观，
+推进中国特色社会主义文化建设，坚定文化自信，建设中华民族现代文明。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>第九条 爱国主义教育应当把弘扬爱国主义精神与扩大对外开放结合起来，坚持理性、包容、开放，
+尊重各国历史特点和文化传统，借鉴吸收人类一切优秀文明成果。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>第十条 在每年10月1日中华人民共和国国庆日，
+国家和社会各方面举行多种形式的庆祝活动，集中开展爱国主义教育。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>第二章 职责任务</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>第十一条 中央爱国主义教育主管部门负责全国爱国主义教育工作的指导、监督和统筹协调。
+中央和国家机关各部门在各自职责范围内，组织开展爱国主义教育工作。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>第十二条 地方爱国主义教育主管部门负责本地区爱国主义教育工作的指导、监督和统筹协调。
+县级以上地方人民政府教育行政部门应当加强对学校爱国主义教育的组织、协调、指导和监督。
+县级以上地方文化和旅游、新闻出版、广播电视、电影、网信、
+文物等部门和其他有关部门应当在各自职责范围内，开展爱国主义教育工作。</p>
+</blockquote>
+</blockquote>
+<p>中国人民解放军、中国人民武装警察部队依照本法和中央军事委员会的有关规定开展爱国主义教育工作，并充分利用自身资源面向社会开展爱国主义教育。
+第十三条 工会、共产主义青年团、妇女联合会、工商业联合会、文学艺术界联合会、作家协会、科学技术协会、归国华侨联合会、台湾同胞联谊会、残疾人联合会、青年联合会和其他群团组织，应当发挥各自优势，面向所联系的领域和群体开展爱国主义教育。
+第十四条 国家采取多种形式开展法治宣传教育、国家安全和国防教育，增强公民的法治意识、国家安全和国防观念，引导公民自觉履行维护国家统一和民族团结，维护国家安全、荣誉和利益的义务。
+第十五条 国家将爱国主义教育纳入国民教育体系。各级各类学校应当将爱国主义教育贯穿学校教育全过程，办好、讲好思想政治理论课，并将爱国主义教育内容融入各类学科和教材中。
+各级各类学校和其他教育机构应当按照国家规定建立爱国主义教育相关课程联动机制，针对各年龄段学生特点，确定爱国主义教育的重点内容，采取丰富适宜的教学方式，增强爱国主义教育的针对性、系统性和亲和力、感染力。
+第十六条 各级各类学校应当将课堂教学与课外实践和体验相结合，把爱国主义教育内容融入校园文化建设和学校各类主题活动，组织学生参观爱国主义教育基地等场馆设施，参加爱国主义教育校外实践活动。
+第十七条 未成年人的父母或者其他监护人应当把热爱祖国融入家庭教育，支持、配合学校开展爱国主义教育教学活动，引导、鼓励未成年人参加爱国主义教育社会活动。
+第十八条 国家机关应当加强对公职人员的爱国主义教育，发挥公职人员在忠于国家、为国奉献，维护国家统一、促进民族团结，维护国家安全、荣誉和利益方面的模范带头作用。
+第十九条 企业事业单位应当将爱国主义教育列入本单位教育计划，大力弘扬劳模精神、劳动精神、工匠精神，结合经营管理、业务培训、文化体育等活动，开展爱国主义教育。
+教育、科技、文化、卫生、体育等事业单位应当大力弘扬科学家精神和专业精神，宣传和培育知识分子、专业技术人员、运动员等胸怀祖国、服务人民、为国争光的爱国情感和爱国行为。
+第二十条 基层人民政府和基层群众性自治组织应当把爱国主义教育融入社会主义精神文明建设活动，在市民公约、村规民约中体现爱国主义精神，鼓励和支持开展以爱国主义为主题的群众性文化、体育等活动。
+第二十一条 行业协会商会等社会团体应当把爱国主义精神体现在团体章程、行业规范中，根据本团体本行业特点开展爱国主义教育，培育会员的爱国热情和社会担当，发挥会员中公众人物和有社会影响力人士的示范作用。
+第二十二条 国家鼓励和支持宗教团体、宗教院校、宗教活动场所开展爱国主义教育，增强宗教教职人员和信教群众的国家意识、公民意识、法治意识和爱国情感，引导宗教与社会主义社会相适应。
+第二十三条 国家采取措施开展历史文化教育和“一国两制”实践教育，增强香港特别行政区同胞、澳门特别行政区同胞的爱国精神，自觉维护国家主权、统一和领土完整。
+国家加强对推进祖国统一方针政策的宣传教育，增强包括台湾同胞在内的全中国人民对完成祖国统一大业神圣职责的认识，依法保护台湾同胞的权利和利益，坚决反对“台独”分裂行径，维护中华民族的根本利益。
+国家加强与海外侨胞的交流，做好权益保障和服务工作，增进海外侨胞爱国情怀，弘扬爱国传统。
+第三章 实施措施
+第二十四条 中央和省级爱国主义教育主管部门应当加强对爱国主义教育工作的统筹，指导推动有关部门和单位创新爱国主义教育方式，充分利用各类爱国主义教育资源和平台载体，推进爱国主义教育有效实施。
+第二十五条 县级以上人民政府应当加强对红色资源的保护、管理和利用，发掘具有历史价值、纪念意义的红色资源，推动红色旅游融合发展示范区建设，发挥红色资源教育功能，传承爱国主义精神。
+县级以上人民政府文化和旅游、住房城乡建设、文物等部门应当加强对文物古迹、传统村落、传统技艺等历史文化遗产的保护和利用，发掘所蕴含的爱国主义精神，推进文化和旅游深度融合发展，引导公民在游览观光中领略壮美河山，感受悠久历史和灿烂文化，激发爱国热情。
+第二十六条 爱国主义教育基地应当加强内容建设，丰富展览展示方式，打造精品陈列，为国家机关、企业事业单位、社会组织、公民开展爱国主义教育活动和参观学习提供便利服务，发挥爱国主义教育功能。
+各类博物馆、纪念馆、图书馆、科技馆、文化馆、美术馆、新时代文明实践中心等，应当充分利用自身资源和优势，通过宣传展示、体验实践等方式，开展爱国主义教育活动。
+第二十七条 国家通过功勋荣誉表彰制度，褒奖在强国建设、民族复兴中做出突出贡献的人士，弘扬以爱国主义为核心的民族精神和以改革创新为核心的时代精神。
+第二十八条 在中国人民抗日战争胜利纪念日、烈士纪念日、南京大屠杀死难者国家公祭日和其他重要纪念日，县级以上人民政府应当组织开展纪念活动，举行敬献花篮、瞻仰纪念设施、祭扫烈士墓、公祭等纪念仪式。
+第二十九条 在春节、元宵节、清明节、端午节、中秋节和元旦、国际妇女节、国际劳动节、青年节、国际儿童节、中国农民丰收节及其他重要节日，组织开展各具特色的民俗文化活动、纪念庆祝活动，增进家国情怀。
+第三十条 组织举办重大庆祝、纪念活动和大型文化体育活动、展览会，应当依法举行庄严、隆重的升挂国旗、奏唱国歌仪式。
+依法公开举行宪法宣誓、军人和预备役人员服役宣誓等仪式时，应当在宣誓场所悬挂国旗、奏唱国歌，誓词应当体现爱国主义精神。
+第三十一条 广播电台、电视台、报刊出版单位等应当创新宣传报道方式，通过制作、播放、刊登爱国主义题材的优秀作品，开设专题专栏，加强新闻报道，发布公益广告等方式，生动讲好爱国故事，弘扬爱国主义精神。
+第三十二条 网络信息服务提供者应当加强网络爱国主义教育内容建设，制作、传播体现爱国主义精神的网络信息和作品，开发、运用新平台新技术新产品，生动开展网上爱国主义教育活动。
+第四章 支持保障
+第三十三条 国家鼓励和支持企业事业单位、社会组织和公民依法开展爱国主义教育活动。
+国家支持开展爱国主义教育理论研究，加强多层次专业人才的教育和培训。
+对在爱国主义教育工作中做出突出贡献的单位和个人，按照国家有关规定给予表彰和奖励。
+第三十四条 中央爱国主义教育主管部门建立健全爱国主义教育基地的认定、保护、管理制度，制定爱国主义教育基地保护利用规划，加强对爱国主义教育基地保护、管理、利用的指导和监督。
+各级人民政府应当加强对爱国主义教育基地的规划、建设和管理，完善免费开放制度和保障机制。
+第三十五条 国家鼓励和支持创作爱国主义题材的文学、影视、音乐、舞蹈、戏剧、美术、书法等文艺作品，在优秀文艺作品评选、表彰、展览、展演时突出爱国主义导向。
+第三十六条 国家鼓励和支持出版体现爱国主义精神的优秀课外读物，鼓励和支持开发体现爱国主义精神的面向青少年和儿童的动漫、音视频产品等。
+第三十七条 任何公民和组织都应当弘扬爱国主义精神，自觉维护国家安全、荣誉和利益，不得有下列行为：
+（一）侮辱国旗、国歌、国徽或者其他有损国旗、国歌、国徽尊严的行为；
+（二）歪曲、丑化、亵渎、否定英雄烈士事迹和精神；
+（三）宣扬、美化、否认侵略战争、侵略行为和屠杀惨案；
+（四）侵占、破坏、污损爱国主义教育设施；
+（五）法律、行政法规禁止的其他行为。
+第三十八条 教育、文化和旅游、退役军人事务、新闻出版、广播电视、电影、网信、文物等部门应当按照法定职责，对违反本法第三十七条规定的行为及时予以制止，造成不良社会影响的，应当责令及时消除影响，并依照有关法律、行政法规的规定予以处罚。构成违反治安管理行为的，依法给予治安管理处罚；构成犯罪的，依法追究刑事责任。
+第三十九条 负有爱国主义教育职责的部门、单位不依法履行爱国主义教育职责的，对负有责任的领导人员和直接责任人员，依法给予处分。
+第五章 附则
+第四十条 本法自2024年1月1日起施行。</p>]]></description><link>https://alex1222.com/posts/2023-11-08-爱国主义教育法-即将施行.md</link><guid isPermaLink="true">https://alex1222.com/posts/2023-11-08-爱国主义教育法-即将施行.md</guid><category><![CDATA[News]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Wed, 08 Nov 2023 00:00:00 GMT</pubDate></item><item><title><![CDATA[NixOS Configurations | NixOS 不完全手记]]></title><description><![CDATA[<h2>Contents</h2>
 <ul>
 <li><a href="#intro">Intro</a></li>
 <li><a href="#useful-commands">Useful Commands</a>
@@ -238,7 +471,7 @@ networking.firewall.allowedUDPPortRanges = [
     &quot;8.8.8.8&quot;
   ];
 };
-</code></pre>]]></description><link>https://alex1222.com//posts/2023-05-06-NixOS-Configuratioins</link><guid isPermaLink="true">https://alex1222.com//posts/2023-05-06-NixOS-Configuratioins</guid><category><![CDATA[NixOS]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sun, 04 Jun 2023 23:00:00 GMT</pubDate></item><item><title><![CDATA[GreenField The City In Minecraft]]></title><description><![CDATA[<h2>GreenFiled The City In Minecraft</h2>
+</code></pre>]]></description><link>https://alex1222.com/posts/2023-05-06-NixOS-Configuratioins</link><guid isPermaLink="true">https://alex1222.com/posts/2023-05-06-NixOS-Configuratioins</guid><category><![CDATA[NixOS]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sun, 04 Jun 2023 23:00:00 GMT</pubDate></item><item><title><![CDATA[GreenField The City In Minecraft]]></title><description><![CDATA[<h2>GreenFiled The City In Minecraft</h2>
 <p>Greenfield was founded by <code>THEJESTR</code> back in August 2011. The map started with a single gas station, built by him, that still resides in its original form and location in <code>Hunterspoint</code>. In the last 11 years, he has led over 20 different staff members and 400+ builders to make the map what it is today.</p>
 <p>Greenfield is a fictional city designed to resemble the West Coast of America, laboriously inspired by Los Angeles. Built to a one-to-one scale, every single building in Greenfield has substantial detail with carefully detailed elaborate surroundings. With a substantially sizable airport to lavish homes and businesses, Greenfield is one of the largest, most complex, and detailed original cities in Minecraft. As of July 2022, the in-progress map is now about 6500x8800 blocks, or about 57 square kilometers.</p>
 <p>Download Resource Pack:
@@ -253,7 +486,7 @@ networking.firewall.allowedUDPPortRanges = [
 <a href="https://01c16de193.acl.multichain.storage/ipfs/QmVkh2Fs7K77QsuuUAPEAAdp9C4q8wQRntCUstYVE5P8A4?filename=Greenfield_v0.5.4.zip">Link6</a></p>
 <p><a href="https://www.greenfieldmc.net/about/">GreenField</a>
 <img src="/static/img/2023-06-05-greenfield-city-in-minecraft/1.png" alt="GreenField Image"/>
-<img src="/static/img/2023-06-05-greenfield-city-in-minecraft/2.png" alt="GreenField Image"/></p>]]></description><link>https://alex1222.com//posts/2023-06-05-greenfield-city-in-minecraft</link><guid isPermaLink="true">https://alex1222.com//posts/2023-06-05-greenfield-city-in-minecraft</guid><category><![CDATA[Game]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sun, 04 Jun 2023 23:00:00 GMT</pubDate></item><item><title><![CDATA[How to uninstall a app on MacOS]]></title><description><![CDATA[<h2>Contents</h2>
+<img src="/static/img/2023-06-05-greenfield-city-in-minecraft/2.png" alt="GreenField Image"/></p>]]></description><link>https://alex1222.com/posts/2023-06-05-greenfield-city-in-minecraft</link><guid isPermaLink="true">https://alex1222.com/posts/2023-06-05-greenfield-city-in-minecraft</guid><category><![CDATA[Game]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sun, 04 Jun 2023 23:00:00 GMT</pubDate></item><item><title><![CDATA[How to uninstall a app on MacOS]]></title><description><![CDATA[<h2>Contents</h2>
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#download">Download</a></li>
@@ -293,7 +526,7 @@ Select the App you want to uninstall,
 then AppCleaner will search for all the files of the App,
 you could unselect the files you do not want to delete.
 Click remove, then, you are all set.</p>
-<p><img src="/static/img/2023-04-26-Uninstall-App-On-MacOS/1.png" alt="Steam Sample"/></p>]]></description><link>https://alex1222.com//posts/2023-04-26-Uninstall-App-On-MacOS</link><guid isPermaLink="true">https://alex1222.com//posts/2023-04-26-Uninstall-App-On-MacOS</guid><category><![CDATA[Mac]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Tue, 25 Apr 2023 23:00:00 GMT</pubDate></item><item><title><![CDATA[How to set up GPGSuite and GPGMail on Mac]]></title><description><![CDATA[<h2>Contents</h2>
+<p><img src="/static/img/2023-04-26-Uninstall-App-On-MacOS/1.png" alt="Steam Sample"/></p>]]></description><link>https://alex1222.com/posts/2023-04-26-Uninstall-App-On-MacOS</link><guid isPermaLink="true">https://alex1222.com/posts/2023-04-26-Uninstall-App-On-MacOS</guid><category><![CDATA[Mac]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Tue, 25 Apr 2023 23:00:00 GMT</pubDate></item><item><title><![CDATA[How to set up GPGSuite and GPGMail on Mac]]></title><description><![CDATA[<h2>Contents</h2>
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#installation">Installation</a></li>
@@ -345,7 +578,7 @@ defaults write com.apple.mail EnableBundles -bool true
 </li>
 </ol>
 <h2>Manage Keys</h2>
-<p>Also check <a href="https://gpgtools.tenderapp.com/kb/how-to/first-steps-where-do-i-start-where-do-i-begin-setup-gpgtools-create-a-new-key-your-first-encrypted-email">GPGTools</a>.</p>]]></description><link>https://alex1222.com//posts/2023-04-17-GPGMail-Mac</link><guid isPermaLink="true">https://alex1222.com//posts/2023-04-17-GPGMail-Mac</guid><category><![CDATA[Mac]]></category><category><![CDATA[Secure]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sun, 16 Apr 2023 23:00:00 GMT</pubDate></item><item><title><![CDATA[Big Starry Sur]]></title><description><![CDATA[<blockquote>
+<p>Also check <a href="https://gpgtools.tenderapp.com/kb/how-to/first-steps-where-do-i-start-where-do-i-begin-setup-gpgtools-create-a-new-key-your-first-encrypted-email">GPGTools</a>.</p>]]></description><link>https://alex1222.com/posts/2023-04-17-GPGMail-Mac</link><guid isPermaLink="true">https://alex1222.com/posts/2023-04-17-GPGMail-Mac</guid><category><![CDATA[Mac]]></category><category><![CDATA[Secure]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sun, 16 Apr 2023 23:00:00 GMT</pubDate></item><item><title><![CDATA[Big Starry Sur]]></title><description><![CDATA[<blockquote>
 <p>This article is originally done by <a href="https://basicappleguy.com/basicappleblog/bigstarrysur">basicappleguy</a>, and I am reposting it here for my own reference.</p>
 </blockquote>
 <p><img src="/static/img/2023-04-09-Big-Starry-Sur/1.png" alt="Apple’s Big Sur meets Van Gogh’s Starry Night."/></p>
@@ -356,7 +589,7 @@ defaults write com.apple.mail EnableBundles -bool true
 |
 <a href="/static/img/2023-04-09-Big-Starry-Sur/StarrySur_iPhone.png">iPhone</a>
 |
-<a href="/static/img/2023-04-09-Big-Starry-Sur/StarrySur_iPad.png">iPad</a></p>]]></description><link>https://alex1222.com//posts/2023-04-09-Big-Starry-Sur</link><guid isPermaLink="true">https://alex1222.com//posts/2023-04-09-Big-Starry-Sur</guid><category><![CDATA[Wallpaper]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sat, 08 Apr 2023 23:00:00 GMT</pubDate></item><item><title><![CDATA[Personal Collection of Textbooks]]></title><description><![CDATA[<h2>Contents</h2>
+<a href="/static/img/2023-04-09-Big-Starry-Sur/StarrySur_iPad.png">iPad</a></p>]]></description><link>https://alex1222.com/posts/2023-04-09-Big-Starry-Sur</link><guid isPermaLink="true">https://alex1222.com/posts/2023-04-09-Big-Starry-Sur</guid><category><![CDATA[Wallpaper]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sat, 08 Apr 2023 23:00:00 GMT</pubDate></item><item><title><![CDATA[Personal Collection of Textbooks]]></title><description><![CDATA[<h2>Contents</h2>
 <ul>
 <li><a href="#intro">Intro</a></li>
 <li><a href="#elements-of-algebraic-topology">Elements of Algebraic Topology</a></li>
@@ -467,7 +700,7 @@ ISBN-13: 9780132413770</p>
 <p>The book is well-regarded by many mathematicians and educators, and is often used as a textbook for advanced undergraduate or graduate-level courses in algebra. It is particularly popular among students and researchers interested in algebraic geometry and number theory.</p>
 <p>One potential drawback of the book for some readers is that it may be too advanced for those without a strong mathematical background. Additionally, some readers may prefer a more traditional approach to algebra, rather than the geometric viewpoint presented in the book.</p>
 <p>Overall, Algebra by Michael Artin is a highly respected textbook on algebra, and would likely be a valuable resource for students and educators looking to gain a deep understanding of the subject.</p>
-<p><img src="/static/img/2023-03-05-List-of-Textbooks/7.jpg" alt="Algebra"/></p>]]></description><link>https://alex1222.com//posts/2023-03-05-List-of-Textbooks</link><guid isPermaLink="true">https://alex1222.com//posts/2023-03-05-List-of-Textbooks</guid><category><![CDATA[Tutorial]]></category><category><![CDATA[Academic]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sun, 05 Mar 2023 00:00:00 GMT</pubDate></item><item><title><![CDATA[List of VPS CLouds]]></title><description><![CDATA[<h2>Contents</h2>
+<p><img src="/static/img/2023-03-05-List-of-Textbooks/7.jpg" alt="Algebra"/></p>]]></description><link>https://alex1222.com/posts/2023-03-05-List-of-Textbooks</link><guid isPermaLink="true">https://alex1222.com/posts/2023-03-05-List-of-Textbooks</guid><category><![CDATA[Tutorial]]></category><category><![CDATA[Academic]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sun, 05 Mar 2023 00:00:00 GMT</pubDate></item><item><title><![CDATA[List of VPS CLouds]]></title><description><![CDATA[<h2>Contents</h2>
 <ul>
 <li><a href="#hetzner">Hetzner</a></li>
 <li><a href="#gullo">Gullo</a></li>
@@ -548,7 +781,7 @@ $7.00/Month
 <p>TODO: <a href="https://clients.mrvm.net/cart.php">https://clients.mrvm.net/cart.php</a></p>
 <p>TODO: <a href="https://my.webhorizon.net/order/main/index/nat">https://my.webhorizon.net/order/main/index/nat</a></p>
 <p>TODO: Scaleway</p>
-<p>TODO: justhost</p>]]></description><link>https://alex1222.com//posts/2023-02-27-List-of-VPS-Cloud</link><guid isPermaLink="true">https://alex1222.com//posts/2023-02-27-List-of-VPS-Cloud</guid><category><![CDATA[VPS]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Mon, 27 Feb 2023 00:00:00 GMT</pubDate></item><item><title><![CDATA[How to Install and Use Pyenv]]></title><description><![CDATA[<h2>Contents</h2>
+<p>TODO: justhost</p>]]></description><link>https://alex1222.com/posts/2023-02-27-List-of-VPS-Cloud</link><guid isPermaLink="true">https://alex1222.com/posts/2023-02-27-List-of-VPS-Cloud</guid><category><![CDATA[VPS]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Mon, 27 Feb 2023 00:00:00 GMT</pubDate></item><item><title><![CDATA[How to Install and Use Pyenv]]></title><description><![CDATA[<h2>Contents</h2>
 <ul>
 <li><a href="#pyenv">Pyenv</a>
 <ul>
@@ -592,7 +825,7 @@ List all available python version</p>
 </code></pre>
 <p>Use virtualenv for repo</p>
 <pre><code class="language-bash">pyenv local $NAME 
-</code></pre>]]></description><link>https://alex1222.com//posts/2023-2-27-Howto-Install-and-Use-Pyenv</link><guid isPermaLink="true">https://alex1222.com//posts/2023-2-27-Howto-Install-and-Use-Pyenv</guid><category><![CDATA[Tutorial]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Mon, 27 Feb 2023 00:00:00 GMT</pubDate></item><item><title><![CDATA[Beautiful Hugo Theme]]></title><description><![CDATA[<p>A personal collection of beautiful hugo themes.</p>
+</code></pre>]]></description><link>https://alex1222.com/posts/2023-2-27-Howto-Install-and-Use-Pyenv</link><guid isPermaLink="true">https://alex1222.com/posts/2023-2-27-Howto-Install-and-Use-Pyenv</guid><category><![CDATA[Tutorial]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Mon, 27 Feb 2023 00:00:00 GMT</pubDate></item><item><title><![CDATA[Beautiful Hugo Theme]]></title><description><![CDATA[<p>A personal collection of beautiful hugo themes.</p>
 <ul>
 <li><a href="https://themes.gohugo.io/themes/kembang/">Kembang</a> by <a href="https://github.com/httpsecure">Aziz</a></li>
 <li><a href="https://themes.gohugo.io/themes/hugo-ficurinia/">Hugo Ficurinia</a> by <a href="https://gabmus.org/">Gabriele Musco</a></li>
@@ -607,7 +840,7 @@ List all available python version</p>
 <li><a href="https://themes.gohugo.io/themes/hugo-theme-jane/">Jane</a> by <a href="https://xianmin.org/">xianmin</a></li>
 <li><a href="https://themes.gohugo.io/themes/papercss-hugo-theme/">PaperCSS</a> by <a href="https://themes.gohugo.io/themes/papercss-hugo-theme/">Zachary Betz</a></li>
 <li><a href="https://themes.gohugo.io/themes/hugo-theme-terminal/">terminal</a> by <a href="https://radoslawkoziel.pl/">panr</a></li>
-</ul>]]></description><link>https://alex1222.com//posts/beautiful-hugo-themes.md</link><guid isPermaLink="true">https://alex1222.com//posts/beautiful-hugo-themes.md</guid><category><![CDATA[hugo-tutorial]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sun, 26 Feb 2023 00:00:00 GMT</pubDate></item><item><title><![CDATA[Apple电池健康]]></title><description><![CDATA[<h3>Apple电池健康</h3>
+</ul>]]></description><link>https://alex1222.com/posts/beautiful-hugo-themes.md</link><guid isPermaLink="true">https://alex1222.com/posts/beautiful-hugo-themes.md</guid><category><![CDATA[hugo-tutorial]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sun, 26 Feb 2023 00:00:00 GMT</pubDate></item><item><title><![CDATA[Apple电池健康]]></title><description><![CDATA[<h3>Apple电池健康</h3>
 <p><img src="/static/img/2022-5-25-Apple%E7%94%B5%E6%B1%A0%E5%81%A5%E5%BA%B7/2022-05-25-Apple-Battery-Health.jpeg" alt="Apple电池健康"/></p>
 <h4>🔋 关于电池健康度</h4>
 <p><a href="https://t.me/AppleNuts/1446">原文章见telegram</a></p>
@@ -628,18 +861,18 @@ List all available python version</p>
 <li>同时兼容 Intel / M1 系列 Mac</li>
 <li>在没有电池的 Mac 设备无法运行（如：Mac mini）</li>
 </ul>
-<p><a href="https://www.icloud.com/shortcuts/314cf272715b4f6387554d57b221132c">Shortcut</a></p>]]></description><link>https://alex1222.com//posts/2022-5-25-Apple电池健康</link><guid isPermaLink="true">https://alex1222.com//posts/2022-5-25-Apple电池健康</guid><category><![CDATA[Tools]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Tue, 24 May 2022 23:00:00 GMT</pubDate></item><item><title><![CDATA[方舟像素字体 / Ark Pixel Font]]></title><description><![CDATA[<h3>方舟像素字体 / Ark Pixel Font</h3>
+<p><a href="https://www.icloud.com/shortcuts/314cf272715b4f6387554d57b221132c">Shortcut</a></p>]]></description><link>https://alex1222.com/posts/2022-5-25-Apple电池健康</link><guid isPermaLink="true">https://alex1222.com/posts/2022-5-25-Apple电池健康</guid><category><![CDATA[Tools]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Tue, 24 May 2022 23:00:00 GMT</pubDate></item><item><title><![CDATA[方舟像素字体 / Ark Pixel Font]]></title><description><![CDATA[<h3>方舟像素字体 / Ark Pixel Font</h3>
 <p><img src="/static/img/2022-5-25-%E6%96%B9%E8%88%9F%E5%83%8F%E7%B4%A0%E5%AD%97%E4%BD%93/2022-05-25-itch-io-banner.png" alt="方舟像素字体"/></p>
 <p>开源的泛中日韩像素字体。支持 10、12 和 16 像素。目标是为像素风格的游戏开发提供一套可用于正文的开箱即用的字体解决方案。</p>
 <p>这个项目不仅提供了全部的字形设计源文件，也提供了构建字体所需要的完整程序</p>
 <p>该字体目前还处于早期开发阶段，所有尺寸仍然缺少大量汉字。有一个临时的可用于生产的替代方案，可查看<a href="https://github.com/TakWolf/fusion-pixel-font">缝合怪像素字体项目</a>。</p>
 <p>目前 12 像素为主要开发目标。10、16 像素为实验性质</p>
-<p><a href="https://github.com/TakWolf/ark-pixel-font">项目地址</a></p>]]></description><link>https://alex1222.com//posts/2022-5-25-方舟像素字体</link><guid isPermaLink="true">https://alex1222.com//posts/2022-5-25-方舟像素字体</guid><category><![CDATA[Open Source]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Tue, 24 May 2022 23:00:00 GMT</pubDate></item><item><title><![CDATA[High-precision measurement of the W boson mass with the CDF II detector]]></title><description><![CDATA[<p>费米实验室的最新研究结果表明 W 玻色子的质量严重偏离标准模型的理论预言。W玻色子传递弱相互作用（物理学中的基本力之一）。因为粒子物理标准模型（SM）对W玻色子的质量有严格的限制，所以测量它的质量可以检验标准模型。费米实验室（CDF）的对撞机探测器现在报告了从 Tevatron 粒子加速器的数据中提取的W玻色子质量的精确测量值（参见 Campagnari 和 Mulders 的方法）。令人惊讶的是，研究人员发现W玻色子的质量明显高于标准模型的预测，相差7个标准差。</p>
-<p>论文：<a href="https://www.science.org/doi/10.1126/science.abk1781">https://www.science.org/doi/10.1126/science.abk1781</a></p>]]></description><link>https://alex1222.com//posts/2022-4-10-High-precision-measurement-of-the-W-boson-mass-with-the-CDF-II-detector.md</link><guid isPermaLink="true">https://alex1222.com//posts/2022-4-10-High-precision-measurement-of-the-W-boson-mass-with-the-CDF-II-detector.md</guid><category><![CDATA[News]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sat, 09 Apr 2022 23:00:00 GMT</pubDate></item><item><title><![CDATA[Artemis! Fly your name around the Moon!]]></title><description><![CDATA[<p>NASA 邀请民众把自己的名字加入 Artemis 宇宙飞船</p>
+<p><a href="https://github.com/TakWolf/ark-pixel-font">项目地址</a></p>]]></description><link>https://alex1222.com/posts/2022-5-25-方舟像素字体</link><guid isPermaLink="true">https://alex1222.com/posts/2022-5-25-方舟像素字体</guid><category><![CDATA[Open Source]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Tue, 24 May 2022 23:00:00 GMT</pubDate></item><item><title><![CDATA[High-precision measurement of the W boson mass with the CDF II detector]]></title><description><![CDATA[<p>费米实验室的最新研究结果表明 W 玻色子的质量严重偏离标准模型的理论预言。W玻色子传递弱相互作用（物理学中的基本力之一）。因为粒子物理标准模型（SM）对W玻色子的质量有严格的限制，所以测量它的质量可以检验标准模型。费米实验室（CDF）的对撞机探测器现在报告了从 Tevatron 粒子加速器的数据中提取的W玻色子质量的精确测量值（参见 Campagnari 和 Mulders 的方法）。令人惊讶的是，研究人员发现W玻色子的质量明显高于标准模型的预测，相差7个标准差。</p>
+<p>论文：<a href="https://www.science.org/doi/10.1126/science.abk1781">https://www.science.org/doi/10.1126/science.abk1781</a></p>]]></description><link>https://alex1222.com/posts/2022-4-10-High-precision-measurement-of-the-W-boson-mass-with-the-CDF-II-detector.md</link><guid isPermaLink="true">https://alex1222.com/posts/2022-4-10-High-precision-measurement-of-the-W-boson-mass-with-the-CDF-II-detector.md</guid><category><![CDATA[News]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sat, 09 Apr 2022 23:00:00 GMT</pubDate></item><item><title><![CDATA[Artemis! Fly your name around the Moon!]]></title><description><![CDATA[<p>NASA 邀请民众把自己的名字加入 Artemis 宇宙飞船</p>
 <p>登记的名字将存在闪存/U盘里，届时由 Artemis 宇宙飞船带着名字环绕月球</p>
 <p>谁都可以登记，登记的人，都可以得到 NASA 颁发的“登机牌”</p>
 <p><a href="https://www.nasa.gov/send-your-name-with-artemis/">登记</a></p>
-<p><img src="/static/img/2022-3-22-Artemis-Fly-your-name-around-the-Moon/2022-03-22-NASA.jpg" alt="登机牌"/></p>]]></description><link>https://alex1222.com//posts/2022-3-22-Artemis-Fly-your-name-around-the-Moon</link><guid isPermaLink="true">https://alex1222.com//posts/2022-3-22-Artemis-Fly-your-name-around-the-Moon</guid><category><![CDATA[News]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Tue, 22 Mar 2022 00:00:00 GMT</pubDate></item><item><title><![CDATA[The First Linux System Support Mac M1]]></title><description><![CDATA[<h3>The first Asahi Linux Alpha Release is here!</h3>
+<p><img src="/static/img/2022-3-22-Artemis-Fly-your-name-around-the-Moon/2022-03-22-NASA.jpg" alt="登机牌"/></p>]]></description><link>https://alex1222.com/posts/2022-3-22-Artemis-Fly-your-name-around-the-Moon</link><guid isPermaLink="true">https://alex1222.com/posts/2022-3-22-Artemis-Fly-your-name-around-the-Moon</guid><category><![CDATA[News]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Tue, 22 Mar 2022 00:00:00 GMT</pubDate></item><item><title><![CDATA[The First Linux System Support Mac M1]]></title><description><![CDATA[<h3>The first Asahi Linux Alpha Release is here!</h3>
 <p><a href="https://asahilinux.org/2022/03/asahi-linux-alpha-release/">Asahi Linux</a></p>
 <p><img src="/static/img/2022-3-21-The-First-Linux-System-Support-Mac-M1/2022-03-21-Asahi-Linux.jpg" alt="Asahi Linux"/></p>
 <p>首个支持苹果 M1 / Pro / Max Mac 的 Linux 发行版发布，面向所有用户开放下载
@@ -695,12 +928,12 @@ Note: on the 13&quot; MacBook Pro, you can use Fn + the number row keys (1-9, 0,
 </ul>
 <h4>Known bugs</h4>
 <p>If Wi-Fi doesn&#x27;t work, try toggling it off and on in the network management menu
-If the headphones jack doesn&#x27;t work or only one channel works, try rebooting. There&#x27;s a flakiness issue.</p>]]></description><link>https://alex1222.com//posts/2022-3-21-The-First-Linux-System-Support-Mac-M1</link><guid isPermaLink="true">https://alex1222.com//posts/2022-3-21-The-First-Linux-System-Support-Mac-M1</guid><category><![CDATA[News]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Mon, 21 Mar 2022 00:00:00 GMT</pubDate></item><item><title><![CDATA[Send RSS Feed Through Email]]></title><description><![CDATA[<p><a href="https://github.com/rss2email/rss2email">RSS2Email</a></p>
-<p>send your RSS Feed To your Mail Box</p>]]></description><link>https://alex1222.com//posts/2022-3-20-Send-RSS-Feed-Through-Email.md</link><guid isPermaLink="true">https://alex1222.com//posts/2022-3-20-Send-RSS-Feed-Through-Email.md</guid><category><![CDATA[Open Source]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sun, 20 Mar 2022 00:00:00 GMT</pubDate></item><item><title><![CDATA[DevToys Swift Army Knife DevTools For Mac]]></title><description><![CDATA[<p>功能齐全的开发者工具，包括html encode decode, url encode decode, json beautifier, json to yaml converter, hash tools, check sum tools。很实用</p>
+If the headphones jack doesn&#x27;t work or only one channel works, try rebooting. There&#x27;s a flakiness issue.</p>]]></description><link>https://alex1222.com/posts/2022-3-21-The-First-Linux-System-Support-Mac-M1</link><guid isPermaLink="true">https://alex1222.com/posts/2022-3-21-The-First-Linux-System-Support-Mac-M1</guid><category><![CDATA[News]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Mon, 21 Mar 2022 00:00:00 GMT</pubDate></item><item><title><![CDATA[Send RSS Feed Through Email]]></title><description><![CDATA[<p><a href="https://github.com/rss2email/rss2email">RSS2Email</a></p>
+<p>send your RSS Feed To your Mail Box</p>]]></description><link>https://alex1222.com/posts/2022-3-20-Send-RSS-Feed-Through-Email.md</link><guid isPermaLink="true">https://alex1222.com/posts/2022-3-20-Send-RSS-Feed-Through-Email.md</guid><category><![CDATA[Open Source]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sun, 20 Mar 2022 00:00:00 GMT</pubDate></item><item><title><![CDATA[DevToys Swift Army Knife DevTools For Mac]]></title><description><![CDATA[<p>功能齐全的开发者工具，包括html encode decode, url encode decode, json beautifier, json to yaml converter, hash tools, check sum tools。很实用</p>
 <p><a href="https://github.com/ObuchiYuki/DevToysMac/">DevToys</a></p>
 <p><img src="/static/img/2022-2-15-DevToys-Swift-Army-Knife-DevTools-For-Mac/2022-02-15_1.png" alt="DevToys"/></p>
 <p><img src="/static/img/2022-2-15-DevToys-Swift-Army-Knife-DevTools-For-Mac/2022-02-15_2.png" alt="DevToys"/></p>
-<p><img src="/static/img/2022-2-15-DevToys-Swift-Army-Knife-DevTools-For-Mac/2022-02-15_3.png" alt="DevToys"/></p>]]></description><link>https://alex1222.com//posts/2022-2-15-DevToys-Swift-Army-Knife-DevTools-For-Mac</link><guid isPermaLink="true">https://alex1222.com//posts/2022-2-15-DevToys-Swift-Army-Knife-DevTools-For-Mac</guid><category><![CDATA[Open Source]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Tue, 15 Feb 2022 00:00:00 GMT</pubDate></item><item><title><![CDATA[Katex Math Typesetting]]></title><description><![CDATA[<p>Enable Katex in the config file by setting the <code>katex</code> param to <code>true</code>. This will import the necessary Katex CSS/JS.</p>
+<p><img src="/static/img/2022-2-15-DevToys-Swift-Army-Knife-DevTools-For-Mac/2022-02-15_3.png" alt="DevToys"/></p>]]></description><link>https://alex1222.com/posts/2022-2-15-DevToys-Swift-Army-Knife-DevTools-For-Mac</link><guid isPermaLink="true">https://alex1222.com/posts/2022-2-15-DevToys-Swift-Army-Knife-DevTools-For-Mac</guid><category><![CDATA[Open Source]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Tue, 15 Feb 2022 00:00:00 GMT</pubDate></item><item><title><![CDATA[Katex Math Typesetting]]></title><description><![CDATA[<p>Enable Katex in the config file by setting the <code>katex</code> param to <code>true</code>. This will import the necessary Katex CSS/JS.</p>
 <p><strong>Note:</strong> Use the online reference of <a href="https://katex.org/docs/supported.html">supported TeX functions</a>.</p>
 <p>Some math:</p>
 <pre><code>$$ \varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887… $$
@@ -722,4 +955,4 @@ M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist
 \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } } 
 $$
 </code></pre>
-<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>φ</mi><mo>=</mo><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><mo>⋯</mo></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow><annotation encoding="application/x-tex">\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } } </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal">φ</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:2.74em;vertical-align:-1.4186em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em"><span style="top:-2.2649em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em"><span style="top:-2.599em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443em"><span style="top:-2.656em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="minner mtight">⋯</span></span></span></span><span style="top:-3.2255em"><span class="pstrut" style="height:3em"></span><span class="frac-line mtight" style="border-bottom-width:0.049em"></span></span><span style="top:-3.384em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4035em"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.394em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.6835em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.677em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.4186em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>]]></description><link>https://alex1222.com//posts/katex-math-typesetting</link><guid isPermaLink="true">https://alex1222.com//posts/katex-math-typesetting</guid><category><![CDATA[hugo-tutorial]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Thu, 28 Mar 2019 00:00:00 GMT</pubDate></item></channel></rss>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>φ</mi><mo>=</mo><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><mo>⋯</mo></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow><annotation encoding="application/x-tex">\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } } </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal">φ</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:2.74em;vertical-align:-1.4186em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em"><span style="top:-2.2649em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em"><span style="top:-2.599em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443em"><span style="top:-2.656em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="minner mtight">⋯</span></span></span></span><span style="top:-3.2255em"><span class="pstrut" style="height:3em"></span><span class="frac-line mtight" style="border-bottom-width:0.049em"></span></span><span style="top:-3.384em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4035em"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.394em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.6835em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.677em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.4186em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>]]></description><link>https://alex1222.com/posts/katex-math-typesetting</link><guid isPermaLink="true">https://alex1222.com/posts/katex-math-typesetting</guid><category><![CDATA[hugo-tutorial]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Thu, 28 Mar 2019 00:00:00 GMT</pubDate></item></channel></rss>
