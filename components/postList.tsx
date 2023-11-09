@@ -72,6 +72,8 @@ const PostList: React.FC<PostListProps> = ({
       ))}
     </div>
   );
+
+  // TODO pagination
 };
 
 export default PostList;
