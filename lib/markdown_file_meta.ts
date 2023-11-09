@@ -162,7 +162,7 @@ export function get_posts_paths_with_alias(): string[] {
     paths_with_alias.push(i);
     paths_with_alias.push(j);
   });
-  return paths;
+  return paths_with_alias;
 }
 
 /// export find matching paths with alias
