@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[The Knot]]></title><description><![CDATA[The latest posts from my blog]]></description><link>https://alex1222.com/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 10 Nov 2023 00:34:12 GMT</lastBuildDate><atom:link href="https://alex1222.com/rss" rel="self" type="application/rss+xml"/><item><title><![CDATA[《自然》撤回室温超导论文]]></title><description><![CDATA[<p>《自然》撤回了罗彻斯特大学助理教授 Ranga P. Dias 作为通讯作者的室温超导论文。
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[The Knot]]></title><description><![CDATA[The latest posts from my blog]]></description><link>https://alex1222.com/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 10 Nov 2023 01:23:44 GMT</lastBuildDate><atom:link href="https://alex1222.com/rss" rel="self" type="application/rss+xml"/><item><title><![CDATA[Galois Theory Notes]]></title><description><![CDATA[<h2>Contents</h2>
+<ul>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#concepts-of-ring">Concepts of Ring</a></li>
+</ul>
+<h2>Intro</h2>
+<p>This is my personal note for Galois Theory.</p>
+<h2>Concepts of Ring</h2>
+<p><span id="definition:ring" class="math-definition"> Ring </span></p>]]></description><link>https://alex1222.com/posts/2023-11-10-Galois-Theory-Notes</link><guid isPermaLink="true">https://alex1222.com/posts/2023-11-10-Galois-Theory-Notes</guid><category><![CDATA[Math]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Fri, 10 Nov 2023 00:00:00 GMT</pubDate></item><item><title><![CDATA[《自然》撤回室温超导论文]]></title><description><![CDATA[<p>《自然》撤回了罗彻斯特大学助理教授 Ranga P. Dias 作为通讯作者的室温超导论文。
 这是他被撤回的第三篇论文。
 《自然》在撤回声明中称，因所发表的论文没有准确反映所研究材料的来源、
 所进行的实验测量等原因，应多位署名作者的要求，撤回论文
