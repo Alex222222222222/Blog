@@ -12,12 +12,6 @@ const TopBar: React.FC = () => {
           <Link href="/">{config.pageTitle}</Link>
         </li>
         <li className="mr-3">
-          <Link href="/categories/">{"Categories"}</Link>
-        </li>
-        <li className="mr-3">
-          <Link href="/tags/">{"Tags"}</Link>
-        </li>
-        <li className="mr-3">
           <Link href="/tools/">{"Tools"}</Link>
         </li>
         <li className="mr-3">
@@ -25,6 +19,14 @@ const TopBar: React.FC = () => {
         </li>
         <li className="mr-3">
           <Link href="/search">{"Search"}</Link>
+        </li>
+      </ul>
+      <ul className="flex underline">
+        <li className="mr-3">
+          <Link href="/categories/">{"Categories"}</Link>
+        </li>
+        <li className="mr-3">
+          <Link href="/tags/">{"Tags"}</Link>
         </li>
       </ul>
       <ul className="flex underline">

@@ -1,7 +1,7 @@
 import Layout from "@/components/layout";
 import PostList from "@/components/postList";
 import Post from "@/interfaces/post";
-import { get_all_posts, get_empty_posts } from "@/lib/markdown_file_meta";
+import { get_all_posts } from "@/lib/markdown_file_meta";
 import React, { useState } from "react";
 
 interface HomeProps {
@@ -27,13 +27,9 @@ const SearchPage: React.FC<HomeProps> = ({ posts }) => {
 };
 
 export const getStaticProps = async () => {
-  const posts = get_all_posts();
-
-  // TODO add search whole site
-
   return {
     props: {
-      posts: get_empty_posts(),
+      posts: get_all_posts(),
     },
   };
 };

@@ -105,8 +105,35 @@
   margin-left: 20px;
 }
 
+.post_content ol {
+  margin-left: 20px;
+}
+
 .post_content blockquote {
   border-left: 5px solid #00ff00;
   padding-left: 10px;
   margin-left: 0;
+}
+
+.post_content math_definition {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  padding: 10px;
+  overflow-x: auto;
+}
+
+.post_content math_definition_env::before {
+  content: "Definition: ";
+}
+
+.post_content math_definition_env {
+  margin-left: 20px;
+}
+
+.post_content math_theorem_env::before {
+  content: "Theorem: ";
+}
+
+.post_content math_theorem_env {
+  margin-left: 20px;
 }
