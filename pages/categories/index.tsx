@@ -1,10 +1,4 @@
-import fs from "fs";
-import path from "path";
-import Post from "@/interfaces/post";
-import {
-  get_all_categories,
-  get_markdown_data,
-} from "@/lib/markdown_file_meta";
+import { get_all_categories } from "@/lib/markdown_file_meta";
 import React from "react";
 import Layout from "@/components/layout";
 

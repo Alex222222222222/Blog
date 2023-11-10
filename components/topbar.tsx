@@ -23,6 +23,9 @@ const TopBar: React.FC = () => {
         <li className="mr-3">
           <Link href="/rss.xml">{"RSS"}</Link>
         </li>
+        <li className="mr-3">
+          <Link href="/search">{"Search"}</Link>
+        </li>
       </ul>
       <ul className="flex underline">
         {config.contact.map((c, index) => {
