@@ -1,12 +1,99 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[The Knot]]></title><description><![CDATA[The latest posts from my blog]]></description><link>https://alex1222.com/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 10 Nov 2023 01:23:44 GMT</lastBuildDate><atom:link href="https://alex1222.com/rss" rel="self" type="application/rss+xml"/><item><title><![CDATA[Galois Theory Notes]]></title><description><![CDATA[<h2>Contents</h2>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[The Knot]]></title><description><![CDATA[The latest posts from my blog]]></description><link>https://alex1222.com/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 10 Nov 2023 02:15:49 GMT</lastBuildDate><atom:link href="https://alex1222.com/rss" rel="self" type="application/rss+xml"/><item><title><![CDATA[Galois Theory Notes]]></title><description><![CDATA[<h2>Contents</h2>
 <ul>
 <li><a href="#intro">Intro</a></li>
 <li><a href="#concepts-of-ring">Concepts of Ring</a></li>
+<li><a href="#definitions">Definitions</a></li>
 </ul>
 <h2>Intro</h2>
 <p>This is my personal note for Galois Theory.</p>
 <h2>Concepts of Ring</h2>
-<p><span id="definition:ring" class="math-definition"> Ring </span></p>]]></description><link>https://alex1222.com/posts/2023-11-10-Galois-Theory-Notes</link><guid isPermaLink="true">https://alex1222.com/posts/2023-11-10-Galois-Theory-Notes</guid><category><![CDATA[Math]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Fri, 10 Nov 2023 00:00:00 GMT</pubDate></item><item><title><![CDATA[《自然》撤回室温超导论文]]></title><description><![CDATA[<p>《自然》撤回了罗彻斯特大学助理教授 Ranga P. Dias 作为通讯作者的室温超导论文。
+<div class="math_definition_env">
+<span id="definition:ring" class="math_definition"> Ring </span>
+is a set equipped with two binary operations, usually referred to as
+addition $+$ and multiplication $·$,
+that satisfy the following conditions:
+<ol>
+<li>
+<p>The set is an abelian group under the operation <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo></mrow><annotation encoding="application/x-tex">+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord">+</span></span></span></span>
+with an identity element usually denoted as 0.</p>
+</li>
+<li>
+<p>The operation <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo separator="true">⋅</mo></mrow><annotation encoding="application/x-tex">·</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4445em"></span><span class="mpunct">⋅</span></span></span></span> is associative,
+meaning that for all <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">a, b, c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">c</span></span></span></span> in the set, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">⋅</mo><mi>b</mi><mo stretchy="false">)</mo><mo separator="true">⋅</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">(a·b)·c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">b</span><span class="mclose">)</span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">c</span></span></span></span> equals <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">⋅</mo><mo stretchy="false">(</mo><mi>b</mi><mo separator="true">⋅</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a·(b·c)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord mathnormal">a</span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mopen">(</span><span class="mord mathnormal">b</span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">c</span><span class="mclose">)</span></span></span></span>.</p>
+</li>
+<li>
+<p>The operation <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo separator="true">⋅</mo></mrow><annotation encoding="application/x-tex">·</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4445em"></span><span class="mpunct">⋅</span></span></span></span> is distributive over the operation <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo></mrow><annotation encoding="application/x-tex">+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord">+</span></span></span></span>,
+meaning that for all <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">a, b, c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">c</span></span></span></span> in the set, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">⋅</mo><mo stretchy="false">(</mo><mi>b</mi><mo>+</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a·(b+c)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord mathnormal">a</span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mopen">(</span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord mathnormal">c</span><span class="mclose">)</span></span></span></span> equals
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">⋅</mo><mi>b</mi><mo>+</mo><mi>a</mi><mo separator="true">⋅</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">a·b + a·c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em"></span><span class="mord mathnormal">a</span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.4445em"></span><span class="mord mathnormal">a</span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">c</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo stretchy="false">)</mo><mo separator="true">⋅</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">(a+b)·c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord mathnormal">b</span><span class="mclose">)</span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">c</span></span></span></span> equals <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">⋅</mo><mi>c</mi><mo>+</mo><mi>b</mi><mo separator="true">⋅</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">a·c + b·c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord mathnormal">a</span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6944em"></span><span class="mord mathnormal">b</span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">c</span></span></span></span>.</p>
+</li>
+<li>
+<p>The operation <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo separator="true">⋅</mo></mrow><annotation encoding="application/x-tex">·</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4445em"></span><span class="mpunct">⋅</span></span></span></span> has an identity element, usually denoted as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">1</span></span></span></span>.</p>
+</li>
+<li>
+<p>The operation <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo separator="true">⋅</mo></mrow><annotation encoding="application/x-tex">·</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4445em"></span><span class="mpunct">⋅</span></span></span></span> is closed, meaning that for all <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a, b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">b</span></span></span></span> in the set,
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">⋅</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a·b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em"></span><span class="mord mathnormal">a</span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">b</span></span></span></span> is also in the set.</p>
+</li>
+<li>
+<p>A ring is called a commutative ring if the operation <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo separator="true">⋅</mo></mrow><annotation encoding="application/x-tex">·</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4445em"></span><span class="mpunct">⋅</span></span></span></span> is commutative,
+meaning that for all <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a, b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">b</span></span></span></span> in the set, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">⋅</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a·b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em"></span><span class="mord mathnormal">a</span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">b</span></span></span></span> equals <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo separator="true">⋅</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">b·a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em"></span><span class="mord mathnormal">b</span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">a</span></span></span></span>.</p>
+</li>
+</ol>
+</div>
+<div class="math_definition_env">
+<span id="definition:field" class="math_definition"> Field </span>
+is a ring in which every non-zero element is invertible.
+</div>
+<div class="math_definition_env">
+<span id="definition:subring" class="math_definition"> Subring </span>
+is a subset of a ring
+that is a ring with the restriction of the ring operations.
+</div>
+<div class="math_definition_env">
+<span id="definition:subfield" class="math_definition"> Subfield </span>
+is a subset of a field
+that is a field with the restriction of the field operations.
+</div>
+<div class="math_definition_env">
+<span id="definition:ring-homomorphism" class="math_definition"> Ring Homomorphism </span>
+is a function between two rings
+that preserves the operations of the rings.
+<p>A ring homomorphism is called an
+<span id="definition:ring-homomorphism:isomorphism" class="math_definition"> isomorphism </span>
+if it is bijective.</p>
+</div>
+<div class="math_definition_env">
+<span id="definition:ring-homomorphism" class="math_definition"> Ideal </span>
+is a subset of a ring that is closed under addition, negation,
+and multiplication by any element in the ring.
+</div>
+<div class="math_definition_env">
+<span id="definition:ring-homomorphism" class="math_definition"> Principal Ideal </span>
+is an ideal that is generated by a single element.
+</div>
+<div class="math_definition_env">
+<span id="definition:integral-domain" class="math_definition"> Integral Domain </span>
+is a commutative ring with identity
+in which the product of any two non-zero elements is non-zero.
+</div>
+<div class="math_definition_env">
+<span id="definition:quotient-ring" class="math_definition"> Quotient Ring </span>
+is a ring constructed from a ring $R$ and an ideal $I$ of $R$.
+Where the elements of the quotient ring are the cosets of $I$ in $R$.
+</div>
+<h2>Definitions</h2>
+<ul>
+    <li><a href="#definition:ring">Ring</a></li>
+    <li><a href="#definition:ring">Commutative Ring</a></li>
+    <li><a href="#definition:ring-homomorphism">Ring Homomorphism</a></li>
+    <li><a href="#definition:field">Field</a></li>
+    <li><a href="#definition:subring">Subring</a></li>
+    <li><a href="#definition:subfield">Subfield</a></li>
+    <li><a href="#definition:ideal">Ideal</a></li>
+    <li><a href="#definition:ring-homomorphism:isomorphism">Ring Isomorphism</a></li>
+    <li><a href="#definition:principal-ideal">Principal Ideal</a></li>
+    <li><a href="#definition:integral-domain">Integral Domain</a></li>
+    <li><a href="#definition:quotient-ring">Quotient Ring</a></li>
+</ul>]]></description><link>https://alex1222.com/posts/2023-11-10-Galois-Theory-Notes</link><guid isPermaLink="true">https://alex1222.com/posts/2023-11-10-Galois-Theory-Notes</guid><category><![CDATA[Math]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Fri, 10 Nov 2023 00:00:00 GMT</pubDate></item><item><title><![CDATA[《自然》撤回室温超导论文]]></title><description><![CDATA[<p>《自然》撤回了罗彻斯特大学助理教授 Ranga P. Dias 作为通讯作者的室温超导论文。
 这是他被撤回的第三篇论文。
 《自然》在撤回声明中称，因所发表的论文没有准确反映所研究材料的来源、
 所进行的实验测量等原因，应多位署名作者的要求，撤回论文
