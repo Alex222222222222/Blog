@@ -13,7 +13,7 @@ This is my personal note for Galois Theory.
 ## Concepts of Ring
 
 <div class="math_definition_env">
-<span id="definition:ring" class="math_definition"> Ring </span>
+<span id="definition:ring" className="math_definition">Ring</span>
 is a set equipped with two binary operations, usually referred to as
 addition $+$ and multiplication $·$,
 that satisfy the following conditions:
