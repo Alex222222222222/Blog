@@ -171,6 +171,9 @@ export function get_posts_paths_with_alias(): string[] {
     const j = i.endsWith(".md") ? i.slice(0, -3) : i + ".md";
     paths_with_alias.push(i);
     paths_with_alias.push(j);
+    if (path !== i && path !== j) {
+      paths_with_alias.push(path);
+    }
   });
   return paths_with_alias;
 }
