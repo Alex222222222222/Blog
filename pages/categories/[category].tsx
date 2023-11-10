@@ -1,12 +1,6 @@
-import fs from "fs";
-import path from "path";
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { ParsedUrlQuery } from "querystring";
-import {
-  get_all_categories,
-  get_empty_posts,
-  get_markdown_data,
-} from "@/lib/markdown_file_meta";
+import { get_all_categories, get_empty_posts } from "@/lib/markdown_file_meta";
 import Post from "@/interfaces/post";
 import React from "react";
 import PostList from "@/components/postList";
