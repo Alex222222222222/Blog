@@ -101,6 +101,18 @@ const HomeAbout = () => {
           </a>
         </li>
       </ul>
+
+      <h2>Fonts:</h2>
+      <p>
+        This website uses{" "}
+        <a
+          target="_blank"
+          href="https://github.com/githubnext/monaspace"
+          className="underline"
+        >
+          Github Next&apos;s Monaspace Krypton
+        </a>
+      </p>
     </div>
   );
 };
