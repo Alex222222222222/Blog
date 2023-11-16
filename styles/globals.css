@@ -3,9 +3,6 @@
 @import "tailwindcss/utilities";
 
 /* styles/global.css */
-body {
-  font-family: "Andale Mono", monospace;
-}
 
 .math_definition {
   background-color: #f0f0f0;

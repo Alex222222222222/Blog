@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[The Knot]]></title><description><![CDATA[The latest posts from my blog]]></description><link>https://alex1222.com/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 10 Nov 2023 02:15:49 GMT</lastBuildDate><atom:link href="https://alex1222.com/rss" rel="self" type="application/rss+xml"/><item><title><![CDATA[Galois Theory Notes]]></title><description><![CDATA[<h2>Contents</h2>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[The Knot]]></title><description><![CDATA[The latest posts from my blog]]></description><link>https://alex1222.com/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 16 Nov 2023 23:38:31 GMT</lastBuildDate><atom:link href="https://alex1222.com/rss" rel="self" type="application/rss+xml"/><item><title><![CDATA[Galois Theory Notes]]></title><description><![CDATA[<h2>Contents</h2>
 <ul>
 <li><a href="#intro">Intro</a></li>
 <li><a href="#concepts-of-ring">Concepts of Ring</a></li>
@@ -8,7 +8,7 @@
 <p>This is my personal note for Galois Theory.</p>
 <h2>Concepts of Ring</h2>
 <div class="math_definition_env">
-<span id="definition:ring" class="math_definition"> Ring </span>
+<span id="definition:ring" class="math_definition">Ring</span>
 is a set equipped with two binary operations, usually referred to as
 addition $+$ and multiplication $·$,
 that satisfy the following conditions:
