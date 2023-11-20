@@ -1,10 +1,10 @@
 ---
-title: Discovery of the Ninth Dedekind Number: A Decades-Long Search and Computational Breakthrough
+title: "Discovery of the Ninth Dedekind Number: A Decades-Long Search and Computational Breakthrough"
 date: "2023-11-20"
 tags: ["Dedekind number", "Math", "CS", "Number Theory"]
 toc: false
 categories: ["News", "Math"]
-description: After more than 30 years of search and computational effort, mathematicians recently revealed the intricate 42-digit structure of the ninth Dedekind number, showcasing the complexity of mathematical exploration and technological progress.
+description: "After more than 30 years of search and computational effort, mathematicians recently revealed the intricate 42-digit structure of the ninth Dedekind number, showcasing the complexity of mathematical exploration and technological progress."
 ---
 
 
