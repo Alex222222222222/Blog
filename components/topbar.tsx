@@ -18,7 +18,13 @@ const TopBar: React.FC = () => {
           <Link href="/rss.xml">{"RSS"}</Link>
         </li>
         <li className="mr-3">
-          <Link href="/search">{"Search"}</Link>
+          <a
+            href="https://www.travellings.cn/go.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🚇 Travelling
+          </a>
         </li>
       </ul>
       <ul className="flex underline">
@@ -27,6 +33,9 @@ const TopBar: React.FC = () => {
         </li>
         <li className="mr-3">
           <Link href="/tags/">{"Tags"}</Link>
+        </li>
+        <li className="mr-3">
+          <Link href="/search">{"Search"}</Link>
         </li>
       </ul>
       <ul className="flex underline">

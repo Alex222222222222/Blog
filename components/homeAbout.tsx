@@ -108,7 +108,7 @@ const HomeAbout = () => {
         <a
           target="_blank"
           href="https://github.com/githubnext/monaspace"
-          className="underline"
+          className="underline ml-5"
         >
           Github Next&apos;s Monaspace Krypton
         </a>
