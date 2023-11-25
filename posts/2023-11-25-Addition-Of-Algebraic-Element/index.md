@@ -15,7 +15,7 @@ Proof that $$1 + \sqrt{2} + \sqrt{3} + \dots + \sqrt{n} \notin \mathbb{Q}$$.
 ## Proof
 
 Link to the pdf file:
-[Addition Of Algebraic Element](static/math/AdditionOfAlgebraicElement/main.pdf)
+[Addition Of Algebraic Element](/static/math/AdditionOfAlgebraicElement/main.pdf)
 
 Link to the source code:
-[Addition Of Algebraic Element](static/math/AdditionOfAlgebraicElement/main.tex)
+[Addition Of Algebraic Element](/static/math/AdditionOfAlgebraicElement/main.tex)
