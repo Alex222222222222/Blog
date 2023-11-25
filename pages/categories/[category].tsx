@@ -1,8 +1,6 @@
-import fs from "fs";
-import path from "path";
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { ParsedUrlQuery } from "querystring";
-import { get_markdown_data } from "@/lib/markdown_file_meta";
+import { get_all_categories, get_empty_posts } from "@/lib/markdown_file_meta";
 import Post from "@/interfaces/post";
 import React from "react";
 import PostList from "@/components/postList";
@@ -15,30 +13,8 @@ interface CategoryProps {
 
 // Fetch data at build time
 export const getStaticPaths: GetStaticPaths = async () => {
-  // get all posts
-  const files = fs.readdirSync(path.join("posts"));
-  const posts: (Post | null)[] = files.map((filename) => {
-    return get_markdown_data(filename);
-  });
-  // filter out null posts
-  const filteredPosts = posts.filter((post) => post !== null);
-  const categories = filteredPosts.map((post) => post?.categories).flat();
-  // filter out null categories
-  const filteredCategories = categories.filter((category) => category !== null);
-  const categoriesWithNull = filteredCategories.map((category) =>
-    category!.toLowerCase()
-  );
-
-  // Remove duplicates
-  let uniqueCategories: String[] = [];
-  for (let i = 0; i < categoriesWithNull.length; i++) {
-    if (!uniqueCategories.includes(categoriesWithNull[i])) {
-      uniqueCategories.push(categoriesWithNull[i]);
-    }
-  }
-
   return {
-    paths: uniqueCategories.map((category) => ({
+    paths: get_all_categories().map((category) => ({
       params: { category: category as string },
     })),
     fallback: false,
@@ -50,21 +26,9 @@ export const getStaticProps: GetStaticProps = async (
 ) => {
   const { category } = context.params as { category: string };
 
-  const files = fs.readdirSync(path.join("posts"));
-  const posts: (Post | null)[] = files.map((filename) => {
-    return get_markdown_data(filename);
-  });
-  // set the content of posts to "",
-  // as this is not needed for the home page
-  posts.forEach((post) => {
-    if (post) {
-      post.content = "";
-    }
-  });
-
   return {
     props: {
-      posts: posts.filter((post) => post !== null),
+      posts: get_empty_posts(),
       category,
     },
   };

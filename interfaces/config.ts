@@ -7,6 +7,7 @@ interface Config {
   baseUrl: string;
   contact: Contact[];
   sitemapBaseUrl: string[];
+  author: string;
 }
 
 interface Contact {

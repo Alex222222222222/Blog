@@ -1,8 +1,6 @@
-import fs from "fs";
-import path from "path";
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { ParsedUrlQuery } from "querystring";
-import { get_markdown_data } from "@/lib/markdown_file_meta";
+import { get_all_tags, get_empty_posts } from "@/lib/markdown_file_meta";
 import Post from "@/interfaces/post";
 import React from "react";
 import PostList from "@/components/postList";
@@ -15,28 +13,8 @@ interface CategoryProps {
 
 // Fetch data at build time
 export const getStaticPaths: GetStaticPaths = async () => {
-  // get all posts
-  const files = fs.readdirSync(path.join("posts"));
-  const posts: (Post | null)[] = files.map((filename) => {
-    return get_markdown_data(filename);
-  });
-  // filter out null posts
-  const filteredPosts = posts.filter((post) => post !== null);
-  const tags = filteredPosts.map((post) => post?.tags).flat();
-  // filter out null categories
-  const filteredTags = tags.filter((tag) => tag !== null);
-  const tagsWithNull = filteredTags.map((tag) => tag!.toLowerCase());
-
-  // Remove duplicates
-  let uniqueTags: String[] = [];
-  for (let i = 0; i < tagsWithNull.length; i++) {
-    if (!uniqueTags.includes(tagsWithNull[i])) {
-      uniqueTags.push(tagsWithNull[i]);
-    }
-  }
-
   return {
-    paths: uniqueTags.map((tag) => ({
+    paths: get_all_tags().map((tag) => ({
       params: { tag: tag as string },
     })),
     fallback: false,
@@ -48,21 +26,9 @@ export const getStaticProps: GetStaticProps = async (
 ) => {
   const { tag } = context.params as { tag: string };
 
-  const files = fs.readdirSync(path.join("posts"));
-  const posts: (Post | null)[] = files.map((filename) => {
-    return get_markdown_data(filename);
-  });
-  // set the content of posts to "",
-  // as this is not needed for the home page
-  posts.forEach((post) => {
-    if (post) {
-      post.content = "";
-    }
-  });
-
   return {
     props: {
-      posts: posts.filter((post) => post !== null),
+      posts: get_empty_posts(),
       tag,
     },
   };

@@ -3,6 +3,24 @@
 @import "tailwindcss/utilities";
 
 /* styles/global.css */
-body {
-  font-family: "Andale Mono", monospace;
+
+.math_definition {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  padding: 2px;
+  overflow-x: auto;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.math_definition_env::before {
+  content: "Definition: ";
+  font-weight: bold;
+  background-color: #f0f0f0;
+}
+
+.math_theorem_env::before {
+  content: "Theorem: ";
+  font-weight: bold;
+  font-style: italic;
 }

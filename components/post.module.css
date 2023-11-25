@@ -104,3 +104,13 @@
 .post_content ul {
   margin-left: 20px;
 }
+
+.post_content ol {
+  margin-left: 20px;
+}
+
+.post_content blockquote {
+  border-left: 5px solid #00ff00;
+  padding-left: 10px;
+  margin-left: 0;
+}

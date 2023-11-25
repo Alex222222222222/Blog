@@ -12,16 +12,30 @@ const TopBar: React.FC = () => {
           <Link href="/">{config.pageTitle}</Link>
         </li>
         <li className="mr-3">
+          <Link href="/tools/">{"Tools"}</Link>
+        </li>
+        <li className="mr-3">
+          <Link href="/rss.xml">{"RSS"}</Link>
+        </li>
+        <li className="mr-3">
+          <a
+            href="https://www.travellings.cn/go.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🚇 Travelling
+          </a>
+        </li>
+      </ul>
+      <ul className="flex underline">
+        <li className="mr-3">
           <Link href="/categories/">{"Categories"}</Link>
         </li>
         <li className="mr-3">
           <Link href="/tags/">{"Tags"}</Link>
         </li>
         <li className="mr-3">
-          <Link href="/tools/">{"Tools"}</Link>
-        </li>
-        <li className="mr-3">
-          <Link href="/rss.xml">{"RSS"}</Link>
+          <Link href="/search">{"Search"}</Link>
         </li>
       </ul>
       <ul className="flex underline">
