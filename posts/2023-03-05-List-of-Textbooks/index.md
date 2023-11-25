@@ -1,6 +1,6 @@
 ---
 title: Personal Collection of Textbooks
-date: "2023-03-03"
+date: "2023-03-05"
 tags: ["Computer Science", "Math", "Textbook"]
 toc: True
 categories: ["Tutorial", "Academic"]
