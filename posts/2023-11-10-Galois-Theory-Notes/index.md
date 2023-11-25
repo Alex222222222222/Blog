@@ -10,6 +10,9 @@ toc: true
 
 This is my personal note for Galois Theory.
 
+This  is a work in progress.
+When I have time, I will add more content to it.
+
 ## Concepts of Ring
 
 <div class="math_definition_env">

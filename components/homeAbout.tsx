@@ -9,7 +9,6 @@ const HomeAbout = () => {
       <ul className="ml-5">
         <li>Math</li>
         <li>Computer Science</li>
-        <li>VPS</li>
       </ul>
 
       <h2>Contact Me:</h2>
