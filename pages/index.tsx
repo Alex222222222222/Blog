@@ -37,11 +37,9 @@ export const getStaticProps = async () => {
 
   const rss_feed = await generateFeed(posts, config);
   fs.writeFileSync("public/rss.xml", rss_feed);
-  fs.writeFileSync("public/index.xml", rss_feed);
   fs.writeFileSync("public/feed.xml", rss_feed);
   fs.writeFileSync("public/rss", rss_feed);
   fs.writeFileSync("public/feed", rss_feed);
-  fs.writeFileSync("public/index", rss_feed);
 
   const sitemap = await generateSitemap(posts, config);
   fs.writeFileSync("public/sitemap.xml", sitemap);
