@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@cloudflare/ai": "^1.0.39",
     "fuse.js": "^7.0.0",
     "gray-matter": "^4.0.3",
     "katex": "^0.16.9",
@@ -28,6 +29,7 @@
     "styled-components": "^6.1.0"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20231121.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -40,6 +42,6 @@
     "eslint-plugin-unused-imports": "^3.0.0",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.5",
-    "typescript": "^5"
+    "typescript": "^5.3.3"
   }
 }
