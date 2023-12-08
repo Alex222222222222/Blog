@@ -8,7 +8,7 @@ interface Env {
 }
 
 // the minimum interval between two requests in milliseconds
-const MIN_REQUEST_INTERVAL: number = 30000;
+const MIN_REQUEST_INTERVAL: number = 10000;
 // the base ur for r2
 const R2_BASE_URL: string =
   "https://blog-stable-diffusion-result-r2.alex1222.com/";
@@ -20,6 +20,25 @@ function get_r2_url(id: number): string {
 
 export const onRequest: PagesFunction<Env> = async (context) => {
   const d1 = context.env.STABLE_DIFFUSION_D1;
+
+  // get the prompt from the query string
+  const url = new URL(context.request.url);
+  const prompt = url.searchParams.get("prompt");
+
+  // if prompt is empty or not set, set it to "cyberpunk cat"
+  const promptText = prompt || "cyberpunk cat";
+
+  // query from STABLE_DIFFUSION_D1 for the prompt
+  // if it exists, return the result
+  const promptResult: D1Result<Record<string, unknown>> = await d1
+    .prepare("select * from STABLE_DIFFUSION_RESULT where PROMPT = ? limit 1")
+    .bind(promptText)
+    .all();
+  if (promptResult.results.length > 0) {
+    // if it exists, return the result
+    const result = promptResult.results[0];
+    return new Response(get_r2_url(result.ID as number));
+  }
 
   // check if the ip accessing the function in the last 30 seconds
   // if it is, return too many requests
@@ -51,27 +70,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       .run();
   }
 
-  // get the prompt from the query string
-  const url = new URL(context.request.url);
-  const prompt = url.searchParams.get("prompt");
-
-  // if prompt is empty or not set, set it to "cyberpunk cat"
-  const promptText = prompt || "cyberpunk cat";
-
-  // check if the prompt exists in the database
-  const promptResult: D1Result<Record<string, unknown>> = await d1
-    .prepare("select * from STABLE_DIFFUSION_RESULT where PROMPT = ? limit 1")
-    .bind(promptText)
-    .all();
-  if (promptResult.results.length > 0) {
-    // if it exists, return the result
-    const result = promptResult.results[0];
-    return new Response(get_r2_url(result.ID as number));
-  }
-
-  // query from STABLE_DIFFUSION_D1 for the prompt
-  // if it exists, return the result
-  // otherwise, run the AI task
+  // run the AI task
   const ai = new Ai(context.env.STABLE_DIFFUSION);
 
   const inputs: AiTextToImageInput = {
