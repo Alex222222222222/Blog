@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Layout from "@/components/layout";
 import getConfig from "@/lib/config";
 import concatenateUrls from "@/lib/url";
-import styles from "./footbarTyping.module.css";
+import styles from "@/components/footbarTyping.module.css";
 
 interface StableDiffusionProps {
   site_base_url: string;
