@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Layout from "@/components/layout";
 import getConfig from "@/lib/config";
 import concatenateUrls from "@/lib/url";
+import styles from "./footbarTyping.module.css";
 
 interface StableDiffusionProps {
   site_base_url: string;
@@ -84,7 +85,21 @@ const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
         Generate Image
       </button>
 
-      <p hidden={isStatusLoading(status)}>Loading ...</p>
+      <div
+        className="flex items-center justify-center"
+        hidden={isStatusLoading(status)}
+      >
+        <a className={styles.typingFirstDiv}>L</a>
+        <a className={styles.typingSecondDiv}>o</a>
+        <a className={styles.typingThirdDiv}>a</a>
+        <a className={styles.typingFourthDiv}>d</a>
+        <a className={styles.typingFifthDiv}>i</a>
+        <a className={styles.typingSixthDiv}>n</a>
+        <a className={styles.typingSeventhDiv}>g</a>
+        <a className={styles.typingEighthDiv}>.</a>
+        <a className={styles.typingNinthDiv}>.</a>
+      </div>
+
       <img
         className="w-full px-2"
         src={image}
@@ -95,9 +110,7 @@ const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
       />
       <p hidden={isStatusError(status)}>Error: {error}</p>
 
-      <p
-        className="mt-2"
-      >
+      <p className="mt-2">
         This page use{" "}
         <a href="https://blog.cloudflare.com/workers-ai/">
           Cloudflare Workers AI
