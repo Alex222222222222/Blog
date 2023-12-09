@@ -63,7 +63,7 @@ const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
           const response = await fetch(
             concatenateUrls(
               site_base_url,
-              "?prompt=" + encodeURIComponent(input)
+              "stable_diffusion?prompt=" + encodeURIComponent(input)
             )
           );
           // if error

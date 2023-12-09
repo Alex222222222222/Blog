@@ -97,7 +97,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
   // upload the result to the r2 bucket
   const r2 = context.env.STABLE_DIFFUSION_RESULT;
-  const r2Response = await r2.put(newResultId.toString() + ".png", response);
+  await r2.put(newResultId.toString() + ".png", response);
 
   return new Response(get_r2_url(newResultId));
 };
