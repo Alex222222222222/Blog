@@ -79,14 +79,14 @@ const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
           setImage(url);
           setStatus(Status.Success);
         }}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2"
       >
         Generate Image
       </button>
 
-      <br />
       <p hidden={isStatusLoading(status)}>Loading ...</p>
       <img
+        className="w-full px-2"
         src={image}
         alt="generated image"
         width={size}
@@ -95,7 +95,9 @@ const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
       />
       <p hidden={isStatusError(status)}>Error: {error}</p>
 
-      <p>
+      <p
+        className="mt-2"
+      >
         This page use{" "}
         <a href="https://blog.cloudflare.com/workers-ai/">
           Cloudflare Workers AI
