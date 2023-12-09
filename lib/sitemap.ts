@@ -39,6 +39,10 @@ const otherPages = [
     url: "tools/qrcode/reader",
     lastmod: new Date().toISOString(),
   },
+  {
+    url: "tools/stable_diffusion",
+    lastmod: new Date().toISOString(),
+  },
 ];
 
 const generateSitemap = async (posts: Post[], config: Config) => {
