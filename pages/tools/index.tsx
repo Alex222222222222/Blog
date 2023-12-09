@@ -34,6 +34,15 @@ const IntroPage: React.FC = ({}) => {
             QRCode Reader
           </Link>
         </li>
+        <br />
+      </ul>
+      Stable Diffusion:
+      <ul className="ml-5">
+        <li>
+          <Link href="/tools/stable_diffusion" className="underline">
+            Stable Diffusion
+          </Link>
+        </li>
       </ul>
       {
         // TODO add inch to cm

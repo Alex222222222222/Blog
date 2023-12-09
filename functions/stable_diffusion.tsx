@@ -8,7 +8,7 @@ interface Env {
 }
 
 // the minimum interval between two requests in milliseconds
-const MIN_REQUEST_INTERVAL: number = 10000;
+const MIN_REQUEST_INTERVAL: number = 30000;
 // the base ur for r2
 const R2_BASE_URL: string =
   "https://blog-stable-diffusion-result-r2.alex1222.com/";
