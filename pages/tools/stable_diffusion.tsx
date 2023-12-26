@@ -3,6 +3,7 @@ import Layout from "@/components/layout";
 import getConfig from "@/lib/config";
 import concatenateUrls from "@/lib/url";
 import styles from "@/components/footbarTyping.module.css";
+import Turnstile from "@/components/turnstile";
 
 interface StableDiffusionProps {
   site_base_url: string;
@@ -35,6 +36,7 @@ const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
   const [status, setStatus] = useState(Status.NotStarted);
   const [image, setImage] = useState("");
   const [error, setError] = useState("");
+  const [turnstileResponse, setTurnstileResponse] = useState("");
 
   return (
     <Layout>
@@ -54,17 +56,29 @@ const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
         className="w-full border-2 border-gray-300"
       />
       {
+        // turnstile
+      }
+      <Turnstile callback={setTurnstileResponse} />
+      {
         // a button to generate image
       }
       <button
         onClick={async () => {
+          if (turnstileResponse == "") {
+            setError("Please complete the human verification")
+            setStatus(Status.Error);
+            return;
+          }
           // show loading
           setStatus(Status.Loading);
           // generate image
           const response = await fetch(
             concatenateUrls(
               site_base_url,
-              "stable_diffusion?prompt=" + encodeURIComponent(input)
+              "stable_diffusion?prompt=" +
+                encodeURIComponent(input) +
+                "&cf_turnstile_response=" +
+                turnstileResponse
             )
           );
           // if error

@@ -5,6 +5,7 @@ interface Env {
   STABLE_DIFFUSION: any;
   STABLE_DIFFUSION_RESULT: R2Bucket;
   STABLE_DIFFUSION_D1: D1Database;
+  TURNSTILE_SECRETE_KEY: string;
 }
 
 // the minimum interval between two requests in milliseconds
@@ -18,11 +19,54 @@ function get_r2_url(id: number): string {
   return R2_BASE_URL + id.toString() + ".png";
 }
 
+async function verify_turnstile_response(
+  response: string,
+  secret_key: string,
+  ip: string
+): Promise<boolean> {
+  // Validate the token by calling the
+  // "/siteverify" API endpoint.
+  let formData = new FormData();
+  formData.append("secret", secret_key);
+  formData.append("response", response);
+  formData.append("remoteip", ip);
+
+  const url = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+  const result = await fetch(url, {
+    body: formData,
+    method: "POST",
+  });
+
+  const outcome: {
+    success: boolean;
+  } = await result.json();
+  if (outcome.success) {
+    return true;
+  }
+
+  return false;
+}
+
 export const onRequest: PagesFunction<Env> = async (context) => {
+  const url = new URL(context.request.url);
+  const ip = context.request.headers.get("cf-connecting-ip");
+  const cf_turnstile_response = url.searchParams.get("cf_turnstile_response");
+
+  // check if request of the turnstile is valid
+  if (
+    !cf_turnstile_response ||
+    !(await verify_turnstile_response(
+      cf_turnstile_response,
+      context.env.TURNSTILE_SECRETE_KEY,
+      ip
+    ))
+  ) {
+    return new Response("Require Human Verification", { status: 403 });
+  }
+
   const d1 = context.env.STABLE_DIFFUSION_D1;
 
   // get the prompt from the query string
-  const url = new URL(context.request.url);
   const prompt = url.searchParams.get("prompt");
 
   // if prompt is empty or not set, set it to "cyberpunk cat"
@@ -42,7 +86,6 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
   // check if the ip accessing the function in the last 30 seconds
   // if it is, return too many requests
-  const ip = context.request.headers.get("cf-connecting-ip");
   const now = Date.now();
   const lastRequest: D1Result<Record<string, unknown>> = await d1
     .prepare("select * from ACCESS_COUNTING where IP = ?")
