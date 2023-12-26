@@ -16,7 +16,7 @@ const Turnstile: React.FC<TurnstileProps> = ({ callback }) => {
       </Head>
       <div
         className="cf-turnstile m-2"
-        data-sitekey={process.env.TURNSTILE_SITE_KEY}
+        data-sitekey="0x4AAAAAAAPHfL5ntRVEMJiY"
         data-callback={callback}
       ></div>
     </>
