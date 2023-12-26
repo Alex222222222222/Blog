@@ -96,14 +96,16 @@ const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
       {
         // turnstile
       }
-      <Turnstile callback={setTurnstileResponse} />
+      <Turnstile callback={(cf_turnstile_response: string) => {
+        setTurnstileResponse(cf_turnstile_response);
+      }} />
       {
         // a button to generate image
       }
       <button
         onClick={async () => {
           if (turnstileResponse == "") {
-            setError("Please complete the human verification");
+            setError("Please complete the human verification." + turnstileResponse);
             setStatus(Status.Error);
             return;
           }
