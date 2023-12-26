@@ -4,6 +4,7 @@ import getConfig from "@/lib/config";
 import concatenateUrls from "@/lib/url";
 import styles from "@/components/footbarTyping.module.css";
 import Turnstile from "@/components/turnstile";
+import Image from "next/image";
 
 interface StableDiffusionProps {
   site_base_url: string;
@@ -27,6 +28,43 @@ function isStatusSuccess(status: Status): boolean {
 function isStatusError(status: Status): boolean {
   return status != Status.Error;
 }
+
+const LoadingWidget: React.FC = () => {
+  /*
+        <a className={styles.typingFirstDiv} hidden={isStatusLoading(status)}>
+          L
+        </a>
+        <a className={styles.typingSecondDiv} hidden={isStatusLoading(status)}>
+          o
+        </a>
+        <a className={styles.typingThirdDiv} hidden={isStatusLoading(status)}>
+          a
+        </a>
+        <a className={styles.typingFourthDiv} hidden={isStatusLoading(status)}>
+          d
+        </a>
+        <a className={styles.typingFifthDiv} hidden={isStatusLoading(status)}>
+          i
+        </a>
+        <a className={styles.typingSixthDiv} hidden={isStatusLoading(status)}>
+          n
+        </a>
+        <a className={styles.typingSeventhDiv} hidden={isStatusLoading(status)}>
+          g
+        </a>
+        <a className={styles.typingEighthDiv} hidden={isStatusLoading(status)}>
+          .
+        </a>
+        <a className={styles.typingNinthDiv} hidden={isStatusLoading(status)}>
+          .
+        </a>
+  */
+  return (
+    <div className="flex items-center justify-center">
+      <div className={styles.typing_loader}></div>
+    </div>
+  );
+};
 
 const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
   site_base_url,
@@ -65,7 +103,7 @@ const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
       <button
         onClick={async () => {
           if (turnstileResponse == "") {
-            setError("Please complete the human verification")
+            setError("Please complete the human verification");
             setStatus(Status.Error);
             return;
           }
@@ -99,40 +137,11 @@ const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
         Generate Image
       </button>
 
-      <div
-        className="flex items-center justify-center"
-        hidden={isStatusLoading(status)}
-      >
-        <a className={styles.typingFirstDiv} hidden={isStatusLoading(status)}>
-          L
-        </a>
-        <a className={styles.typingSecondDiv} hidden={isStatusLoading(status)}>
-          o
-        </a>
-        <a className={styles.typingThirdDiv} hidden={isStatusLoading(status)}>
-          a
-        </a>
-        <a className={styles.typingFourthDiv} hidden={isStatusLoading(status)}>
-          d
-        </a>
-        <a className={styles.typingFifthDiv} hidden={isStatusLoading(status)}>
-          i
-        </a>
-        <a className={styles.typingSixthDiv} hidden={isStatusLoading(status)}>
-          n
-        </a>
-        <a className={styles.typingSeventhDiv} hidden={isStatusLoading(status)}>
-          g
-        </a>
-        <a className={styles.typingEighthDiv} hidden={isStatusLoading(status)}>
-          .
-        </a>
-        <a className={styles.typingNinthDiv} hidden={isStatusLoading(status)}>
-          .
-        </a>
+      <div hidden={isStatusLoading(status)}>
+        <LoadingWidget />
       </div>
 
-      <img
+      <Image
         className="w-full px-2"
         src={image}
         alt="generated image"
