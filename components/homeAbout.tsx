@@ -102,7 +102,9 @@ const HomeAbout = () => {
       </ul>
 
       <h2>Fonts:</h2>
-      <p>
+      <p
+        className="ml-5"
+      >
         This website uses{" "}
         <a
           target="_blank"
