@@ -3,8 +3,8 @@ import Layout from "@/components/layout";
 import getConfig from "@/lib/config";
 import concatenateUrls from "@/lib/url";
 import styles from "@/components/footbarTyping.module.css";
-import Turnstile from "@/components/turnstile";
 import Image from "next/image";
+import Turnstile, { useTurnstile } from "react-turnstile";
 
 interface StableDiffusionProps {
   site_base_url: string;
@@ -75,6 +75,7 @@ const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
   const [image, setImage] = useState("");
   const [error, setError] = useState("");
   const [turnstileResponse, setTurnstileResponse] = useState("");
+  const turnstile = useTurnstile();
 
   return (
     <Layout>
@@ -96,22 +97,32 @@ const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
       {
         // turnstile
       }
-      <Turnstile callback={(cf_turnstile_response: string) => {
-        setTurnstileResponse(cf_turnstile_response);
-      }} />
+      <Turnstile
+        className="mb-2"
+        sitekey="0x4AAAAAAAPHfL5ntRVEMJiY"
+        onExpire={() => {
+          turnstile.reset();
+        }}
+        onVerify={(response) => {
+          setTurnstileResponse(response);
+        }}
+      />
       {
         // a button to generate image
       }
       <button
         onClick={async () => {
           if (turnstileResponse == "") {
-            setError("Please complete the human verification." + turnstileResponse);
+            setError(
+              "Please complete the human verification." + turnstileResponse
+            );
             setStatus(Status.Error);
             return;
           }
           // show loading
           setStatus(Status.Loading);
           // generate image
+          turnstile.reset();
           const response = await fetch(
             concatenateUrls(
               site_base_url,
