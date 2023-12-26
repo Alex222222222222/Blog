@@ -31,39 +31,19 @@ function isStatusError(status: Status): boolean {
 
 const LoadingWidget: React.FC = () => {
   /*
-        <a className={styles.typingFirstDiv} hidden={isStatusLoading(status)}>
-          L
-        </a>
-        <a className={styles.typingSecondDiv} hidden={isStatusLoading(status)}>
-          o
-        </a>
-        <a className={styles.typingThirdDiv} hidden={isStatusLoading(status)}>
-          a
-        </a>
-        <a className={styles.typingFourthDiv} hidden={isStatusLoading(status)}>
-          d
-        </a>
-        <a className={styles.typingFifthDiv} hidden={isStatusLoading(status)}>
-          i
-        </a>
-        <a className={styles.typingSixthDiv} hidden={isStatusLoading(status)}>
-          n
-        </a>
-        <a className={styles.typingSeventhDiv} hidden={isStatusLoading(status)}>
-          g
-        </a>
-        <a className={styles.typingEighthDiv} hidden={isStatusLoading(status)}>
-          .
-        </a>
-        <a className={styles.typingNinthDiv} hidden={isStatusLoading(status)}>
-          .
-        </a>
+
   */
   return (
     <div className="flex items-center justify-center">
-      <div className={styles.typing_loader}>
-        Loading......
-      </div>
+      <a className={styles.typingFirstDiv}>L</a>
+      <a className={styles.typingSecondDiv}>o</a>
+      <a className={styles.typingThirdDiv}>a</a>
+      <a className={styles.typingFourthDiv}>d</a>
+      <a className={styles.typingFifthDiv}>i</a>
+      <a className={styles.typingSixthDiv}>n</a>
+      <a className={styles.typingSeventhDiv}>g</a>
+      <a className={styles.typingEighthDiv}>.</a>
+      <a className={styles.typingNinthDiv}>.</a>
     </div>
   );
 };
@@ -104,6 +84,7 @@ const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
         sitekey="0x4AAAAAAAPHfL5ntRVEMJiY"
         onExpire={() => {
           turnstile.reset();
+          setTurnstileResponse("");
         }}
         onVerify={(response) => {
           setTurnstileResponse(response);
@@ -125,6 +106,7 @@ const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
           setStatus(Status.Loading);
           // generate image
           turnstile.reset();
+          setTurnstileResponse("");
           const response = await fetch(
             concatenateUrls(
               site_base_url,
