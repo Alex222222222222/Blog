@@ -43,6 +43,10 @@ const otherPages = [
     url: "tools/stable_diffusion",
     lastmod: new Date().toISOString(),
   },
+  {
+    url: "tools/pdf2pic",
+    lastmod: new Date().toISOString(),
+  },
 ];
 
 const generateSitemap = async (posts: Post[], config: Config) => {

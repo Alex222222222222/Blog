@@ -44,6 +44,14 @@ const IntroPage: React.FC = ({}) => {
           </Link>
         </li>
       </ul>
+      PDF2Pic:
+      <ul className="ml-5">
+        <li>
+          <Link href="/tools/pdf2pic" className="underline">
+            Convert PDF to Image
+          </Link>
+        </li>
+      </ul>
       {
         // TODO add inch to cm
         // TODO add cm to inch
