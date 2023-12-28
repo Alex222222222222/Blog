@@ -47,6 +47,10 @@ const otherPages = [
     url: "tools/pdf2pic",
     lastmod: new Date().toISOString(),
   },
+  {
+    url: "tools/password_gen",
+    lastmod: new Date().toISOString(),
+  },
 ];
 
 const generateSitemap = async (posts: Post[], config: Config) => {
