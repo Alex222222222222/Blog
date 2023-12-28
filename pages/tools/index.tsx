@@ -34,8 +34,8 @@ const IntroPage: React.FC = ({}) => {
             QRCode Reader
           </Link>
         </li>
-        <br />
       </ul>
+      <br />
       Stable Diffusion:
       <ul className="ml-5">
         <li>
@@ -44,6 +44,7 @@ const IntroPage: React.FC = ({}) => {
           </Link>
         </li>
       </ul>
+      <br />
       PDF2Pic:
       <ul className="ml-5">
         <li>

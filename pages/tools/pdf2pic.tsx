@@ -54,6 +54,7 @@ const StableDiffusionPage: React.FC = ({}) => {
   const [images, setImages] = useState<([string, number] | undefined)[]>([]);
   const [pdf, setPdf] = useState<PDFDocumentProxy | undefined>(undefined);
   const [filename, setFilename] = useState<string>("");
+  const [fixAspectRatio, setFixAspectRatio] = useState<boolean>(true);
 
   const pdfjsWorker = require("pdfjs-dist/build/pdf.worker");
   GlobalWorkerOptions.workerSrc = pdfjsWorker;
@@ -110,12 +111,16 @@ const StableDiffusionPage: React.FC = ({}) => {
           setWidth(value);
         }}
       />
-      <br />
-      Please set the height of the exported image.
-      <br />
+      <p
+        className={fixAspectRatio ? "text-gray-500" : ""}
+      >
+        Please set the height of the exported image.
+        Disabled if Fix Aspect Ratio is checked.
+      </p>
       <input
         type="number"
         value={height}
+        disabled={fixAspectRatio}
         onChange={(event) => {
           const value = Number(event.target.value);
           if (value <= 0) {
@@ -125,6 +130,18 @@ const StableDiffusionPage: React.FC = ({}) => {
           setHeight(value);
         }}
       />
+      <br />
+      <input
+        type="checkbox"
+        checked={fixAspectRatio}
+        onChange={(event) => {
+          setFixAspectRatio(event.target.checked);
+          if (event.target.checked) {
+            setHeight(width);
+          }
+        }}
+      />
+      Fix Aspect Ratio. Checked if the height should be the determined by the width.
       <SeparateLine />
       Please set the page number of the exported image. -1 means all pages. Use
       comma, space or semicolon to separate multiple pages.
@@ -158,9 +175,14 @@ const StableDiffusionPage: React.FC = ({}) => {
             pdf.getPage(pageIndex).then((page) => {
               const viewport = page.getViewport({ scale: 1 });
               let scale = width / viewport.width;
+              let targetHeight: number = height;
+              if (fixAspectRatio) {
+                setHeight(viewport.height * scale);
+                targetHeight = viewport.height * scale;
+              }
               const canvas = document.createElement("canvas");
               canvas.width = width;
-              canvas.height = height;
+              canvas.height = targetHeight;
               const context = canvas.getContext("2d");
               if (context == null) {
                 setErrorMsg("Failed to get context.");
