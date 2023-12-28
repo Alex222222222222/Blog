@@ -190,7 +190,7 @@ const StableDiffusionPage: React.FC = ({}) => {
         <SeparateLine />
         <ul>
           {results.map((result) => {
-            return <li>{result}</li>;
+            return <li key={result}>{`password_gen_${result}`}</li>;
           })}
         </ul>
       </table>
