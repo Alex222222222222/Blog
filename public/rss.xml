@@ -1,54 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[The Knot]]></title><description><![CDATA[The latest posts from my blog]]></description><link>https://alex1222.com/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 28 Dec 2023 03:31:49 GMT</lastBuildDate><atom:link href="https://alex1222.com/rss" rel="self" type="application/rss+xml"/><item><title><![CDATA[Upgrade Postgresql From 14 to 15]]></title><description><![CDATA[<p>Recently, I have upgraded my Postgresql database for my freshrss instance from 14 to 15. Here are the steps I followed to do it.</p>
-<p>First, we need to local the binary of the old version of Postgresql.
-In most of the cases, it can be found by</p>
-<pre><code class="language-bash">which psql
-</code></pre>
-<p>In my case, it is <code>/usr/local/bin/psql</code>.</p>
-<p>Then, we need to find the data directory of the old version of Postgresql.
-In my case, it is at <code>/var/lib/postgres/14</code>.
-And the <code>postgresql.conf</code> file is at <code>/var/lib/postgres/14/data/postgresql.conf</code>.</p>
-<p>Then, we need to install the new version of Postgresql.
-I use <code>nix</code> to manage my packages,
-so I just change the version of Postgresql in my <code>configuration.nix</code> file and run <code>nixos-rebuild switch</code>.</p>
-<p>After that, we need to find the binary of the new version of Postgresql.
-Which can be found by</p>
-<pre><code class="language-bash">which psql
-</code></pre>
-<p>Then, we need to find the data directory of the new version of Postgresql.
-In my case, it is at <code>/var/lib/postgres/15</code>.
-And the <code>postgresql.conf</code> file is which you should copy and modify from the old version of Postgresql.</p>
-<p>We need to first stop the old version of Postgresql.</p>
-<pre><code class="language-bash">systemctl stop postgresql
-</code></pre>
-<p>And <code>su</code> to the <code>postgres</code> user.</p>
-<pre><code class="language-bash">sudo su - postgres
-</code></pre>
-<p>Then, we need to run the following command to first initialize the new version of Postgresql.</p>
-<pre><code class="language-bash">initdb -D /var/lib/postgres/15/
-</code></pre>
-<p>Then, we need</p>
-<p>Then, we need to run the following command to migrate the data from the old version of Postgresql to the new version of Postgresql.
-With <code>--check</code> option, it will check if the migration is possible.</p>
-<pre><code class="language-bash">/usr/lib/postgresql/15/bin/pg_upgrade \
-  --old-datadir=$OLD_DATADIR \
-  --new-datadir=$NEW_DATADIR \
-  --old-bindir=$OLD_BINDOR \
-  --new-bindir=$NEW_BINDIR \
-  --old-options &#x27;-c config_file=$OLD_CONFIG_FILE&#x27; \
-  --new-options &#x27;-c config_file=$NEW_CONFIG_FILE&#x27; \
-  --check
-</code></pre>
-<p>If the check is successful, we can run the following command to do the migration.</p>
-<pre><code class="language-bash">/usr/lib/postgresql/15/bin/pg_upgrade \
-  --old-datadir=$OLD_DATADIR \
-  --new-datadir=$NEW_DATADIR \
-  --old-bindir=$OLD_BINDOR \
-  --new-bindir=$NEW_BINDIR \
-  --old-options &#x27;-c config_file=$OLD_CONFIG_FILE&#x27; \
-  --new-options &#x27;-c config_file=$NEW_CONFIG_FILE&#x27;
-</code></pre>
-<p>After that, we need to check if the migration is successful.
-If it is successful, we can then remove the old version of Postgresql.</p>]]></description><link>https://alex1222.com/posts/2023-12-05-Upgrade-Postgresql-From-14-to-15.md</link><guid isPermaLink="true">https://alex1222.com/posts/2023-12-05-Upgrade-Postgresql-From-14-to-15.md</guid><category><![CDATA[Postgresql]]></category><category><![CDATA[Database]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sun, 03 Dec 2023 00:00:00 GMT</pubDate></item><item><title><![CDATA[General Topology Notes]]></title><description><![CDATA[<h2>Contents</h2>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[The Knot]]></title><description><![CDATA[The latest posts from my blog]]></description><link>https://alex1222.com/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 28 Dec 2023 06:20:10 GMT</lastBuildDate><atom:link href="https://alex1222.com/rss" rel="self" type="application/rss+xml"/><item><title><![CDATA[General Topology Notes]]></title><description><![CDATA[<h2>Contents</h2>
 <ul>
 <li><a href="#topology-spaces-and-continuous-function">Topology Spaces and Continuous Function</a>
 <ul>
@@ -1979,7 +1929,107 @@ functions</strong></em>of <span class="katex"><span class="katex-mathml"><math x
 <p><em>We omit the proof of this change@code@ as it is obvious.</em> <a href="#user-content-fnref-54" data-footnote-backref="" aria-label="Back to reference 54" class="data-footnote-backref">↩</a></p>
 </li>
 </ol>
-</section>]]></description><link>https://alex1222.com/posts/2023-12-03-General-Topology-Notes.md</link><guid isPermaLink="true">https://alex1222.com/posts/2023-12-03-General-Topology-Notes.md</guid><category><![CDATA[Notes]]></category><category><![CDATA[Math]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sun, 03 Dec 2023 00:00:00 GMT</pubDate></item><item><title><![CDATA[$10mn AI Mathematical Olympiad Prize Launches]]></title><description><![CDATA[<p>XTX Markets is launching a new $10mn challenge fund, the Artificial Intelligence Mathematical Olympiad Prize (AI-MO Prize). The fund intends to spur the development of AI models that can reason mathematically, leading to the creation of a publicly-shared AI model capable of winning a gold medal in the International Mathematical Olympiad (IMO).</p>
+</section>]]></description><link>https://alex1222.com/posts/2023-12-03-General-Topology-Notes.md</link><guid isPermaLink="true">https://alex1222.com/posts/2023-12-03-General-Topology-Notes.md</guid><category><![CDATA[Notes]]></category><category><![CDATA[Math]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sun, 03 Dec 2023 00:00:00 GMT</pubDate></item><item><title><![CDATA[Upgrade Postgresql From 14 to 15]]></title><description><![CDATA[<p>Recently, I have upgraded my Postgresql database for my freshrss instance from 14 to 15. Here are the steps I followed to do it.</p>
+<p>First, we need to local the binary of the old version of Postgresql.
+In most of the cases, it can be found by</p>
+<pre><code class="language-bash">which psql
+</code></pre>
+<p>In my case, it is <code>/usr/local/bin/psql</code>.</p>
+<p>Then, we need to find the data directory of the old version of Postgresql.
+In my case, it is at <code>/var/lib/postgres/14</code>.
+And the <code>postgresql.conf</code> file is at <code>/var/lib/postgres/14/data/postgresql.conf</code>.</p>
+<p>Then, we need to install the new version of Postgresql.
+I use <code>nix</code> to manage my packages,
+so I just change the version of Postgresql in my <code>configuration.nix</code> file and run <code>nixos-rebuild switch</code>.</p>
+<p>After that, we need to find the binary of the new version of Postgresql.
+Which can be found by</p>
+<pre><code class="language-bash">which psql
+</code></pre>
+<p>Then, we need to find the data directory of the new version of Postgresql.
+In my case, it is at <code>/var/lib/postgres/15</code>.
+And the <code>postgresql.conf</code> file is which you should copy and modify from the old version of Postgresql.</p>
+<p>We need to first stop the old version of Postgresql.</p>
+<pre><code class="language-bash">systemctl stop postgresql
+</code></pre>
+<p>And <code>su</code> to the <code>postgres</code> user.</p>
+<pre><code class="language-bash">sudo su - postgres
+</code></pre>
+<p>Then, we need to run the following command to first initialize the new version of Postgresql.</p>
+<pre><code class="language-bash">initdb -D /var/lib/postgres/15/
+</code></pre>
+<p>Then, we need</p>
+<p>Then, we need to run the following command to migrate the data from the old version of Postgresql to the new version of Postgresql.
+With <code>--check</code> option, it will check if the migration is possible.</p>
+<pre><code class="language-bash">/usr/lib/postgresql/15/bin/pg_upgrade \
+  --old-datadir=$OLD_DATADIR \
+  --new-datadir=$NEW_DATADIR \
+  --old-bindir=$OLD_BINDOR \
+  --new-bindir=$NEW_BINDIR \
+  --old-options &#x27;-c config_file=$OLD_CONFIG_FILE&#x27; \
+  --new-options &#x27;-c config_file=$NEW_CONFIG_FILE&#x27; \
+  --check
+</code></pre>
+<p>If the check is successful, we can run the following command to do the migration.</p>
+<pre><code class="language-bash">/usr/lib/postgresql/15/bin/pg_upgrade \
+  --old-datadir=$OLD_DATADIR \
+  --new-datadir=$NEW_DATADIR \
+  --old-bindir=$OLD_BINDOR \
+  --new-bindir=$NEW_BINDIR \
+  --old-options &#x27;-c config_file=$OLD_CONFIG_FILE&#x27; \
+  --new-options &#x27;-c config_file=$NEW_CONFIG_FILE&#x27;
+</code></pre>
+<p>After that, we need to check if the migration is successful.
+If it is successful, we can then remove the old version of Postgresql.</p>]]></description><link>https://alex1222.com/posts/2023-12-05-Upgrade-Postgresql-From-14-to-15.md</link><guid isPermaLink="true">https://alex1222.com/posts/2023-12-05-Upgrade-Postgresql-From-14-to-15.md</guid><category><![CDATA[Postgresql]]></category><category><![CDATA[Database]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sun, 03 Dec 2023 00:00:00 GMT</pubDate></item><item><title><![CDATA[Upgrade Postgresql From 14 to 15]]></title><description><![CDATA[<p>Recently, I have upgraded my Postgresql database for my freshrss instance from 14 to 15. Here are the steps I followed to do it.</p>
+<p>First, we need to local the binary of the old version of Postgresql.
+In most of the cases, it can be found by</p>
+<pre><code class="language-bash">which psql
+</code></pre>
+<p>In my case, it is <code>/usr/local/bin/psql</code>.</p>
+<p>Then, we need to find the data directory of the old version of Postgresql.
+In my case, it is at <code>/var/lib/postgres/14</code>.
+And the <code>postgresql.conf</code> file is at <code>/var/lib/postgres/14/data/postgresql.conf</code>.</p>
+<p>Then, we need to install the new version of Postgresql.
+I use <code>nix</code> to manage my packages,
+so I just change the version of Postgresql in my <code>configuration.nix</code> file and run <code>nixos-rebuild switch</code>.</p>
+<p>After that, we need to find the binary of the new version of Postgresql.
+Which can be found by</p>
+<pre><code class="language-bash">which psql
+</code></pre>
+<p>Then, we need to find the data directory of the new version of Postgresql.
+In my case, it is at <code>/var/lib/postgres/15</code>.
+And the <code>postgresql.conf</code> file is which you should copy and modify from the old version of Postgresql.</p>
+<p>We need to first stop the old version of Postgresql.</p>
+<pre><code class="language-bash">systemctl stop postgresql
+</code></pre>
+<p>And <code>su</code> to the <code>postgres</code> user.</p>
+<pre><code class="language-bash">sudo su - postgres
+</code></pre>
+<p>Then, we need to run the following command to first initialize the new version of Postgresql.</p>
+<pre><code class="language-bash">initdb -D /var/lib/postgres/15/
+</code></pre>
+<p>Then, we need</p>
+<p>Then, we need to run the following command to migrate the data from the old version of Postgresql to the new version of Postgresql.
+With <code>--check</code> option, it will check if the migration is possible.</p>
+<pre><code class="language-bash">/usr/lib/postgresql/15/bin/pg_upgrade \
+  --old-datadir=$OLD_DATADIR \
+  --new-datadir=$NEW_DATADIR \
+  --old-bindir=$OLD_BINDOR \
+  --new-bindir=$NEW_BINDIR \
+  --old-options &#x27;-c config_file=$OLD_CONFIG_FILE&#x27; \
+  --new-options &#x27;-c config_file=$NEW_CONFIG_FILE&#x27; \
+  --check
+</code></pre>
+<p>If the check is successful, we can run the following command to do the migration.</p>
+<pre><code class="language-bash">/usr/lib/postgresql/15/bin/pg_upgrade \
+  --old-datadir=$OLD_DATADIR \
+  --new-datadir=$NEW_DATADIR \
+  --old-bindir=$OLD_BINDOR \
+  --new-bindir=$NEW_BINDIR \
+  --old-options &#x27;-c config_file=$OLD_CONFIG_FILE&#x27; \
+  --new-options &#x27;-c config_file=$NEW_CONFIG_FILE&#x27;
+</code></pre>
+<p>After that, we need to check if the migration is successful.
+If it is successful, we can then remove the old version of Postgresql.</p>]]></description><link>https://alex1222.com/posts/2023-12-05-Upgrade-Postgresql-From-14-to-15 2.md</link><guid isPermaLink="true">https://alex1222.com/posts/2023-12-05-Upgrade-Postgresql-From-14-to-15 2.md</guid><category><![CDATA[Postgresql]]></category><category><![CDATA[Database]]></category><dc:creator><![CDATA[Alex Hua]]></dc:creator><pubDate>Sun, 03 Dec 2023 00:00:00 GMT</pubDate></item><item><title><![CDATA[$10mn AI Mathematical Olympiad Prize Launches]]></title><description><![CDATA[<p>XTX Markets is launching a new $10mn challenge fund, the Artificial Intelligence Mathematical Olympiad Prize (AI-MO Prize). The fund intends to spur the development of AI models that can reason mathematically, leading to the creation of a publicly-shared AI model capable of winning a gold medal in the International Mathematical Olympiad (IMO).</p>
 <p>The grand prize of $5mn will be awarded to the first publicly-shared AI model to enter an AI-MO approved competition and perform at a standard equivalent to a gold medal in the IMO.</p>
 <p>There will also be a series of progress prizes, totalling up to $5mn, for publicly-shared AI models that achieve key milestones towards the grand prize.</p>
 <blockquote>
