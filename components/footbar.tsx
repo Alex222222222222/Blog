@@ -1,17 +1,18 @@
-import styles from "./footbarTyping.module.css";
+import words from "./words.json";
 
 const FootBar: React.FC = () => {
+  // chose a random word from the words.json file
+  const randomWord = Math.floor(Math.random() * words.length);
   return (
-    <div className="flex items-center justify-center">
-      <a className={styles.typingFirstDiv}>人</a>
-      <a className={styles.typingSecondDiv}>生</a>
-      <a className={styles.typingThirdDiv}>若</a>
-      <a className={styles.typingFourthDiv}>梦</a>
-      <a className={styles.typingFifthDiv}>&nbsp;&nbsp;</a>
-      <a className={styles.typingSixthDiv}>为</a>
-      <a className={styles.typingSeventhDiv}>欢</a>
-      <a className={styles.typingEighthDiv}>几</a>
-      <a className={styles.typingNinthDiv}>何</a>
+    <div>
+      {
+        // for each word in the words.json file, create a <p> tag
+      }
+      {words[randomWord].map((word: string, index: number) => (
+        <p key={index} className="flex items-center justify-center">
+          {word}
+        </p>
+      ))}
     </div>
   );
 };

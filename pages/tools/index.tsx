@@ -53,6 +53,15 @@ const IntroPage: React.FC = ({}) => {
           </Link>
         </li>
       </ul>
+      <br />
+      Password Generator:
+      <ul className="ml-5">
+        <li>
+          <Link href="/tools/password_gen" className="underline">
+            Password Generator
+          </Link>
+        </li>
+      </ul>
       {
         // TODO add inch to cm
         // TODO add cm to inch
