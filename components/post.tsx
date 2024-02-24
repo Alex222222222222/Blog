@@ -60,6 +60,7 @@ const PostPageContent: React.FC<PostProps> = ({
         <br />
         Read Time: {post.read_time} minutes
         <br />
+        <br />
         <PostContentReal post={post} />
       </div>
       <div className="flex justify-between">
