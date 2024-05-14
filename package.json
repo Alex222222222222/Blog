@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@cloudflare/ai": "^1.0.39",
+    "@google-analytics/data": "^4.5.0",
     "client-zip": "^2.4.4",
     "fuse.js": "^7.0.0",
     "generate-password": "^1.7.1",
