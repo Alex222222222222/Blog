@@ -36,28 +36,6 @@ const HomeAbout = () => {
       <h2>Useful Links:</h2>
       <ul className="ml-5">
         <li>
-          <a
-            href="https://iskxcr.github.io/blog/p/introduction-to-mikos-library/"
-            className="underline"
-          >
-            IskCXr Blog
-          </a>
-          ,
-          <a href="https://github.com/IskXCr" className="underline">
-            GitHub
-          </a>{" "}
-          {"- Miko's Library - CG, Math, and a bit of CV and AI."}
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://www.eaimty.com"
-            className="underline"
-          >
-            EAimTY&apos;s Blog
-          </a>
-        </li>
-        <li>
           Build on{" "}
           <a target="_blank" href="https://nextjs.org/" className="underline">
             Next.js
@@ -114,6 +92,41 @@ const HomeAbout = () => {
           Github Next&apos;s Monaspace Krypton
         </a>
       </p>
+
+      <h2>Friends:</h2>
+      <ul className="ml-5">
+        <li>
+          <a
+            href="https://iskxcr.github.io/blog/p/introduction-to-mikos-library/"
+            className="underline"
+          >
+            IskCXr Blog
+          </a>
+          ,
+          <a href="https://github.com/IskXCr" className="underline">
+            GitHub
+          </a>{" "}
+          {"- Miko's Library - CG, Math, and a bit of CV and AI."}
+        </li>
+        <li>
+          <a
+            target="_blank"
+            href="https://www.eaimty.com"
+            className="underline"
+          >
+            EAimTY&apos;s Blog
+          </a>
+        </li>
+        <li>
+          <a
+            target="_blank"
+            href="https://xblog.aptzone.cc"
+            className="underline"
+          >
+            Forever
+          </a>
+        </li>
+      </ul>
     </div>
   );
 };
