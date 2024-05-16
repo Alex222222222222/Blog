@@ -280,7 +280,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   if (days < 1) {
     days = 1;
   }
-  if (!(days in [1, 7, 30, 1000])) {
+  if (days !== 1 && days !== 7 && days !== 30 && days !== 1000) {
     days = 1;
   }
   const cacheTTL = calculateCacheTTL(days);
