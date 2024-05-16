@@ -139,15 +139,11 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     })
   );
 
-  const keyBase64 = context.env.GOOGLE_ANALYTIC_CREDENTIALS_PRIVATE_KEY.replace(
-    "-----BEGIN PRIVATE KEY-----",
-    ""
-  )
-    .replace("-----END PRIVATE KEY-----", "")
-    .replace(/\n/g, "");
   let cryptoKey = await crypto.subtle.importKey(
     "pkcs8",
-    new TextEncoder().encode(atob(keyBase64)),
+    new TextEncoder().encode(
+      atob(context.env.GOOGLE_ANALYTIC_CREDENTIALS_PRIVATE_KEY)
+    ),
     { name: "RSASSA-PKCS1-V1_5", hash: { name: "SHA-256" } },
     false,
     ["sign"]
