@@ -259,13 +259,13 @@ async function getGoogleAccessToken(
  * @returns The cache TTL.
  */
 function calculateCacheTTL(days: number): number {
-  if (days <= 30) {
-    return days * 5 * 60;
+  if (days <= 12) {
+    return days * 60 * 60;
   }
   if (days >= 1000) {
-    return 60 * (30 * 5 + (1000 - 30));
+    return 60 * (12 * 60 + (1000 - 12));
   }
-  return 60 * (30 * 5 + (days - 30));
+  return 60 * (12 * 60 + (days - 12));
 }
 
 /**
