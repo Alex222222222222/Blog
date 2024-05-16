@@ -16,7 +16,7 @@ const TopBar: React.FC = () => {
 
   const router = useRouter();
   useEffect(() => {
-    const path = router.pathname;
+    const path = window.location.pathname;
     fetch(`/views?days=7&path=${encodeURIComponent(path)}`)
       .then((response) => response.json())
       .then((data) => {
@@ -52,7 +52,7 @@ const TopBar: React.FC = () => {
       .then((data) => {
         siteTotalViewsDispatch(data.views);
       });
-  }, [router.pathname]);
+  }, [router.events]);
 
   return (
     <div className="flex flex-row pt-2">
