@@ -280,6 +280,9 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   if (days < 1) {
     days = 1;
   }
+  if (!(days in [1, 7, 30, 1000])) {
+    days = 1;
+  }
   const cacheTTL = calculateCacheTTL(days);
   // get the requested page path from the url query
   const path = url.searchParams.get("path") || "";
@@ -290,6 +293,19 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     `${days}-${decodedPath}`
   );
   if (cachedResult) {
+    const myResponse: MyResponse = {
+      days: days,
+      path: decodedPath,
+      views: parseInt(cachedResult),
+    };
+    return new Response(JSON.stringify(myResponse), {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+  const cachedTotalResult = await context.env.BLOG_VIEWS.get(`${days}-`);
+  if (cachedTotalResult) {
     const myResponse: MyResponse = {
       days: days,
       path: decodedPath,
