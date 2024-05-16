@@ -5,7 +5,7 @@ interface Env {
   GOOGLE_ANALYTIC_CREDENTIALS_JWT_KID: string;
 }
 
-const ACCESS_TOKEN_ENDPOINT = "https://sts.googleapis.com/v1beta/token";
+const ACCESS_TOKEN_ENDPOINT = "https://oauth2.googleapis.com/token";
 
 /**
  * Decode a Base64 string to a Uint8Array.
