@@ -18,7 +18,7 @@ const FootBar: React.FC = () => {
         ref.current?.appendChild(p_element);
       }
     }
-  }, []);
+  }, [randomWord]);
 
   return <div ref={ref} />;
 };
