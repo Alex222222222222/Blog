@@ -1,6 +1,3 @@
-import { Ai } from "@cloudflare/ai";
-import { AiTextToImageInput } from "@cloudflare/ai/dist/tasks/text-to-image";
-
 interface Env {
   STABLE_DIFFUSION: any;
   STABLE_DIFFUSION_RESULT: R2Bucket;
@@ -114,13 +111,11 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   }
 
   // run the AI task
-  const ai = new Ai(context.env.STABLE_DIFFUSION);
-
   const inputs: AiTextToImageInput = {
     prompt: promptText,
   };
 
-  const response = await ai.run(
+  const response = await context.env.STABLE_DIFFUSION.run(
     "@cf/stabilityai/stable-diffusion-xl-base-1.0",
     inputs
   );
