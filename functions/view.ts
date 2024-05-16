@@ -14,66 +14,94 @@ interface GoogleAccessTokenResponse {
   token_type: string;
   scope: string;
 }
-
 /**
- * Decode a Base64 string to a Uint8Array.
- * @param base64 - The Base64 encoded string.
- * @returns A Uint8Array containing the decoded bytes.
+ * Sample data:
+ * {
+ *   "dimensionHeaders": [
+ *     {
+ *       "name": "pagePath"
+ *     }
+ *   ],
+ *   "metricHeaders": [
+ *     {
+ *       "name": "screenPageViews",
+ *       "type": "TYPE_INTEGER"
+ *     }
+ *   ],
+ *   "rows": [
+ *     {
+ *       "dimensionValues": [
+ *         {
+ *           "value": "/posts/2024-03-07-Run-Witcher3-On-MacOS.md"
+ *         }
+ *       ],
+ *       "metricValues": [
+ *         {
+ *           "value": "3"
+ *         }
+ *       ]
+ *     },
+ *     {
+ *       "dimensionValues": [
+ *         {
+ *           "value": "/posts/2024-05-10-TheSevenSnowWhitePrincessesAndTheEnviousDwarf.md"
+ *         }
+ *       ],
+ *       "metricValues": [
+ *         {
+ *           "value": "3"
+ *         }
+ *       ]
+ *     },
+ *     {
+ *       "dimensionValues": [
+ *         {
+ *           "value": "/i/"
+ *         }
+ *       ],
+ *       "metricValues": [
+ *         {
+ *           "value": "2"
+ *         }
+ *       ]
+ *     }
+ *   ],
+ *   "rowCount": 3,
+ *   "metadata": {
+ *     "currencyCode": "CNY",
+ *     "timeZone": "Asia/Shanghai"
+ *   },
+ *   "kind": "analyticsData#runReport"
+ * }
  */
-function base64ToUint8Array(base64: string): Uint8Array {
-  // Remove any padding characters from the base64 string
-  const cleanedBase64 = base64.replace(/=+$/, "");
-
-  // Calculate the length of the output array
-  const byteLength =
-    (cleanedBase64.length * 3) / 4 -
-    (cleanedBase64.length % 4 === 2
-      ? 1
-      : cleanedBase64.length % 4 === 3
-      ? 2
-      : 0);
-  const bytes = new Uint8Array(byteLength);
-
-  let encoded1: number, encoded2: number, encoded3: number, encoded4: number;
-  let p = 0;
-
-  for (let i = 0; i < cleanedBase64.length; i += 4) {
-    encoded1 = base64CharToUint6(cleanedBase64.charCodeAt(i));
-    encoded2 = base64CharToUint6(cleanedBase64.charCodeAt(i + 1));
-    encoded3 = base64CharToUint6(cleanedBase64.charCodeAt(i + 2));
-    encoded4 = base64CharToUint6(cleanedBase64.charCodeAt(i + 3));
-
-    bytes[p++] = (encoded1 << 2) | (encoded2 >> 4);
-    if (encoded3 !== 64) {
-      bytes[p++] = ((encoded2 & 15) << 4) | (encoded3 >> 2);
-    }
-    if (encoded4 !== 64) {
-      bytes[p++] = ((encoded3 & 3) << 6) | encoded4;
-    }
-  }
-
-  return bytes;
+interface GoogleAnalyticsReportRequestBody {
+  kind?: string;
+  metadata?: {
+    currencyCode?: string;
+    timeZone?: string;
+  };
+  rowCount?: number;
+  rows?: {
+    dimensionValues: {
+      value: string;
+    }[];
+    metricValues: {
+      value: string;
+    }[];
+  }[];
+  dimensionHeaders?: {
+    name: string;
+  }[];
+  metricHeaders?: {
+    name: string;
+    type: string;
+  }[];
 }
 
-/**
- * Convert a Base64 character to a 6-bit integer.
- * @param nChr - The character code of the Base64 character.
- * @returns The 6-bit integer value.
- */
-function base64CharToUint6(nChr: number): number {
-  if (nChr >= 65 && nChr <= 90) {
-    return nChr - 65;
-  } else if (nChr >= 97 && nChr <= 122) {
-    return nChr - 71;
-  } else if (nChr >= 48 && nChr <= 57) {
-    return nChr + 4;
-  } else if (nChr === 43) {
-    return 62;
-  } else if (nChr === 47) {
-    return 63;
-  } else {
-    return 64;
-  }
+interface MyResponse {
+  days: number;
+  path: string;
+  views: number;
 }
 
 /**
@@ -237,6 +265,26 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   if (days < 1) {
     days = 1;
   }
+  // get the requested page path from the url query
+  const path = url.searchParams.get("path") || "";
+  // decode the path
+  const decodedPath = decodeURIComponent(path);
+  // try get cached result from KV
+  const cachedResult = await context.env.BLOG_VIEWS.get(
+    `${days}-${decodedPath}`
+  );
+  if (cachedResult) {
+    const myResponse: MyResponse = {
+      days: days,
+      path: decodedPath,
+      views: parseInt(cachedResult),
+    };
+    return new Response(JSON.stringify(myResponse), {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
 
   const accessToken = await getGoogleAccessToken(
     context.env.BLOG_VIEWS,
@@ -275,5 +323,35 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     body: JSON.stringify(reportRequestBody),
   });
 
-  return new Response(JSON.stringify(await reportResponse.json()));
+  const reportResponseBody: GoogleAnalyticsReportRequestBody =
+    await reportResponse.json();
+
+  let totalViews = 0;
+  for (const data of reportResponseBody.rows) {
+    const path = data.dimensionValues[0].value;
+    const views = parseInt(data.metricValues[0].value);
+    totalViews += views;
+    // save the views to KV
+    await context.env.BLOG_VIEWS.put(`${days}-${path}`, views.toString(), {
+      expirationTtl: 600,
+    });
+  }
+  // save the total views to KV
+  await context.env.BLOG_VIEWS.put(`${days}-`, totalViews.toString(), {
+    expirationTtl: 600,
+  });
+
+  const result =
+    (await context.env.BLOG_VIEWS.get(`${days}-${decodedPath}`)) || "0";
+  const myResponse: MyResponse = {
+    days: days,
+    path: decodedPath,
+    views: parseInt(result),
+  };
+
+  return new Response(JSON.stringify(myResponse), {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 };
