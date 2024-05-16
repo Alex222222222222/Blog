@@ -119,6 +119,19 @@ function arrayBufferToBase64Url(arrayBuffer: ArrayBuffer): string {
   return uint8ArrayToBase64Url(new Uint8Array(arrayBuffer));
 }
 
+/*
+Convert a string into an ArrayBuffer
+from https://developers.google.com/web/updates/2012/06/How-to-convert-ArrayBuffer-to-and-from-String
+*/
+function str2ab(str: string) {
+  const buf = new ArrayBuffer(str.length);
+  const bufView = new Uint8Array(buf);
+  for (let i = 0, strLen = str.length; i < strLen; i++) {
+    bufView[i] = str.charCodeAt(i);
+  }
+  return buf;
+}
+
 export const onRequest: PagesFunction<Env> = async (context) => {
   // try get the access token
   // create JWT token header
@@ -141,19 +154,17 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
   let cryptoKey = await crypto.subtle.importKey(
     "pkcs8",
-    new TextEncoder().encode(
-      atob(context.env.GOOGLE_ANALYTIC_CREDENTIALS_PRIVATE_KEY)
-    ),
-    { name: "RSASSA-PKCS1-V1_5", hash: { name: "SHA-256" } },
+    str2ab(atob(context.env.GOOGLE_ANALYTIC_CREDENTIALS_PRIVATE_KEY)),
+    { name: "RSASSA-PKCS1-V1_5", hash: "SHA-256" },
     false,
     ["sign"]
   );
 
   const signature = arrayBufferToBase64Url(
     await crypto.subtle.sign(
-      { name: "RSASSA-PKCS1-V1_5", hash: { name: "SHA-256" } },
+      "RSASSA-PKCS1-V1_5",
       cryptoKey,
-      new TextEncoder().encode(`${base64URLJWTHeader}.${base64URLJWTClaimSet}`)
+      str2ab(`${base64URLJWTHeader}.${base64URLJWTClaimSet}`)
     )
   );
 
