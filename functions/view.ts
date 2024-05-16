@@ -1,4 +1,5 @@
 interface Env {
+  BLOG_VIEWS: KVNamespace;
   GOOGLE_ANALYTIC_PROPERTY_ID: string;
   GOOGLE_ANALYTIC_CREDENTIALS_CLIENT_EMAIL: string;
   GOOGLE_ANALYTIC_CREDENTIALS_PRIVATE_KEY: string;
@@ -6,6 +7,13 @@ interface Env {
 }
 
 const ACCESS_TOKEN_ENDPOINT = "https://oauth2.googleapis.com/token";
+
+interface GoogleAccessTokenResponse {
+  access_token: string;
+  expires_in: number;
+  token_type: string;
+  scope: string;
+}
 
 /**
  * Decode a Base64 string to a Uint8Array.
@@ -132,19 +140,39 @@ function str2ab(str: string) {
   return buf;
 }
 
-export const onRequest: PagesFunction<Env> = async (context) => {
-  // try get the access token
+/**
+ * Get the Google Analytics access token.
+ * For more information, see https://developers.google.com/identity/protocols/oauth2/service-account#httprest
+ * @param kv - The KV namespace to store the access token.
+ * @param kid - The key ID of the service account.
+ * @param client_email - The email address of the service account.
+ * @param private_key - The private key of the service account.
+ * @returns The Google Analytics access token.
+ */
+async function getGoogleAccessToken(
+  kv: KVNamespace,
+  kid: string,
+  client_email: string,
+  private_key: string
+): Promise<string> {
+  // test if the access_token is already in the kv
+  const accessTokenKV = await kv.get("access_token");
+  if (accessTokenKV) {
+    return accessTokenKV;
+  }
+
+  // not in the kv, create a new access token
   // create JWT token header
   const base64URLJWTHeader = stringToBase64Url(
     JSON.stringify({
       alg: "RS256",
       typ: "JWT",
-      kid: context.env.GOOGLE_ANALYTIC_CREDENTIALS_JWT_KID,
+      kid: kid,
     })
   );
   const base64URLJWTClaimSet = stringToBase64Url(
     JSON.stringify({
-      iss: context.env.GOOGLE_ANALYTIC_CREDENTIALS_CLIENT_EMAIL,
+      iss: client_email,
       scope: "https://www.googleapis.com/auth/analytics.readonly",
       aud: "https://oauth2.googleapis.com/token",
       iat: Math.floor(Date.now() / 1000),
@@ -154,7 +182,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
   let cryptoKey = await crypto.subtle.importKey(
     "pkcs8",
-    str2ab(atob(context.env.GOOGLE_ANALYTIC_CREDENTIALS_PRIVATE_KEY)),
+    str2ab(atob(private_key)),
     { name: "RSASSA-PKCS1-V1_5", hash: "SHA-256" },
     false,
     ["sign"]
@@ -182,33 +210,70 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     body: params,
   });
 
-  return new Response(JSON.stringify(await response.json()));
+  const accessTokenResponse: GoogleAccessTokenResponse = await response.json();
+  const accessToken = accessTokenResponse.access_token;
 
-  /*
-  const report = await analyticsDataClient
-    .runReport({
-      property: `properties/${context.env.GOOGLE_ANALYTIC_PROPERTY_ID}`,
-      dimensions: [
-        {
-          name: "pagePath",
-        },
-      ],
-      metrics: [
-        {
-          name: "screenPageViews",
-        },
-      ],
-      dateRanges: [
-        {
-          startDate: "yesterday",
-          endDate: "today",
-        },
-      ],
-    })
-    .finally(() => {
-      analyticsDataClient.close();
-    });
-    */
+  // save the access token to KV
+  const expires_in = accessTokenResponse.expires_in - 60;
+  if (expires_in <= 0) {
+    return accessToken;
+  }
+  await kv.put("access_token", accessToken, {
+    expirationTtl: expires_in,
+  });
 
-  // return new Response(JSON.stringify(report));
+  return accessToken;
+}
+
+/**
+ * The onRequest handler for the page.
+ * @param context - The environment variables.
+ * @returns The response from the Google Analytics API.
+ */
+export const onRequest: PagesFunction<Env> = async (context) => {
+  // get number of days to look back from the url query
+  const url = new URL(context.request.url);
+  let days = parseInt(url.searchParams.get("days") || "1");
+  if (days < 1) {
+    days = 1;
+  }
+
+  const accessToken = await getGoogleAccessToken(
+    context.env.BLOG_VIEWS,
+    context.env.GOOGLE_ANALYTIC_CREDENTIALS_JWT_KID,
+    context.env.GOOGLE_ANALYTIC_CREDENTIALS_CLIENT_EMAIL,
+    context.env.GOOGLE_ANALYTIC_CREDENTIALS_PRIVATE_KEY
+  );
+
+  const reportRequestBody = {
+    dimensions: [
+      {
+        name: "pagePath",
+      },
+    ],
+    metrics: [
+      {
+        name: "screenPageViews",
+      },
+    ],
+    dateRanges: [
+      {
+        startDate: `${days}daysAgo`,
+        endDate: "today",
+      },
+    ],
+  };
+  const reportRequestHeaders = {
+    Authorization: `Bearer ${accessToken}`,
+    "Content-Type": "application/json; charset=utf-8",
+  };
+  const reportEndpoint = `https://analyticsdata.googleapis.com/v1beta/properties/${context.env.GOOGLE_ANALYTIC_PROPERTY_ID}:runReport`;
+
+  const reportResponse = await fetch(reportEndpoint, {
+    method: "POST",
+    headers: reportRequestHeaders,
+    body: JSON.stringify(reportRequestBody),
+  });
+
+  return new Response(JSON.stringify(await reportResponse.json()));
 };
