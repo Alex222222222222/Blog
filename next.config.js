@@ -7,4 +7,4 @@ const nextConfig = {
   exclude: ["/functions"],
 };
 
-module.exports = nextConfig;
+export default nextConfig;

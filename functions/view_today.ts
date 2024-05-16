@@ -26,7 +26,7 @@ function base64ToUint8Array(base64: string): Uint8Array {
       : 0);
   const bytes = new Uint8Array(byteLength);
 
-  let encoded1, encoded2, encoded3, encoded4;
+  let encoded1: number, encoded2: number, encoded3: number, encoded4: number;
   let p = 0;
 
   for (let i = 0; i < cleanedBase64.length; i += 4) {
@@ -147,7 +147,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     .replace(/\n/g, "");
   let cryptoKey = await crypto.subtle.importKey(
     "pkcs8",
-    base64ToUint8Array(keyBase64),
+    new TextEncoder().encode(atob(keyBase64)),
     { name: "RSASSA-PKCS1-V1_5", hash: { name: "SHA-256" } },
     false,
     ["sign"]
@@ -155,7 +155,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
   const signature = arrayBufferToBase64Url(
     await crypto.subtle.sign(
-      "RSASSA-PKCS1-v1_5",
+      { name: "RSASSA-PKCS1-V1_5", hash: { name: "SHA-256" } },
       cryptoKey,
       new TextEncoder().encode(`${base64URLJWTHeader}.${base64URLJWTClaimSet}`)
     )
