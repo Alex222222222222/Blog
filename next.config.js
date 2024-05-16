@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  exclude: ["/functions"],
 };
 
 module.exports = nextConfig;
