@@ -7,17 +7,20 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 const TopBar: React.FC = () => {
-  const [oneDaysViews, oneDaysViewsDispatch] = useState(0);
+  const [sevenDaysViews, sevenDaysViewsDispatch] = useState(0);
   const [thirtyDaysViews, thirtyDaysViewsDispatch] = useState(0);
   const [totalViews, totalViewsDispatch] = useState(0);
+  const [siteSevenDaysViews, siteSevenDaysViewsDispatch] = useState(0);
+  const [siteThirtyDaysViews, siteThirtyDaysViewsDispatch] = useState(0);
+  const [siteTotalViews, siteTotalViewsDispatch] = useState(0);
 
   const router = useRouter();
   useEffect(() => {
     const path = router.pathname;
-    fetch(`/views?days=1&path=${encodeURIComponent(path)}`)
+    fetch(`/views?days=7&path=${encodeURIComponent(path)}`)
       .then((response) => response.json())
       .then((data) => {
-        oneDaysViewsDispatch(data.views);
+        sevenDaysViewsDispatch(data.views);
       });
 
     fetch(`/views?days=30&path=${encodeURIComponent(path)}`)
@@ -26,10 +29,28 @@ const TopBar: React.FC = () => {
         thirtyDaysViewsDispatch(data.views);
       });
 
-    fetch(`/views?days=&path=${encodeURIComponent(path)}`)
+    fetch(`/views?days=1000&path=${encodeURIComponent(path)}`)
       .then((response) => response.json())
       .then((data) => {
         totalViewsDispatch(data.views);
+      });
+
+    fetch(`/views?days=7`)
+      .then((response) => response.json())
+      .then((data) => {
+        siteSevenDaysViewsDispatch(data.views);
+      });
+
+    fetch(`/views?days=30`)
+      .then((response) => response.json())
+      .then((data) => {
+        siteThirtyDaysViewsDispatch(data.views);
+      });
+
+    fetch(`/views?days=1000`)
+      .then((response) => response.json())
+      .then((data) => {
+        siteTotalViewsDispatch(data.views);
       });
   }, [router.pathname]);
 
@@ -88,16 +109,22 @@ const TopBar: React.FC = () => {
         <table className="table-auto">
           <tbody>
             <tr>
-              <td className="px-2">1 Day</td>
-              <td className="pr-2">{oneDaysViews}</td>
+              <td className="px-2">7 Days</td>
+              <td className="pr-2">{sevenDaysViews}</td>
+              <td className="pr-2">Site 7 Days</td>
+              <td className="pr-2">{siteSevenDaysViews}</td>
             </tr>
             <tr>
               <td className="px-2">30 Days</td>
               <td className="pr-2">{thirtyDaysViews}</td>
+              <td className="pr-2">Site 30 Days</td>
+              <td className="pr-2">{siteThirtyDaysViews}</td>
             </tr>
             <tr>
               <td className="px-2">Total</td>
               <td className="pr-2">{totalViews}</td>
+              <td className="pr-2">Site Total</td>
+              <td className="pr-2">{siteTotalViews}</td>
             </tr>
           </tbody>
         </table>
