@@ -254,6 +254,21 @@ async function getGoogleAccessToken(
 }
 
 /**
+ * Calculate the cache TTL based on the number of days.
+ * @param days - The number of days.
+ * @returns The cache TTL.
+ */
+function calculateCacheTTL(days: number): number {
+  if (days <= 30) {
+    return days * 5 * 60;
+  }
+  if (days >= 1000) {
+    return 60 * (30 * 5 + (1000 - 30));
+  }
+  return 60 * (30 * 5 + (days - 30));
+}
+
+/**
  * The onRequest handler for the page.
  * @param context - The environment variables.
  * @returns The response from the Google Analytics API.
@@ -265,6 +280,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   if (days < 1) {
     days = 1;
   }
+  const cacheTTL = calculateCacheTTL(days);
   // get the requested page path from the url query
   const path = url.searchParams.get("path") || "";
   // decode the path
@@ -333,12 +349,12 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     totalViews += views;
     // save the views to KV
     await context.env.BLOG_VIEWS.put(`${days}-${path}`, views.toString(), {
-      expirationTtl: 600,
+      expirationTtl: cacheTTL,
     });
   }
   // save the total views to KV
   await context.env.BLOG_VIEWS.put(`${days}-`, totalViews.toString(), {
-    expirationTtl: 600,
+    expirationTtl: cacheTTL,
   });
 
   const result =
