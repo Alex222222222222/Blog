@@ -36,9 +36,9 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   if (!response) {
     response = await fetch(request);
     context.waitUntil(cache.put(request, response.clone()));
-    return new Response("Not Cached");
+    console.log("Cache miss");
   }
 
-  return new Response("Cached");
+  console.log("Cache hit");
   return response;
 };
