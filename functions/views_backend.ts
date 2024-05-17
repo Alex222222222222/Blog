@@ -260,23 +260,16 @@ async function getGoogleAccessToken(
  * @returns The response from the Google Analytics API.
  */
 export const onRequest: PagesFunction<Env> = async (context) => {
-  // only accept POST request
-  if (context.request.method !== "POST") {
-    return new Response("Method Not Allowed", {
-      status: 405,
-    });
-  }
-
-  // get key from the body
-  const key = context.request.body.toString();
+  const url = new URL(context.request.url);
+  // get key from the url query
+  const key = url.searchParams.get("backend_key");
   if (key !== context.env.VIEWS_BACKEND_KEY) {
-    return new Response("Invalid Key", {
-      status: 403,
+    return new Response("Unauthorized", {
+      status: 401,
     });
   }
 
   // get number of days to look back from the url query
-  const url = new URL(context.request.url);
   let days = parseInt(url.searchParams.get("days") || "1");
   if (days < 1) {
     days = 1;

@@ -10,15 +10,15 @@ interface Env {
 export const onRequest: PagesFunction<Env> = async (context) => {
   // get number of days to look back from the url query
   const url = new URL(context.request.url);
+  const params = url.searchParams;
+  params.set("backend_key", context.env.VIEWS_BACKEND_KEY);
 
   // construct the new URL
   const newUrl = new URL("https://alex1222.com/views_backend");
   // set the query parameters
-  newUrl.search = url.search;
+  newUrl.search = params.toString();
 
   const request = new Request(newUrl.toString(), {
-    method: "POST",
-    body: context.env.VIEWS_BACKEND_KEY,
     cf: {
       // Always cache this fetch regardless of content type
       cacheEverything: true,
