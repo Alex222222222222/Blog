@@ -14,8 +14,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   // set the query parameters
   newUrl.search = url.search;
 
-  return await fetch(newUrl, {
-    method: "GET",
+  const request = new Request(newUrl.toString(), {
     cf: {
       // Always cache this fetch regardless of content type
       cacheEverything: true,
@@ -26,4 +25,16 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       },
     },
   });
+
+  const cache = caches.default;
+
+  let response = await cache.match(request);
+  if (!response) {
+    response = await fetch(request);
+    context.waitUntil(cache.put(request, response.clone()));
+    return new Response("Not Cached");
+  }
+
+  return new Response("Cached");
+  return response;
 };
