@@ -17,6 +17,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   newUrl.search = url.search;
 
   const request = new Request(newUrl.toString(), {
+    method: "POST",
     body: context.env.VIEWS_BACKEND_KEY,
     cf: {
       // Always cache this fetch regardless of content type

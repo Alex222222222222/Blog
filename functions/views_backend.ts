@@ -260,6 +260,13 @@ async function getGoogleAccessToken(
  * @returns The response from the Google Analytics API.
  */
 export const onRequest: PagesFunction<Env> = async (context) => {
+  // only accept POST request
+  if (context.request.method !== "POST") {
+    return new Response("Method Not Allowed", {
+      status: 405,
+    });
+  }
+
   // get key from the body
   const key = context.request.body.toString();
   if (key !== context.env.VIEWS_BACKEND_KEY) {
