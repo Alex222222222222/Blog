@@ -1,4 +1,6 @@
-interface Env {}
+interface Env {
+  VIEWS_BACKEND_KEY: string;
+}
 
 /**
  * The onRequest handler for the page.
@@ -15,6 +17,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   newUrl.search = url.search;
 
   const request = new Request(newUrl.toString(), {
+    body: context.env.VIEWS_BACKEND_KEY,
     cf: {
       // Always cache this fetch regardless of content type
       cacheEverything: true,
