@@ -299,7 +299,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     ],
     dimensionFilter: {
       filter: {
-        fieldName: "FilterPath",
+        fieldName: "pagePath",
         stringFilter: {
           matchType: "EXACT",
           value: path,
@@ -357,10 +357,11 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     await reportResponse.json();
 
   let totalViews = 0;
-  for (const data of reportResponseBody.rows) {
-    const path = data.dimensionValues[0].value;
-    const views = parseInt(data.metricValues[0].value);
-    totalViews += views;
+  if (reportResponseBody.rows) {
+    for (const data of reportResponseBody.rows) {
+      const views = parseInt(data.metricValues[0].value);
+      totalViews += views;
+    }
   }
 
   const myResponse: MyResponse = {
