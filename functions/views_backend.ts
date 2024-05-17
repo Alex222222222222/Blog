@@ -4,6 +4,7 @@ interface Env {
   GOOGLE_ANALYTIC_CREDENTIALS_CLIENT_EMAIL: string;
   GOOGLE_ANALYTIC_CREDENTIALS_PRIVATE_KEY: string;
   GOOGLE_ANALYTIC_CREDENTIALS_JWT_KID: string;
+  VIEWS_BACKEND_KEY: string;
 }
 
 const ACCESS_TOKEN_ENDPOINT = "https://oauth2.googleapis.com/token";
@@ -259,6 +260,14 @@ async function getGoogleAccessToken(
  * @returns The response from the Google Analytics API.
  */
 export const onRequest: PagesFunction<Env> = async (context) => {
+  // get key from the body
+  const key = context.request.body.toString();
+  if (key !== context.env.VIEWS_BACKEND_KEY) {
+    return new Response("Invalid Key", {
+      status: 403,
+    });
+  }
+
   // get number of days to look back from the url query
   const url = new URL(context.request.url);
   let days = parseInt(url.searchParams.get("days") || "1");
