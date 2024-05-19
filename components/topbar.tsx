@@ -55,8 +55,8 @@ const TopBar: React.FC = () => {
   }, [router.events]);
 
   return (
-    <div className="flex flex-row pt-2">
-      <div className="grow">
+    <div className="lg:flex lg:flex-row pt-2">
+      <div className="lg:grow">
         <ul className="flex underline">
           <li className="mr-3">
             <Link href="/">{config.pageTitle}</Link>
@@ -109,19 +109,19 @@ const TopBar: React.FC = () => {
         <table className="table-auto">
           <tbody>
             <tr>
-              <td className="px-2">7 Days</td>
+              <td className="pr-2">7 Days</td>
               <td className="pr-2">{sevenDaysViews}</td>
               <td className="pr-2">Site 7 Days</td>
               <td className="pr-2">{siteSevenDaysViews}</td>
             </tr>
             <tr>
-              <td className="px-2">30 Days</td>
+              <td className="pr-2">30 Days</td>
               <td className="pr-2">{thirtyDaysViews}</td>
               <td className="pr-2">Site 30 Days</td>
               <td className="pr-2">{siteThirtyDaysViews}</td>
             </tr>
             <tr>
-              <td className="px-2">Total</td>
+              <td className="pr-2">Total</td>
               <td className="pr-2">{totalViews}</td>
               <td className="pr-2">Site Total</td>
               <td className="pr-2">{siteTotalViews}</td>
