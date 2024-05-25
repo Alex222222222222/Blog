@@ -637,3 +637,197 @@ $$
 
 The term $\sum_i \frac{1}{2}m_i(\dot{\mathbf{r}}_i - \dot{\mathbf{R}})^2$
 is the kinetic energy of the system with respect to the centre of mass.
+
+#### Separable Potential Energy
+
+Given a system of particles with masses $m_i$ and position vectors $\mathbf{r}_i$,
+and the total mass of the system $M$,
+the total potential energy $U$ of the system is given by:
+
+$$
+\begin{align}
+    U &= \sum_i U_i \\
+    &= \sum_i U_i(\mathbf{r}_i)
+\end{align}
+$$
+
+If the potential energy $U$ is separable, that is, the potential energy can be expressed as:
+
+$$
+U = U_{\mathbf{R}}(\mathbf{R}) + \sum_i U_i(\mathbf{r}_i)
+$$
+
+Then the generalised coordinates $q_i$ can be reformulated
+using the center of mass $\mathbf{R}$ and the relative coordinates $\mathbf{r}_i - \mathbf{R}$.
+And the Lagrangian $L$ can be expressed in terms of the center of mass $\mathbf{R}$ and the relative coordinates $\mathbf{r}_i - \mathbf{R}$.
+
+$$
+\begin{align}
+    L_{0} &= T_{0} - U_{0} = \frac{1}{2}M\dot{\mathbf{R}}^2 - U_{\mathbf{R}}(\mathbf{R}) \\
+    L_{i} &= T_{i} - U_{i} = \frac{1}{2}m_i(\dot{\mathbf{r}}_i - \dot{\mathbf{R}})^2 - U_i(\mathbf{r}_i-\mathbf{R})
+\end{align}
+$$
+
+> Example: A constant gravitational field acting on a system of particles is a separable potential energy. And the total potential energy $U$ of the system is given by: $U = U_{\mathbf{R}}(\mathbf{R})$, which only depend on the center of mass $\mathbf{R}$.
+
+##### Example: Two Particles
+
+Given two particles $1$ and $2$ with masses $m_1$ and $m_2$ and position vectors $\mathbf{r}_1$ and $\mathbf{r}_2$,
+
+Then let:
+
+$$
+\begin{align}
+    \mathbf{R} &= \frac{m_1\mathbf{r}_1 + m_2\mathbf{r}_2}{m_1 + m_2} \\
+    \mathbf{r} &= \mathbf{r}_2 - \mathbf{r}_1
+\end{align}
+$$
+
+Thus,
+
+$$
+\begin{align}
+    \mathbf{r}_1 &=  \mathbf{R} - \frac{m_2}{m_1 + m_2}\mathbf{r} \\
+    \mathbf{r}_2 &=  \mathbf{R} + \frac{m_1}{m_1 + m_2}\mathbf{r}
+\end{align}
+$$
+
+The kinetic energy $T$ of the system is given by:
+
+$$
+\begin{align}
+    T &= \frac{1}{2}M\dot{\mathbf{R}}^2 +
+    \left[\frac{1}{2}m_{1}(\dot{\mathbf{r}}_{2}-\dot{\mathbf{R}})^2
+    + \frac{1}{2}m_{2}(\dot{\mathbf{r}}_{2}-\dot{\mathbf{R}})^2 \right] \\
+    &= \frac{1}{2}M\dot{\mathbf{R}}^2 + \frac{1}{2}\frac{m_1m_2}{m_1+m_2}\dot{\mathbf{r}}^2
+\end{align}
+$$
+
+And the potential is given by:
+
+$$
+U = U_{\mathbf{r}}(\mathbf{r})
+$$
+
+Thus, the Lagrangian $L$ of the system is given by:
+
+$$
+L = \frac{1}{2}M\dot{\mathbf{R}}^2 + \frac{1}{2}\frac{m_1m_2}{m_1+m_2}\dot{\mathbf{r}}^2 - U_{\mathbf{r}}(\mathbf{r})
+$$
+
+Apparently, the Lagrangian is cyclic in $\mathbf{R}$.
+Thus, the total momentum $\mathbf{P}$ of the system is conserved.
+
+#### Rigid Bodies
+
+A rigid body is a system of particles with fixed relative distances between the particles.
+
+For rigid body, we use $\mathbf{R}$ to denote the position of the center of mass of the rigid body,
+and $\mathbf{\rho}_i= (\rho_i, \varphi_i)$ in polar coordinates to denote the position of the $i$-th particle with respect to the center of mass.
+
+As, the relative distances between the particles are fixed,
+$\rho_i$ is a constant of time.
+And also, the angular velocity $\dot{\varphi}_i$ is the same for all particles,
+in convention, we use $\dot{\varphi}_i = \varphi$ to denote the angular velocity of the rigid body.
+
+##### Moment of Inertia
+
+Given a rigid body with mass $M$ and position vector $\mathbf{R}$,
+and the $i$-th particle with mass $m_i$ and position vector $\mathbf{\rho}_i$,
+the kinetic energy $T$ of the rigid body is given by:
+
+$$
+\begin{align}
+    T &= \frac{1}{2}M\dot{\mathbf{R}}^2 + \sum_i \frac{1}{2}m_i\dot{\mathbf{\rho}}_i^2 \\
+    &= \frac{1}{2}M\dot{\mathbf{R}}^2 + \sum_i \frac{1}{2}m_i(\rho_i^2\dot{\varphi}^2) \\
+    &= \frac{1}{2}M\dot{\mathbf{R}}^2 + \frac{1}{2} \dot{\varphi}^2 \sum_i m_i \rho_i^2
+\end{align}
+$$
+
+The term $\sum_i m_i \rho_i^2$ is called the moment of inertia $I$ of the rigid body,
+which represents the resistance of the rigid body to rotation.
+
+###### Example: The moment of inertia of a homogeneous disk
+
+Given a homogeneous disk of radius $R$ and mass $M$,
+the moment of inertia $I$ of the disk is given by:
+
+$$
+\begin{align}
+    I &= \int_{0}^{2\pi} \int_{0}^{R} \rho^2 \rho \frac{M}{\pi R^2} d\rho d\varphi \\
+    &= \frac{M}{\pi R^2} \int_{0}^{2\pi} \int_{0}^{R} \rho^3 d\rho d\varphi \\
+    &= \frac{M}{\pi R^2} \int_{0}^{2\pi} \frac{1}{4}R^4 d\varphi \\
+    &= \frac{M}{\pi R^2} 2\pi \frac{1}{4}R^4 \\
+    &= \frac{1}{2}MR^2
+\end{align}
+$$
+
+##### Example: Rolling Cylinder on an Inclined Plane
+
+Consider the following system:
+
+![Rolling Cylinder](/static/img/2024-05-23-Classical-Mechanics-Notes/4.png)
+
+Given a cylinder of radius $R$ and mass $M$ rolling on an inclined plane with angle $\alpha$,
+the question can be simplified by considering the following system:
+
+![Rolling Cylinder Simplified](/static/img/2024-05-23-Classical-Mechanics-Notes/5.png)
+
+Where $\alpha$ is again the angle of the inclined plane,
+$\phi$ is the rolling angle of the cylinder,
+and $R = (x,y)$ is the position of the center of mass of the cylinder.
+
+As the cylinder is rolling on the plane with no sliding,
+we can formulate the constraints as:
+
+$$
+\begin{align}
+    y &= -R\phi\sin(\alpha) \\
+    x &= R\phi\cos(\alpha)
+\end{align}
+$$
+
+Thus, the velocity of the center of mass of the cylinder is given by:
+
+$$
+\begin{align}
+    \dot{R} &= (\dot{x},\dot{y}) \\
+    &= R\dot{\phi}(\cos(\alpha),-\sin(\alpha))
+\end{align}
+$$
+
+And the kinetic energy $T$ of the cylinder is given by:
+
+$$
+\begin{align}
+    T &= \frac{1}{2}M\dot{R}^2 + \frac{1}{2}I\dot{\phi}^2 \\
+    &= \frac{1}{2}M R^2 \dot{\phi}^2 + \frac{1}{2}I\dot{\phi}^2 \\
+    &= \frac{1}{2}M R^2 \dot{\phi}^2 + \frac{1}{2}I\dot{\phi}^2 \\
+    &= \frac{1}{2}M R^2 \dot{\phi}^2 + \frac{1}{4}M R^2 \dot{\phi}^2 \\
+    &= \frac{3}{4} M R^2 \dot{\phi}^2
+\end{align}
+$$
+
+If we consider a constant gravitational field acting on the cylinder,
+the potential energy $U$ of the cylinder is given by:
+
+$$
+U = Mgy = -MgR\phi\sin(\alpha)
+$$
+
+The Lagrangian $L$ of the cylinder is given by:
+
+$$
+L = \frac{3}{4} M R^2 \dot{\phi}^2 + MgR\phi\sin(\alpha)
+$$
+
+Using the Euler-Lagrange equation, we can determine the equation of motion of the cylinder.
+
+$$
+\begin{align}
+    \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{\phi}}\right) - \frac{\partial L}{\partial \phi} &= 0 \\
+    \frac{d}{dt}\left(\frac{3}{2}M R^2 \dot{\phi}\right) - MgR\sin(\alpha) &= 0 \\
+    \frac{3}{2}M R^2 \ddot{\phi} - MgR\sin(\alpha) &= 0 \\
+    \ddot{\phi} &= \frac{2g\sin(\alpha)}{3R}
+\end{align}
+$$
