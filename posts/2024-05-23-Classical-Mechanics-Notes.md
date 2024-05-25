@@ -831,3 +831,217 @@ $$
     \ddot{\phi} &= \frac{2g\sin(\alpha)}{3R}
 \end{align}
 $$
+
+## Small Oscillations
+
+### Harmonic Oscillator
+
+Given a object with mass $m$, spring constant $k$, and displacement $x$.
+The kinetic energy $T$ of the object is given by:
+
+$$
+T = \frac{1}{2}m\dot{x}^2
+$$
+
+The potential energy $U$ of the object is given by:
+
+$$
+U = \frac{1}{2}kx^2
+$$
+
+The Lagrangian $L$ of the object is given by:
+
+$$
+L = T - U = \frac{1}{2}m\dot{x}^2 - \frac{1}{2}kx^2
+$$
+
+By solving the Euler-Lagrange equation, we can determine the equation of motion of the object.
+
+$$
+\begin{align}
+    \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}}\right) - \frac{\partial L}{\partial x} &= 0 \\
+    \frac{d}{dt}\left(m\dot{x}\right) + kx &= 0 \\
+    m\ddot{x} + kx &= 0
+\end{align}
+$$
+
+Thus,
+
+$$
+x = A \cos(\omega t + \phi), \omega = \sqrt{\frac{k}{m}}
+$$
+
+### Small Oscillations in General
+
+Given a system with generalized coordinates $q_i$,
+and potential energy $U$ of the system.
+And stationary points $q_{i0}$ of potential energy $U$.
+Such that
+
+$$
+\frac{\partial U}{\partial q_i} = 0
+$$
+
+Then, the potential energy $U$ can be expanded as a Taylor series around the stationary points $q_{i0}$.
+
+$$
+\begin{align}
+    U &= U(q_{i0}) + \sum_i \frac{\partial U}{\partial q_i}(q_i - q_{i0}) + \frac{1}{2}\sum_{i,j} \frac{\partial^2 U}{\partial q_i \partial q_j}(q_i - q_{i0})(q_j - q_{j0}) + \cdots \\
+    &= U(q_{i0}) + \frac{1}{2}\sum_{i,j} \frac{\partial^2 U}{\partial q_i \partial q_j}(q_i - q_{i0})(q_j - q_{j0}) + \cdots \\
+    &\approx U(q_{i0}) + \frac{1}{2}\sum_{i,j} \frac{\partial^2 U}{\partial q_i \partial q_j}(q_i - q_{i0})(q_j - q_{j0})
+\end{align}
+$$
+
+We could use symmetric matrix $K$ to represent the second order partial derivatives of the potential energy $U$.
+
+$$
+K_{ij} = \frac{\partial^2 U}{\partial q_i \partial q_j}
+$$
+
+Thus, the potential energy $U$ can be expressed as:
+
+$$
+U = U(q_{i0}) + \frac{1}{2}(q-q_{0})^T K (q-q_{0})
+$$
+
+Also, in general, the kinetic energy $T$ of the system can be expressed using a positive definite symmetric matrix $M$.
+
+$$
+T = \frac{1}{2}\dot{q}^T M \dot{q}
+$$
+
+Thus, in general, the Lagrangian $L$ of the system is given by:
+
+$$
+L = T - U = \frac{1}{2}\dot{q}^T M \dot{q} - U(q_{i0}) - \frac{1}{2}(q-q_{0})^T K (q-q_{0})
+$$
+
+### Double Pendulum
+
+Consider a double pendulum like below:
+
+![Double Pendulum](/static/img/2024-05-23-Classical-Mechanics-Notes/6.png)
+
+Thus, the stationary points of the double pendulum are given by:
+
+$$
+\begin{align}
+    \varphi_1 &= 0 \\
+    \varphi_2 &= 0
+\end{align}
+$$
+
+If we set the suspension point as the origin $(0,0)$,
+then the position of the first mass $m_1$ is given by:
+
+$$
+\begin{align}
+    x_1 &= l_1\sin(\varphi_1) \\
+    y_1 &= -l_1\cos(\varphi_1)
+\end{align}
+$$
+
+And the position of the second mass $m_2$ is given by:
+
+$$
+\begin{align}
+    x_2 &= l_1\sin(\varphi_1) + l_2\sin(\varphi_2) \\
+    y_2 &= -l_1\cos(\varphi_1) - l_2\cos(\varphi_2)
+\end{align}
+$$
+
+Thus, if we set $\varphi_1$ and $\varphi_2$ close to the stationary point, the kinetic energy $T$ of the double pendulum is given by:
+
+$$
+\begin{align}
+    T &= \frac{1}{2}m_1\left(\dot{x}_1^2 + \dot{y}_1^2\right) + \frac{1}{2}m_2\left(\dot{x}_2^2 + \dot{y}_2^2\right) \\
+    &= \frac{1}{2}m_1\left(l_1^2\dot{\varphi}_1^2\right) + \frac{1}{2}m_2\left(l_1^2\dot{\varphi}_1^2 + l_2^2\dot{\varphi}_2^2 + 2l_1l_2\dot{\varphi}_1\dot{\varphi}_2\cos(\varphi_1 - \varphi_2)\right) \\
+    &\approx \frac{1}{2}m_1l_1^2\dot{\varphi}_1^2 + \frac{1}{2}m_2l_1^2\dot{\varphi}_1^2 + \frac{1}{2}m_2l_2^2\dot{\varphi}_2^2 + m_2l_1l_2\dot{\varphi}_1\dot{\varphi}_2
+\end{align}
+$$
+
+The potential energy $U$ of the double pendulum is given by:
+
+$$
+\begin{align}
+    U &= m_1gy_1 + m_2gy_2 \\
+    &= -m_1gl_1\cos(\varphi_1) - m_2gl_1\cos(\varphi_1) - m_2gl_2\cos(\varphi_2) \\
+    &\approx -(m_1gl_1 + m_2gl_1)(1-\frac{1}{2}\varphi_1^2) - m_2gl_2(1-\frac{1}{2}\varphi_2^2)
+\end{align}
+$$
+
+## Normal Modes
+
+As in [Small Oscillations in General](#small-oscillations-in-general),
+we can express the kinetic and potential energy of the system in terms of symmetric matrices $M$ and $K$:
+
+$$
+\begin{align}
+    T &= \frac{1}{2}\dot{q}^T M \dot{q} \\
+    U &= \frac{1}{2}(q-q_{0})^T K (q-q_{0})
+\end{align}
+$$
+
+Thus, the general momentum $p$ of the system is given by:
+
+$$
+p = \frac{\partial L}{\partial \dot{q}} = M\dot{q}
+$$
+
+And the generalised force $Q$ of the system is given by:
+
+$$
+Q = \frac{\partial L}{\partial q} = K(q-q_{0})
+$$
+
+And the [Euler-Lagrange equation](#euler-lagrange-equation) is given by:
+
+$$
+\begin{align}
+    \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}}\right) - \frac{\partial L}{\partial q} &= 0 \\
+    \frac{d}{dt}\left(M\dot{q}\right) - K(q-q_{0}) &= 0 \\
+    M\ddot{q} + K(q-q_{0}) &= 0
+\end{align}
+$$
+
+As, $M$ is a positive definite symmetric matrix,
+the inverse of $M$ exists.
+
+Thus, the equation of motion of the system can be expressed as:
+
+$$
+\ddot{q} + M^{-1}K(q-q_{0}) = 0
+$$
+
+A normal mode of the system is a solution of the above equation of the form:
+
+$$
+q(t) = q_0 + c(t)v
+$$
+
+Where $c(t)$ is a scalar function of time,
+and $v$ is a vector that is independent of time.
+
+Substituting the normal mode solution into the equation of motion of the system:
+
+$$
+\begin{align}
+    \ddot{q} + M^{-1}K(q-q_{0}) &= 0 \\
+    \ddot{c}(t)v + c(t)M^{-1}K(v) &= 0 \\
+    \frac{\ddot{c}}{c(t)} v + M^{-1}K(v) &= 0
+\end{align}
+$$
+
+Thus, $v$ is an eigenvector of the matrix $M^{-1}K$ with eigenvalue $\omega^2$,
+where $\omega$ is the angular frequency of the normal mode.
+And, $c(t)$ is a solution of the following ODE:
+
+$$
+\ddot{c} + \omega^2 c = 0
+$$
+
+Thus, the general solution of the normal mode is given by:
+
+$$
+q(t) = q_0 + \sum_i c_i v_i \cos(\omega_i t + \phi_i)
+$$
