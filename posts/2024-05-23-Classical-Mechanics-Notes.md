@@ -1045,3 +1045,383 @@ Thus, the general solution of the normal mode is given by:
 $$
 q(t) = q_0 + \sum_i c_i v_i \cos(\omega_i t + \phi_i)
 $$
+
+## Hamiltonian Mechanics
+
+Given a system of particles with generalized coordinates $q_i$,
+and the Lagrangian $L$ of the system,
+the generalised momentum $p_i$ of the system is given by:
+
+$$
+p_i = \frac{\partial L}{\partial \dot{q}_i}
+$$
+
+And we can solve this implicit equation to get $\dot{q}_i$ in terms of $q_i$ and $p_i$.
+
+The Hamiltonian $H$ of the system is given by:
+
+$$
+H = p \cdot \dot{q}(q,p,t) - L(q,\dot{q}(q,p,t),t)
+$$
+
+### Hamilton's Canonical Equations
+
+By the Euler-Lagrange equation, we can derive the following equations:
+
+$$
+\begin{align}
+    \frac{dH}{dp} &= \dot{q} + p \cdot \frac{d\dot{q}}{p} - \frac{dL}{d\dot{q}}\cdot \frac{d\dot{q}}{p} \\
+    &= \dot{q} + p \cdot \frac{d\dot{q}}{p} - p \frac{d\dot{q}}{p} \\
+    &= \dot{q}
+\end{align}
+$$
+
+$$
+\begin{align}
+    \frac{dH}{dq} &= \frac{dp}{dq} \cdot \dot{q} + p \cdot \frac{d\dot{q}}{dq} - \frac{dL}{dq} - \frac{dL}{d\dot{q}}\frac{d\dot{q}}{dq}\\
+    &= \frac{dp}{dq} \cdot \dot{q} + p \cdot \frac{d\dot{q}}{dq} - \dot{p} -p \frac{d\dot{q}}{dq}\\
+    &= -\dot{p}
+\end{align}
+$$
+
+### Quadratic Hamiltonian
+
+Given a system of particles with generalized coordinates $q_i$,
+if the potential energy is independent of $\dot{q}$,
+and the kinetic energy $T$ of the system is quadratic in the generalized velocities $\dot{q}_i$, which means there is a positive definite symmetric matrix $M = M(q,t)$ such that:
+
+$$
+T = \frac{1}{2}\dot{q}^T M \dot{q}
+$$
+
+Then the Hamiltonian $H$ of the system is given by:
+
+$$
+\begin{align}
+    H &= p \cdot \dot{q} - L \\
+    &= \frac{\partial L}{\partial\dot{q}} \cdot \dot{q} - T + U \\
+    &= \frac{\partial T}{\partial\dot{q}} \cdot \dot{q} - T + U \\
+    &= (M\dot{q}) \cdot \dot{q} -T + U \\
+    &= T + U \\
+\end{align}
+$$
+
+### Example: Harmonic Oscillator
+
+Given a object with mass $m$, spring constant $k$, and displacement $x$.
+
+The momentum $p$ of the object is given by:
+
+$$
+p = \frac{\partial L}{\partial \dot{x}} = m\dot{x}
+$$
+
+Thus,
+
+$$
+\dot{x} = \frac{p}{m}
+$$
+
+The potential energy $U$ of the object is given by:
+
+$$
+U = \frac{1}{2}kx^2
+$$
+
+The kinetic energy $T$ of the object is given by:
+
+$$
+T = \frac{1}{2}m\dot{x}^2 = \frac{1}{2}m\left(\frac{p}{m}\right)^2 = \frac{p^2}{2m}
+$$
+
+As the potential energy $U$ is independent of $\dot{x}$,
+and the kinetic energy $T$ is quadratic in $\dot{x}$,
+the Hamiltonian $H$ of the object is given by:
+
+$$
+H = T + U = \frac{p^2}{2m} + \frac{1}{2}kx^2
+$$
+
+By Hamilton's canonical equations, we can determine the equation of motion of the object.
+
+$$
+\begin{align}
+    \frac{\partial H}{\partial p} &= \dot{x} = \frac{p}{m} \\
+    \frac{\partial H}{\partial x} &= -\dot{p} \\
+    kx &= -\dot{p} \\
+    m\ddot{x} &= -kx
+\end{align}
+$$
+
+### Cyclical Coordinates in Hamiltonian Mechanics
+
+Given a system of particles with generalized coordinates $q_i$.
+
+If the Hamiltonian $H$ does not depend on a generalized coordinate $q_i$,
+then the generalized coordinate $q_i$ is called a cyclical coordinate.
+
+Thus,
+
+$$
+\dot{p} = -\frac{\partial H}{\partial q_i} = 0
+$$
+
+The momentum $p_i$ is conserved.
+
+If the Hamiltonian $H$ does not depend on a momentum $p_i$,
+then the momentum $p_i$ is called a cyclical momentum.
+
+Thus,
+
+$$
+\dot{q} = \frac{\partial H}{\partial p_i} = 0
+$$
+
+The generalized coordinate $q_i$ is conserved.
+
+### Example: Particle on a Cone
+
+Consider the following system:
+
+![Particle on a Cone](/static/img/2024-05-23-Classical-Mechanics-Notes/7.png)
+
+The cone is given by:
+
+$$
+z = \sqrt{x^2 + y^2}
+$$
+
+The mass of the particle is $m$,
+the cone is smooth.
+
+Consider the following generalized coordinates:
+
+$$
+\begin{align}
+    z &= z \\
+\end{align}
+$$
+
+And $\varphi$ be the angle of the projection of the particle on the $xy$ plane with the $x$ axis.
+
+Then,
+
+$$
+\begin{align}
+    x &= z\cos(\varphi) \\
+    y &= z\sin(\varphi) \\
+    z &= z
+\end{align}
+$$
+
+The kinetic energy $T$ of the particle is given by:
+
+$$
+\begin{align}
+    T &= \frac{1}{2}m(\dot{x}^2 + \dot{y}^2 + \dot{z}^2) \\
+    &= \frac{1}{2}m(z^2\dot{\varphi}^2 + \dot{z}^2 + \dot{z}^2) \\
+    &= \frac{1}{2}m(2\dot{z}^2 + z^2\dot{\varphi}^2)
+\end{align}
+$$
+
+The potential energy $U$ of the particle is given by:
+
+$$
+U = mgz
+$$
+
+Thus, the Lagrangian $L$ of the particle is given by:
+
+$$
+L = T - U = \frac{1}{2}m(2\dot{z}^2 + z^2\dot{\varphi}^2) - mgz
+$$
+
+The momentum of the particle is given by:
+
+$$
+\begin{align}
+    p_{z} &= \frac{\partial L}{\partial \dot{z}} = 2m\dot{z} \\
+    p_{\varphi} &= \frac{\partial L}{\partial \dot{\varphi}} = mz^2\dot{\varphi}
+\end{align}
+$$
+
+Thus,
+
+$$
+\begin{align}
+    \dot{z} &= \frac{p_z}{2m} \\
+    \dot{\varphi} &= \frac{p_{\varphi}}{mz^2}
+\end{align}
+$$
+
+The Hamiltonian $H$ of the particle is given by:
+
+$$
+\begin{align}
+    H &= p \cdot \dot{q} - L \\
+    &= p_z\dot{z} + p_{\varphi}\dot{\varphi} - L \\
+    &= p_z\frac{p_z}{2m} + p_{\varphi}\frac{p_{\varphi}}{mz^2} - \frac{1}{2}m(2\dot{z}^2 + z^2\dot{\varphi}^2) + mgz \\
+    &= \frac{p_z^2}{2m} + \frac{p_{\varphi}^2}{mz^2} - \frac{1}{2}m\left(2\left(\frac{p_z}{2m}\right)^2 + z^2\left(\frac{p_{\varphi}}{mz^2}\right)^2\right) + mgz \\
+    &= \frac{p_z^2}{2m} + \frac{p_{\varphi}^2}{mz^2} - \frac{p_z^2}{4m} - \frac{p_{\varphi}^2}{2mz^2} + mgz \\
+    &= \frac{p_z^2}{4m} + \frac{p_{\varphi}^2}{2mz^2} + mgz
+\end{align}
+$$
+
+As the Hamiltonian $H$ does not depend on the generalized coordinate $\varphi$,
+the generalized coordinate $\varphi$ is a cyclical coordinate.
+And the momentum $p_{\varphi}$ is a constant.
+
+Thus,
+
+$$
+\begin{align}
+    \frac{dH}{dp_{\phi}} &= \dot{\varphi} \\
+    \frac{p_{\phi}}{mz^2} &= \dot{\varphi} \\
+\end{align}
+$$
+
+For $z$ coordinate,
+
+$$
+\begin{align}
+    \frac{dH}{dp_{z}} &= \dot{z} \\
+    \frac{p_{z}}{2m} &= \dot{z} \\
+\end{align}
+$$
+
+If we are given the initial energy of the particle $E$,
+then the Hamiltonian $H$ of the particle is given by:
+
+$$
+\begin{align}
+    E &= \frac{p_z^2}{4m} + \frac{p_{\varphi}^2}{2mz^2} + mgz \\
+    &= m\dot{z}^2 + \frac{p_{\varphi}^2}{2mz^2} + mgz
+\end{align}
+$$
+
+Which became a first order separable ODE in $z$.
+
+If $p_{\varphi} = 0$, then the particle is moving vertically just like sliding on a smooth surface.
+
+If $p_{\varphi} \neq 0$, then the term $\frac{p_{\varphi}^2}{2mz^2} + mgz$
+has lowest energy at $z_0 = \sqrt[3]{\frac{p_{\varphi}}{m^2g}}$ with energy
+$E_0$.
+
+If $E = E_0$, then $m\dot{z}^2 = 0$, and the particle is doing a circular motion on the cone.
+
+If $E > E_0$, then the particle is doing oscillatory motion on the cone.
+By using Taylor expansion of $\frac{p_{\varphi}^2}{2mz^2} + mgz$ around $z_0$,
+We could derive:
+
+$$
+m\dot{z}^2 + E_0 + \frac{1}{2}\left.(\frac{p_{\varphi}^2}{2mz^2} + mgz)''\right|_{z_{0}} (z-z_0)^2 \approx E
+$$
+
+And we could expect the angular frequency of the oscillatory motion to be approximately:
+
+$$
+\omega = \sqrt{\frac{1}{2m}\left.(\frac{p_{\varphi}^2}{2mz^2} + mgz)''\right|_{z_{0}}}
+$$
+
+### Phase Space
+
+Given a system of particles with generalized coordinates $q_i$,
+and the Hamiltonian $H$ of the system,
+the phase space $\Gamma$ of the system is the space of generalized coordinates $q_i$ and momenta $p_i$.
+
+The phase space of the system is a $2n$ dimensional space,
+where $n$ is the number of generalized coordinates $q_i$.
+
+#### Hamiltonian Flow
+
+The trajectory of the system together with the change of the momentum of the system,
+generate a path in $t$ in the phase space of the system, and the Hamiltonian canonical equations describe the flow of the system in the phase space.
+
+$$
+\begin{align}
+    \frac{dq_i}{dt} &= \frac{\partial H}{\partial p_i} \\
+    \frac{dp_i}{dt} &= -\frac{\partial H}{\partial q_i}
+\end{align}
+$$
+
+#### Liouville's Theorem
+
+Given a system of particles with generalized coordinates $q_i$,
+and the Hamiltonian $H$ of the system,
+the volume of the phase space of the system is conserved.
+In other words,
+the Hamiltonian flow of the system is incompressible.
+
+$$
+\frac{dV}{dt} = 0
+$$
+
+#### Phase Space Portrait
+
+Given a system of particles with generalized coordinates $q_i$,
+and the Hamiltonian $H$ of the system,
+the phase space portrait of the system is the plot of the trajectory of the system in the phase space of the system.
+
+##### Example: Phase Space Portrait of a Harmonic Oscillator
+
+Given a object with mass $m$, spring
+constant $k$, and displacement $x$.
+The Hamiltonian $H$ of the object is given by:
+
+$$
+H = \frac{p^2}{2m} + \frac{1}{2}kx^2
+$$
+
+The Phase Space Portrait of the object is like:
+
+![Phase Space Portrait of a Harmonic Oscillator](/static/img/2024-05-23-Classical-Mechanics-Notes/8.png)
+
+### Poisson Brackets
+
+Given a system of particles with generalized coordinates $q_i$,
+and the Hamiltonian $H$ of the system,
+the Poisson bracket of two functions $f$ and $g$ of the phase space of the system is given by:
+
+$$
+\{f,g\} = \sum_i \left(\frac{\partial f}{\partial q_i}\frac{\partial g}{\partial p_i} - \frac{\partial f}{\partial p_i}\frac{\partial g}{\partial q_i}\right)
+$$
+
+#### Properties of Poisson Brackets
+
+Given a system of particles with generalized coordinates $q_i$,
+and the Hamiltonian $H$ of the system,
+the Poisson bracket of two functions $f$ and $g$ of the phase space of the system has the following properties:
+
+1. Antisymmetry: $\{f,g\} = -\{g,f\}$
+2. Linearity: $\{af + bg, h\} = a\{f,h\} + b\{g,h\}$
+3. Product(Leibnitz) Rule: $\{fg,h\} = f\{g,h\} + g\{f,h\}$
+
+#### Fundamental Poisson Brackets
+
+Given a system of particles with generalized coordinates $q_i$,
+and the Hamiltonian $H$ of the system,
+the fundamental Poisson brackets of the system are given by:
+
+$$
+\begin{align}
+    \{q_i,p_j\} &= \delta_{ij} \\
+    \{q_i,q_j\} &= 0 \\
+    \{p_i,p_j\} &= 0
+\end{align}
+$$
+
+#### Constant of Motion and Poisson Brackets
+
+Given a system of particles with generalized coordinates $q_i$,
+and the Hamiltonian $H$ of the system,
+and a function $f$ of the phase space of the system,
+then time derivative of the function $f$ is given by:
+
+$$
+\begin{align}
+    \frac{df}{dt} &= \{f,H\} + \frac{\partial f}{\partial t}
+\end{align}
+$$
+
+Thus, if the function $f$ is independent of time,
+then the function $f$ is a constant of motion.
