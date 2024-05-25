@@ -10,6 +10,7 @@ import "katex/dist/katex.min.css"; // Import KaTeX styles
 import Head from "next/head";
 import Link from "next/link";
 import rehypeRaw from "rehype-raw";
+import rehypeSlug from "rehype-slug";
 
 interface PostProps {
   post: Post;
@@ -99,7 +100,7 @@ export const PostContentReal: React.FC<PostContentProps> = ({ post }) => {
   return (
     <ReactMarkdown
       remarkPlugins={remarkPlugins}
-      rehypePlugins={[rehypeKatex, rehypeRaw]}
+      rehypePlugins={[rehypeKatex, rehypeRaw, rehypeSlug]}
     >
       {content}
     </ReactMarkdown>
