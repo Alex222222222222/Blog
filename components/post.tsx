@@ -11,6 +11,7 @@ import Head from "next/head";
 import Link from "next/link";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
+import rehypeHeadingLink from "@/lib/rehypeHeadingLink";
 
 interface PostProps {
   post: Post;
@@ -100,7 +101,7 @@ export const PostContentReal: React.FC<PostContentProps> = ({ post }) => {
   return (
     <ReactMarkdown
       remarkPlugins={remarkPlugins}
-      rehypePlugins={[rehypeKatex, rehypeRaw, rehypeSlug]}
+      rehypePlugins={[rehypeKatex, rehypeRaw, rehypeSlug,rehypeHeadingLink]}
     >
       {content}
     </ReactMarkdown>
