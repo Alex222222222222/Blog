@@ -870,3 +870,147 @@ Also, if $X$ have MGF $M_X(t)$ and $Y = aX + b$, then $Y$ have MGF $M_Y(t) = e^{
 Given two random variables $X$ and $Y$ with MGF $M_X(t)$ and $M_Y(t)$, if $M_X(t) = M_Y(t)$ for all $t$ in an open neighbourhood of $0$, then $X$ and $Y$ have the same distribution.
 
 ### Joint Moment Generating Function (JMGF)
+
+The **joint moment generating function (JMGF)** of random variables $X_1, X_2, \ldots, X_n$ is defined as a function from $\mathbb{R}^n$ to $\mathbb{R}$:
+
+$$
+M_\mathbf{X}(\mathbf{t}) = E[e^{\mathbf{t}^T \mathbf{X}}]
+$$
+
+where $\mathbf{t} = (t_1, t_2, \ldots, t_n)^T$ and $\mathbf{X} = (X_1, X_2, \ldots, X_n)^T$.
+
+If the JMGF exists and is finite on a open neighbourhood of $\mathbf{0}$, then we say the JMGF exists.
+
+#### Properties of the Joint Moment Generating Function
+
+If the JMGF exists and is finite on a open neighbourhood of $\mathbf{0}$,
+then it uniquely determines the joint distribution of $X_1, X_2, \ldots, X_n$.
+
+The MGF of $X_i$ can be expressed as:
+
+$$
+M_{X_i}(t_i) = M_{\mathbf{X}}(0, \ldots, 0, t_i, 0, \ldots, 0)
+$$
+
+The joint moment of $X_1, X_2, \ldots, X_n$ can be expressed as:
+
+$$
+E[X_1^{i_1}X_2^{i_2}\ldots X_n^{i_n}] = \left. \frac{\partial^{i_1 + i_2 + \ldots + i_n} M_{\mathbf{X}}(\mathbf{t})}{\partial t_1^{i_1} \partial t_2^{i_2} \ldots \partial t_n^{i_n}} \right|_{\mathbf{t} = \mathbf{0}}
+$$
+
+### Relation Between the Joint Moment Generating Function and Moment Generating Function
+
+Given random variables $X_1, X_2, \ldots, X_n$ with MGF $M_{X_i}(t_i)$,
+and JMGF $M_{X_1, X_2, \ldots, X_n}(\mathbf{t})$,
+then $X_1, X_2, \ldots, X_n$ are mutually independent if and only if
+
+$$
+M_{X_1, X_2, \ldots, X_n}(\mathbf{t}) = M_{X_1}(t_1)M_{X_2}(t_2)\ldots M_{X_n}(t_n)
+$$
+
+### Sums of Independent Random Variables
+
+Given random variables $X_1, X_2, \ldots, X_n$ that are independent,
+and $S = a_1X_1 + a_2X_2 + \ldots + a_nX_n$,
+then the MGF of $S$ is
+
+$$
+M_S(t) = M_{X_1}(a_1t)M_{X_2}(a_2t)\ldots M_{X_n}(a_nt)
+$$
+
+### Probability Generating Function (PGF)
+
+Given a random variable $X$ that takes non-negative integer values,
+the **probability generating function (PGF)** $G_X(z)$ of $X$ is defined as
+
+$$
+\phi_X(z) = E[z^X] = \sum_{x=0}^{\infty} z^x P(X = x)
+$$
+
+#### Properties of the Probability Generating Function
+
+$\phi_X(1) = 1$
+
+The PMF of $X$ is uniquely determined by $\phi_X(z)$.
+
+The **n-th factorial moment** of $X$ is
+
+$$
+E[X(X-1)\ldots(X-n+1)] = \left. \frac{d^n \phi_X(z)}{dz^n} \right|_{z=1}
+$$
+
+Random variables $X_1, X_2, \ldots, X_n$ are mutually independent if and only if
+the joint PGF $\phi_{X_1, X_2, \ldots, X_n}(z_1, z_2, \ldots, z_n)$ is
+
+$$
+\phi_{X_1, X_2, \ldots, X_n}(z_1, z_2, \ldots, z_n) = E[z_1^{X_1}z_2^{X_2}\ldots z_n^{X_n}] =\phi_{X_1}(z_1)\phi_{X_2}(z_2)\ldots \phi_{X_n}(z_n)
+$$
+
+The PGF of sum of independent random variables $X_1, X_2, \ldots, X_n$ is
+
+$$
+\phi_{X_1 + X_2 + \ldots + X_n}(z) = \phi_{X_1}(z)\phi_{X_2}(z)\ldots \phi_{X_n}(z)
+$$
+
+#### Relation of PGF and MGF
+
+Given a random variable $X$ that takes non-negative integer values,
+and the PGF $\phi_X(z)$ and MGF $M_X(t)$ of $X$,
+then
+
+$$
+\begin{align}
+    \phi_X(e^t) = M_X(t) \\
+    M_X(\ln(t)) = \phi_X(t)
+\end{align}
+$$
+
+## Markov and Chebyshev Inequalities
+
+### Markov Inequality
+
+Given a non-negative random variable $X$ and $a > 0$,
+then
+
+$$
+P(X \geq a) \leq \frac{E[X]}{a}
+$$
+
+Proof:
+
+$$
+\begin{align}
+    P(X \geq c) &= \int_c^{\infty} f_X(x) dx \\
+    &= \frac{1}{c} \int_c^{\infty} cf_X(x) dx \\
+    &\le \frac{1}{c} \int_c^{\infty} xf_X(x) dx \\
+    &\le \frac{1}{c} \int_0^{\infty} xf_X(x) dx
+    &= \frac{E[X]}{c}
+\end{align}
+$$
+### Chebyshev Inequality
+
+Given a random variable $X$ with mean $\mu$ and variance $\sigma^2$,
+and $a > 0$,
+then
+
+$$
+P(|X - \mu| \geq a) \leq \frac{\sigma^2}{a^2}
+$$
+
+Proof:
+
+Define $Y = (X - \mu)^2$,
+then $Y$ is a non-negative random variable,
+and $E[Y] = \text{Var}[X] = \sigma^2$.
+
+By [Markov Inequality](#markov-inequality),
+
+$$
+P(Y \geq a^2) \leq \frac{E[Y]}{a^2} = \frac{\sigma^2}{a^2}
+$$
+
+Then,
+
+$$
+P(|X - \mu| \geq a) = P((X - \mu)^2 \geq a^2) = P(Y \geq a^2) \leq \frac{\sigma^2}{a^2}
+$$
