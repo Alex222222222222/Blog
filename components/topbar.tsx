@@ -16,6 +16,12 @@ const TopBar: React.FC = () => {
 
   const router = useRouter();
   useEffect(() => {
+    // Don't track views in development,
+    // as the api is not available
+    if (process.env.NODE_ENV !== "production") {
+      return;
+    }
+
     const path = window.location.pathname;
     fetch(`/views?days=7&path=${encodeURIComponent(path)}`)
       .then((response) => response.json())

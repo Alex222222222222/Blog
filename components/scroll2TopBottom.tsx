@@ -69,6 +69,9 @@ const Scroll2TopBottom: React.FC = () => {
         <Image
           src="/scroll2top.svg"
           alt="Scroll to top"
+          title="Scroll to top"
+          width={100}
+          height={100}
           className="w-10 bg-white rounded-full text-blue-500"
           onClick={scrollToTop}
         />
@@ -79,6 +82,9 @@ const Scroll2TopBottom: React.FC = () => {
         <Image
           src="/scroll2top.svg"
           alt="Scroll to bottom"
+          title="Scroll to bottom"
+          width={100}
+          height={100}
           className="w-10 bg-white rounded-full text-blue-500 transform rotate-180"
           onClick={scrollToBottom}
         />
