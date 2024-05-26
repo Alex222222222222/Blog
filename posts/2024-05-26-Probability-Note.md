@@ -346,3 +346,248 @@ E[XY] = E[X]E[Y]
 $$
 
 > Note: Uncorrelated random variables are not necessarily independent.
+
+## Continuous Bivariate Distributions
+
+### Joint Cumulative Distribution Function (CDF)
+
+Given two random variables $X$ and $Y$, the **joint cumulative distribution function (CDF)** for continuous random variables is defined as
+
+$$
+F_{X,Y}(x, y) = P(X \leq x, Y \leq y)
+$$
+
+### Marginal Cumulative Distribution Function (CDF)
+
+The **marginal cumulative distribution function (CDF)** of a random variable $X$ is defined as
+
+$$
+F_X(x) = P(X \leq x) = P(X \leq x, Y < \infty) = F_{X,Y}(x, \infty)
+$$
+
+### Joint Probability Density Function (PDF)
+
+Given two random variables $X$ and $Y$, if there exists a function $f(x, y)$ such that
+
+$$
+P((X, Y) \in A) = \iint_{A} f(x, y) dx dy
+$$
+
+for all Lebesgue-measurable sets $A$, then $f(x, y)$ is the **joint probability density function (PDF)** of $X$ and $Y$. And $X$ and $Y$ are called **jointly continuous** random variables.
+
+By the definition of the joint PDF, we have
+
+$$
+F_{X,Y}(x, y) = \int_{-\infty}^{x} \int_{-\infty}^{y} f(u, v) du dv
+$$
+
+And
+
+$$
+f(x, y) = \frac{\partial^2 F_{X,Y}(x, y)}{\partial x \partial y}
+$$
+
+### Marginal Probability Density Function (PDF)
+
+The **marginal probability density function (PDF)** of a random variable $X$ is defined as
+
+$$
+f_X(x) = \frac{dF_X(x)}{dx} = \int_{-\infty}^{\infty} f(x, y) dy
+$$
+
+## Continuous Multivariate Distributions
+
+### Joint Cumulative Distribution Function (CDF)
+
+Given $n$ random variables $X_1, X_2, \ldots, X_n$,
+let the vector $\mathbf{X} = (X_1, X_2, \ldots, X_n)$,
+the **joint cumulative distribution function (CDF)** for continuous random variables is defined as
+
+$$
+F_\mathbf{X}(\mathbf{x}) = P(\mathbf{X} < \mathbf{x})
+$$
+
+### Joint Probability Density Function (PDF)
+
+Given $n$ random variables $X_1, X_2, \ldots, X_n$,
+let the vector $\mathbf{X} = (X_1, X_2, \ldots, X_n)$,
+if there exists a function $f(x_1, x_2, \ldots, x_n)$ such that
+
+$$
+P(\mathbf{X} \in A) = \int_{A} f(\mathbf{x}) d\mathbf{X}
+$$
+
+for all Lebesgue-measurable sets $A$, then $f(\mathbf{x})$ is the **joint probability density function (PDF)** of $\mathbf{X}$. And $\mathbf{X}$ are called **jointly continuous** random variables.
+
+By the definition of the joint PDF, we have
+
+$$
+F_\mathbf{X}(\mathbf{x}) = \int_{-\infty}^{x_1} \int_{-\infty}^{x_2} \ldots \int_{-\infty}^{x_n} f(u_1, u_2, \ldots, u_n) du_1 du_2 \ldots du_n
+$$
+
+And
+
+$$
+f(\mathbf{x}) = \frac{\partial^n F_\mathbf{X}(\mathbf{x})}{\partial x_1 \partial x_2 \ldots \partial x_n}
+$$
+
+### Marginal Probability Density Function (PDF)
+
+The **marginal probability density function (PDF)** of a random variable $X_i$ is defined as
+
+$$
+F_{X_{k_1}, X_{k_2}, \ldots, X_{k_m}}(x_{k_1}, x_{k_2}, \ldots, x_{k_m}) =
+\int_{-\infty}^{\infty} \ldots \int_{-\infty}^{\infty} F(x_1, x_2, \ldots, x_n)
+\prod_{j \neq k_i}dx_j
+$$
+
+## Independence of Random Variables
+
+Two random variables $X$ and $Y$ are **independent** if and only if
+
+$$
+F(x, y) = F_X(x) F_Y(y)
+$$
+
+for all $x$ and $y$.
+
+> This can be thought as the joint behaviour of $X$ and $Y$ is the product of the marginal behaviour of $X$ and $Y$.
+
+The definition can also be formulated in terms of the joint PDF:
+
+$$
+f(x, y) = f_X(x) f_Y(y)
+$$
+
+> To show that two random variables are not independent, we only need to find one pair of $x$ and $y$ such that the equation does not hold.
+
+### Functions of Independent Random Variables
+
+Given two independent random variables $X$ and $Y$, and a function $g(X)$, and a function $h(Y)$, the random variables $Z = g(X)$ and $W = h(Y)$ are also independent.
+
+### Mutual Independence of Random Variables
+
+A set of random variables $X_1, X_2, \ldots, X_n$ are **mutually independent** if and only if
+
+$$
+F(x_1, x_2, \ldots, x_n) = F_{X_1}(x_1) F_{X_2}(x_2) \ldots F_{X_n}(x_n)
+$$
+
+> Note: Mutual independence implies pairwise independence, however, the converse is not true.
+
+### Identically Independent Random Variables (IID)
+
+A set of random variables $X_1, X_2, \ldots, X_n$ are **identically independent (IID)** if and only if
+1. They are mutually independent.
+2. They have the same distribution.
+
+### Sum of Random Variables
+
+Given two independent random variables $X$ and $Y$, the **sum of $X$ and $Y$** is defined as
+
+$$
+Z = X + Y
+$$
+
+Then, the CDF of $Z$ can be calculated as
+
+$$
+\begin{align}
+    F_Z(z) &= P(Z \leq z) \\
+    &= P(X + Y \leq z) \\
+    &= \int_{-\infty}^{\infty} P(X + Y \leq z | X = x) f_X(x) dx \\
+    &= \int_{-\infty}^{\infty} P(Y \leq z - x) f_X(x) dx \\
+    &= \int_{-\infty}^{\infty} F_Y(z - x) f_X(x) dx
+\end{align}
+$$
+
+The PDF of $Z$ can be calculated as
+
+$$
+f_Z(z) = \int_{-\infty}^{\infty} f_Y(z - x) f_X(x) dx
+$$
+
+This is called the **convolution** of the PDFs of $X$ and $Y$.
+
+## Expectation, Covariance and Correlation of Multiple Random Variables
+
+### Expectation of Multiple Random Variables
+
+Let the vector $\mathbf{X} = (X_1, X_2, \ldots, X_n)$ be a set of random variables,
+and for Lebesgue-measurable functions $g: \mathbb{R}^n \rightarrow \mathbb{R}$
+the **expectation of $\mathbf{X}$** is defined as
+
+$$
+E[g(\mathbf{X})] = \int_{\mathbb{R}^n} g(\mathbf{x}) f(\mathbf{x}) d\mathbf{X}
+$$
+
+### Properties of Expectation of Multiple Random Variables
+
+1. $E[a g(\mathbf{X}) + bh(\mathbf{X}) + c] = a E[g(\mathbf{X})] + b E[h(\mathbf{X})] + c$
+2. If $X$ and $Y$ are independent, then $E[g(X)h(Y)] = E[g(X)]E[h(Y)]$ for any functions $g$ and $h$.
+
+### Covariance of Multiple Random Variables
+
+The **covariance** of two random variables $X$ and $Y$ is defined as
+
+$$
+\text{Cov}(X, Y) = E[(X - E[X])(Y - E[Y])]
+$$
+
+The covariance can be calculated as
+
+$$
+\text{Cov}(X, Y) = E[XY] - E[X]E[Y]
+$$
+
+#### Properties of Covariance of Multiple Random Variables
+
+1. $\text{Cov}(X, Y) = \text{Cov}(Y, X)$
+2. $\text{Cov}(X, X) = \text{Var}(X)$
+3. $\text{Cov}(aX + b, cY + d) = ac \text{Cov}(X, Y)$
+4. $\text{Cov}(\sum a_iX_{i}, \sum b_iY_{i}) = \sum a_i b_j \text{Cov}(X_i,Y_j)$
+5. $\text{Cov}(X,Y) = E(XY) - E(X)E(Y)$
+
+#### Cauchy-Schwarz Inequality In Terms of Covariance
+
+$$
+|\text{Cov}(X, Y)| \leq \sqrt{\text{Var}(X) \text{Var}(Y)}
+$$
+
+This equality holds if and only if $X$ and $Y$ are linearly related.
+
+#### Correlation Coefficient of Multiple Random Variables
+
+The **correlation coefficient** of two random variables $X$ and $Y$ is defined as
+
+$$
+\rho(X, Y) = \frac{\text{Cov}(X, Y)}{\sqrt{\text{Var}(X) \text{Var}(Y)}}
+$$
+
+By [Cauchy-Schwarz Inequality](#cauchy-schwarz-inequality-in-terms-of-covariance), we have $-1 \leq \rho(X, Y) \leq 1$.
+
+#### Moments of Multiple Random Variables
+
+The **n-th (raw) moment** of a random variable $X$ is defined as $E[X^n]$,
+and the **n-th central moment** of a random variable $X$ is defined as $E[(X - E[X])^n]$.
+
+The **joint (raw) moment** of random variables $X$ and $Y$ is defined as $E[X^iY^j]$,
+and the **joint central moment** of random variables $X$ and $Y$ is defined as $E[(X - E[X])^i(Y - E[Y])^j]$.
+
+#### Expectation and Variance of Multiple Random Variables
+
+Given a set of random variables $\mathbf{X} = (X_1, X_2, \ldots, X_n)^T$,
+
+$$
+E[\mathbf{X}] = (E[X_1], E[X_2], \ldots, E[X_n])^T
+$$
+
+which is a vector of $n\times1$ dimensions vector.
+
+The **covariance matrix** of $\mathbf{X}$ is defined as
+
+$$
+\text{Cov}(\mathbf{X}) = E[(\mathbf{X} - E[\mathbf{X}])(\mathbf{X} - E[\mathbf{X}])^T]
+$$
+
+which is a $n\times n$ matrix.
