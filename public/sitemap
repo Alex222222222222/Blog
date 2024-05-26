@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
         <url>
+          <loc>https://blog.huazifan.eu.org/posts/2024-05-26-Probability-Note.md</loc>
+          <lastmod>2024-05-25T23:00:00.000Z</lastmod>
+        </url>
+        <url>
           <loc>https://blog.huazifan.eu.org/posts/2024-05-23-Classical-Mechanics-Notes.md</loc>
           <lastmod>2024-05-22T23:00:00.000Z</lastmod>
         </url>
@@ -118,51 +122,55 @@
         </url>
         <url>
           <loc>https://blog.huazifan.eu.org/</loc>
-          <lastmod>2024-05-25T23:47:59.726Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.huazifan.eu.org/tags</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.huazifan.eu.org/categories</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.huazifan.eu.org/tools</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.huazifan.eu.org/tools/base64/encode</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.huazifan.eu.org/tools/base64/decode</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.huazifan.eu.org/tools/base64/encode</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.huazifan.eu.org/tools/qrcode/generator</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.huazifan.eu.org/tools/qrcode/reader</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.huazifan.eu.org/tools/stable_diffusion</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.huazifan.eu.org/tools/pdf2pic</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.huazifan.eu.org/tools/password_gen</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
+        </url>
+        <url>
+          <loc>https://alex1222.com/posts/2024-05-26-Probability-Note.md</loc>
+          <lastmod>2024-05-25T23:00:00.000Z</lastmod>
         </url>
         <url>
           <loc>https://alex1222.com/posts/2024-05-23-Classical-Mechanics-Notes.md</loc>
@@ -282,51 +290,55 @@
         </url>
         <url>
           <loc>https://alex1222.com/</loc>
-          <lastmod>2024-05-25T23:47:59.726Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://alex1222.com/tags</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://alex1222.com/categories</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://alex1222.com/tools</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://alex1222.com/tools/base64/encode</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://alex1222.com/tools/base64/decode</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://alex1222.com/tools/base64/encode</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://alex1222.com/tools/qrcode/generator</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://alex1222.com/tools/qrcode/reader</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://alex1222.com/tools/stable_diffusion</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://alex1222.com/tools/pdf2pic</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://alex1222.com/tools/password_gen</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
+        </url>
+        <url>
+          <loc>https://blog.alex1222.com/posts/2024-05-26-Probability-Note.md</loc>
+          <lastmod>2024-05-25T23:00:00.000Z</lastmod>
         </url>
         <url>
           <loc>https://blog.alex1222.com/posts/2024-05-23-Classical-Mechanics-Notes.md</loc>
@@ -446,49 +458,49 @@
         </url>
         <url>
           <loc>https://blog.alex1222.com/</loc>
-          <lastmod>2024-05-25T23:47:59.726Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.alex1222.com/tags</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.alex1222.com/categories</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.alex1222.com/tools</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.alex1222.com/tools/base64/encode</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.alex1222.com/tools/base64/decode</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.alex1222.com/tools/base64/encode</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.alex1222.com/tools/qrcode/generator</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.alex1222.com/tools/qrcode/reader</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.alex1222.com/tools/stable_diffusion</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.alex1222.com/tools/pdf2pic</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url>
         <url>
           <loc>https://blog.alex1222.com/tools/password_gen</loc>
-          <lastmod>2024-05-25T23:47:59.727Z</lastmod>
+          <lastmod>2024-05-26T14:18:30.795Z</lastmod>
         </url></urlset>
