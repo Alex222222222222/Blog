@@ -787,3 +787,86 @@ Then, the joint PDF of $(Y_1, Y_2, \ldots, Y_n)$ is
 $$
 f_{Y_1, Y_2, \ldots, Y_n}(y_1, y_2, \ldots, y_n) = f_{X_1, X_2, \ldots, X_n}(H_1(y_1, y_2, \ldots, y_n), H_2(y_1, y_2, \ldots, y_n), \ldots, H_n(y_1, y_2, \ldots, y_n)) |J_{H}|
 $$
+
+## Generating Functions
+
+### The Moment Generating Function (MGF)
+
+Given a random variable $X$, the **moment generating function (MGF)** $M_X(t)$ of $X$ is defined as
+
+$$
+M_X(t) = E[e^{tX}]
+$$
+
+The domain of the MGF is the set of $t$ such that $M_X(t)$ exists and is finite.
+
+If the domain does not contain an open neighbourhood of $0$,
+then we say the MGF does not exist.
+
+#### Example: The Moment Generating Function of the Standard Normal Distribution
+
+Given a random variable $X$ that follows the [standard normal distribution](#normal-distribution),
+
+$$
+f_X(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}
+$$
+
+By definition,
+
+$$
+\begin{align}
+    M_X(t) &= E[e^{tX}] \\
+    &= \int_{-\infty}^{\infty} e^{tx} f_X(x) dx \\
+    &= \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}} e^{tx-\frac{x^2}{2}} dx \\
+    &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{tx-\frac{x^2}{2}} dx \\
+    &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-\frac{1}{2}(x^2 - 2tx)} dx \\
+    &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-\frac{1}{2}(x - t)^2 + \frac{t^2}{2}} dx \\
+    &= e^{\frac{t^2}{2}}
+\end{align}
+$$
+
+#### Example: The Moment Generating Function of the Exponential Distribution
+
+Given a random variable $X$ that follows the [exponential distribution](#exponential-distribution),
+
+$$
+f_X(x) = \lambda e^{-\lambda x}
+$$
+
+By definition,
+
+$$
+\begin{align}
+    M_{X}(t) &= E[e^{tX}] \\
+    &= \int_{0}^{\infty} e^{tx} \lambda e^{-\lambda x} dx \\
+    &= \lambda \int_{0}^{\infty} e^{tx-\lambda x} dx \\
+    &= \frac{\lambda}{t-\lambda} \int_{0}^{\infty} (t-\lambda) e^{(t-\lambda)x} dx \\
+    &= \frac{\lambda}{t-\lambda}
+\end{align}
+$$
+
+#### Properties of the Moment Generating Function
+
+$$
+M_X(0) = E[1] = 1
+$$
+
+The n-th derivative of the MGF at $t = 0$ is:
+
+$$
+M_X^{(n)}(0) = E[X^{n}e^{tX}](0) = E[X^{n}]
+$$
+
+By the previous property, the Maclaurin series of the MGF is:
+
+$$
+M_X(t) = \sum_{n=0}^{\infty} \frac{E[X^{n}]}{n!} t^{n}
+$$
+
+Also, if $X$ have MGF $M_X(t)$ and $Y = aX + b$, then $Y$ have MGF $M_Y(t) = e^{tb}M_X(at)$.
+
+#### Uniqueness of the Moment Generating Function
+
+Given two random variables $X$ and $Y$ with MGF $M_X(t)$ and $M_Y(t)$, if $M_X(t) = M_Y(t)$ for all $t$ in an open neighbourhood of $0$, then $X$ and $Y$ have the same distribution.
+
+### Joint Moment Generating Function (JMGF)
