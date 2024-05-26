@@ -5,8 +5,9 @@
  */
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
-const scroll2TopBottom: React.FC = () => {
+const Scroll2TopBottom: React.FC = () => {
   const [isTopVisible, setIsTopVisible] = useState(false);
   const [isBottomVisible, setIsBottomVisible] = useState(false);
 
@@ -65,7 +66,7 @@ const scroll2TopBottom: React.FC = () => {
       {/* <span className="w-9 px-2 pt-1 bg-blue-500 text-white rounded-full text-3xl">&uarr;</span> */}
       {/* Use svg icon (/public/scroll2top.svg) instead */}
       {isTopVisible && (
-        <img
+        <Image
           src="/scroll2top.svg"
           alt="Scroll to top"
           className="w-10 bg-white rounded-full text-blue-500"
@@ -75,7 +76,7 @@ const scroll2TopBottom: React.FC = () => {
       {isTopVisible && isBottomVisible && <div className="w-2"></div>}
       {/* Scroll to button svg is upside down of scroll to top svg */}
       {isBottomVisible && (
-        <img
+        <Image
           src="/scroll2top.svg"
           alt="Scroll to bottom"
           className="w-10 bg-white rounded-full text-blue-500 transform rotate-180"
@@ -86,4 +87,4 @@ const scroll2TopBottom: React.FC = () => {
   );
 };
 
-export default scroll2TopBottom;
+export default Scroll2TopBottom;

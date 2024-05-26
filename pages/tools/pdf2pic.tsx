@@ -111,11 +111,9 @@ const StableDiffusionPage: React.FC = ({}) => {
           setWidth(value);
         }}
       />
-      <p
-        className={fixAspectRatio ? "text-gray-500" : ""}
-      >
-        Please set the height of the exported image.
-        Disabled if Fix Aspect Ratio is checked.
+      <p className={fixAspectRatio ? "text-gray-500" : ""}>
+        Please set the height of the exported image. Disabled if Fix Aspect
+        Ratio is checked.
       </p>
       <input
         type="number"
@@ -141,7 +139,8 @@ const StableDiffusionPage: React.FC = ({}) => {
           }
         }}
       />
-      Fix Aspect Ratio. Checked if the height should be the determined by the width.
+      Fix Aspect Ratio. Checked if the height should be the determined by the
+      width.
       <SeparateLine />
       Please set the page number of the exported image. -1 means all pages. Use
       comma, space or semicolon to separate multiple pages.
