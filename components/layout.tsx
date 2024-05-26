@@ -6,6 +6,7 @@ import Head from "next/head";
 import config from "@/config.json";
 import FootBar from "./footbar";
 import Comments from "./comments";
+import Scroll2Top from "./scroll2TopBottom";
 
 interface LayoutProps {
   children: ReactNode;
@@ -32,13 +33,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           href="/favicon-16x16.png"
         />
       </Head>
-      <div className=" max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8 bg-yellow-50">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8 bg-yellow-50">
         <TopBar />
         <SeparateLine />
         <div className="content">{children}</div>
         <Comments />
         <SeparateLine />
         <FootBar />
+        <Scroll2Top />
       </div>
     </>
   );
