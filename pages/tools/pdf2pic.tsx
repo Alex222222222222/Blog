@@ -4,6 +4,7 @@ import SeparateLine from "@/components/hr";
 import { GlobalWorkerOptions, PDFDocumentProxy, getDocument } from "pdfjs-dist";
 import { downloadZip } from "client-zip";
 import Head from "next/head";
+import Image from "next/image";
 
 const fileToArrayBuffer = (file: File): Promise<ArrayBuffer> => {
   return new Promise((resolve, reject) => {
@@ -241,9 +242,12 @@ const StableDiffusionPage: React.FC = ({}) => {
       </div>
       <div className="flex flex-wrap" hidden={errorMsg.length != 0}>
         {images.map((image) => {
+          if (image == undefined) {
+            return <></>;
+          }
           return (
-            <div key={`${filename}_${image?.[1]}.png`} className="m-2">
-              <img src={image?.[0]} />
+            <div key={`${filename}_${image[1]}.png`} className="m-2">
+              <Image src={image[0]} alt="PDF to Image" />
             </div>
           );
         })}
