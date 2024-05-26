@@ -21,7 +21,7 @@ const generateFeed = async (posts: Post[], config: Config) => {
       description: description,
       url: concatenateUrls(
         concatenateUrls(config.baseUrl, "/posts/"),
-        post.filename
+        encodeURI(post.filename)
       ),
       date: post.date,
       categories: post.categories,
