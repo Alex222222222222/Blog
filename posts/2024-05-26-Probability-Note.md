@@ -217,6 +217,8 @@ $$
 E[X] = \mu \quad \text{and} \quad \text{Var}(X) = \sigma^2
 $$
 
+We usually write $X \sim N(\mu, \sigma^2)$ to denote that $X$ follows a Normal distribution with mean $\mu$ and variance $\sigma^2$.
+
 #### Gamma Distribution
 
 The Gamma distribution is a continuous distribution that generalizes the Exponential distribution. The PDF of a Gamma random variable $X$ is defined as
@@ -1014,3 +1016,272 @@ Then,
 $$
 P(|X - \mu| \geq a) = P((X - \mu)^2 \geq a^2) = P(Y \geq a^2) \leq \frac{\sigma^2}{a^2}
 $$
+
+## Multivariate Normal Distribution
+
+We define the higher dimensional normal distribution as an analog of the [one dimensional normal distribution](#normal-distribution).
+
+We say a random vector $\mathbf{X} = (X_1, X_2, \ldots, X_n)^T$ follows a **multivariate normal distribution** if it can be expressed as
+
+$$
+\mathbf{X} = \mathbf{\mu} + \mathbf{A}\mathbf{Z}
+$$
+
+where $l\le n$ and $\mathbf{\mu}$ is a vector of means, $\mathbf{A}$ is a $n\times l$ matrix of constants, and $\mathbf{Z}$ is a $l\times 1$ vector of independent standard normal random variables.
+
+In convention, we write $\Sigma = A A^T$, and we denote the multivariate normal distribution as
+
+$$
+\mathbf{X} \sim N_n(\mathbf{\mu}, \Sigma)
+$$
+
+### Joint PDF of Multivariate Normal Distribution
+
+If we assume that $\Sigma$ has full rank, We can use [multivariate transformation](#transformation-of-multivariate-random-variables) to derive the joint PDF of $\mathbf{X}$:
+
+$$
+\begin{align}
+    f_X(x) &= f_Z(A^{-1}(x-\mu))|\det(A^{-1})| \\
+    &= |\det(A^{-1})| \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}z_i^2} \\
+    &= |\det(A^{-1})| \frac{1}{\sqrt{2\pi}^n} e^{-\frac{1}{2}Z^TZ} \\
+    &= |\det(A^{-1})| \frac{1}{\sqrt{2\pi}^n} e^{-\frac{1}{2}(A^{-1}(x-\mu))^TA^{-1}(x-\mu)} \\
+    &= |\det(A^{-1})| \frac{1}{\sqrt{2\pi}^n} e^{-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)} \\
+\end{align}
+$$
+
+### Joint Moment Generating Function of Multivariate Normal Distribution
+
+If we assume that $\Sigma$ has full rank,
+the joint moment generating function of $\mathbf{X}$ is
+
+$$
+\begin{align}
+    M_{X}(t) &= E[e^{t^TX}] \\
+    &= \int_{\mathbb{R}^n} e^{t^Tx} f_X(x) dx \\
+    &= \int_{\mathbb{R}^n} e^{t^Tx} |\det(A^{-1})| \frac{1}{\sqrt{2\pi}^n} e^{-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)} dx \\
+    &= \frac{|\det(A^{-1})|}{\sqrt{2\pi}^n} \int_{\mathbb{R}^n} e^{-\frac{1}{2}\left[
+        2t^Tx
+        +x^T\Sigma^{-1}x
+        -x^T\Sigma^{-1}\mu
+        -\mu^T\Sigma^{-1}x
+        +\mu^T\Sigma^{-1}\mu
+    \right]} dx \\
+    &= \frac{|\det(A^{-1})|}{\sqrt{2\pi}^n} \int_{\mathbb{R}^n} e^{-\frac{1}{2}\left[
+        2(\Sigma^{T}t)^T \Sigma^{-1}x
+        +x^T\Sigma^{-1}x
+        -2\mu^T\Sigma^{-1}x
+        +\mu^T\Sigma^{-1}\mu
+    \right]} dx \\
+    &= \frac{|\det(A^{-1})|}{\sqrt{2\pi}^n} \int_{\mathbb{R}^n} e^{-\frac{1}{2}\left[
+        +x^T\Sigma^{-1}x
+        -2(\mu-\Sigma^{T}t)^T\Sigma^{-1}x
+        +\mu^T\Sigma^{-1}\mu
+    \right]} dx \\
+    &= \frac{|\det(A^{-1})|}{\sqrt{2\pi}^n} e^{-\frac{1}{2}\left[
+        -(\mu-\Sigma^{T}t)^T\Sigma^{-1}(\mu-\Sigma^{T}t)
+        +\mu^T\Sigma^{-1}\mu
+    \right]} \int_{\mathbb{R}^n} e^{-\frac{1}{2}\left[
+        (x-\mu-\Sigma^{T}t)^T\Sigma^{-1}(x-\mu-\Sigma^{T}t)
+    \right]} dx \\
+    &= e^{-\frac{1}{2}\left[
+        -(\mu-\Sigma^{T}t)^T\Sigma^{-1}(\mu-\Sigma^{T}t)
+        +\mu^T\Sigma^{-1}\mu
+    \right]} \\
+    &= e^{t^T\mu + \frac{1}{2}t^T\Sigma t}
+\end{align}
+$$
+
+### Moments of Multivariate Normal Distribution
+
+By the [joint moment generating function of multivariate normal distribution](#joint-moment-generating-function-of-multivariate-normal-distribution),
+
+$$
+E[X_{1}^{k_1}X_{2}^{k_2}\ldots X_{n}^{k_n}] = \left. \frac{\partial^{k_1 + k_2 + \ldots + k_n} M_{X}(\mathbf{t})}{\partial t_1^{k_1} \partial t_2^{k_2} \ldots \partial t_n^{k_n}} \right|_{\mathbf{t} = \mathbf{0}}
+$$
+
+Especially, as,
+
+$$
+\begin{align}
+    \frac{\partial}{\partial t_i} M_{X}(\mathbf{t}) &= \frac{\partial}{\partial t_i} e^{t^T\mu + \frac{1}{2}t^T\Sigma t} \\
+    &= \left[
+        \frac{\partial t}{\partial t_i}^T\mu + \frac{1}{2} \frac{\partial t}{\partial t_i}^T\Sigma t + t^T\Sigma \frac{\partial t}{\partial t_i}
+    \right] M_{X}(\mathbf{t})
+    &= e_i^T \left[
+        \mu + \Sigma t
+    \right] M_{X}(\mathbf{t})
+\end{align}
+$$
+
+$$
+\begin{align}
+    \frac{\partial^2}{\partial t_j\partial t_i} &= \frac{\partial}{\partial t_j} e_i^T \left[
+        \mu + \Sigma t
+    \right] M_{X}(\mathbf{t}) \\ 
+    &= e_i^T \Sigma e_j^T M_{X}(\mathbf{t}) + e_i^T \left[
+        \mu + \Sigma t
+    \right] e_j^T \left[
+        \mu + \Sigma t
+    \right] M_{X}(\mathbf{t}) \\
+    &= e_i^T \Sigma e_j^T M_{X}(\mathbf{t}) + e_i^T \left[
+        \mu + \Sigma t
+    \right] \left[
+        \mu + \Sigma t
+    \right]^T e_j M_{X}(\mathbf{t}) \\
+    &= e_i^T \Sigma e_j^T M_{X}(\mathbf{t}) + e_i^T \left[
+        \mu \mu^T
+        + \mu (\Sigma t)^T
+        + \Sigma t \mu^T
+        + \Sigma t (\Sigma t)^T
+    \right] e_j M_{X}(\mathbf{t}) \\
+\end{align}
+$$
+
+where $e_i$ is the $i$-th unit vector.
+
+Then, we can calculate the moments of the multivariate normal distribution.
+
+$$
+E(X_i) = \frac{\partial}{\partial t_i} M_{X}(0) = e_i^T \left[
+        \mu
+    \right] M_{X}(0) = \mu_i
+$$
+
+$$
+\begin{align}
+    E(X_iX_j) &= \frac{\partial^2}{\partial t_j\partial t_i} M_{X}(0) \\
+    &= e_i^T \Sigma e_j^T M_{X}(0) + e_i^T \left[
+        \mu \mu^T
+        + \mu (\Sigma 0)^T
+        + \Sigma 0 \mu^T
+        + \Sigma 0 (\Sigma 0)^T
+    \right] e_j M_{X}(0) \\
+    &= e_i^T \Sigma e_j^T M_{X}(0) \\
+    &= \Sigma_{ij} + \mu_i\mu_j
+\end{align}
+$$
+
+And the covariance:
+
+$$
+\text{Cov}(X_i, X_j) = E(X_iX_j) - E(X_i)E(X_j) = \Sigma_{ij}
+$$
+
+Thus, the covariance matrix of $\mathbf{X}$ is $\Sigma$.
+
+### Bivariate Normal Distribution
+
+Given $n=2$ in [multivariate normal distribution](#multivariate-normal-distribution),
+we have the **bivariate normal distribution**.
+
+The joint PDF of bivariate normal distribution is
+
+$$
+f_{X_1, X_2}(x_1, x_2) = \frac{|\det A^{-1}|}{2\pi} e^{-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)}
+$$
+
+where $\mu = (\mu_1, \mu_2)^T$ and $\Sigma = \begin{bmatrix} \sigma_{11} & \sigma_{12} \\ \sigma_{21} & \sigma_{22} \end{bmatrix}$.
+
+By the [moments of multivariate normal distribution](#moments-of-multivariate-normal-distribution),
+$\Sigma$ can also be expressed as
+
+$$
+\Sigma = \begin{bmatrix} \sigma_{11} & \sigma_{12} \\ \sigma_{21} & \sigma_{22} \end{bmatrix} = \begin{bmatrix} \text{Var}(X_1) & \text{Cov}(X_1, X_2) \\ \text{Cov}(X_1, X_2) & \text{Var}(X_2) \end{bmatrix}
+$$
+
+### Properties of Multivariate Normal Distribution
+
+#### Affine Transformation of Multivariate Normal Distribution
+
+Given $X$ a multivariate normal distribution,
+and $Y = AX+b$, then $Y$ is also a multivariate normal distribution.
+
+#### Marginal Distribution of Multivariate Normal Distribution
+
+Given $X$ a multivariate normal distribution,
+to get the marginal distribution of $Y = (X_{k_1},X_{k_2},\ldots,X_{k_i})$,
+we can let $A$ be a $i\times n$ matrix with $1$ at the $k_1, k_2, \ldots, k_i$-th row,
+and $b$ be a $i\times 1$ vector of zeros.
+
+Then $Y= AX + b$.
+
+### Condition of Independence of Multivariate Normal Distribution
+
+Given $X$ a multivariate normal distribution,
+$X_i$ and $X_j$ are independent if and only if $\text{Cov}(X_i, X_j) = 0$.
+
+### Degenerate Multivariate Normal Distribution
+
+Given $X$ a multivariate normal distribution,
+if $\Sigma$ is a singular matrix,
+then $X$ is a degenerate multivariate normal distribution.
+
+Suppose $x$ is a eigenvector of $\Sigma$ with eigenvalue $0$,
+then let $Y = x^T X$,
+then the mean of $Y$ is $x^T \mu$,
+and the variance of $Y$ is $x^T \Sigma x = 0$.
+
+Then $Y$ is the distribution of a constant.
+
+## Limiting Behaviors of Sums of Random Variables
+
+In this section, we assume $X$ to be [IID](#identically-independent-random-variables-iid) random variables. And $\mu = E[X]$, $\sigma^2 = \text{Var}(X)$.
+
+Let $S_{n} = \sum_{i=1}^{n}X$.
+
+Then,
+
+$$
+E[S_{n}] = n\mu
+$$
+
+$$
+\text{Var}(S_{n}) = n\sigma^2
+$$
+
+$$
+E\left[\frac{S_{n}}{n}\right] = \mu
+$$
+
+$$
+\text{Var}\left(\frac{S_{n}}{n}\right) = \frac{\sigma^2}{n}
+$$
+
+### Weak Law of Large Numbers
+
+By intuition, as $n$ increases, the sample mean $\frac{S_{n}}{n}$ converges to the population mean $\mu$. In formal terms, we have the **weak law of large numbers**:
+
+$$
+P\left(\lim_{n\rightarrow\infty} \frac{S_{n}}{n} = \mu\right) = 1
+$$
+
+Or equivalently,
+for all $\epsilon > 0$,
+
+$$
+\lim_{n\rightarrow\infty} P\left(|\frac{S_{n}}{n} - \mu| \geq \epsilon\right) = 0
+$$
+
+### Central Limit Theorem
+
+#### Limit of Distribution
+
+Given $X$ a random variable with CDF $F_X(x)$,
+and sequence of random variables $X_1, X_2, \ldots$ with CDF $F_{X_n}(x)$,
+we say that the sequence of random variables **converges in distribution** to $X$ if
+$F_{X_n}(x)$ converge pointwise to $F_X(x)$.
+
+As the MGF uniquely determines the distribution of a random variable,
+we have the following theorem:
+
+Given $X$ a random variable with MGF $M_X(t)$,
+and sequence of random variables $X_1, X_2, \ldots$ with MGF $M_{X_n}(t)$,
+and all of the MGFs exist and are finite on a same open neighbourhood of $0$,
+then $X_1, X_2, \ldots$ **converge in distribution** to $X$ if and only if
+$M_{X_n}(t)$ converge pointwise to $M_X(t)$ on the open neighbourhood of $0$.
+
+#### Central Limit Theorem
+
+Given $X$ a random variable with mean $\mu$ and variance $\sigma^2$,
+and $S_{n} = \sum_{i=1}^{n}X$,
+then the distribution of $\frac{S_{n} - n\mu}{\sqrt{n}\sigma}$ converges in distribution to the standard normal distribution.
