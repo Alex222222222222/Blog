@@ -446,7 +446,7 @@ V(x) = \begin{cases}
 \end{cases}
 $$
 
-Then, the TISE can be devided into three regions:
+Then, the TISE can be divided into three regions:
 
 1. Region I: $x < -a$
 
@@ -850,4 +850,244 @@ Given the position operator $\hat{x}$ and momentum operator $\hat{p}$, we have
 
 $$
 \Delta \hat{x} \Delta \hat{p} \ge \frac{\hbar}{2}
+$$
+
+## Quantum Harmonic Oscillator
+
+A **quantum harmonic oscillator** is a system where the potential energy is given by
+
+$$
+V(x) = \frac{1}{2}m\omega^2x^2
+$$
+
+### Annihilation and Creation Operators
+
+Given the Hamiltonian operator $\hat{H}$ of the quantum harmonic oscillator, we can define the **annihilation operator $\hat{a}$** and **creation operator $\hat{a}^\dagger$** as
+
+$$
+\begin{align}
+    \hat{a} &= u\hat{x} + v\hat{p} i \\
+    \hat{a}^\dagger &= u\hat{x} - v\hat{p} i
+\end{align}
+$$
+
+Thus, we have
+
+$$
+\begin{align}
+    \hat{a}\hat{a}^\dagger &= u^2 \hat{x}^2 - v^2 \hat{p}^2
+    - uv \hat{x}\hat{p} i + uv \hat{p}\hat{x} i \\
+    &= u^2 \hat{x}^2 - v^2 \hat{p}^2 + uv\hbar \\
+\end{align}
+$$
+
+If we take:
+
+$$
+\begin{align}
+    u^2 &= \frac{1}{2\hbar}m\omega \\
+    v^2 &= \frac{1}{2 m\omega\hbar} \\
+\end{align}
+$$
+
+Then, we have
+
+$$
+\begin{align}
+    \hat{a}\hat{a}^\dagger &= \frac{1}{2\hbar}m\omega \hat{x}^2 + \frac{1}{2 m\omega\hbar} \hat{p}^2 + \frac{1}{2} \\
+    &= \frac{1}{\hbar\omega}\hat{H} + \frac{1}{2}
+\end{align}
+$$
+
+### Bosonic Commutation Relation
+
+Given the annihilation operator $\hat{a}$ and creation operator $\hat{a}^\dagger$ of the quantum harmonic oscillator, we have
+
+$$
+[\hat{a}, \hat{a}^\dagger] = 2uvh = 1
+$$
+
+### Number Operator
+
+Given the annihilation operator $\hat{a}$ and creation operator $\hat{a}^\dagger$ of the quantum harmonic oscillator, we can define the **number operator $\hat{N}$** as
+
+$$
+\hat{N} = \hat{a}^\dagger\hat{a}
+$$
+
+Thus, we have
+
+$$
+\begin{align}
+    \hat{H} = \hbar\omega\left(\hat{N} + \frac{1}{2}\right)
+\end{align}
+$$
+
+### Eigenstates of Number Operator
+
+As the number operator $\hat{N}$ is Hermitian, we can find an orthonormal basis $\{\Psi_0(x), \Psi_1(x), \ldots\}$ such that
+
+$$
+\hat{N}\Psi_n(x) = E_n\Psi_n(x)
+$$
+
+We next prove that $E_n$ can only be non-negative integers.
+
+Given $\Psi_n$ an eigenvector of $\hat{N}$ with eigenvalue $E_n$, we have
+
+$$
+\begin{align}
+    \hat{N}\hat{a}\Psi_n &= \hat{a}^\dagger\hat{a}^2\Psi_n \\
+    &= (\hat{a}\hat{a}^\dagger - 1)\hat{a}\Psi_n \\
+    &= \hat{a}\hat{N} - \hat{a}\Psi_n \\
+    &= (E_n-1)\hat{a}\Psi_n \\
+\end{align}
+$$
+
+Thus, if $\hat{a}\Psi_n$ is non-zero, then $\hat{a}\Psi_n$ is also an eigenvector of $\hat{N}$ with eigenvalue $E_n-1$.
+
+We next prove that $\hat{a}\Psi_n = 0$ if and only if $E_n = 0$.
+
+If $E_n = 0$, then
+
+$$
+\begin{align}
+    \left<\hat{a}\Psi_n|\hat{a}\Psi_n\right> &= \left<\Psi_n|\hat{a}^\dagger\hat{a}\Psi_n\right> \\
+    &= \left<\Psi_n|0\right> \\
+    &= 0
+\end{align}
+$$
+
+Thus, $\hat{a}\Psi_n = 0$.
+
+If $\hat{a}\Psi_n = 0$, then
+
+$$
+\begin{align}
+    \left<\hat{a}\Psi_n|\hat{a}\Psi_n\right> &= \left<\Psi_n|\hat{a}^\dagger\hat{a}\Psi_n\right> \\
+    &= \left<\Psi_n|\hat{N}\Psi_n\right> \\
+    &= E_n\left<\Psi_n|\Psi_n\right> \\
+    &= 0
+\end{align}
+$$
+
+Thus, $E_n = 0$.
+
+By proceeding the previous argument, we conclude that $\hat{a}^k\Psi_n$ is an eigenvector of $\hat{N}$ with eigenvalue $E_n-k$.
+
+If $En$ is not an integer, then $k$ can be any positive integer as the annihilation process can be repeated indefinitely when $E_n - k$ never hit zero.
+And there exits $k$ such that $E_n - k < 0$, which is not possible,
+as $\hat{N} = \hat{a}^\dagger\hat{a}$, and is positive semi-definite.
+
+Thus, $E_n$ is a non-negative integer.
+
+### Ground State of Quantum Harmonic Oscillator
+
+By discussion in the [previous section](#eigenstates-of-number-operator),
+we can find an normalised eigenstate $\Psi_0(x)$ of the number operator $\hat{N}$ with eigenvalue $E_0 = 0$.
+
+In this section, we prove that it is unique, up to a complex constant.
+
+By previous discussion, we see that $\hat{a}\Psi_0 = 0$.
+
+$$
+\begin{align}
+    u\hat{x}\Psi_0 + v\hat{p} i \Psi_0 &= 0 \\
+    u\hat{x}\Psi_0 + v\hbar \frac{d}{dx}\Psi_0 &= 0 \\
+\end{align}
+$$
+
+As the above equation is a first oder homogeneous ODE, and the solution is unique up to a complex constant.
+
+### Creation Operator and Eigenstates of Number Operator
+
+Given the ground state $\Psi_0(x)$ of the quantum harmonic oscillator, and eigenstate $\Psi_n(x)$ of the number operator $\hat{N}$ with eigenvalue $E_n = n$.
+Then:
+
+$$
+\hat{N}\hat{a}^\dagger\Psi_n = (E_n+1) \hat{a}^\dagger\Psi_n
+$$
+
+and
+
+$$
+\begin{align}
+    \left<\hat{a}^\dagger\Psi_n|\hat{a}^\dagger\Psi_n\right> &=
+    \left<\Psi_n|\hat{a}\hat{a}^\dagger\Psi_n\right> \\
+    &= \left<\Psi_n|[\hat{a},\hat{a}^\dagger]+\hat{a}^\dagger\hat{a}\Psi_n\right> \\
+    &= \left<\Psi_n|\Psi_n\right> + \left<\Psi_n|\hat{N}\Psi_n\right> \\
+    &= E_n + 1
+\end{align}
+$$
+
+Thus, we could define the recursive relation:
+
+$$
+\Psi_{n+1} = \frac{\hat{a}^\dagger\Psi_n}{\sqrt{E_n+1}}
+$$
+
+Repeating the formula, we can get all the eigenstates of the number operator $\hat{N}$.
+And could be defined by the ground state $\Psi_0(x)$.
+
+$$
+\Psi_n(x) = \frac{(\hat{a}^\dagger)^n\Psi_0(x)}{\sqrt{n!}}
+$$
+
+### Statistics of Quantum Harmonic Oscillator
+
+As the creation operator $\hat{a}^\dagger$ and annihilation operator $\hat{a}$ are linear combinations of position operator $\hat{x}$ and momentum operator $\hat{p}$,
+we can derive the position operator $\hat{x}$ and momentum operator $\hat{p}$ in terms of $\hat{a}$ and $\hat{a}^\dagger$.
+
+$$
+\begin{align}
+    \hat{x} &= \frac{1}{\sqrt{2m\hbar\omega}}(\hat{a} + \hat{a}^\dagger) \\
+    \hat{p} &= \frac{i}{\sqrt{2m\hbar\omega}}(\hat{a} - \hat{a}^\dagger)
+\end{align}
+$$
+
+Thus, we have
+
+$$
+\begin{align}
+    \left<\Psi_n|\hat{x}\Psi_n\right> &= \frac{1}{\sqrt{2m\hbar\omega}}\left<\Psi_n|(\hat{a} + \hat{a}^\dagger)\Psi_n\right> = 0 \\
+\end{align}
+$$
+
+and
+
+$$
+\begin{align}
+    \left<\Psi_n|\hat{p}\Psi_n\right> &= \frac{i}{\sqrt{2m\hbar\omega}}\left<\Psi_n|(\hat{a} - \hat{a}^\dagger)\Psi_n\right> = 0 \\
+\end{align}
+$$
+
+## Constant of Motion and Commutators
+
+Given an operator $\hat{A}$,
+which is probably time dependent,
+then
+
+$$
+\begin{align}
+    \frac{d}{dt}\left<A\right> &= \frac{d}{dt}\left<\Psi|\hat{A}\Psi\right> \\
+    &= \frac{d}{dt} \int_{-\infty}^{\infty} \Psi^*\hat{A}\Psi dx \\
+    &= \int_{-\infty}^{\infty} \left(\frac{\partial \Psi^*}{\partial t}\hat{A}\Psi + \Psi^*\frac{\partial \hat{A}}{\partial t}\Psi + \Psi^*\hat{A}\frac{\partial \Psi}{\partial t}\right) dx \\
+    &= \left<\Psi|\frac{\partial \hat{A}}{\partial t}\Psi\right>
+    +\int_{-\infty}^{\infty}
+    \left(\frac{\partial \Psi^*}{\partial t}\hat{A}\Psi + \Psi^*\hat{A}\frac{\partial \Psi}{\partial t}\right) dx \\
+    &= \left<\Psi|\frac{\partial \hat{A}}{\partial t}\Psi\right>
+    + \left<\frac{\partial \Psi}{\partial t}|\hat{A}\Psi\right>
+    + \left<\Psi|\hat{A}\frac{\partial \Psi}{\partial t}\right> \\
+    &= \left<\Psi|\frac{\partial \hat{A}}{\partial t}\Psi\right>
+    + \left<\left(\frac{1}{i\hbar}\hat{H}\Psi\right)|\hat{A}\Psi\right>
+    + \left<\Psi|\hat{A}\left(\frac{1}{i\hbar}\hat{H}\Psi\right)\right> \\
+    &= \left<\Psi|\frac{\partial \hat{A}}{\partial t}\Psi\right>
+    + \frac{1}{i\hbar}\left[
+        - \left<\Psi|\hat{H}\hat{A}\Psi\right>
+        + \left<\Psi|\hat{A}\hat{H}\Psi\right>
+    \right] \\
+    &= \left<\Psi|\frac{\partial \hat{A}}{\partial t}\Psi\right>
+    + \frac{1}{i\hbar}
+    \left<[\hat{A},\hat{H}]\right>
+\end{align}
 $$
