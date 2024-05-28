@@ -106,6 +106,10 @@ $$
 P(A) = \int_A |\Psi(x, t)|^2 dx.
 $$
 
+### Continuity Requirement of Wave Function
+
+The wave function $\Psi(x, t)$ must be continuous and differentiable.
+
 ### Normalizing Wave Function
 
 The wave function $\Psi(x, t)$ defined on space $X$ is normalized if
@@ -408,7 +412,7 @@ $$
         + \frac{\partial \psi}{\partial x}\frac{\partial \psi}{\partial x}^*
     \right]\right] \\
     &= -\frac{d}{dx}\left[\frac{\hbar}{2mi}\left[
-        \psi\frac{\partial \psi}{\partial x}^* - \psi^*\frac{\partial \psi}{\partial x}
+        -\psi\frac{\partial \psi}{\partial x}^* + \psi^*\frac{\partial \psi}{\partial x}
     \right]\right]
 \end{align}
 $$
@@ -417,7 +421,7 @@ We thus define the **probability current $J$** as
 
 $$
 J = \frac{\hbar}{2mi}\left[
-    \psi\frac{\partial \psi}{\partial x}^* - \psi^*\frac{\partial \psi}{\partial x}
+    -\psi\frac{\partial \psi}{\partial x}^* + \psi^*\frac{\partial \psi}{\partial x}
 \right]
 $$
 
@@ -428,3 +432,422 @@ $$
 $$
 
 and is called the **continuity equation**.
+
+## Quantum Tunnelling
+
+We consider a potential barrier of height $V_0$ and width $2a$.
+
+That is, the potential is given by
+
+$$
+V(x) = \begin{cases}
+    V_0 & \text{if } |x| < 2a \\
+    0 & \text{otherwise}
+\end{cases}
+$$
+
+Then, the TISE can be devided into three regions:
+
+1. Region I: $x < -a$
+
+$$
+\frac{d^2 \psi}{dx^2} = -\frac{2m}{\hbar^2}E\psi
+$$
+
+2. Region II: $-a < x < a$
+
+$$
+\frac{d^2 \psi}{dx^2} = -\frac{2m}{\hbar^2}(E-V_0)\psi
+$$
+
+3. Region III: $x > a$
+
+$$
+\frac{d^2 \psi}{dx^2} = -\frac{2m}{\hbar^2}E\psi
+$$
+
+### Simplified Model of Quantum Tunnelling
+
+For the sake of simplicity,
+let $k = \sqrt{\frac{2mE}{\hbar^2}}$
+we can assume the solution of the TISE in Region I and Region III to be
+
+In region I:
+
+$$
+\psi(x) = A e^{ikx} + B e^{-ikx}
+$$
+
+In region III:
+
+$$
+\psi(x) = F e^{ikx}
+$$
+
+![Quantum Tunnelling](/static/img/2024-05-27-Quantum-Mechanics-Note/5.png)
+
+The wave $A e^{ikx}$ can be interpreted as the wave go toward the barrier, and the wave $B e^{-ikx}$ can be interpreted as the wave being reflected by the barrier and wave $F e^{ikx}$ can be interpreted as the wave go through the barrier.
+
+As there is no probability for the particle to be in region II, the probability current must be same at the point $x = a$ and $x = -a$.
+
+In region I:
+
+$$
+J = \frac{\hbar}{2mi}\left[
+    \psi\frac{-\partial \psi}{\partial x}^* + \psi^*\frac{\partial \psi}{\partial x}
+\right] = \frac{\hbar k}{m}(|A|^2 - |B|^2)
+$$
+
+In region III:
+
+$$
+J = \frac{\hbar}{2mi}\left[
+    \psi\frac{-\partial \psi}{\partial x}^* + \psi^*\frac{\partial \psi}{\partial x}
+\right] = \frac{\hbar k}{m}|F|^2
+$$
+
+Thus, we have
+
+$$
+|A|^2 - |B|^2 = |F|^2
+$$
+
+We define the **reflection probability $R$** and **transmission probability $T$** as
+
+$$
+\begin{align}
+    R &= \frac{|B|^2}{|A|^2} \\
+    T &= \frac{|F|^2}{|A|^2}
+\end{align}
+$$
+
+Then, we have
+
+$$
+R + T = 1
+$$
+
+### Quantum Tunnelling through High and Thin Barrier
+
+We consider a barrier that is infinitely high and thin at origin.
+
+To state this formally, we consider the potential to be the limiting behaviour of
+the **Dirac delta function** potential.
+
+$$
+\delta_L(x) = \begin{cases}
+    \frac{1}{L} & \text{if } -\frac{L}{2} < x < \frac{L}{2} \\
+    0 & \text{otherwise}
+\end{cases}
+$$
+
+and 
+
+$$
+\delta = \lim_{L \to 0} \delta_L(x)
+$$
+
+Also, for all function $g(x)$, we have
+
+$$
+\lim_{\epsilon \to 0} \int_{-\epsilon}^{\epsilon} g(x) \delta(x) dx = g(0)
+$$
+
+Then, the potential is given by
+
+$$
+V(x) = \alpha \delta(x)
+$$
+
+We again, consider the simplified model in the [previous section](#simplified-model-of-quantum-tunnelling).
+
+In region I:
+
+$$
+\psi(x) = A e^{ikx} + B e^{-ikx}
+$$
+
+In region III:
+
+$$
+\psi(x) = F e^{ikx}
+$$
+
+As the region II is infinity thin,
+the right hand side of the region I and the left hand side of the region III must be the same.
+
+Thus, we have
+
+$$
+A + B = F
+$$
+
+Also, by integrating the TISE over the region $[-\epsilon,\epsilon]$,
+we get:
+
+$$
+\begin{align}
+    \int_{-\epsilon}^{\epsilon} \frac{d^2 \psi}{dx^2} dx &= -\frac{2m}{\hbar^2} \int_{-\epsilon}^{\epsilon} (E-\alpha\delta(x))\psi dx \\
+    \left[\frac{d \psi}{dx}\right]_{-\epsilon}^{\epsilon} &= -\frac{2m}{\hbar^2}
+    \left[E\psi(\epsilon)-E\psi(-\epsilon) - \alpha\int_{-\epsilon}^{\epsilon} \psi\delta dx\right] \\
+\end{align}
+$$
+
+Taking the limit $\epsilon \to 0$, we get
+
+$$
+\begin{align}
+    \left[\frac{d \psi}{dx}\right]_{0^+} - \left[\frac{d \psi}{dx}\right]_{0^-} &= \frac{2m}{\hbar^2} \alpha \psi(0)
+\end{align}
+$$
+
+Substituting the solution of the TISE in region I and region III, we get
+
+$$
+ik(A-B) - ikF = \frac{2m}{\hbar^2} \alpha F
+$$
+
+Solving the above equation, we can get the reflection and transmission probability.
+
+## Functional Analysis of Quantum Mechanics
+
+### Hilbert Space
+
+Define the **Hilbert space $\mathbf{H}$** as the space of all possible wave functions $\Psi(x, t)$ that are square integrable.
+
+$$
+\mathbf{H} = \left\{
+    \Psi(x, t) \mid \int_{-\infty}^{\infty} |\Psi(x, t)|^2 dx < \infty
+\right\}
+$$
+
+The Hilbert space is a **complex vector space**.
+
+### Inner Product
+
+We define the **inner product** of two wave functions $\Psi_1(x, t)$ and $\Psi_2(x, t)$ as
+
+$$
+\left<\Psi_1, \Psi_2\right> = \int_{-\infty}^{\infty} \Psi_1^*(x, t) \Psi_2(x, t) dx
+$$
+
+#### Properties of Inner Product
+
+1. **Linearity in Second Argument**: For all $\Psi_1, \Psi_2 \in \mathbf{H}$ and $a,b \in \mathbb{C}$, we have $\left<a\Psi_1 + b\Psi_2, \Psi_3\right> = a\left<\Psi_1, \Psi_3\right> + b\left<\Psi_2, \Psi_3\right>$.
+2. **Anti-linearity in First Argument**: For all $\Psi_1, \Psi_2 \in \mathbf{H}$ and $a,b \in \mathbb{C}$, we have $\left<\Psi_1, a\Psi_2 + b\Psi_3\right> = a^*\left<\Psi_1, \Psi_2\right> + b^*\left<\Psi_1, \Psi_3\right>$.
+3. **Positive Definite**: For all $\Psi \in \mathbf{H}$, we have $\left<\Psi, \Psi\right> \geq 0$ and $\left<\Psi, \Psi\right> = 0$ if and only if $\Psi = 0$.
+4. **Conjugate Symmetric (Skew Symmetric)**: For all $\Psi_1, \Psi_2 \in \mathbf{H}$, we have $\left<\Psi_1, \Psi_2\right> = \left<\Psi_2, \Psi_1\right>^*$.
+
+### Norm
+
+The **norm** of a wave function $\Psi(x, t)$ is defined as
+
+$$
+||\Psi|| = \sqrt{\left<\Psi, \Psi\right>}
+$$
+
+### Orthogonality
+
+Two wave functions $\Psi_1(x, t)$ and $\Psi_2(x, t)$ are said to be **orthogonal** if
+
+$$
+\left<\Psi_1, \Psi_2\right> = 0
+$$
+
+### Angle
+
+The **angle** between two wave functions $\Psi_1(x, t)$ and $\Psi_2(x, t)$ is defined as
+
+$$
+\cos\theta = \frac{\left<\Psi_1, \Psi_2\right>}{||\Psi_1|| ||\Psi_2||}
+$$
+
+### Orthonormal Basis
+
+A set of wave functions $\{\Psi_1(x, t), \Psi_2(x, t), \ldots\}$ is said to be an **orthonormal basis** if
+
+1. The set is orthogonal.
+2. The set is normalized.
+3. The set spans the Hilbert space. That is, for all $\Psi(x, t) \in \mathbf{H}$, there exists a set of complex numbers $\{c_1, c_2, \ldots\}$ such that
+
+$$
+\Psi(x, t) = \sum_{n=1}^{\infty} c_n \Psi_n(x, t)
+$$
+
+### Operator
+
+An **operator** is a function that maps a wave function to another wave function.
+
+### Hermitian Conjugate
+
+The **Hermitian conjugate** of an operator $\hat{A}$ is denoted by $\hat{A}^\dagger$ and is the unique operator that satisfies
+
+$$
+\left<\hat{A}\Psi_1, \Psi_2\right> = \left<\Psi_1, \hat{A}^\dagger\Psi_2\right>
+$$
+
+### Hermitian Operator
+
+An **Hermitian operator** is an operator that satisfies
+
+$$
+\left<\hat{A}\Psi_1, \Psi_2\right> = \left<\Psi_1, \hat{A}\Psi_2\right>
+$$
+
+for all $\Psi_1, \Psi_2 \in \mathbf{H}$.
+
+An equivalent definition is that the operator is equal to its Hermitian conjugate.
+
+### Spectral Theorem
+
+The **spectral theorem** states that for all Hermitian operators $\hat{A}$, there exists an orthonormal basis $\{\Psi_1(x, t), \Psi_2(x, t), \ldots\}$ such that
+
+$$
+\hat{A}\Psi_n(x, t) = a_n\Psi_n(x, t)
+$$
+
+where $a_n$ are the eigenvalues of $\hat{A}$ and is real.
+
+#### Hamiltonian Operator is Hermitian
+
+The Hamiltonian operator $\hat{H}$ is Hermitian.
+
+Proof:
+
+$$
+\begin{align}
+    \left<\hat{H}\Psi_1, \Psi_2\right> &= \int_{-\infty}^{\infty} \Psi_1^*(x, t) \hat{H}\Psi_2(x, t) dx \\
+    &= \int_{-\infty}^{\infty} \Psi_1^*(x, t) \left[-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi_2}{\partial x^2} + V(x)\Psi_2(x, t)\right] dx \quad \text{By Integration By Part} \\
+    &= \int_{-\infty}^{\infty} \left[-\frac{\hbar^2}{2m}\frac{\partial^2 \Psi_1^*}{\partial x^2} + V(x)\Psi_1^*(x, t)\right] \Psi_2(x, t) dx \\
+    &= \left<\Psi_1, \hat{H}\Psi_2\right>
+\end{align}
+$$
+
+### Positivity Operators
+
+An operator $\hat{A}$ is said to be **positive definite** if
+give any non-zero wave function $\Psi(x, t)$, we have
+
+$$
+\left<\hat{A}\Psi, \Psi\right> > 0
+$$
+
+An operator $\hat{A}$ is said to be **positive semi-definite** if
+give any wave function $\Psi(x, t)$, we have
+
+$$
+\left<\hat{A}\Psi, \Psi\right> \geq 0
+$$
+
+Any operator given by $\hat{A} = \hat{B}^\dagger \hat{B}$ is positive semi-definite.
+
+## Measurement Postulate
+
+Given a orthonormal basis $\{\Psi_1(x, t), \Psi_2(x, t), \ldots\}$, the measurement postulate states that the probability of measuring the normalized wave function $\Psi(x, t)$ to be in the state $\Psi_n(x, t)$ is given by
+
+$$
+P_n = \left|\left<\Psi_n, \Psi\right>\right|^2
+$$
+
+### Post Measurement State
+
+After the measurement, the state of the wave function will collapse to the state that is measured.
+
+## Measurement of Observables
+
+Given an observable $\hat{A}$,
+it is postulated that $\hat{A}$ is Hermitian and has an orthonormal basis $\{\Psi_1(x, t), \Psi_2(x, t), \ldots\}$.
+
+The expectation value of the observable $\hat{A}$ of a wave function $\psi$ is given by
+
+$$
+\left<\hat{A}\right> = \sum_{n=1}^{\infty} a_n P_n = \left<\psi|\hat{A}\psi\right>
+$$
+
+## Commutators and Lie Bracket
+
+In general, two operators $\hat{A}$ and $\hat{B}$ do not commute.
+
+We define the **commutator (Lie Bracket)** of two operators $\hat{A}$ and $\hat{B}$ as
+
+$$
+[\hat{A}, \hat{B}] = \hat{A}\hat{B} - \hat{B}\hat{A}
+$$
+
+### Properties of Commutators
+
+1. **Linearity**: $[a\hat{A} + b\hat{B}, \hat{C}] = a[\hat{A}, \hat{C}] + b[\hat{B}, \hat{C}]$
+2. **Anti-linearity**: $[\hat{A}, a\hat{B} + b\hat{C}] = a[\hat{A}, \hat{B}] + b[\hat{A}, \hat{C}]$
+3. **Linearity in Second Argument**: $[\hat{C}, a\hat{A} + b\hat{B}] = a[\hat{C},\hat{A}] + b[\hat{C},\hat{B}]$
+4. **Distributivity**: $[\hat{A}, \hat{B}\hat{C}] = [\hat{A}, \hat{B}]\hat{C} + \hat{B}[\hat{A}, \hat{C}]$
+
+#### Commutator of Position and Momentum Operators
+
+The commutator of position operator $\hat{x}$ and momentum operator $\hat{p}$ is given by
+
+$$
+\begin{align}
+    [\hat{x},\hat{p}] &= \hat{x}\hat{p} - \hat{p}\hat{x} \\
+    &= x\left(-i\hbar\frac{\partial}{\partial x}\right) - \left(-i\hbar\frac{\partial}{\partial x}\right)x \\
+    &= x\left(-i\hbar\frac{\partial}{\partial x}\right) - \left(-i\hbar\right) - x\left(-i\hbar\frac{\partial}{\partial x}\right)  \\
+    &= i\hbar
+\end{align}
+$$
+
+## Compatibility of Observables
+
+Two observables $\hat{A}$ and $\hat{B}$ are said to be **compatible** if they commute.
+
+## Robertson Inequality
+
+The **Robertson Inequality** states that for any two observables $\hat{A}$ and $\hat{B}$, we have
+
+$$
+\Delta \hat{A} \Delta \hat{B} \ge \frac{1}{2} \left|\left<[\hat{A}, \hat{B}]\right>\right|
+$$
+
+Proof:
+
+Without loss of generality, we can assume $\left<\hat{A}\right> = 0$ and $\left<\hat{B}\right> = 0$. Otherwise we replace $\hat{A}$ with $\hat{A} - \left<\hat{A}\right>$ and $\hat{B}$ with $\hat{B} - \left<\hat{B}\right>$.
+
+Then, we have
+
+$$
+\begin{align}
+    \Delta \hat{A} \Delta \hat{B} &= \sqrt{\left<\hat{A}^2\right>\left<\hat{B}^2\right>} \\
+    &= \sqrt{\left<\hat{A}\psi|\hat{A}\psi\right>\left<\hat{B}\psi|\hat{B}\psi\right>} \\
+    &\ge \left|\left<\hat{A}\psi|\hat{B}\psi\right>\right| \quad \text{Cauchy-Schwartz}\\
+    &= \left|\left<\psi|\hat{A}\hat{B}\psi\right>\right| \\
+\end{align}
+$$
+
+By similar argument, we have
+
+$$
+\Delta \hat{A} \Delta \hat{B} \ge \left|\left<\psi|\hat{B}\hat{A}\psi\right>\right|
+$$
+
+Thus,
+
+$$
+\begin{align}
+    \Delta \hat{A} \Delta \hat{B} &= \frac{1}{2}\left(\Delta \hat{A} \Delta \hat{B} + \Delta \hat{A} \Delta \hat{B}\right) \\
+    &\ge \frac{1}{2}\left(
+        \left|\left<\psi|\hat{A}\hat{B}\psi\right>\right| + \left|\left<\psi|\hat{B}\hat{A}\psi\right>\right|
+    \right)\\
+    &\ge \frac{1}{2}\left|
+        \left<\psi|\hat{A}\hat{B}\psi\right> - \left<\psi|\hat{B}\hat{A}\psi\right>
+    \right| \\
+    &= \frac{1}{2}\left|
+        \left<\psi|[\hat{A}, \hat{B}]\psi\right>
+    \right| \\
+\end{align}
+$$
+
+### Robertson Inequality for Position and Momentum Operators
+
+Given the position operator $\hat{x}$ and momentum operator $\hat{p}$, we have
+
+$$
+\Delta \hat{x} \Delta \hat{p} \ge \frac{\hbar}{2}
+$$
