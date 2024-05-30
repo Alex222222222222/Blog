@@ -469,3 +469,179 @@ $$
 $$
 
 where $\pi$ is the stationary distribution.
+
+## Discrete Renewal Process
+
+Define a sequence of independent distributed random variables $\{X_n\}$ with positive integer state space.
+
+Define a stochastic process $\{T_n\}$ as
+
+$$
+T_n = T_{n-1} + X_n
+$$
+
+where $T_0 = 0$.
+
+Then, $\{T_n\}$ is a **discrete renewal process**.
+
+### Other Ways to Define Discrete Renewal Process
+
+This first definition is defined by the **inter-arrival time**.
+We can directly define the process by the **renewal time $T_n$**, which are not independent.
+
+We can also define the process by assign each time $n$ a **renewal probability** $u_n$,
+which is the probability that the process is renewed at time $n$.
+
+Or we can define the process by the **number of renewal** $N_n$,
+which is the number of renewals in the time interval $[0, n]$.
+
+### Mean of Number of Renewals
+
+If we are given the renewal probability $u_n$,
+then the mean of the number of renewals in the time interval $[0, n]$ is
+
+$$
+E[N_n] = \sum_{k=1}^{n} u_k.
+$$
+
+### Renewal Process and Markov Chain
+
+If we are given a Markov chain with state space $S = \{1, 2, \ldots\}$,
+and we set $Y_0 = 1$,
+and we said the process is renewed whenever it hits state $1$,
+then the process is a discrete renewal process.
+
+And the renewal probability is given by
+
+$$
+u_n = P(\text{the process is renewed at time } n) = P(Y_n = 1|Y_0=1) = P_{11}^{(n)}
+$$
+
+#### Inter-renewal Distribution of Discrete Renewal Process Defined by Markov Chain
+
+The inter-renewal distribution of the discrete renewal process defined by a Markov chain is given by
+
+$$
+f_k = P(\text{the precess first reach }1\text{ at } k | Y_0 = 1) = f_{11}^{(k)}
+$$
+
+which is the first renewal probability.
+
+#### The Limit Renewal Theorem of Ergodic Markov Chain
+
+Given an ergodic Markov chain with state space $S = \{1, 2, \ldots\}$,
+and we set $Y_0 = 1$,
+and we said the process is renewed whenever it hits state $1$,
+and we set the number of renewals in the time interval $[0, n]$ as $N_n$,
+then
+
+$$
+\lim_{n\rightarrow \infty} \frac{E[N_n]}{n} = \frac{1}{E[T_1]}
+$$
+
+where $E[T_1]$ is the mean recurrence time of state $1$.
+
+## Branching Process
+
+### Offspring Distribution
+
+An **offspring distribution** is a probability distribution of the number of offspring of each individual.
+
+### Discrete Branching Process
+
+A **discrete branching process** with offspring distribution $Z$ is a stochastic process $\{X_n\}$ defined as
+
+$$
+X_n = \sum_{i=1}^{X_{n-1}} Z
+$$
+
+And $X_n$ is called the size of the nth generation.
+
+### The Probability Generating Function of Discrete Branching Process
+
+The **probability generating function** of a discrete branching process is defined as
+
+$$
+F(s) = E[s^{Z}]
+$$
+
+where $Z$ is the offspring distribution.
+
+### Mean Generation Size
+
+If we are starting from $X_{0} = 1$,
+then the mean generation size of the nth generation is given by
+
+$$
+E[X_n] = E[Z]^n
+$$
+
+where $E[Z]$ is the mean of the offspring distribution.
+
+### Total Progeny
+
+The total progeny of the branching process is defined as
+the total number of individuals that ever exist in the process.
+
+$$
+T = \sum_{n=0}^{\infty} X_n
+$$
+
+#### Probability Generating Function of Total Progeny
+
+Let $G(s)$ be the probability generating function of the total progeny $T$,
+then
+
+$$
+G(s) = sF(G(s))
+$$
+
+### Extinction
+
+We say that the branching process is **extinct** if $X_n = 0$ for some $n$.
+
+#### Probability of Extinction
+
+The probability of extinction is given by the ever visit probability of state $0$ starting from state $1$.
+
+$$
+\gamma = f_{10} = P(\text{extinction}) = \sum_{n=1}^{\infty} f_{10}^{(n)}
+$$
+
+##### Calculation of Probability of Extinction
+
+The probability of extinction is the least non-negative solution of the equation
+
+$$
+s = F(s)
+$$
+
+## Random Walk
+
+### Simple Random Walk
+
+A **simple random walk** is a stochastic process $\{X_n\}$ defined as
+
+$$
+X_n = X_{n-1} + Y_n
+$$
+
+where $Y_n$ is a sequence of independent and identically distributed random variables.
+
+In this note, we only focusing on $Y$ to be a Bernoulli random variable with
+
+$$
+P(Y = 1) = p, P(Y = -1) = 1 - p
+$$
+
+#### Symmetric Random Walk
+
+If $p = 0.5$, then the random walk is said to be **symmetric**.
+
+#### Number of Possible Path
+
+The number of possible paths of a simple random walk from $(0,i)$ to $(n,j)$ is denoted as $N_n(i,j)$.
+
+#### Crossing Condition
+
+Let the number $N_{n}^{m}(i,j)$ denote the number of possible paths of a simple random walk from $(0,i)$ to $(n,j)$ that is at $(k,m)$ for some $k$.
