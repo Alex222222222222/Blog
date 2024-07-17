@@ -1,6 +1,6 @@
 ---
 title: "Markov Chain Note"
-date: "2025-05-29"
+date: "2024-05-29"
 tags: ["Probability", "Markov Chain"]
 toc: true
 categories: ["Probability"]
