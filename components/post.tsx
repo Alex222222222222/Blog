@@ -14,7 +14,6 @@ import rehypeSlug from "rehype-slug";
 import rehypeHeadingLink from "@/lib/rehypeHeadingLink";
 import rehypeHighlight from "rehype-highlight";
 import remarkAutoNumberHeadings from "@/lib/remarkAutoNumberHeadings";
-import testPlugin from "@/lib/remarkAutoNumberHeadings";
 
 interface PostProps {
   post: Post;
@@ -95,10 +94,6 @@ const PostPageContent: React.FC<PostProps> = ({
 };
 
 export const PostContentReal: React.FC<PostContentProps> = ({ post }) => {
-  const remarkPlugins = post.toc
-    ? [remarkGfm, remarkToc, remarkMath]
-    : [remarkGfm, remarkMath];
-
   const content = post.toc ? `## Contents\n\n${post.content}` : post.content;
 
   return (
