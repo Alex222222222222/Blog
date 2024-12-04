@@ -29,6 +29,7 @@
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.0",
     "remark-math": "^6.0.0",
+    "remark-math-environment": "^1.0.8",
     "remark-toc": "^9.0.0",
     "rss": "^1.2.2",
     "styled-components": "^6.1.0",

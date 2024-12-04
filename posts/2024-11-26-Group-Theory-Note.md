@@ -1,5 +1,5 @@
 ---
-title: "Group Theory` Note"
+title: "Group Theory Note"
 date: "2024-11-26"
 tags: ["Group Theory", "Algebra", "Mathematics", "Math", "Note"]
 toc: true
@@ -15,4 +15,5 @@ This is my personal note on group theory.
 ## Abelian Group
 
 ### Divisible and Reduced Groups
+
 
