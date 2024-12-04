@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import QRCode from "qrcode.react";
+import { QRCodeCanvas } from "qrcode.react";
 import Layout from "@/components/layout";
 
 const QRCodePage: React.FC = ({}) => {
@@ -23,7 +23,7 @@ const QRCodePage: React.FC = ({}) => {
         placeholder="Enter text to generate QR Code"
         className="w-full border-2 border-gray-300"
       />
-      <QRCode value={input} className="mb-3" size={size} />
+      <QRCodeCanvas value={input} className="mb-3" size={size} />
 
       {
         // export button to export qr code as png
