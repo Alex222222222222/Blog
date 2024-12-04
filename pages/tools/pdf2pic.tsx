@@ -58,7 +58,7 @@ const StableDiffusionPage: React.FC = ({}) => {
   const [fixAspectRatio, setFixAspectRatio] = useState<boolean>(true);
 
   const pdfjsWorker = require("pdfjs-dist/build/pdf.worker");
-  GlobalWorkerOptions.workerSrc = pdfjsWorker;
+  GlobalWorkerOptions.workerSrc = pdfjsWorker + 'pdfjs-dist/build/pdf.worker.mjs';
 
   return (
     <Layout>
@@ -247,7 +247,7 @@ const StableDiffusionPage: React.FC = ({}) => {
           }
           return (
             <div key={`${filename}_${image[1]}.png`} className="m-2">
-              <Image src={image[0]} alt="PDF to Image" />
+              <Image src={image[0]} alt="PDF to Image" width={width} height={height}/>
             </div>
           );
         })}
