@@ -202,3 +202,28 @@ $$
 Which finish the proof that $\mathbb{Z}(p^\infty)$ is divisible.
 
 ::math-env-end{example}
+
+::math-env-start{theorem}[name="Injective Property, Baer, 1940"]
+
+Let $D$ be a divisible group and let $A$ be a subgroup of a group $B$.
+If $f: A \rightarrow D$ is a homomorphism,
+then $f$ can be extended to a homomorphism $\phi: B \rightarrow D$;
+that is, the following diagram commutes:
+
+$$
+\begin{array}{ccccc}
+    & & D & & \\
+    & & f\uparrow & \searrow\phi & \\
+    0 & \rightarrow & A & \xrightarrow{i} & B \\
+\end{array}
+$$
+
+```tikz
+\begin{tikzcd}
+O \arrow[r] & A \arrow[r, "i"] \arrow[u, "s"] & B \arrow[ld, dashed, "\varphi"] \\
+            & D                              &
+\end{tikzcd}
+```
+
+
+::math-env-end{theorem}
