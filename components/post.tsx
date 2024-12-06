@@ -15,6 +15,7 @@ import rehypeHeadingLink from "@/lib/rehypeHeadingLink";
 import rehypeHighlight from "rehype-highlight";
 import remarkAutoNumberHeadings from "@/lib/remarkAutoNumberHeadings";
 import { remarkMathEnv } from "remark-math-environment";
+import remarkTikzSupport from "@/lib/remarkTikzSupport";
 
 interface PostProps {
   post: Post;
@@ -105,6 +106,7 @@ export const PostContentReal: React.FC<PostContentProps> = ({ post }) => {
         remarkMath,
         [remarkToc, { heading: "0.1 Contents" }],
         remarkMathEnv,
+        remarkTikzSupport,
       ]}
       rehypePlugins={[
         rehypeKatex,
