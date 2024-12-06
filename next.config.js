@@ -9,11 +9,6 @@ const nextConfig = {
     if (typeof nextRuntime === "undefined") {
       config.resolve.fallback = {
         ...config.resolve.fallback,
-        fs: false,
-        net: false,
-        tls: false,
-        child_process: false,
-        canvas: false,
       };
     }
     return config;

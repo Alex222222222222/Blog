@@ -3,21 +3,17 @@
 {
 	"name": "Node.js & TypeScript",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
-	"features": {
-		"ghcr.io/devcontainers/features/python:1": {
-			"installTools": true,
-			"optimize": true,
-			"version": "os-provided"
-		}
-	},
+	"build": {
+        // Path is relative to the devcontainer.json file.
+        "dockerfile": "Dockerfile"
+    },
 	"portsAttributes": {
         "3000": {
             "label": "Application",
             "onAutoForward": "openPreview"
         }
     },
-
+	"postCreateCommand": "npm install",
 	"forwardPorts": [
 		3000
 	],
