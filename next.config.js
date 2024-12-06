@@ -13,6 +13,7 @@ const nextConfig = {
         net: false,
         tls: false,
         child_process: false,
+        canvas: false,
       };
     }
     return config;

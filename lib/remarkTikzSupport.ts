@@ -18,7 +18,6 @@ export default function remarkTikzSupport() {
       if (node.type === "code" && node.lang === "tikz") {
         // compile the tikz code, and replace the node with an svg node
         const source = `
-          \\begin{document}
           \\usepackage{chemfig}
           \\usepackage{tikz-cd}
           \\usepackage{circuitikz}
@@ -29,6 +28,7 @@ export default function remarkTikzSupport() {
           \\usepackage{amsfonts}
           \\usepackage{amssymb}
           \\usepackage{tikz-3dplot}
+          \\begin{document}
           ${node.value}
           \\end{document}
         `;
@@ -38,6 +38,7 @@ export default function remarkTikzSupport() {
           fontCssUrl: 'https://cdn.jsdelivr.net/npm/node-tikzjax@latest/css/fonts.css',
           embedFontCss: false,
           disableOptimize: true,
+          showConsole: true,
         });
 
         // replace the node with an svg node
