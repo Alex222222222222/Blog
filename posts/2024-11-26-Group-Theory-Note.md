@@ -219,11 +219,10 @@ $$
 $$
 
 ```tikz
-\begin{tikzcd}
-O \arrow[r] & A \arrow[r, "i"] \arrow[u, "s"] & B \arrow[ld, dashed, "\varphi"] \\
-            & D                              &
-\end{tikzcd}
+\begin{tikzpicture}
+    % Draw a circle with center (0,0) and radius 2
+    \draw (0,0) circle [radius=2];
+\end{tikzpicture}
 ```
-
 
 ::math-env-end{theorem}
