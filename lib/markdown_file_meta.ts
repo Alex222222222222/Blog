@@ -26,9 +26,9 @@ import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 import { VFile } from "vfile";
 import AsyncLock from "async-lock";
-import crypto from "crypto";
 import { minify } from "html-minifier";
 import rehypeStringify from "rehype-stringify";
+import { getHashKey, putCache, readCache } from "./buildCache";
 
 export function getLastModifiedDate(filePath: string): Date {
   const stats = fs.statSync(filePath);
@@ -146,11 +146,19 @@ export async function get_markdown_data(
     html,
     toc,
     read_time,
+    content,
   };
 }
 
 /// get all posts
 export async function get_all_posts(): Promise<Post[]> {
+  // try load from cache
+  const key = getHashKey("all_posts");
+  const cachedFile = readCache("markdown", key);
+  if (cachedFile) {
+    return JSON.parse(cachedFile);
+  }
+
   const files = fs.readdirSync(path.join("posts"));
   const posts: (Post | null)[] = await Promise.all(
     files.map(async (filename) => {
@@ -173,30 +181,62 @@ export async function get_all_posts(): Promise<Post[]> {
     return a.filename.localeCompare(b.filename);
   });
 
+  // put the posts into cache
+  putCache("markdown", key, JSON.stringify(valid_posts));
+
   return valid_posts;
 }
 
 /// turn all posts into empty posts
 export async function get_empty_posts(): Promise<Post[]> {
+  // try load from cache
+  const key = getHashKey("empty_posts");
+  const cachedFile = readCache("markdown", key);
+  if (cachedFile) {
+    return JSON.parse(cachedFile);
+  }
+
   const posts = await get_all_posts();
   for (let i = 0; i < posts.length; i++) {
     posts[i].html = "";
+    posts[i].content = "";
   }
+
+  // put the posts into cache
+  putCache("markdown", key, JSON.stringify(posts));
+
   return posts;
 }
 
 /// get posts paths
 export async function get_posts_paths(): Promise<string[]> {
+  // try load from cache
+  const key = getHashKey("posts_paths");
+  const cachedFile = readCache("markdown", key);
+  if (cachedFile) {
+    return JSON.parse(cachedFile);
+  }
+
   const posts = await get_all_posts();
   const paths = posts.map((post) => {
     return post.filename;
   });
+
+  // put the paths into cache
+  putCache("markdown", key, JSON.stringify(paths));
 
   return paths;
 }
 
 /// get all posts paths with alias
 export async function get_posts_paths_with_alias(): Promise<string[]> {
+  // try load from cache
+  const key = getHashKey("posts_paths_with_alias");
+  const cachedFile = readCache("markdown", key);
+  if (cachedFile) {
+    return JSON.parse(cachedFile);
+  }
+
   const paths = await get_posts_paths();
   let paths_with_alias: string[] = [];
   paths.forEach((path) => {
@@ -208,6 +248,10 @@ export async function get_posts_paths_with_alias(): Promise<string[]> {
       paths_with_alias.push(path);
     }
   });
+
+  // put the paths into cache
+  putCache("markdown", key, JSON.stringify(paths_with_alias));
+
   return paths_with_alias;
 }
 
@@ -215,6 +259,13 @@ export async function get_posts_paths_with_alias(): Promise<string[]> {
 export async function find_matching_paths_with_alias(
   path: string
 ): Promise<string | undefined> {
+  // check the cache first
+  const key = getHashKey(`matching_paths_with_alias_${path}`);
+  const cachedFile = readCache("markdown", key);
+  if (cachedFile) {
+    return cachedFile;
+  }
+
   path = path.toLowerCase();
   const paths = await get_posts_paths();
   for (let i = 0; i < paths.length; i++) {
@@ -227,9 +278,13 @@ export async function find_matching_paths_with_alias(
       path_new_2 = path_new_2.slice(0, -3);
     }
     if (path_new === path_new_2) {
+      // put the path into cache
+      putCache("markdown", key, paths[i]);
+
       return paths[i];
     }
   }
+
   return undefined;
 }
 
@@ -237,14 +292,32 @@ export async function find_matching_paths_with_alias(
 export async function get_previous_and_next_posts(
   path: string
 ): Promise<[string | null, string | null]> {
+  // check the cache first
+  const key = getHashKey(`previous_and_next_posts_${path}`);
+  const cachedFile = readCache("markdown", key);
+  if (cachedFile) {
+    return JSON.parse(cachedFile);
+  }
+
   const paths = await get_posts_paths();
   const index = paths.indexOf(path);
   const previous = index > 0 ? paths[index - 1] : null;
   const next = index < paths.length - 1 ? paths[index + 1] : null;
+
+  // put the paths into cache
+  putCache("markdown", key, JSON.stringify([previous, next]));
+
   return [previous, next];
 }
 
 export async function get_all_tags(): Promise<string[]> {
+  // try load from cache
+  const key = getHashKey("all_tags");
+  const cachedFile = readCache("markdown", key);
+  if (cachedFile) {
+    return JSON.parse(cachedFile);
+  }
+
   const posts = await get_all_posts();
   let tags: string[] = [];
   posts.forEach((post) => {
@@ -256,10 +329,21 @@ export async function get_all_tags(): Promise<string[]> {
     });
   });
   tags.sort();
+
+  // put the tags into cache
+  putCache("markdown", key, JSON.stringify(tags));
+
   return tags;
 }
 
 export async function get_all_categories(): Promise<string[]> {
+  // try load from cache
+  const key = getHashKey("all_categories");
+  const cachedFile = readCache("markdown", key);
+  if (cachedFile) {
+    return JSON.parse(cachedFile);
+  }
+
   const posts = await get_all_posts();
   let categories: string[] = [];
   posts.forEach((post) => {
@@ -271,20 +355,23 @@ export async function get_all_categories(): Promise<string[]> {
     });
   });
   categories.sort();
+
+  // put the categories into cache
+  putCache("markdown", key, JSON.stringify(categories));
+
   return categories;
 }
 
 const BUILD_TIKZ_LOCK = new AsyncLock();
 
-const MARKDOWN_HTML_CACHE = new Map<string, string>();
-
 async function parseMarkdown2Html(
   markdown: string,
   toc: Boolean
 ): Promise<string> {
-  const hash = crypto.createHash("sha256").update(markdown).digest("hex");
-  if (MARKDOWN_HTML_CACHE.has(hash)) {
-    return MARKDOWN_HTML_CACHE.get(hash) as string;
+  const key = getHashKey(markdown);
+  const cachedFile = readCache("markdown", key);
+  if (cachedFile) {
+    return cachedFile;
   }
 
   const findTikzProcessor = unified()
@@ -378,7 +465,8 @@ async function parseMarkdown2Html(
     */
   });
 
-  MARKDOWN_HTML_CACHE.set(hash, html);
+  // put the html into cache
+  putCache("markdown", key, html);
 
   return html;
 }

@@ -10,6 +10,7 @@ interface Post {
   // read_time in minutes
   read_time: number;
   html: string;
+  content: string;
 }
 
 export default Post;

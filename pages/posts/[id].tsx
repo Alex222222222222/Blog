@@ -55,6 +55,9 @@ export const getStaticProps: GetStaticProps = async (
     };
   }
   const post = await get_markdown_data(path);
+  if (post) {
+    post.content = "";
+  }
 
   const [previous_post, next_post] = await get_previous_and_next_posts(path);
 

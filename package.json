@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "rm ./public/tikz/* && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -43,7 +43,8 @@
     "synckit": "0.9.2",
     "tar-fs": "3.0.6",
     "unist-util-is": "6.0.0",
-    "unist-util-visit": "5.0.0"
+    "unist-util-visit": "5.0.0",
+    "wildcard": "^2.0.1"
   },
   "devDependencies": {
     "@types/async-lock": "1.4.2",
