@@ -25,10 +25,11 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 import { VFile } from "vfile";
-import { toHtml } from "hast-util-to-html";
 import AsyncLock from "async-lock";
 import crypto from "crypto";
 import { minify } from "html-minifier";
+import rehypeStringify from "rehype-stringify";
+import rehypeMathjax from 'rehype-mathjax'
 
 export function getLastModifiedDate(filePath: string): Date {
   const stats = fs.statSync(filePath);
@@ -326,7 +327,7 @@ async function parseMarkdown2Html(
         },
       });
       fs.writeFileSync(`./public/tikz/${key}.svg`, res);
-      value.output = `/public/tikz/${key}.svg`;
+      value.output = `/tikz/${key}.svg`;
     });
   }
 
@@ -342,19 +343,19 @@ async function parseMarkdown2Html(
     .use(remarkMathEnv)
     .use(remarkTikzSupport)
     .use(remarkRehype, remarkRehypeOptions)
-    .use(rehypeKatex)
+    .use(rehypeMathjax)
     .use(rehypeRaw)
     .use(rehypeSlug)
     .use(rehypeHeadingLink)
-    .use(rehypeHighlight);
+    .use(rehypeHighlight)
+    .use(rehypeStringify);
 
   const file = new VFile();
   file.value = content;
 
-  const mdastTree = processor.parse(file);
-  const hastTree = processor.runSync(mdastTree, file);
+  const file_new = await processor.process(file);
 
-  const html = minify(toHtml(hastTree), {
+  const html = minify(file_new.toString(), {
     caseSensitive: true,
     collapseBooleanAttributes: true,
     collapseInlineTagWhitespace: true,
