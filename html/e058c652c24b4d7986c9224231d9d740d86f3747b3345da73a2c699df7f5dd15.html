@@ -1,0 +1,51 @@
+<p>Recently, I have upgraded my Postgresql database for my freshrss instance from 14 to 15. Here are the steps I followed to do it.</p>
+<p>First, we need to local the binary of the old version of Postgresql.
+In most of the cases, it can be found by</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">which</span> psql
+</code></pre>
+<p>In my case, it is <code>/usr/local/bin/psql</code>.</p>
+<p>Then, we need to find the data directory of the old version of Postgresql.
+In my case, it is at <code>/var/lib/postgres/14</code>.
+And the <code>postgresql.conf</code> file is at <code>/var/lib/postgres/14/data/postgresql.conf</code>.</p>
+<p>Then, we need to install the new version of Postgresql.
+I use <code>nix</code> to manage my packages,
+so I just change the version of Postgresql in my <code>configuration.nix</code> file and run <code>nixos-rebuild switch</code>.</p>
+<p>After that, we need to find the binary of the new version of Postgresql.
+Which can be found by</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">which</span> psql
+</code></pre>
+<p>Then, we need to find the data directory of the new version of Postgresql.
+In my case, it is at <code>/var/lib/postgres/15</code>.
+And the <code>postgresql.conf</code> file is which you should copy and modify from the old version of Postgresql.</p>
+<p>We need to first stop the old version of Postgresql.</p>
+<pre><code class="hljs language-bash">systemctl stop postgresql
+</code></pre>
+<p>And <code>su</code> to the <code>postgres</code> user.</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">sudo</span> su - postgres
+</code></pre>
+<p>Then, we need to run the following command to first initialize the new version of Postgresql.</p>
+<pre><code class="hljs language-bash">initdb -D /var/lib/postgres/15/
+</code></pre>
+<p>Then, we need</p>
+<p>Then, we need to run the following command to migrate the data from the old version of Postgresql to the new version of Postgresql.
+With <code>--check</code> option, it will check if the migration is possible.</p>
+<pre><code class="hljs language-bash">/usr/lib/postgresql/15/bin/pg_upgrade \
+  --old-datadir=<span class="hljs-variable">$OLD_DATADIR</span> \
+  --new-datadir=<span class="hljs-variable">$NEW_DATADIR</span> \
+  --old-bindir=<span class="hljs-variable">$OLD_BINDOR</span> \
+  --new-bindir=<span class="hljs-variable">$NEW_BINDIR</span> \
+  --old-options <span class="hljs-string">'-c config_file=$OLD_CONFIG_FILE'</span> \
+  --new-options <span class="hljs-string">'-c config_file=$NEW_CONFIG_FILE'</span> \
+  --check
+</code></pre>
+<p>If the check is successful, we can run the following command to do the migration.</p>
+<pre><code class="hljs language-bash">/usr/lib/postgresql/15/bin/pg_upgrade \
+  --old-datadir=<span class="hljs-variable">$OLD_DATADIR</span> \
+  --new-datadir=<span class="hljs-variable">$NEW_DATADIR</span> \
+  --old-bindir=<span class="hljs-variable">$OLD_BINDOR</span> \
+  --new-bindir=<span class="hljs-variable">$NEW_BINDIR</span> \
+  --old-options <span class="hljs-string">'-c config_file=$OLD_CONFIG_FILE'</span> \
+  --new-options <span class="hljs-string">'-c config_file=$NEW_CONFIG_FILE'</span>
+</code></pre>
+<p>After that, we need to check if the migration is successful.
+If it is successful, we can then remove the old version of Postgresql.</p>

@@ -1,0 +1,45 @@
+<h2 id="01-contents"><a href="#01-contents">0.1 Contents</a></h2>
+<ul>
+<li><a href="#02-pyenv">0.2 Pyenv</a>
+<ul>
+<li><a href="#021-install-the-pyenv">0.2.1 Install the pyenv</a></li>
+<li><a href="#022-change-versions">0.2.2 Change versions</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="02-pyenv"><a href="#02-pyenv">0.2 Pyenv</a></h2>
+<h3 id="021-install-the-pyenv"><a href="#021-install-the-pyenv">0.2.1 Install the pyenv</a></h3>
+<pre><code class="hljs language-bash">brew install pyenv-virtualenv
+</code></pre>
+<p>Add the following line to .zshrc or .zprofile to run pyenv</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># python env auto activation</span>
+<span class="hljs-built_in">eval</span> <span class="hljs-string">"<span class="hljs-subst">$(pyenv init -)</span>"</span>
+<span class="hljs-built_in">eval</span> <span class="hljs-string">"<span class="hljs-subst">$(pyenv virtualenv-init -)</span>"</span>
+<span class="hljs-keyword">if</span> <span class="hljs-built_in">which</span> pyenv-virtualenv-init > /dev/null; <span class="hljs-keyword">then</span> <span class="hljs-built_in">eval</span> <span class="hljs-string">"<span class="hljs-subst">$(pyenv virtualenv-init -)</span>"</span>; <span class="hljs-keyword">fi</span>
+</code></pre>
+<p>To run pyenv in the current session, run</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">source</span> ~/.zshrc
+</code></pre>
+<p>Install python version
+List all available python version</p>
+<pre><code class="hljs language-bash">pyenv install —list 
+</code></pre>
+<p>Install a specific version</p>
+<pre><code class="hljs language-bash">pyenv install <span class="hljs-variable">$VERSION</span> 
+</code></pre>
+<p>List all installed versions</p>
+<pre><code class="hljs language-bash">P
+</code></pre>
+<h3 id="022-change-versions"><a href="#022-change-versions">0.2.2 Change versions</a></h3>
+<p>Set the global python version for the system</p>
+<pre><code class="hljs language-bash">pyenv global <span class="hljs-variable">$VERSION</span>
+</code></pre>
+<p>Set local version</p>
+<pre><code class="hljs language-bash">pyenv <span class="hljs-built_in">local</span> <span class="hljs-variable">$VERSION</span> 
+</code></pre>
+<p>Create a specific virtualenv for repo</p>
+<pre><code class="hljs language-bash">pyenv virtualenv <span class="hljs-variable">$PYTHON_VERSION</span> <span class="hljs-variable">$NAME</span>
+</code></pre>
+<p>Use virtualenv for repo</p>
+<pre><code class="hljs language-bash">pyenv <span class="hljs-built_in">local</span> <span class="hljs-variable">$NAME</span> 
+</code></pre>
