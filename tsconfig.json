@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -17,19 +13,14 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "typeRoots": [
-      "./node_modules/@cloudflare/workers-types",
-      "./types"
-    ],
+    "typeRoots": ["./node_modules/@cloudflare/workers-types", "./types"],
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     }
   },
   "include": [
@@ -37,10 +28,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "out/types/**/*.ts"
+    "out/types/**/*.ts",
+    "lib/remarkTikzLibrary.js"
   ],
-  "exclude": [
-    "node_modules",
-    "functions/**/*"
-  ]
+  "exclude": ["node_modules", "functions/**/*"]
 }

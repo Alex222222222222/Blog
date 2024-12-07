@@ -10,7 +10,7 @@ export async function getStaticProps() {
   // Return categories as props
   return {
     props: {
-      tags: get_all_tags(),
+      tags: await get_all_tags(),
     },
   };
 }

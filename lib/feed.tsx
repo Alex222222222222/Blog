@@ -5,7 +5,10 @@ import { renderToString } from "react-dom/server";
 import RSS from "rss";
 import concatenateUrls from "./url";
 
-const generateFeed = async (posts: Post[], config: Config) => {
+const generateFeed = async (
+  posts: Post[],
+  config: Config,
+) => {
   const feed = new RSS({
     title: config.pageTitle,
     description: "The latest posts from my blog",
@@ -14,7 +17,9 @@ const generateFeed = async (posts: Post[], config: Config) => {
   });
 
   posts.forEach((post) => {
-    const description = renderToString(<PostContentReal post={post} />);
+    const description = renderToString(
+      <PostContentReal post={post} />
+    );
 
     feed.item({
       title: post.title,

@@ -6,10 +6,10 @@ interface Post {
   categories: string[];
   tags: string[];
   description: string;
-  content: string;
   toc: boolean;
   // read_time in minutes
   read_time: number;
+  html: string;
 }
 
 export default Post;

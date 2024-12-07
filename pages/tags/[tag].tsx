@@ -14,7 +14,7 @@ interface CategoryProps {
 // Fetch data at build time
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: get_all_tags().map((tag) => ({
+    paths: (await get_all_tags()).map((tag) => ({
       params: { tag: tag as string },
     })),
     fallback: false,
@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps = async (
 
   return {
     props: {
-      posts: get_empty_posts(),
+      posts: await get_empty_posts(),
       tag,
     },
   };

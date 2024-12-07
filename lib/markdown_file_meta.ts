@@ -5,6 +5,40 @@ import matter from "gray-matter";
 import Post from "@/interfaces/post";
 import readTime from "./read_time";
 
+import styles from "@/components/post.module.css";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import remarkToc from "remark-toc";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import "katex/dist/katex.min.css"; // Import KaTeX styles
+import Head from "next/head";
+import Link from "next/link";
+import rehypeRaw from "rehype-raw";
+import rehypeSlug from "rehype-slug";
+import rehypeHeadingLink from "@/lib/rehypeHeadingLink";
+import rehypeHighlight from "rehype-highlight";
+import remarkAutoNumberHeadings from "@/lib/remarkAutoNumberHeadings";
+import { remarkMathEnv } from "remark-math-environment";
+import {
+  remarkTikzSupport,
+  remarkFindTikzScripts,
+  TIKZ_SCRIPTS,
+} from "@/lib/remarkTikzSupport";
+
+import { unreachable } from "devlop";
+import { toJsxRuntime } from "hast-util-to-jsx-runtime";
+import { urlAttributes } from "html-url-attributes";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import { unified } from "unified";
+import { visit } from "unist-util-visit";
+import { VFile } from "vfile";
+import { toHtml } from "hast-util-to-html";
+import * as zlib from "zlib";
+import AsyncLock from "async-lock";
+
 export function getLastModifiedDate(filePath: string): Date {
   const stats = fs.statSync(filePath);
   return stats.mtime;
@@ -80,7 +114,9 @@ function add_0_to_date(date: number): string {
 /// if it's not, return null
 /// filter out nulls
 /// map the remaining files to the Post interface
-export function get_markdown_data(filename: string): Post | null {
+export async function get_markdown_data(
+  filename: string
+): Promise<Post | null> {
   const [markdownWithMeta, last_modified] = get_markdown_file(filename);
   if (!markdownWithMeta) {
     return null;
@@ -104,6 +140,10 @@ export function get_markdown_data(filename: string): Post | null {
     add_0_to_date(date.getDate());
   const read_time = readTime(content);
 
+  // const binary = fs.readFileSync("./lib/tikzjax/tex.wasm");
+  // const code = new WebAssembly.Module(binary);
+  const html = await parseMarkdown2Html(content, toc);
+
   return {
     filename: filename,
     title: title,
@@ -112,18 +152,20 @@ export function get_markdown_data(filename: string): Post | null {
     categories: categories,
     tags: tags,
     description: description,
-    content,
+    html,
     toc,
     read_time,
   };
 }
 
 /// get all posts
-export function get_all_posts(): Post[] {
+export async function get_all_posts(): Promise<Post[]> {
   const files = fs.readdirSync(path.join("posts"));
-  const posts: (Post | null)[] = files.map((filename) => {
-    return get_markdown_data(filename);
-  });
+  const posts: (Post | null)[] = await Promise.all(
+    files.map(async (filename) => {
+      return await get_markdown_data(filename);
+    })
+  );
   const valid_posts = posts.filter((post) => post !== null) as Post[];
   // sort by date descending
   valid_posts.sort((a, b) => {
@@ -143,18 +185,18 @@ export function get_all_posts(): Post[] {
   return valid_posts;
 }
 
-/// get empty posts
-export function get_empty_posts(): Post[] {
-  const posts = get_all_posts();
+/// turn all posts into empty posts
+export async function get_empty_posts(): Promise<Post[]> {
+  const posts = await get_all_posts();
   for (let i = 0; i < posts.length; i++) {
-    posts[i].content = "";
+    posts[i].html = "";
   }
   return posts;
 }
 
 /// get posts paths
-export function get_posts_paths(): string[] {
-  const posts = get_all_posts();
+export async function get_posts_paths(): Promise<string[]> {
+  const posts = await get_all_posts();
   const paths = posts.map((post) => {
     return post.filename;
   });
@@ -163,8 +205,8 @@ export function get_posts_paths(): string[] {
 }
 
 /// get all posts paths with alias
-export function get_posts_paths_with_alias(): string[] {
-  const paths = get_posts_paths();
+export async function get_posts_paths_with_alias(): Promise<string[]> {
+  const paths = await get_posts_paths();
   let paths_with_alias: string[] = [];
   paths.forEach((path) => {
     const i = path.toLowerCase();
@@ -179,11 +221,11 @@ export function get_posts_paths_with_alias(): string[] {
 }
 
 /// export find matching paths with alias
-export function find_matching_paths_with_alias(
+export async function find_matching_paths_with_alias(
   path: string
-): string | undefined {
+): Promise<string | undefined> {
   path = path.toLowerCase();
-  const paths = get_posts_paths();
+  const paths = await get_posts_paths();
   for (let i = 0; i < paths.length; i++) {
     let path_new = paths[i].toLowerCase();
     if (path_new.endsWith(".md")) {
@@ -201,18 +243,18 @@ export function find_matching_paths_with_alias(
 }
 
 /// export get previous and next posts
-export function get_previous_and_next_posts(
+export async function get_previous_and_next_posts(
   path: string
-): [string | null, string | null] {
-  const paths = get_posts_paths();
+): Promise<[string | null, string | null]> {
+  const paths = await get_posts_paths();
   const index = paths.indexOf(path);
   const previous = index > 0 ? paths[index - 1] : null;
   const next = index < paths.length - 1 ? paths[index + 1] : null;
   return [previous, next];
 }
 
-export function get_all_tags(): string[] {
-  const posts = get_all_posts();
+export async function get_all_tags(): Promise<string[]> {
+  const posts = await get_all_posts();
   let tags: string[] = [];
   posts.forEach((post) => {
     post.tags.forEach((tag) => {
@@ -226,8 +268,8 @@ export function get_all_tags(): string[] {
   return tags;
 }
 
-export function get_all_categories(): string[] {
-  const posts = get_all_posts();
+export async function get_all_categories(): Promise<string[]> {
+  const posts = await get_all_posts();
   let categories: string[] = [];
   posts.forEach((post) => {
     post.categories.forEach((category) => {
@@ -239,4 +281,157 @@ export function get_all_categories(): string[] {
   });
   categories.sort();
   return categories;
+}
+
+import * as memfs from "memfs";
+import * as tarFs from "tar-fs";
+
+let bytecode: Uint8Array;
+let coredump: Uint8Array;
+let memfs_n: memfs.IFs;
+let loaded = false;
+const LOAD_LOCK = new AsyncLock();
+
+import crypto from "crypto";
+
+const MARKDOWN_HTML_CACHE = new Map<string, string>();
+
+async function parseMarkdown2Html(
+  markdown: string,
+  toc: Boolean,
+): Promise<string> {
+  const hash = crypto.createHash("sha256").update(markdown).digest("hex");
+  if (MARKDOWN_HTML_CACHE.has(hash)) {
+    return MARKDOWN_HTML_CACHE.get(hash) as string;
+  }
+
+  console.log("Finding TikZ scripts...");
+  const findTikzProcessor = unified()
+    .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkFindTikzScripts);
+
+  const find_file = new VFile();
+  find_file.value = markdown;
+  const find_mdastTree = findTikzProcessor.parse(find_file);
+  findTikzProcessor.runSync(find_mdastTree, find_file);
+
+  await LOAD_LOCK.acquire("load", async () => {
+    if (!loaded) {
+      loaded = true;
+      console.log("Starting to load TeX files into memory...");
+
+      // The directory where the TeX files are located (core.dump.gz, tex.wasm.gz, tex_files.tar.gz).
+      const texDir = "./tex";
+
+      // Paths of the TeX files.
+      const coredumpPath = path.join(texDir, "core.dump.gz");
+      const bytecodePath = path.join(texDir, "tex.wasm.gz");
+      const texFilesPath = path.join(texDir, "tex_files.tar.gz");
+      const texFilesExtractedPath = path.join("/", "tex_files");
+
+      console.log("Loading bytecode files into memory...");
+      const stream_1 = fs
+        .createReadStream(bytecodePath)
+        .pipe(zlib.createGunzip());
+      bytecode = await stream2buffer(stream_1);
+
+      console.log("Loading coredump files into memory...");
+      const stream_2 = fs
+        .createReadStream(coredumpPath)
+        .pipe(zlib.createGunzip());
+      coredump = await stream2buffer(stream_2);
+
+      console.log("Extracting TeX files into memory...");
+      const volume = new memfs.Volume();
+      memfs_n = memfs.createFsFromVolume(volume);
+      // clean up the root directory
+      memfs_n.mkdirSync("/lib");
+      const stream = fs
+        .createReadStream(texFilesPath)
+        .pipe(zlib.createGunzip())
+        .pipe(
+          tarFs.extract(texFilesExtractedPath, {
+            fs: memfs_n,
+          })
+        );
+      await new Promise((resolve, reject) => {
+        stream.on("finish", resolve);
+        stream.on("error", reject);
+      });
+    }
+  });
+
+  console.log("Compiling TikZ scripts...");
+  console.log("TIKZ_SCRIPTS: ", TIKZ_SCRIPTS);
+  for (const [key, value] of TIKZ_SCRIPTS.entries()) {
+    console.log("key: ", key);
+    console.log("TIKZ_SCRIPTS: ", value);
+    await LOAD_LOCK.acquire("tikz", async () => {
+      if (value.output) {
+        return;
+      }
+      console.log("Compiling TikZ script:", value.script);
+      let res = await tex2svg(
+        value.script,
+        bytecode,
+        coredump,
+        memfs_n,
+        {
+          showConsole: true,
+        }
+      );
+      console.log("Compiled svg:", res);
+      value.output = res;
+    });
+  }
+
+  console.log("Compiled TikZ scripts");
+  const content = toc ? `## Contents\n\n${markdown}` : markdown;
+  const remarkRehypeOptions = { allowDangerousHtml: true };
+
+  console.log("Parsing Markdown to HTML...");
+  const processor = unified()
+    .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkAutoNumberHeadings)
+    .use(remarkMath)
+    .use(remarkToc, { heading: "0.1 Contents" })
+    .use(remarkMathEnv)
+    .use(remarkTikzSupport)
+    .use(remarkRehype, remarkRehypeOptions)
+    .use(rehypeKatex)
+    .use(rehypeRaw)
+    .use(rehypeSlug)
+    .use(rehypeHeadingLink)
+    .use(rehypeHighlight);
+
+  const file = new VFile();
+  file.value = content;
+
+  console.log("Parsing Markdown to mdastTree...");
+  const mdastTree = processor.parse(file);
+  const hastTree = processor.runSync(mdastTree, file);
+
+  const html = toHtml(hastTree);
+
+  MARKDOWN_HTML_CACHE.set(hash, html);
+
+  return html;
+}
+
+import { Readable } from "stream";
+import tex2svg from "./tikzjax";
+
+/**
+ * Convert a stream to a buffer.
+ */
+async function stream2buffer(stream: Readable): Promise<Buffer> {
+  return new Promise<Buffer>((resolve, reject) => {
+    const buf: Buffer[] = [];
+
+    stream.on("data", (chunk) => buf.push(chunk));
+    stream.on("end", () => resolve(Buffer.concat(buf)));
+    stream.on("error", (err) => reject(err));
+  });
 }
