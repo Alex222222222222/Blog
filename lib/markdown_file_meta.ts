@@ -56,6 +56,8 @@ export async function getLastModifiedDate(filePath: string): Promise<Date> {
     last_modified = new Date(author.date);
   }
 
+  console.log(`Last modified date for ${filePath}: ${last_modified}`);
+
   // put into cache
   putCache("markdown_last_modified", key, last_modified.toISOString());
 
