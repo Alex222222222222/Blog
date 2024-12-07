@@ -31,7 +31,7 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
 export default Home;
 
 export const getStaticProps = async () => {
-  const posts = get_all_posts();
+  const posts = await get_all_posts();
 
   const config = getConfig();
 
@@ -49,7 +49,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      posts: get_empty_posts(),
+      posts: await get_empty_posts(),
     },
   };
 };

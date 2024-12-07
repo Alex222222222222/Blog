@@ -15,7 +15,6 @@ import rehypeHeadingLink from "@/lib/rehypeHeadingLink";
 import rehypeHighlight from "rehype-highlight";
 import remarkAutoNumberHeadings from "@/lib/remarkAutoNumberHeadings";
 import { remarkMathEnv } from "remark-math-environment";
-import remarkTikzSupport from "@/lib/remarkTikzSupport";
 
 interface PostProps {
   post: Post;
@@ -96,6 +95,7 @@ const PostPageContent: React.FC<PostProps> = ({
 };
 
 export const PostContentReal: React.FC<PostContentProps> = ({ post }) => {
+  /**
   const content = post.toc ? `## Contents\n\n${post.content}` : post.content;
 
   return (
@@ -106,7 +106,7 @@ export const PostContentReal: React.FC<PostContentProps> = ({ post }) => {
         remarkMath,
         [remarkToc, { heading: "0.1 Contents" }],
         remarkMathEnv,
-        remarkTikzSupport,
+        [remarkTikzSupport, { code: code }],
       ]}
       rehypePlugins={[
         rehypeKatex,
@@ -119,6 +119,13 @@ export const PostContentReal: React.FC<PostContentProps> = ({ post }) => {
       {content}
     </ReactMarkdown>
   );
+  */
+
+  function createMarkup() {
+    return { __html: post.html };
+  }
+
+  return <div dangerouslySetInnerHTML={createMarkup()}></div>;
 };
 
 export default PostPageContent;

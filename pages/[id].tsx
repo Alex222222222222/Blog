@@ -11,6 +11,7 @@ import {
 import Layout from "@/components/layout";
 import "katex/dist/katex.min.css"; // Import KaTeX styles
 import PostPageContent from "@/components/post";
+import fs from "fs";
 
 interface PostProps {
   post: Post;
@@ -18,7 +19,11 @@ interface PostProps {
   next_post: string | null;
 }
 
-const PostPage: React.FC<PostProps> = ({ post, previous_post, next_post }) => {
+const PostPage: React.FC<PostProps> = ({
+  post,
+  previous_post,
+  next_post,
+}) => {
   return (
     <Layout>
       <PostPageContent
@@ -33,7 +38,7 @@ const PostPage: React.FC<PostProps> = ({ post, previous_post, next_post }) => {
 export default PostPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const files = get_posts_paths_with_alias();
+  const files = await get_posts_paths_with_alias();
   const paths = files.map((filename) => ({
     params: { id: filename },
   }));
@@ -48,15 +53,15 @@ export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext<ParsedUrlQuery>
 ) => {
   const { id } = context.params as { id: string };
-  const path = find_matching_paths_with_alias(id);
+  const path = await find_matching_paths_with_alias(id);
   if (!path) {
     return {
       notFound: true,
     };
   }
-  const post = get_markdown_data(path);
+  const post = await get_markdown_data(path);
 
-  const [previous_post, next_post] = get_previous_and_next_posts(path);
+  const [previous_post, next_post] = await get_previous_and_next_posts(path);
 
   return {
     props: {
