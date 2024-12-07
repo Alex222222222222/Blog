@@ -1,0 +1,16 @@
+<p>HLS (HTTP Live Streaming) is a widely used streaming protocol that breaks video
+files into small chunks and serves them over HTTP.
+It's a popular choice for streaming video content on the web,
+and it's used by many platforms.</p>
+<p>In this tutorial, I'll show you how to download encrypted HLS content.</p>
+<h2 id="01-prerequisites"><a href="#01-prerequisites">0.1 Prerequisites</a></h2>
+<p>You'll need to have <code>ffmpeg</code> installed on your system.</p>
+<h2 id="02-find-the-m3u8-file"><a href="#02-find-the-m3u8-file">0.2 Find the M3U8 file</a></h2>
+<p>The first step is to find the M3U8 file.
+This file contains the URLs of the video chunks and the encryption key.</p>
+<p>You can find the M3U8 file by inspecting the network requests
+in your browser's developer tools when loading the page.</p>
+<h2 id="03-download-the-m3u8-file"><a href="#03-download-the-m3u8-file">0.3 Download the M3U8 file</a></h2>
+<p>Once you have the M3U8 file, you can download it using <code>ffmpeg</code>:</p>
+<pre><code class="hljs language-bash">ffmpeg -i <span class="hljs-string">"https://example.com/video.m3u8"</span> -c copy -bsf:a aac_adtstoasc output.mp4
+</code></pre>

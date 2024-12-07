@@ -1,0 +1,41 @@
+<h2 id="01-contents"><a href="#01-contents">0.1 Contents</a></h2>
+<ul>
+<li><a href="#02-introduction">0.2 Introduction</a></li>
+<li><a href="#03-download">0.3 Download</a></li>
+<li><a href="#04-uninstall-app">0.4 Uninstall App</a></li>
+</ul>
+<h2 id="02-introduction"><a href="#02-introduction">0.2 Introduction</a></h2>
+<p>Uninstalling a software on a system has long being a headache problem.
+If you install a software using a package manager like <code>brew</code>, or <code>apt</code>.
+It is easy. You simply do</p>
+<pre><code class="hljs language-shell"><span class="hljs-meta prompt_"># </span><span class="bash">brew</span>
+brew remove [package-name]
+<span class="hljs-meta prompt_"># </span><span class="bash">use auto remove to remove the dependency</span>
+brew autoremove
+<span class="hljs-meta prompt_">
+# </span><span class="bash">apt</span>
+apt purge [package-name]
+<span class="hljs-meta prompt_"># </span><span class="bash">use auto remove to remove the dependency</span>
+apt autoremove
+</code></pre>
+<p>If you install the app using app store.
+Just uninstall it in the app store.</p>
+<p>However, if you install the app by just copy the app into <code>/Applications</code>.
+Then, simply remove the app itself is clearly not enough.
+For instance, steam store all the game you download in the '~/Library' folder.
+If you just remove the app itself, there will be tons of files left.</p>
+<p>And there is a app that help us do that.
+The <a href="https://freemacsoft.net/appcleaner/">AppCleaner</a>.</p>
+<h2 id="03-download"><a href="#03-download">0.3 Download</a></h2>
+<p>Just go to the webpage <a href="https://freemacsoft.net/appcleaner/">AppCleaner</a>,
+and select the latest version.</p>
+<h2 id="04-uninstall-app"><a href="#04-uninstall-app">0.4 Uninstall App</a></h2>
+<p>Open the app,
+click the list icon in the right up conner,
+type in the app you want to uninstall,
+for instance <code>Steam</code>.
+Select the App you want to uninstall,
+then AppCleaner will search for all the files of the App,
+you could unselect the files you do not want to delete.
+Click remove, then, you are all set.</p>
+<p><img src="/static/img/2023-04-26-Uninstall-App-On-MacOS/1.png" alt="Steam Sample"></p>

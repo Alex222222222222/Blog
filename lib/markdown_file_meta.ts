@@ -29,7 +29,7 @@ import AsyncLock from "async-lock";
 import crypto from "crypto";
 import { minify } from "html-minifier";
 import rehypeStringify from "rehype-stringify";
-import rehypeMathjax from 'rehype-mathjax'
+import rehypeMathjax from "rehype-mathjax";
 
 export function getLastModifiedDate(filePath: string): Date {
   const stats = fs.statSync(filePath);
@@ -343,7 +343,7 @@ async function parseMarkdown2Html(
     .use(remarkMathEnv)
     .use(remarkTikzSupport)
     .use(remarkRehype, remarkRehypeOptions)
-    .use(rehypeMathjax)
+    .use(rehypeKatex)
     .use(rehypeRaw)
     .use(rehypeSlug)
     .use(rehypeHeadingLink)
@@ -354,6 +354,16 @@ async function parseMarkdown2Html(
   file.value = content;
 
   const file_new = await processor.process(file);
+
+  fs.writeFile(
+    path.join("./html", `${hash}.html`),
+    file_new.toString(),
+    (err) => {
+      if (err) {
+        console.error(err);
+      }
+    }
+  );
 
   const html = minify(file_new.toString(), {
     caseSensitive: true,
