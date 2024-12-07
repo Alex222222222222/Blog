@@ -219,10 +219,11 @@ $$
 $$
 
 ```tikz
-\begin{tikzpicture}
-    % Draw a circle with center (0,0) and radius 2
-    \draw (0,0) circle [radius=2];
-\end{tikzpicture}
+   \begin{tikzcd}
+   & C\\
+   A\ar[r]\ar[d]\ar[ur] & B\ar[u]\\
+   D\ar[ur]\ar[uur, bend left=75]
+   \end{tikzcd}
 ```
 
 ::math-env-end{theorem}

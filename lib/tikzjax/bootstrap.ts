@@ -1,7 +1,7 @@
 import { createGunzip } from "zlib";
-import { createReadStream, readFileSync } from "fs";
+import { createReadStream } from "fs";
 import { extract } from "tar-fs";
-import { IFs, Volume, createFsFromVolume, fs } from "memfs";
+import { IFs, Volume, createFsFromVolume } from "memfs";
 import { join } from "path";
 import { Readable } from "stream";
 import * as library from "./library";
@@ -21,59 +21,32 @@ let bytecode: Uint8Array;
 // The memory filesystem that stores the TeX files extracted from `tex_files.tar.gz`.
 let memfs: IFs;
 
-let loaded = false;
-
 // The directory where the TeX files are located (core.dump.gz, tex.wasm.gz, tex_files.tar.gz).
-const TEX_DIR = "./";
+const TEX_DIR = "./tex";
 
 // Paths of the TeX files.
-const COREDUMP_PATH = join(TEX_DIR, 'core.dump.gz');
-const BYTECODE_PATH = join(TEX_DIR, 'tex.wasm.gz');
-// const COREDUMP_PATH = join(TEX_DIR, "core.dump");
-// const BYTECODE_PATH = join(TEX_DIR, "tex.wasm");
+const COREDUMP_PATH = join(TEX_DIR, "core.dump.gz");
+const BYTECODE_PATH = join(TEX_DIR, "tex.wasm.gz");
 const TEX_FILES_PATH = join(TEX_DIR, "tex_files.tar.gz");
 const TEX_FILES_EXTRACTED_PATH = join("/", "tex_files");
 
 /**
  * Load necessary files into memory.
  */
-export async function load(bytecode_n: Uint8Array, coredump_n: Uint8Array, memfs_n: IFs) {
-  if (loaded) {
-    return;
+export async function load() {
+  if (!bytecode) {
+    const stream = createReadStream(BYTECODE_PATH).pipe(createGunzip());
+    bytecode = await stream2buffer(stream);
   }
 
-  /**
-  console.log("Bytecode path: ", BYTECODE_PATH);
+  if (!coredump) {
+    const stream = createReadStream(COREDUMP_PATH).pipe(createGunzip());
+    coredump = await stream2buffer(stream);
+  }
 
-  const files = fs.readdirSync(join("posts"));
-  files.forEach((filename) => {
-    console.log("filename: ", filename);
-  },);
-
-  fs.readdir("./", (err, files) => {
-    files?.forEach(file => {
-      console.log(file);
-    });
-  });
-  */
-
-  // console.log("Loading bytecode files into memory...");
-  // const stream_1 = createReadStream(BYTECODE_PATH).pipe(createGunzip());
-  // bytecode = await stream2buffer(stream_1);
-  // bytecode = readFileSync(BYTECODE_PATH) as Uint8Array;
-  bytecode = bytecode_n;
-
-  // console.log("Loading coredump files into memory...");
-  // const stream_2 = createReadStream(COREDUMP_PATH).pipe(createGunzip());
-  // coredump = await stream2buffer(stream_2);
-  // coredump = readFileSync(COREDUMP_PATH) as Uint8Array;
-  coredump = coredump_n;
-
-  // console.log("Extracting TeX files into memory...");
-  // memfs = await extractTexFilesToMemory();
-  memfs = memfs_n;
-
-  loaded = true;
+  if (!memfs) {
+    memfs = await extractTexFilesToMemory();
+  }
 }
 
 export type TeXOptions = {
