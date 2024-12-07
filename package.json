@@ -16,6 +16,7 @@
     "generate-password": "^1.7.1",
     "gray-matter": "^4.0.3",
     "hast-util-to-html": "^9.0.3",
+    "html-minifier": "^4.0.0",
     "katex": "^0.16.9",
     "next": "^15.0.3",
     "next-mdx-remote": "^5.0.0",
@@ -44,6 +45,7 @@
   },
   "devDependencies": {
     "@types/async-lock": "^1.4.2",
+    "@types/html-minifier": "^4.0.5",
     "@types/jsdom": "^21.1.7",
     "@types/node": "22.10.1",
     "@types/react": "^18",

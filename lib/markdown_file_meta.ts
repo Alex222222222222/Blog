@@ -4,16 +4,12 @@ import path from "path";
 import matter from "gray-matter";
 import Post from "@/interfaces/post";
 import readTime from "./read_time";
-
-import styles from "@/components/post.module.css";
-import ReactMarkdown from "react-markdown";
+import tex2svg from "./tikzjax";
 import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css"; // Import KaTeX styles
-import Head from "next/head";
-import Link from "next/link";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import rehypeHeadingLink from "@/lib/rehypeHeadingLink";
@@ -25,19 +21,14 @@ import {
   remarkFindTikzScripts,
   TIKZ_SCRIPTS,
 } from "@/lib/remarkTikzSupport";
-
-import { unreachable } from "devlop";
-import { toJsxRuntime } from "hast-util-to-jsx-runtime";
-import { urlAttributes } from "html-url-attributes";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
-import { visit } from "unist-util-visit";
 import { VFile } from "vfile";
 import { toHtml } from "hast-util-to-html";
-import * as zlib from "zlib";
 import AsyncLock from "async-lock";
+import crypto from "crypto";
+import { minify } from "html-minifier";
 
 export function getLastModifiedDate(filePath: string): Date {
   const stats = fs.statSync(filePath);
@@ -283,29 +274,19 @@ export async function get_all_categories(): Promise<string[]> {
   return categories;
 }
 
-import * as memfs from "memfs";
-import * as tarFs from "tar-fs";
-
-let bytecode: Uint8Array;
-let coredump: Uint8Array;
-let memfs_n: memfs.IFs;
-let loaded = false;
-const LOAD_LOCK = new AsyncLock();
-
-import crypto from "crypto";
+const BUILD_TIKZ_LOCK = new AsyncLock();
 
 const MARKDOWN_HTML_CACHE = new Map<string, string>();
 
 async function parseMarkdown2Html(
   markdown: string,
-  toc: Boolean,
+  toc: Boolean
 ): Promise<string> {
   const hash = crypto.createHash("sha256").update(markdown).digest("hex");
   if (MARKDOWN_HTML_CACHE.has(hash)) {
     return MARKDOWN_HTML_CACHE.get(hash) as string;
   }
 
-  console.log("Finding TikZ scripts...");
   const findTikzProcessor = unified()
     .use(remarkParse)
     .use(remarkGfm)
@@ -316,81 +297,42 @@ async function parseMarkdown2Html(
   const find_mdastTree = findTikzProcessor.parse(find_file);
   findTikzProcessor.runSync(find_mdastTree, find_file);
 
-  await LOAD_LOCK.acquire("load", async () => {
-    if (!loaded) {
-      loaded = true;
-      console.log("Starting to load TeX files into memory...");
-
-      // The directory where the TeX files are located (core.dump.gz, tex.wasm.gz, tex_files.tar.gz).
-      const texDir = "./tex";
-
-      // Paths of the TeX files.
-      const coredumpPath = path.join(texDir, "core.dump.gz");
-      const bytecodePath = path.join(texDir, "tex.wasm.gz");
-      const texFilesPath = path.join(texDir, "tex_files.tar.gz");
-      const texFilesExtractedPath = path.join("/", "tex_files");
-
-      console.log("Loading bytecode files into memory...");
-      const stream_1 = fs
-        .createReadStream(bytecodePath)
-        .pipe(zlib.createGunzip());
-      bytecode = await stream2buffer(stream_1);
-
-      console.log("Loading coredump files into memory...");
-      const stream_2 = fs
-        .createReadStream(coredumpPath)
-        .pipe(zlib.createGunzip());
-      coredump = await stream2buffer(stream_2);
-
-      console.log("Extracting TeX files into memory...");
-      const volume = new memfs.Volume();
-      memfs_n = memfs.createFsFromVolume(volume);
-      // clean up the root directory
-      memfs_n.mkdirSync("/lib");
-      const stream = fs
-        .createReadStream(texFilesPath)
-        .pipe(zlib.createGunzip())
-        .pipe(
-          tarFs.extract(texFilesExtractedPath, {
-            fs: memfs_n,
-          })
-        );
-      await new Promise((resolve, reject) => {
-        stream.on("finish", resolve);
-        stream.on("error", reject);
-      });
+  // build tikz images to ./public/tikz/
+  await BUILD_TIKZ_LOCK.acquire("tikz", async () => {
+    // check if dir ./public/tikz/ exists
+    if (!fs.existsSync("./public/tikz/")) {
+      fs.mkdirSync("./public/tikz/");
     }
   });
 
-  console.log("Compiling TikZ scripts...");
-  console.log("TIKZ_SCRIPTS: ", TIKZ_SCRIPTS);
   for (const [key, value] of TIKZ_SCRIPTS.entries()) {
-    console.log("key: ", key);
-    console.log("TIKZ_SCRIPTS: ", value);
-    await LOAD_LOCK.acquire("tikz", async () => {
+    await BUILD_TIKZ_LOCK.acquire("tikz", async () => {
       if (value.output) {
         return;
       }
-      console.log("Compiling TikZ script:", value.script);
-      let res = await tex2svg(
-        value.script,
-        bytecode,
-        coredump,
-        memfs_n,
-        {
-          showConsole: true,
-        }
-      );
-      console.log("Compiled svg:", res);
-      value.output = res;
+      let res = await tex2svg(value.script, {
+        showConsole: true,
+        fontCssUrl: "/static/tikz/styles/tikz.css",
+        texPackages: {
+          "tikz-cd": "",
+          amsmath: "",
+          amstext: "",
+          amsfonts: "",
+          amssymb: "",
+          pgfplots: "",
+          chemfig: "",
+          array: "",
+          "tikz-3dplot": "",
+        },
+      });
+      fs.writeFileSync(`./public/tikz/${key}.svg`, res);
+      value.output = `/public/tikz/${key}.svg`;
     });
   }
 
-  console.log("Compiled TikZ scripts");
   const content = toc ? `## Contents\n\n${markdown}` : markdown;
   const remarkRehypeOptions = { allowDangerousHtml: true };
 
-  console.log("Parsing Markdown to HTML...");
   const processor = unified()
     .use(remarkParse)
     .use(remarkGfm)
@@ -409,29 +351,32 @@ async function parseMarkdown2Html(
   const file = new VFile();
   file.value = content;
 
-  console.log("Parsing Markdown to mdastTree...");
   const mdastTree = processor.parse(file);
   const hastTree = processor.runSync(mdastTree, file);
 
-  const html = toHtml(hastTree);
+  const html = minify(toHtml(hastTree), {
+    caseSensitive: true,
+    collapseBooleanAttributes: true,
+    collapseInlineTagWhitespace: true,
+    collapseWhitespace: true,
+    conservativeCollapse: true,
+    decodeEntities: true,
+    html5: true,
+    minifyCSS: true,
+    minifyJS: true,
+    minifyURLs: true,
+    preserveLineBreaks: false,
+    removeAttributeQuotes: true,
+    removeComments: true,
+    removeEmptyAttributes: true,
+    removeEmptyElements: true,
+    removeRedundantAttributes: true,
+    sortAttributes: true,
+    sortClassName: true,
+    trimCustomFragments: true,
+  });
 
   MARKDOWN_HTML_CACHE.set(hash, html);
 
   return html;
-}
-
-import { Readable } from "stream";
-import tex2svg from "./tikzjax";
-
-/**
- * Convert a stream to a buffer.
- */
-async function stream2buffer(stream: Readable): Promise<Buffer> {
-  return new Promise<Buffer>((resolve, reject) => {
-    const buf: Buffer[] = [];
-
-    stream.on("data", (chunk) => buf.push(chunk));
-    stream.on("end", () => resolve(Buffer.concat(buf)));
-    stream.on("error", (err) => reject(err));
-  });
 }
