@@ -29,10 +29,37 @@ import AsyncLock from "async-lock";
 import { minify } from "html-minifier";
 import rehypeStringify from "rehype-stringify";
 import { getHashKey, putCache, readCache } from "./buildCache";
+import * as gitLog from "git-log-parser";
+import toArray from "stream-to-array";
 
-export function getLastModifiedDate(filePath: string): Date {
+export async function getLastModifiedDate(filePath: string): Promise<Date> {
+  // get from cache
+  const key = getHashKey(filePath);
+  const cachedFile = readCache("getLastModifiedDate", key);
+  if (cachedFile) {
+    return new Date(cachedFile);
+  }
+
+  const logs = gitLog.parse({
+    "1": true,
+    pretty: "format:%ci",
+    _: filePath,
+  });
+  const logs_array = await toArray(logs);
+
   const stats = fs.statSync(filePath);
-  return stats.mtime;
+  let last_modified = stats.mtime;
+
+  if (logs_array.length > 0) {
+    const last_commit = logs_array[0];
+    const author = last_commit.author;
+    last_modified = new Date(author.date);
+  }
+
+  // put into cache
+  putCache("markdown_last_modified", key, last_modified.toISOString());
+
+  return last_modified;
 }
 
 export function get_date_from_filename(filename: string): Date {
@@ -59,7 +86,9 @@ export function get_date_from_filename(filename: string): Date {
   return new Date(`${year_int}-${month_int}-${day_int}`);
 }
 
-export function get_markdown_file(filename: string): [string | null, string] {
+export async function get_markdown_file(
+  filename: string
+): Promise<[string | null, string]> {
   const isDir = fs.lstatSync(path.join("posts", filename)).isDirectory();
   if (isDir) {
     const dir = fs.readdirSync(path.join("posts", filename));
@@ -68,7 +97,7 @@ export function get_markdown_file(filename: string): [string | null, string] {
     );
     if (mdFile) {
       // get the last modified date
-      const last_modified = getLastModifiedDate(
+      const last_modified = await getLastModifiedDate(
         path.join("posts", filename, mdFile)
       );
 
@@ -86,7 +115,7 @@ export function get_markdown_file(filename: string): [string | null, string] {
   }
 
   // get the last modified date
-  const last_modified = getLastModifiedDate(path.join("posts", filename));
+  const last_modified = await getLastModifiedDate(path.join("posts", filename));
 
   return [
     fs.readFileSync(path.join("posts", filename), "utf-8"),
@@ -108,7 +137,14 @@ function add_0_to_date(date: number): string {
 export async function get_markdown_data(
   filename: string
 ): Promise<Post | null> {
-  const [markdownWithMeta, last_modified] = get_markdown_file(filename);
+  // get from cache
+  const key = getHashKey(filename);
+  const cachedFile = readCache("get_markdown_data", key);
+  if (cachedFile) {
+    return JSON.parse(cachedFile);
+  }
+
+  const [markdownWithMeta, last_modified] = await get_markdown_file(filename);
   if (!markdownWithMeta) {
     return null;
   }
@@ -135,7 +171,8 @@ export async function get_markdown_data(
   // const code = new WebAssembly.Module(binary);
   const html = await parseMarkdown2Html(content, toc);
 
-  return {
+  // put into cache
+  const res = {
     filename: filename,
     title: title,
     date: date_string,
@@ -148,6 +185,9 @@ export async function get_markdown_data(
     read_time,
     content,
   };
+  putCache("markdown", key, JSON.stringify(res));
+
+  return res;
 }
 
 /// get all posts
