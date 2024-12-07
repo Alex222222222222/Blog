@@ -1,20 +1,10 @@
 // pages/posts/[id].tsx
 import styles from "@/components/post.module.css";
 import Post from "@/interfaces/post";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import remarkToc from "remark-toc";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
+// TODO
 import "katex/dist/katex.min.css"; // Import KaTeX styles
 import Head from "next/head";
 import Link from "next/link";
-import rehypeRaw from "rehype-raw";
-import rehypeSlug from "rehype-slug";
-import rehypeHeadingLink from "@/lib/rehypeHeadingLink";
-import rehypeHighlight from "rehype-highlight";
-import remarkAutoNumberHeadings from "@/lib/remarkAutoNumberHeadings";
-import { remarkMathEnv } from "remark-math-environment";
 
 interface PostProps {
   post: Post;
@@ -95,32 +85,6 @@ const PostPageContent: React.FC<PostProps> = ({
 };
 
 export const PostContentReal: React.FC<PostContentProps> = ({ post }) => {
-  /**
-  const content = post.toc ? `## Contents\n\n${post.content}` : post.content;
-
-  return (
-    <ReactMarkdown
-      remarkPlugins={[
-        remarkGfm,
-        remarkAutoNumberHeadings,
-        remarkMath,
-        [remarkToc, { heading: "0.1 Contents" }],
-        remarkMathEnv,
-        [remarkTikzSupport, { code: code }],
-      ]}
-      rehypePlugins={[
-        rehypeKatex,
-        rehypeRaw,
-        rehypeSlug,
-        rehypeHeadingLink,
-        rehypeHighlight,
-      ]}
-    >
-      {content}
-    </ReactMarkdown>
-  );
-  */
-
   function createMarkup() {
     return { __html: post.html };
   }

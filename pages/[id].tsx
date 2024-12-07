@@ -11,7 +11,6 @@ import {
 import Layout from "@/components/layout";
 import "katex/dist/katex.min.css"; // Import KaTeX styles
 import PostPageContent from "@/components/post";
-import fs from "fs";
 
 interface PostProps {
   post: Post;
@@ -19,11 +18,7 @@ interface PostProps {
   next_post: string | null;
 }
 
-const PostPage: React.FC<PostProps> = ({
-  post,
-  previous_post,
-  next_post,
-}) => {
+const PostPage: React.FC<PostProps> = ({ post, previous_post, next_post }) => {
   return (
     <Layout>
       <PostPageContent

@@ -1,5 +1,4 @@
 import { Root, RootContent } from "mdast";
-import { IFs } from "memfs";
 import crypto from "crypto";
 
 export const TIKZ_SCRIPTS: Map<
@@ -10,14 +9,6 @@ export const TIKZ_SCRIPTS: Map<
   }
 > = new Map();
 
-interface Options {
-  bytecode_n?: Uint8Array;
-  coredump_n?: Uint8Array;
-  memfs_n?: IFs;
-}
-
-const defaultOptions: Options = {};
-
 /**
  * Add `auto-numbering` to headings in Markdown.
  *
@@ -26,7 +17,7 @@ const defaultOptions: Options = {};
  * @returns
  *   Transform.
  */
-export function remarkTikzSupport(options: Options = defaultOptions) {
+export function remarkTikzSupport() {
   return (tree: Root): undefined => {
     const newChildren: RootContent[] = [];
 
