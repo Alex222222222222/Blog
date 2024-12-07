@@ -354,8 +354,6 @@ async function parseMarkdown2Html(
 
   const file_new = await processor.process(file);
 
-  fs.writeFileSync(path.join("./html", `${hash}.html`), file_new.toString());
-
   const html = minify(file_new.toString(), {
     /**
     caseSensitive: true,
