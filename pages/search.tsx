@@ -27,9 +27,14 @@ const SearchPage: React.FC<HomeProps> = ({ posts }) => {
 };
 
 export const getStaticProps = async () => {
+  const posts = await get_all_posts();
+  posts.forEach((post) => {
+    post.html = "";
+  })
+
   return {
     props: {
-      posts: await get_all_posts(),
+      posts: posts,
     },
   };
 };
