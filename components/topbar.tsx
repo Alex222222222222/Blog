@@ -62,7 +62,7 @@ const TopBar: React.FC = () => {
   }, [router.events]);
 
   return (
-    <div className="pt-2 sticky top-0 bg-yellow-100 px-4 sm:px-6 lg:px-8">
+    <div className="pt-2 sticky top-0 bg-yellow-100 px-4 sm:px-6 lg:px-8 z-[999]">
       <div className="lg:flex lg:flex-row">
         <div className="lg:grow">
           <ul className="flex underline">
