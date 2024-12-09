@@ -1,22 +1,45 @@
-import { useEffect, useRef } from "react";
-import words from "./words.json";
+import { useEffect, useRef, useState } from "react";
+import path from "path";
 
-const FootBar: React.FC = () => {
-  // chose a random word from the words.json file
-  const randomWord = Math.floor(Math.random() * words.length);
+const WORDS_PUBLIC_DIR = "/public/words";
+
+const FootBar: React.FC = ({}) => {
+  // chose a random word by the num of the words
+  const [randomWord, setRandomWord] = useState(-1);
   const ref = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    for (var index in words[randomWord]) {
-      const word = words[randomWord][index];
-      if (word.trim().length === 0) {
-        const br_element = document.createElement("br");
-        ref.current?.appendChild(br_element);
-      } else {
-        const p_element = document.createElement("p");
-        p_element.innerText = word;
-        p_element.className = "flex items-center justify-center";
-        ref.current?.appendChild(p_element);
-      }
+    if (randomWord === -1) {
+      fetch(path.join(WORDS_PUBLIC_DIR, "num.json"))
+        .then((res) => {
+          return res.json();
+        })
+        .then((num) => {
+          setRandomWord(Math.floor(Math.random() * num.num));
+        });
+    } else {
+      // get word from api
+      fetch(path.join(WORDS_PUBLIC_DIR, `${randomWord}.json`))
+        .then((res) => {
+          return res.json();
+        })
+        .then((words) => {
+          // clean the ref first
+          if (ref.current) {
+            ref.current.innerHTML = "";
+          }
+          for (var index in words) {
+            const word = words[index];
+            if (word.trim().length === 0) {
+              const br_element = document.createElement("br");
+              ref.current?.appendChild(br_element);
+            } else {
+              const p_element = document.createElement("p");
+              p_element.innerText = word;
+              p_element.className = "flex items-center justify-center";
+              ref.current?.appendChild(p_element);
+            }
+          }
+        });
     }
   }, [randomWord]);
 
