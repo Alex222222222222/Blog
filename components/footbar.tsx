@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import path from "path";
 
-const WORDS_PUBLIC_DIR = "/public/words";
+const WORDS_PUBLIC_DIR = "/words";
 
 const FootBar: React.FC = ({}) => {
   // chose a random word by the num of the words
