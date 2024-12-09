@@ -29,9 +29,11 @@ export function remarkTikzSupport() {
         const svg = TIKZ_SCRIPTS.get(key)?.output;
 
         newChildren.push({
-          type: "image",
-          url: svg!,
-          alt: "tikz-image",
+          type: "html",
+          value: `
+          <object type="image/svg+xml" data="${svg}">
+            <img src="${svg}" alt="tikz-image"/>
+          </object>`,
         });
       } else {
         newChildren.push(node);
