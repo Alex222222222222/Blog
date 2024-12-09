@@ -441,7 +441,8 @@ async function parseMarkdown2Html(
       }
       let res = await tex2svg(value.script, {
         showConsole: true,
-        fontCssUrl: "/static/tikz/styles/tikz.css",
+        fontCssUrl: "https://alex1222.com/static/tikz/styles/tikz.css",
+        embedFontCss: true,
         texPackages: {
           "tikz-cd": "",
           amsmath: "",
