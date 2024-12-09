@@ -12,7 +12,17 @@
 # next.js
 /.next/
 /out/
+
+# build output
 /public/tikz
+/public/words
+/public/rss.xml
+/public/sitemap.xml
+/public/feed.xml
+/public/rss
+/public/feed
+/public/sitemap.xml
+/public/sitemap
 
 # production
 /build

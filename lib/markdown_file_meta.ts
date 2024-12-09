@@ -9,7 +9,6 @@ import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import "katex/dist/katex.min.css"; // Import KaTeX styles
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import rehypeHeadingLink from "@/lib/rehypeHeadingLink";
@@ -59,7 +58,7 @@ export async function getLastModifiedDate(filePath: string): Promise<Date> {
   console.log(`Last modified date for ${filePath}: ${last_modified}`);
 
   // put into cache
-  putCache("markdown_last_modified", key, last_modified.toISOString());
+  putCache("getLastModifiedDate", key, last_modified.toISOString());
 
   return last_modified;
 }
@@ -187,7 +186,7 @@ export async function get_markdown_data(
     read_time,
     content,
   };
-  putCache("markdown", key, JSON.stringify(res));
+  putCache("get_markdown_data", key, JSON.stringify(res));
 
   return res;
 }
