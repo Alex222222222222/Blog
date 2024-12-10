@@ -55,7 +55,8 @@ const ViewsCount: React.FC = () => {
         siteTotalViewsDispatch(data.views);
       });
     // }, [router.events]);
-  }, [window.location.pathname]);
+  // }, [window.location.pathname]);
+  }, []);
 
   return (
     <div>

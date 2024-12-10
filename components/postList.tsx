@@ -1,12 +1,16 @@
+"use client";
+
 import Post from "@/interfaces/post";
 import Fuse from "fuse.js";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import path from "path";
 
 interface PostListProps {
-  categories: string[];
-  tags: string[];
-  search: string;
-  posts: Post[];
+  category?: string;
+  tag?: string;
+  search?: string;
+  emptyContent?: boolean;
 }
 
 // return a list of posts
@@ -15,46 +19,44 @@ interface PostListProps {
 // that the post tags match the tags
 // order by date descending
 const PostList: React.FC<PostListProps> = ({
-  posts,
   search,
-  categories,
-  tags,
+  category,
+  tag,
+  emptyContent,
 }) => {
-  const options = {
-    keys: ["title", "content"],
-    includeScore: true,
-  };
+  const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
+  const [allPosts, setAllPosts] = useState<Post[]>([]);
 
-  let filteredPosts = posts;
+  // if all posts changed, update the filtered posts
+  useEffect(() => {
+    const options = {
+      keys: ["title", "description", "content"],
+      includeScore: true,
+      isCaseSensitive: false,
+    };
 
-  if (search !== "") {
-    const fuse = new Fuse(posts, options);
-    const searchResults = fuse.search(search);
+    if (search && search.length > 0) {
+      const fuse = new Fuse(allPosts, options);
+      const searchResults = fuse.search(search);
 
-    filteredPosts = searchResults.map((result) => result.item);
-  }
-  if (categories.length != 0) {
-    filteredPosts = filteredPosts.filter((post) =>
-      categories.some((category) => {
-        for (let i = 0; i < post.categories.length; i++) {
-          if (post.categories[i].toLowerCase() == category.toLowerCase()) {
-            return true;
-          }
-        }
-      })
-    );
-  }
-  if (tags.length != 0) {
-    filteredPosts = filteredPosts.filter((post) =>
-      tags.some((tag) => {
-        for (let i = 0; i < post.tags.length; i++) {
-          if (post.tags[i].toLowerCase() == tag.toLowerCase()) {
-            return true;
-          }
-        }
-      })
-    );
-  }
+      setFilteredPosts(searchResults.map((result) => result.item));
+    } else {
+      setFilteredPosts(allPosts);
+    }
+  }, [allPosts]);
+
+  // if the category or tag changes, update the filtered posts
+  useEffect(() => {
+    // get all posts from api
+    const categoryN = category || "e";
+    const tagN = tag || "e";
+    const e = emptyContent === undefined ? "t" : emptyContent ? "t" : "f";
+    fetch(path.join("/postList", categoryN, tagN, e))
+      .then((response) => response.json())
+      .then((data) => {
+        setAllPosts(data);
+      });
+  }, [category, tag, emptyContent]);
 
   return (
     <div>

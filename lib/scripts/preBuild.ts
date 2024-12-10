@@ -6,7 +6,12 @@ import { get_all_posts } from "@/lib/markdown_file_meta";
 import { buildWordsJson } from "@/lib/buildWordsJson";
 
 export default async function preBuild() {
+  fs.mkdirSync(".build_cache/res/", { recursive: true });
+
   const posts = await get_all_posts();
+  fs.writeFileSync(".build_cache/res/allPosts.json", JSON.stringify(posts));
+
+  /**
   const config = getConfig();
 
   const rss_feed = await generateFeed(posts, config);
@@ -16,4 +21,8 @@ export default async function preBuild() {
   fs.writeFileSync("public/feed", rss_feed);
 
   buildWordsJson();
+  */
 }
+
+// run preBuild
+preBuild();

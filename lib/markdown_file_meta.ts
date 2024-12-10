@@ -232,7 +232,7 @@ export async function get_all_posts(): Promise<Post[]> {
 export async function get_empty_posts(): Promise<Post[]> {
   // try load from cache
   const key = getHashKey("empty_posts");
-  const cachedFile = readCache("markdown", key);
+  const cachedFile = readCache("get_empty_posts", key);
   if (cachedFile) {
     return JSON.parse(cachedFile);
   }
@@ -244,7 +244,7 @@ export async function get_empty_posts(): Promise<Post[]> {
   }
 
   // put the posts into cache
-  putCache("markdown", key, JSON.stringify(posts));
+  putCache("get_empty_posts", key, JSON.stringify(posts));
 
   return posts;
 }
