@@ -1,3 +1,5 @@
+'use client';
+
 // components/TopBar.tsx
 import Link from "next/link";
 import ContactBadge from "./contactBadge";
@@ -15,7 +17,7 @@ const TopBar: React.FC = () => {
   const [siteThirtyDaysViews, siteThirtyDaysViewsDispatch] = useState(0);
   const [siteTotalViews, siteTotalViewsDispatch] = useState(0);
 
-  const router = useRouter();
+  // const router = useRouter();
   useEffect(() => {
     // Don't track views in development,
     // as the api is not available
@@ -59,7 +61,8 @@ const TopBar: React.FC = () => {
       .then((data) => {
         siteTotalViewsDispatch(data.views);
       });
-  }, [router.events]);
+  // }, [router.events]);
+  });
 
   return (
     <div className="pt-2 sticky top-0 bg-yellow-100 px-4 sm:px-6 lg:px-8 z-[999]">

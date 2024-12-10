@@ -1,12 +1,6 @@
 // pages/index.tsx
-import Layout from "@/components/layout";
-import Post from "@/interfaces/post";
-import { get_empty_posts } from "@/lib/markdown_file_meta";
-import PostList from "@/components/postList";
-import HomeAbout from "@/components/homeAbout";
-import SeparateLine from "@/components/hr";
-import preBuild from "@/lib/scripts/preBuild";
 
+/**
 interface HomeProps {
   posts: Post[];
 }
@@ -37,4 +31,11 @@ export const getStaticProps = async () => {
       posts: await get_empty_posts(),
     },
   };
+};
+*/
+
+export default async function Page() {
+  return (
+    <div>Home</div>
+  );
 };

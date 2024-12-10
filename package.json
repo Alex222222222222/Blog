@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/third-parties": "^15.0.4",
     "@prinsss/dvi2html": "0.0.1",
     "async-lock": "1.4.1",
     "client-zip": "2.4.6",
@@ -21,7 +22,7 @@
     "jsdom": "25.0.1",
     "katex": "0.16.11",
     "memfs": "4.14.1",
-    "next": "15.0.4",
+    "next": "^15.0.4",
     "next-mdx-remote": "5.0.0",
     "pdfjs-dist": "4.9.155",
     "qr-scanner": "1.4.2",
