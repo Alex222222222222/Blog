@@ -33,33 +33,6 @@ const HomeAbout = () => {
         </li>
       </ul>
 
-      <h2>Useful Links:</h2>
-      <ul className="ml-5">
-        <li>
-          Build on{" "}
-          <a target="_blank" href="https://nextjs.org/" className="underline">
-            Next.js
-          </a>
-          ,{" "}
-          <a
-            target="_blank"
-            href="https://tailwindcss.com/"
-            className="underline"
-          >
-            Tailwind CSS
-          </a>
-          ,{" "}
-          <a
-            target="_blank"
-            href="https://pages.cloudflare.com"
-            className="underline"
-          >
-            Cloudflare Pages
-          </a>
-          .
-        </li>
-      </ul>
-
       <h2>Mirrors:</h2>
       <ul className="ml-5">
         <li>
@@ -78,20 +51,6 @@ const HomeAbout = () => {
           </a>
         </li>
       </ul>
-
-      <h2>Fonts:</h2>
-      <p
-        className="ml-5"
-      >
-        This website uses{" "}
-        <a
-          target="_blank"
-          href="https://github.com/githubnext/monaspace"
-          className="underline ml-5"
-        >
-          Github Next&apos;s Monaspace Krypton
-        </a>
-      </p>
 
       <h2>Friends:</h2>
       <ul className="ml-5">
