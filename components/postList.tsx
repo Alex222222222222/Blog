@@ -1,16 +1,9 @@
-"use client";
-
 import Post from "@/interfaces/post";
-import Fuse from "fuse.js";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import path from "path";
-
+import fs from "fs";
 interface PostListProps {
   category?: string;
   tag?: string;
-  search?: string;
-  emptyContent?: boolean;
 }
 
 // return a list of posts
@@ -18,49 +11,28 @@ interface PostListProps {
 // that the post categories match the categories
 // that the post tags match the tags
 // order by date descending
-const PostList: React.FC<PostListProps> = ({
-  search,
-  category,
-  tag,
-  emptyContent,
-}) => {
-  const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
-  const [allPosts, setAllPosts] = useState<Post[]>([]);
+const PostList: React.FC<PostListProps> = ({ category, tag }) => {
+  const postsJson = fs.readFileSync(".build_cache/res/allPosts.json", "utf-8");
+  const allPosts = JSON.parse(postsJson.toString());
 
-  // if all posts changed, update the filtered posts
-  useEffect(() => {
-    const options = {
-      keys: ["title", "description", "content"],
-      includeScore: true,
-      isCaseSensitive: false,
-    };
-
-    if (search && search.length > 0) {
-      const fuse = new Fuse(allPosts, options);
-      const searchResults = fuse.search(search);
-
-      setFilteredPosts(searchResults.map((result) => result.item));
-    } else {
-      setFilteredPosts(allPosts);
+  const posts = allPosts.filter((post: Post) => {
+    const categories = post.categories.map((category) =>
+      category.toLowerCase()
+    );
+    if (category && !categories.includes(category)) {
+      return false;
     }
-  }, [allPosts]);
 
-  // if the category or tag changes, update the filtered posts
-  useEffect(() => {
-    // get all posts from api
-    const categoryN = category || "e";
-    const tagN = tag || "e";
-    const e = emptyContent === undefined ? "t" : emptyContent ? "t" : "f";
-    fetch(path.join("/postList", categoryN, tagN, e))
-      .then((response) => response.json())
-      .then((data) => {
-        setAllPosts(data);
-      });
-  }, [category, tag, emptyContent]);
+    const tags = post.tags.map((tag) => tag.toLowerCase());
+    if (tag && !tags.includes(tag)) {
+      return false;
+    }
+    return true;
+  });
 
   return (
     <div>
-      {filteredPosts.map((post) => (
+      {posts.map((post: Post) => (
         <div key={"post" + post.title} className="flex">
           <a className="mr-5">{post.date}</a>
           <Link href={`/posts/${post.filename}`} className="underline">
