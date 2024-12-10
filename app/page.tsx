@@ -1,4 +1,8 @@
-// pages/index.tsx
+// app/page.tsx
+
+import HomeAbout from "@/components/homeAbout";
+import HomeCredits from "@/components/homeCredits";
+import SeparateLine from "@/components/hr";
 
 /**
 interface HomeProps {
@@ -36,6 +40,11 @@ export const getStaticProps = async () => {
 
 export default async function Page() {
   return (
-    <div>Home</div>
+    <>
+      <HomeAbout />
+      <SeparateLine />
+      <SeparateLine />
+      <HomeCredits />
+    </>
   );
-};
+}
