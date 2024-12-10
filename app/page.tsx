@@ -44,7 +44,7 @@ export default async function Page() {
     <>
       <HomeAbout />
       <SeparateLine />
-      <PostList emptyContent={true} />
+      <PostList />
       <SeparateLine />
       <HomeCredits />
     </>
