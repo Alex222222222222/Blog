@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 /**
  * Scroll to top button
@@ -8,6 +8,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+
+const SCROLL2TOP_SVG = "/static/serverImg/scroll2top.svg";
 
 const Scroll2TopBottom: React.FC = () => {
   const [isTopVisible, setIsTopVisible] = useState(false);
@@ -66,10 +68,10 @@ const Scroll2TopBottom: React.FC = () => {
     <div className="sticky mb-7 bottom-7 cursor-pointer flex flex-row">
       <div className="grow"></div>
       {/* <span className="w-9 px-2 pt-1 bg-blue-500 text-white rounded-full text-3xl">&uarr;</span> */}
-      {/* Use svg icon (/public/scroll2top.svg) instead */}
+      {/* Use svg icon (SCROLL2TOP_SVG) instead */}
       {isTopVisible && (
         <Image
-          src="/scroll2top.svg"
+          src={SCROLL2TOP_SVG}
           alt="Scroll to top"
           title="Scroll to top"
           width={100}
@@ -82,7 +84,7 @@ const Scroll2TopBottom: React.FC = () => {
       {/* Scroll to button svg is upside down of scroll to top svg */}
       {isBottomVisible && (
         <Image
-          src="/scroll2top.svg"
+          src={SCROLL2TOP_SVG}
           alt="Scroll to bottom"
           title="Scroll to bottom"
           width={100}
