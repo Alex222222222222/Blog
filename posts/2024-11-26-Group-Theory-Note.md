@@ -296,4 +296,88 @@ there exists $H$ which is a divisible subgroup of $G$ such that $a \in H$.
 As $H$ is divisible, there exists $b \in H$ such that $nb = a$.
 And as $H$ is a subgroup of $dG$, $b \in dG$.
 
+The maximal is obvious,
+as if there exists a divisible subgroup $H$ such that $dG \subset H \subset G$,
+then $H \subset dG$, by the definition of $dG$.
+
+It is unique as if there exists another maximal divisible subgroup $H$,
+then $\langle H, dG \rangle$ is also a divisible subgroup,
+then $\langle H, dG \rangle \subset dG$.
+
+::math-env-end{proof}
+
+::math-env-start{definition}
+
+A group $G$ is called **reduced** if $dG = 0$.
+
+::math-env-end{definition}
+
+::math-env-start{theorem}
+
+For every group $G$, there exists a decomposition $G = dG \oplus R$,
+where $dG$ is divisible and $R$ is reduced.
+
+::math-env-end{theorem}
+
+::math-env-start{proof}
+
+Since $dG$ is divisible, by corollary of injective property, $dG$ is a direct summand of $G$. Thus, there exists $R\le G$ such that $G = dG \oplus R$.
+
+Next, we prove that $R$ is reduced.
+If $R$ is not reduced, then there exists a non-zero element $r \in R$ such that
+for every $n \in \mathbb{N}$, $r$ is divisible by $n$.
+Then take an element $a \in dG$, then $a+r \in dG \oplus R$ is also divisible by $n$
+for every $n \in \mathbb{N}$.
+Which contradicts the maximally of $dG$.
+
+::math-env-end{proof}
+
+> Every abelian group is an extension of the torsion group $tG$ by a torsion free subgroup, but $tG$ need not to be a direct summand of $G$.
+> However, $dG$ is a direct summand of $G$.
+
+::math-env-start{definition}
+
+Given a group $G$ define $G[n] = \{x\in G \mid nx = 0\}$.
+
+::math-env-end{definition}
+
+::math-env-start{lemma}
+
+If $G$ and $H$ are divisible p-primary group, then $G \cong H$
+if and only if $G[p] \cong H[p]$.
+
+::math-env-end{lemma}
+
+::math-env-start{proof}
+
+The "only if" part is obvious.
+For the "if" part, we define $\phi: G[p] \rightarrow H[p]$,
+to be the isomorphism between $G[p]$ and $H[p]$.
+Then $\phi$ is also a homomorphism from $G[p]$ to $H$.
+By previous lemma, we can extend $\phi$ to a homomorphism $\Phi: G \rightarrow H$.
+And we prove that $\Phi$ is injective first.
+
+For injectivity, we prove this by induction on $n \ge 1$,
+that if $p^n x = 0$, and $\Phi(x) = 0$, then $x = 0$.
+The base case $n=1$ is obvious, as now $x \in G[p]$,
+which means $0=\Phi(x) = \phi(x)$, and as $\phi$ is isomorphic,
+$x = 0$.
+Now we assume the statement is true for $n-1$,
+and we prove it for $n$.
+If $p^n x = 0$, then $p^{n-1} (px) = 0$,
+also $\Phi(x) = 0$ must implies $\Phi(px) = 0$,
+thus by the induction hypothesis, $px = 0$,
+which implies $x = 0$ by the base case.
+
+As $\Phi$ is injective, $\Phi: G \rightarrow \text{Im}(\Phi)$ is an isomorphism.
+And we define $\phi': \text{Im}(\Phi) \rightarrow G$ as the inverse of $\Phi$.
+Also, note that the inverse of $\phi'$ extends the inverse of $\phi$,
+as it is easy to check $\phi'\mid H[p] = \phi^{-1}$.
+As $\phi'$ is a homomorphism from a subgroup of $H$ to $G$,
+by previous lemma, we can extend $\phi'$ to a homomorphism $\Phi': H \rightarrow G$.
+As $\phi'$ is a surjection by definition, $\Phi'$ is also a surjection.
+And also as $\Phi'$ extends $\phi^{-1}$,
+apply a similar reasoning as above, we have $\Phi'$ is injective.
+Thus, $\Phi'$ is an isomorphism. 
+
 ::math-env-end{proof}
