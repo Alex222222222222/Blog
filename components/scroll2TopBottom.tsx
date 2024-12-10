@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * Scroll to top button
  *

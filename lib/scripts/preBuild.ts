@@ -15,9 +15,5 @@ export default async function preBuild() {
   fs.writeFileSync("public/rss", rss_feed);
   fs.writeFileSync("public/feed", rss_feed);
 
-  const sitemap = await generateSitemap(posts, config);
-  fs.writeFileSync("public/sitemap.xml", sitemap);
-  fs.writeFileSync("public/sitemap", sitemap);
-
   buildWordsJson();
 }

@@ -4,7 +4,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  exclude: ["/functions"],
   webpack: (config, { nextRuntime }) => {
     if (typeof nextRuntime === "undefined") {
       config.resolve.fallback = {

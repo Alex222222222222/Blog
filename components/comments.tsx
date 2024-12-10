@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef } from "react";
 
 const UtterancCommentRepo = "Alex222222222222/Blog";

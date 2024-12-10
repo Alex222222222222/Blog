@@ -381,3 +381,10 @@ apply a similar reasoning as above, we have $\Phi'$ is injective.
 Thus, $\Phi'$ is an isomorphism. 
 
 ::math-env-end{proof}
+
+::math-env-start{theorem}
+
+Every divisible group $D$ is a direct sum of copies of
+$\mathbb{Q}$ and of copies of $\mathbb{Z}(p^\infty)$ for various primes $p$.
+
+::math-env-end{theorem}

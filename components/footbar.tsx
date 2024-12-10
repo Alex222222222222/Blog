@@ -1,7 +1,9 @@
+'use client';
+
 import { useEffect, useRef, useState } from "react";
 import path from "path";
 
-const WORDS_PUBLIC_DIR = "/words";
+const WORDS_API_END_POINT = "/words";
 
 const FootBar: React.FC = ({}) => {
   // chose a random word by the num of the words
@@ -9,7 +11,7 @@ const FootBar: React.FC = ({}) => {
   const ref = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     if (randomWord === -1) {
-      fetch(path.join(WORDS_PUBLIC_DIR, "num.json"))
+      fetch(path.join(WORDS_API_END_POINT, "num"))
         .then((res) => {
           return res.json();
         })
@@ -18,7 +20,7 @@ const FootBar: React.FC = ({}) => {
         });
     } else {
       // get word from api
-      fetch(path.join(WORDS_PUBLIC_DIR, `${randomWord}.json`))
+      fetch(path.join(WORDS_API_END_POINT, `${randomWord}`))
         .then((res) => {
           return res.json();
         })
