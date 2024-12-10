@@ -3,6 +3,7 @@
 import HomeAbout from "@/components/homeAbout";
 import HomeCredits from "@/components/homeCredits";
 import SeparateLine from "@/components/hr";
+import PostList from "@/components/postList";
 
 /**
 interface HomeProps {
@@ -43,6 +44,7 @@ export default async function Page() {
     <>
       <HomeAbout />
       <SeparateLine />
+      <PostList emptyContent={true} />
       <SeparateLine />
       <HomeCredits />
     </>
