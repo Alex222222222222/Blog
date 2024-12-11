@@ -429,7 +429,7 @@ async function parseMarkdown2Html(
   await BUILD_TIKZ_LOCK.acquire("tikz", async () => {
     // check if dir ./public/tikz/ exists
     if (!fs.existsSync("./public/tikz/")) {
-      fs.mkdirSync("./public/tikz/");
+      fs.mkdirSync("./public/tikz/", { recursive: true });
     }
   });
 
