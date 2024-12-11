@@ -1,8 +1,6 @@
-'use client';
+"use client";
 
 import React, { useState } from "react";
-import Layout from "@/components/layout";
-import getConfig from "@/lib/config";
 import concatenateUrls from "@/lib/url";
 import Image from "next/image";
 import Turnstile, { useTurnstile } from "react-turnstile";
@@ -12,9 +10,13 @@ interface StableDiffusionProps {
 }
 
 enum Status {
+  // eslint-disable-next-line no-unused-vars
   NotStarted,
+  // eslint-disable-next-line no-unused-vars
   Loading,
+  // eslint-disable-next-line no-unused-vars
   Success,
+  // eslint-disable-next-line no-unused-vars
   Error,
 }
 
@@ -33,10 +35,6 @@ function isStatusError(status: Status): boolean {
 const LoadingWidget: React.FC = () => {
   return <div>Loading...</div>;
 };
-
-interface StableDiffusionProps {
-  site_base_url: string;
-}
 
 const StableDiffusion: React.FC<StableDiffusionProps> = ({ site_base_url }) => {
   const [input, setInput] = useState("");

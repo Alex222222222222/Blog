@@ -1,6 +1,8 @@
 import Post from "@/interfaces/post";
 import Link from "next/link";
 import fs from "fs";
+import React from "react";
+
 interface PostListProps {
   category?: string;
   tag?: string;

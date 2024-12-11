@@ -1,6 +1,6 @@
 import React from "react";
 
-const HomeAbout = () => {
+const HomeAbout: React.FC = () => {
   return (
     <div>
       <h1>Welcome to The Knot</h1>
@@ -71,6 +71,7 @@ const HomeAbout = () => {
           <a
             target="_blank"
             href="https://www.eaimty.com"
+            rel="noreferrer"
             className="underline"
           >
             EAimTY&apos;s Blog
@@ -80,6 +81,7 @@ const HomeAbout = () => {
           <a
             target="_blank"
             href="https://xblog.aptzone.cc"
+            rel="noreferrer"
             className="underline"
           >
             Forever

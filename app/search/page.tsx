@@ -1,11 +1,8 @@
 "use client";
 
-import Layout from "@/components/layout";
-import PostList from "@/components/postList";
 import Post from "@/interfaces/post";
-import { get_all_posts } from "@/lib/markdown_file_meta";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Fuse from "fuse.js";
 
 export default function Page() {

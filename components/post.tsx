@@ -4,6 +4,7 @@ import Post from "@/interfaces/post";
 import "katex/dist/katex.min.css"; // Import KaTeX styles
 import Head from "next/head";
 import Link from "next/link";
+import React from "react";
 
 interface PostProps {
   post: Post;

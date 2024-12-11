@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import { toCanvas } from "qrcode";
-import Layout from "@/components/layout";
 import SeparateLine from "../../hr";
 
 const QRCodeGenerator: React.FC = () => {

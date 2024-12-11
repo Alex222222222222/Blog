@@ -2,6 +2,7 @@
 
 // components/viewsCount.tsx
 import { useEffect, useState } from "react";
+import React from "react";
 
 const ViewsCount: React.FC = () => {
   const [sevenDaysViews, sevenDaysViewsDispatch] = useState(0);

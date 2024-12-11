@@ -1,13 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import Layout from "@/components/layout";
 import SeparateLine from "@/components/hr";
 import { GlobalWorkerOptions, PDFDocumentProxy, getDocument } from "pdfjs-dist";
 import { downloadZip } from "client-zip";
-import Head from "next/head";
 import Image from "next/image";
-import { Metadata } from "next";
 
 const fileToArrayBuffer = (file: File): Promise<ArrayBuffer> => {
   return new Promise((resolve, reject) => {
