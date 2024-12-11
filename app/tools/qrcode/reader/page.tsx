@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import QRScanner from "qr-scanner";
 import Layout from "@/components/layout";
 import { Metadata } from "next";
-import QRCodeReader from "@/components/qrcode/reader";
+import QRCodeReader from "@/components/tools/qrcode/reader";
 
 export const metadata: Metadata = {
   title: "QR Code Reader",

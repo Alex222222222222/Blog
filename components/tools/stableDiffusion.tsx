@@ -1,8 +1,9 @@
+'use client';
+
 import React, { useState } from "react";
 import Layout from "@/components/layout";
 import getConfig from "@/lib/config";
 import concatenateUrls from "@/lib/url";
-import styles from "@/components/footbarTyping.module.css";
 import Image from "next/image";
 import Turnstile, { useTurnstile } from "react-turnstile";
 
@@ -30,27 +31,14 @@ function isStatusError(status: Status): boolean {
 }
 
 const LoadingWidget: React.FC = () => {
-  /*
-
-  */
-  return (
-    <div className="flex items-center justify-center">
-      <a className={styles.typingFirstDiv}>L</a>
-      <a className={styles.typingSecondDiv}>o</a>
-      <a className={styles.typingThirdDiv}>a</a>
-      <a className={styles.typingFourthDiv}>d</a>
-      <a className={styles.typingFifthDiv}>i</a>
-      <a className={styles.typingSixthDiv}>n</a>
-      <a className={styles.typingSeventhDiv}>g</a>
-      <a className={styles.typingEighthDiv}>.</a>
-      <a className={styles.typingNinthDiv}>.</a>
-    </div>
-  );
+  return <div>Loading...</div>;
 };
 
-const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
-  site_base_url,
-}) => {
+interface StableDiffusionProps {
+  site_base_url: string;
+}
+
+const StableDiffusion: React.FC<StableDiffusionProps> = ({ site_base_url }) => {
   const [input, setInput] = useState("");
   const [size, setSize] = useState(256);
   const [status, setStatus] = useState(Status.NotStarted);
@@ -60,8 +48,7 @@ const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
   const turnstile = useTurnstile();
 
   return (
-    <Layout>
-      <h1>Stable Diffusion XL</h1>
+    <>
       <textarea
         value={input}
         onChange={(e) => {
@@ -155,19 +142,8 @@ const StableDiffusionPage: React.FC<StableDiffusionProps> = ({
         </a>{" "}
         to generate image from text.
       </p>
-    </Layout>
+    </>
   );
 };
 
-export const getStaticProps = async () => {
-  const config = getConfig();
-  const site_base_url = config.baseUrl;
-
-  return {
-    props: {
-      site_base_url,
-    },
-  };
-};
-
-export default StableDiffusionPage;
+export default StableDiffusion;
