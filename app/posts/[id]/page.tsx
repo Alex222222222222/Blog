@@ -12,6 +12,7 @@ import Layout from "@/components/layout";
 import "katex/dist/katex.min.css"; // Import KaTeX styles
 import PostPageContent from "@/components/post";
 import fs from "fs";
+import he from "he";
 
 export const dynamic = "force-static";
 
@@ -36,6 +37,7 @@ export default async function Page({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+  const idN = decodeURIComponent(id);
 
   const postsJson = fs.readFileSync(".build_cache/res/allPosts.json", "utf-8");
   const posts: Post[] = JSON.parse(postsJson.toString());
@@ -44,7 +46,7 @@ export default async function Page({
   let previous_post;
   let next_post;
   for (let i = 0; i < posts.length; i++) {
-    if (posts[i].filename === id) {
+    if (posts[i].filename === idN) {
       post = posts[i];
       previous_post = i > 0 ? posts[i - 1].filename : null;
       next_post = i < posts.length - 1 ? posts[i + 1].filename : null;
@@ -52,7 +54,7 @@ export default async function Page({
     }
   }
   if (!post) {
-    throw new Error("Post with id " + id + " not found");
+    throw new Error("Post with id " + idN + " not found");
   }
 
   return (

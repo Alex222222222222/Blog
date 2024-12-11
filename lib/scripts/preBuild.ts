@@ -1,5 +1,4 @@
 import fs from "fs";
-import generateSitemap from "@/lib/sitemap";
 import generateFeed from "@/lib/feed";
 import getConfig from "@/lib/config";
 import { get_all_posts } from "@/lib/markdown_file_meta";

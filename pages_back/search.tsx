@@ -1,3 +1,4 @@
+/**
 import Layout from "@/components/layout";
 import PostList from "@/components/postList";
 import Post from "@/interfaces/post";
@@ -40,3 +41,4 @@ export const getStaticProps = async () => {
 };
 
 export default SearchPage;
+*/
