@@ -1,10 +1,12 @@
+"use client";
+
 import React, { useState } from "react";
 import Layout from "@/components/layout";
 import SeparateLine from "@/components/hr";
 import Head from "next/head";
 import generator from "generate-password";
 
-const StableDiffusionPage: React.FC = ({}) => {
+export default function Page() {
   const [length, setLength] = useState<number>(10);
   const [includeNumbers, setIncludeNumbers] = useState<boolean>(true);
   const [includeSymbols, setIncludeSymbols] = useState<boolean>(true);
@@ -18,7 +20,7 @@ const StableDiffusionPage: React.FC = ({}) => {
   const [results, setResults] = useState<string[]>([]);
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>Online Password Generator</title>
         <meta
@@ -154,48 +156,46 @@ const StableDiffusionPage: React.FC = ({}) => {
             </td>
           </tr>
         </tbody>
-        <SeparateLine />
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={() => {
-            setErrorMsg("");
-            if (
-              !(
-                includeNumbers ||
-                includeSymbols ||
-                includeLowercase ||
-                includeUppercase
-              )
-            ) {
-              setErrorMsg("At least one of the checkboxes should be checked.");
-              return;
-            }
-
-            setResults(
-              generator.generateMultiple(numberOfPasswords, {
-                length: length,
-                numbers: includeNumbers,
-                symbols: includeSymbols,
-                lowercase: includeLowercase,
-                uppercase: includeUppercase,
-                excludeSimilarCharacters: excludeSimilarCharacters,
-                exclude: excludeCharacters,
-                strict: true,
-              })
-            );
-          }}
-        >
-          Generate Password
-        </button>
-        <SeparateLine />
-        <ul>
-          {results.map((result) => {
-            return <li key={result}>{`password_gen_${result}`}</li>;
-          })}
-        </ul>
       </table>
-    </Layout>
-  );
-};
+      <SeparateLine />
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={() => {
+          setErrorMsg("");
+          if (
+            !(
+              includeNumbers ||
+              includeSymbols ||
+              includeLowercase ||
+              includeUppercase
+            )
+          ) {
+            setErrorMsg("At least one of the checkboxes should be checked.");
+            return;
+          }
 
-export default StableDiffusionPage;
+          setResults(
+            generator.generateMultiple(numberOfPasswords, {
+              length: length,
+              numbers: includeNumbers,
+              symbols: includeSymbols,
+              lowercase: includeLowercase,
+              uppercase: includeUppercase,
+              excludeSimilarCharacters: excludeSimilarCharacters,
+              exclude: excludeCharacters,
+              strict: true,
+            })
+          );
+        }}
+      >
+        Generate Password
+      </button>
+      <SeparateLine />
+      <ul>
+        {results.map((result) => {
+          return <li key={`password_gen_${result}`}>{result}</li>;
+        })}
+      </ul>
+    </>
+  );
+}
