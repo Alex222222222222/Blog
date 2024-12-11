@@ -12,7 +12,6 @@ import Layout from "@/components/layout";
 import "katex/dist/katex.min.css"; // Import KaTeX styles
 import PostPageContent from "@/components/post";
 import fs from "fs";
-import he from "he";
 
 export const dynamic = "force-static";
 

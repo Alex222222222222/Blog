@@ -24,7 +24,7 @@ export async function generateStaticParams() {
   });
 
   categories.forEach((category) => {
-    params.push({ category });
+    params.push({ category: category });
   });
 
   return params;
@@ -36,11 +36,12 @@ export default async function Page({
   params: Promise<{ category: string }>;
 }) {
   const { category } = await params;
+  const categoryN = decodeURIComponent(category);
 
   return (
     <>
-      <h1>Posts in category: {category}</h1>
-      <PostList category={category} />
+      <h1>Posts in category: {categoryN}</h1>
+      <PostList category={categoryN} />
     </>
   );
 }
