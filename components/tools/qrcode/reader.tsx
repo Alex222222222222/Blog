@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import QRScanner from "qr-scanner";
-import Layout from "@/components/layout";
 import { Metadata } from "next";
 import SeparateLine from "../../hr";
 
