@@ -7,8 +7,8 @@ import Link from "next/link";
 
 interface PostProps {
   post: Post;
-  previous_post: string | null;
-  next_post: string | null;
+  previous_post: string | null | undefined;
+  next_post: string | null | undefined;
 }
 
 interface PostContentProps {

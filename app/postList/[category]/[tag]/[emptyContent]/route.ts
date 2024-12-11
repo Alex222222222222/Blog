@@ -8,6 +8,8 @@
 import Post from "@/interfaces/post";
 import fs from "fs";
 
+export const dynamic = "force-static";
+
 export async function generateStaticParams() {
   const postsJson = fs.readFileSync(".build_cache/res/allPosts.json", "utf-8");
   const posts = JSON.parse(postsJson.toString());

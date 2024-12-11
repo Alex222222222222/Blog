@@ -1,5 +1,7 @@
 // app/page.tsx
 
+export const dynamic = "force-static";
+
 import HomeAbout from "@/components/homeAbout";
 import HomeCredits from "@/components/homeCredits";
 import SeparateLine from "@/components/hr";
