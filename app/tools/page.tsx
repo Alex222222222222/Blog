@@ -1,9 +1,8 @@
-import Layout from "@/components/layout";
 import Link from "next/link";
 
-const IntroPage: React.FC = ({}) => {
+export default async function Page() {
   return (
-    <Layout>
+    <>
       Here is some tools on the site.
       <br />
       All the tools are run in the browser, so no data is sent to the server.
@@ -72,8 +71,6 @@ const IntroPage: React.FC = ({}) => {
         // TODO regex tester
         // TODO base32 encode/decode
       }
-    </Layout>
+    </>
   );
-};
-
-export default IntroPage;
+}
