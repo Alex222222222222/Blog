@@ -1,8 +1,8 @@
-// pages/encode.tsx
-import Layout from "@/components/layout";
+"use client";
+
 import React, { useState } from "react";
 
-const EncodePage: React.FC = ({}) => {
+const DecodeBase64: React.FC = ({}) => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
 
@@ -12,8 +12,7 @@ const EncodePage: React.FC = ({}) => {
   };
 
   return (
-    <Layout>
-      <h1>Online Base64 Decoder</h1>
+    <>
       <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
@@ -31,8 +30,8 @@ const EncodePage: React.FC = ({}) => {
       <button onClick={handleDecode} className="border-2 border-gray-300 mb-2">
         Decode
       </button>
-    </Layout>
+    </>
   );
 };
 
-export default EncodePage;
+export default DecodeBase64;
