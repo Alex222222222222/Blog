@@ -1,4 +1,12 @@
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "Tools",
+  description: "Tools on the site",
+};
 
 export default async function Page() {
   return (

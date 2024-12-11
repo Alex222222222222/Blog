@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import Layout from "@/components/layout";
 import SeparateLine from "@/components/hr";
@@ -5,6 +7,7 @@ import { GlobalWorkerOptions, PDFDocumentProxy, getDocument } from "pdfjs-dist";
 import { downloadZip } from "client-zip";
 import Head from "next/head";
 import Image from "next/image";
+import { Metadata } from "next";
 
 const fileToArrayBuffer = (file: File): Promise<ArrayBuffer> => {
   return new Promise((resolve, reject) => {
@@ -47,7 +50,7 @@ const getPages = (page: string, numPages: number): number[] => {
   return pages;
 };
 
-const StableDiffusionPage: React.FC = ({}) => {
+const PDF2Pic: React.FC = () => {
   const [width, setWidth] = useState<number>(2448);
   const [height, setHeight] = useState<number>(3168);
   const [page, setPage] = useState<string>("-1");
@@ -58,23 +61,11 @@ const StableDiffusionPage: React.FC = ({}) => {
   const [fixAspectRatio, setFixAspectRatio] = useState<boolean>(true);
 
   const pdfjsWorker = require("pdfjs-dist/build/pdf.worker");
-  GlobalWorkerOptions.workerSrc = pdfjsWorker + 'pdfjs-dist/build/pdf.worker.mjs';
+  GlobalWorkerOptions.workerSrc =
+    pdfjsWorker + "pdfjs-dist/build/pdf.worker.mjs";
 
   return (
-    <Layout>
-      <Head>
-        <title>Convert PDF to Image</title>
-        <meta
-          name="description"
-          content="Convert PDF to Image. And will only use your browser to do the conversion, which means there will be no data sent to the server."
-        />
-      </Head>
-      <h1>Convert PDF to Image</h1>
-      This tool converts PDF to image. And will only use your browser to do the
-      conversion, which means there will be no data sent to the server.
-      <SeparateLine />
-      Please select a PDF file to convert to an image.
-      <br />
+    <>
       <input
         type="file"
         accept=".pdf"
@@ -247,13 +238,18 @@ const StableDiffusionPage: React.FC = ({}) => {
           }
           return (
             <div key={`${filename}_${image[1]}.png`} className="m-2">
-              <Image src={image[0]} alt="PDF to Image" width={width} height={height}/>
+              <Image
+                src={image[0]}
+                alt="PDF to Image"
+                width={width}
+                height={height}
+              />
             </div>
           );
         })}
       </div>
-    </Layout>
+    </>
   );
 };
 
-export default StableDiffusionPage;
+export default PDF2Pic;
