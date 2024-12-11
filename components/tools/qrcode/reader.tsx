@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import QRScanner from "qr-scanner";
-import { Metadata } from "next";
 import SeparateLine from "../../hr";
 
 const QRCodeReader: React.FC = () => {

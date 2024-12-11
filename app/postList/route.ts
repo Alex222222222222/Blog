@@ -10,7 +10,7 @@ import fs from "fs";
 
 export const dynamic = "force-static";
 
-export async function GET(_request: Request) {
+export async function GET() {
   const postsJson = fs.readFileSync(".build_cache/res/allPosts.json", "utf-8");
   const posts: Post[] = JSON.parse(postsJson.toString());
 

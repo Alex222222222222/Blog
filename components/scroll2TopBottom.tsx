@@ -8,6 +8,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import React from "react";
 
 const SCROLL2TOP_SVG = "/static/serverImg/scroll2top.svg";
 

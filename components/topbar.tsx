@@ -5,6 +5,7 @@ import config from "@/config.json";
 import { stringToContactType } from "@/lib/contactType";
 import ViewsCount from "./viewsCount";
 import SeparateLine from "./hr";
+import React from "react";
 
 const TopBar: React.FC = () => {
   return (

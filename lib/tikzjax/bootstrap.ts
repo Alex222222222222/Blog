@@ -139,7 +139,7 @@ export async function tex(input: string, options: TeXOptions = {}) {
     library.deleteEverything();
 
     return dvi;
-  } catch (e) {
+  } catch (e) { // eslint-disable-line no-unused-vars
     library.deleteEverything();
     throw new Error(
       "TeX engine render failed. Set `options.showConsole` to `true` to see logs."

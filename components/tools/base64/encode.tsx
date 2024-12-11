@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-const EncodeBase64: React.FC = ({}) => {
+const EncodeBase64: React.FC = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
 

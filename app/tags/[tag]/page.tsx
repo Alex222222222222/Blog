@@ -1,10 +1,5 @@
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
-import { ParsedUrlQuery } from "querystring";
-import { get_all_tags, get_empty_posts } from "@/lib/markdown_file_meta";
 import Post from "@/interfaces/post";
-import React from "react";
 import PostList from "@/components/postList";
-import Layout from "@/components/layout";
 import fs from "fs";
 
 export const dynamic = "force-static";

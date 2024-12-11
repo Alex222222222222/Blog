@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import QRScanner from "qr-scanner";
 import { Metadata } from "next";
 import QRCodeReader from "@/components/tools/qrcode/reader";
 

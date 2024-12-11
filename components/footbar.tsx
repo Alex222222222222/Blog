@@ -1,11 +1,12 @@
-'use client';
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import path from "path";
+import React from "react";
 
 const WORDS_API_END_POINT = "/words";
 
-const FootBar: React.FC = ({}) => {
+const FootBar: React.FC = () => {
   // chose a random word by the num of the words
   const [randomWord, setRandomWord] = useState(-1);
   const ref = useRef<HTMLDivElement | null>(null);

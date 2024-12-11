@@ -1,14 +1,4 @@
-// pages/posts/[id].tsx
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
-import { ParsedUrlQuery } from "querystring";
 import Post from "@/interfaces/post";
-import {
-  find_matching_paths_with_alias,
-  get_markdown_data,
-  get_posts_paths_with_alias,
-  get_previous_and_next_posts,
-} from "@/lib/markdown_file_meta";
-import Layout from "@/components/layout";
 import "katex/dist/katex.min.css"; // Import KaTeX styles
 import PostPageContent from "@/components/post";
 import fs from "fs";

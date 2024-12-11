@@ -1,19 +1,25 @@
 import React from "react";
 
-const HomeCredits = () => {
+const HomeCredits: React.FC = () => {
   return (
     <div>
       <h2>Credits:</h2>
       <ul className="ml-5">
         <li>
           Built On:{" "}
-          <a target="_blank" href="https://nextjs.org/" className="underline">
+          <a
+            target="_blank"
+            href="https://nextjs.org/"
+            rel="noreferrer"
+            className="underline"
+          >
             Next.js
           </a>
           ,{" "}
           <a
             target="_blank"
             href="https://tailwindcss.com/"
+            rel="noreferrer"
             className="underline"
           >
             Tailwind CSS
@@ -25,6 +31,7 @@ const HomeCredits = () => {
           <a
             target="_blank"
             href="https://www.cloudflare.com/"
+            rel="noreferrer"
             className="underline"
           >
             Cloudflare Pages
@@ -36,6 +43,7 @@ const HomeCredits = () => {
           <a
             target="_blank"
             href="https://github.com/githubnext/monaspace"
+            rel="noreferrer"
             className="underline"
           >
             Github Next&apos;s Monaspace Krypton
@@ -46,6 +54,7 @@ const HomeCredits = () => {
           <a
             target="_blank"
             href="https://unifiedjs.com"
+            rel="noreferrer"
             className="underline"
           >
             Unified.js
@@ -56,6 +65,7 @@ const HomeCredits = () => {
           <a
             target="_blank"
             href="https://katex.org/"
+            rel="noreferrer"
             className="underline"
           >
             KaTeX
@@ -64,6 +74,7 @@ const HomeCredits = () => {
           <a
             target="_blank"
             href="https://tikzjax.com/"
+            rel="noreferrer"
             className="underline"
           >
             TikZJax
@@ -74,6 +85,7 @@ const HomeCredits = () => {
           <a
             target="_blank"
             href="https://utteranc.es/"
+            rel="noreferrer"
             className="underline"
           >
             Utterances
