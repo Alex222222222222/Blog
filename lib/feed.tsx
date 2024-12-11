@@ -1,7 +1,6 @@
 import { PostContentReal } from "@/components/post";
 import Config from "@/interfaces/config";
 import Post from "@/interfaces/post";
-import { renderToString } from "react-dom/server";
 import RSS from "rss";
 import concatenateUrls from "./url";
 
@@ -15,9 +14,10 @@ const generateFeed = async (
     feed_url: concatenateUrls(config.baseUrl, "/rss"),
     site_url: config.baseUrl,
   });
+  const ReactDOMServer = (await import('react-dom/server')).default;
 
   posts.forEach((post) => {
-    const description = renderToString(
+    const description = ReactDOMServer.renderToString(
       <PostContentReal post={post} />
     );
 
