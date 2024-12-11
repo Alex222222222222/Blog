@@ -1,4 +1,4 @@
-import QRCodeGenerator from "@/components/qrcode/generator";
+import QRCodeGenerator from "@/components/tools/qrcode/generator";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

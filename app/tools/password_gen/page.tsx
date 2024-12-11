@@ -4,7 +4,7 @@ import SeparateLine from "@/components/hr";
 import Head from "next/head";
 import generator from "generate-password";
 import { Metadata } from "next";
-import PasswordGen from "@/components/passwordGen";
+import PasswordGen from "@/components/tools/passwordGen";
 
 export const metadata: Metadata = {
   title: "Online Password Generator",
