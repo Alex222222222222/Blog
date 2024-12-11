@@ -15,16 +15,19 @@ const PostList: React.FC<PostListProps> = ({ category, tag }) => {
   const postsJson = fs.readFileSync(".build_cache/res/allPosts.json", "utf-8");
   const allPosts = JSON.parse(postsJson.toString());
 
+  const categoryLower = category ? category.toLowerCase() : undefined;
+  const tagLower = tag ? tag.toLowerCase() : undefined;
+
   const posts = allPosts.filter((post: Post) => {
     const categories = post.categories.map((category) =>
       category.toLowerCase()
     );
-    if (category && !categories.includes(category)) {
+    if (categoryLower && !categories.includes(categoryLower)) {
       return false;
     }
 
     const tags = post.tags.map((tag) => tag.toLowerCase());
-    if (tag && !tags.includes(tag)) {
+    if (tagLower && !tags.includes(tagLower)) {
       return false;
     }
     return true;
