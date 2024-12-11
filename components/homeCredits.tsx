@@ -69,6 +69,16 @@ const HomeCredits = () => {
             TikZJax
           </a>
         </li>
+        <li>
+          Comments:{" "}
+          <a
+            target="_blank"
+            href="https://utteranc.es/"
+            className="underline"
+          >
+            Utterances
+          </a>
+        </li>
       </ul>
     </div>
   );
