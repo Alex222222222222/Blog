@@ -21,7 +21,7 @@ export default async function Page() {
       <ul className="grid grid-cols-2 ml-5 underline">
         {tagsArray.map((tag, index) => (
           <li key={index}>
-            <a href={`/tags/${tag}`}>{tag}</a>
+            <a href={`/tags/${encodeURIComponent(tag)}`}>{tag}</a>
           </li>
         ))}
       </ul>

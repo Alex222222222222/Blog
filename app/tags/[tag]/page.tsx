@@ -24,7 +24,7 @@ export async function generateStaticParams() {
   });
 
   tags.forEach((tag) => {
-    params.push({ tag });
+    params.push({ tag: tag });
   });
 
   return params;
@@ -36,11 +36,12 @@ export default async function Page({
   params: Promise<{ tag: string }>;
 }) {
   const { tag } = await params;
+  const tagN = decodeURIComponent(tag);
 
   return (
     <>
-      <h1>Posts in tag: {tag}</h1>
-      <PostList tag={tag} />
+      <h1>Posts in tag: {tagN}</h1>
+      <PostList tag={tagN} />
     </>
   );
 }

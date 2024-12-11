@@ -21,7 +21,9 @@ export default async function Page() {
       <ul className="grid grid-cols-2 ml-5 underline">
         {categoriesArray.map((category, index) => (
           <li key={index}>
-            <a href={`/categories/${category}`}>{category}</a>
+            <a href={`/categories/${encodeURIComponent(category)}`}>
+              {category}
+            </a>
           </li>
         ))}
       </ul>
