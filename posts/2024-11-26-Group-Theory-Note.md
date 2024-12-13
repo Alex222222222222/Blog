@@ -448,3 +448,218 @@ Then $G$ is a direct summand of $D$.
 And any direct summand of divisible group is divisible.
 
 ::math-env-end{proof}
+
+#### Exercises
+
+::math-env-start{exercise}
+
+If $0 \rightarrow A \rightarrow B \rightarrow C \rightarrow 0$
+is an exact sequence and if $A$ and $C$ are reduced,
+then $B$ is reduced.
+
+::math-env-end{exercise}
+
+::math-env-start{proof}
+
+We name the maps in the exact sequence as follows:
+
+```tikz
+\begin{tikzcd}[row sep=huge]
+   0\ar[r] & A \ar[r,"i"] & B \ar[r,"j"] & C \ar[r] & 0
+\end{tikzcd}
+```
+
+As $i$ is injective, we now assume $A \le B$.
+Assume $B$ is not reduced, then $dB \neq 0$.
+Then, $j(dB)$ is divisible, as it is a quotient of divisible group.
+Because $C$ is reduced, $j(dB) = 0$,
+which implies, $dB \le \ker j = \text{Im} i = A$.
+As $A$ is reduced, $dB = 0$.
+
+::math-env-end{proof}
+
+::math-env-start{exercise}
+
+- Prove that $\mathbb{Q}/\mathbb{Z} = \sum_p \mathbb{Z}(p^\infty)$.
+- Prove that $\mathbb{Q}/\mathbb{Z}[n] \cong \mathbb{Z}_n$.
+
+::math-env-end{exercise}
+
+::math-env-start{proof}
+
+As $\mathbb{Q}/\mathbb{Z}$ is a quotient of divisible group, it is divisible.
+Also given $\frac{a}{b} \in \mathbb{Q}/\mathbb{Z}$,
+we have $b \frac{a}{b} = 0$.
+Thus, $t\mathbb{Q}/\mathbb{Z} = \mathbb{Q}/\mathbb{Z}$,
+and $\mathbb{Q}/\mathbb{Z}$ contains no summand of $\mathbb{Q}$.
+
+It is easy to check that:
+
+$$
+    \mathbb{Q}/\mathbb{Z}[p] = \{
+        \frac{a}{b} \in \mathbb{Q}/\mathbb{Z} \mid \gcd(a,b) = 1, b = p
+    \}.
+$$
+
+Then it is a cyclic group of order $p$,
+which is isomorphic to $\mathbb{Z}(p^\infty)[p]$.
+Then by previous theorem and lemma, we have, $\mathbb{Q}/\mathbb{Z} = \sum_p \mathbb{Z}(p^\infty)$.
+
+For the second part, we factorize $n = p_1^{r_1} \dots p_k^{r_k}$.
+Then we have:
+
+$$
+\begin{aligned}
+    \mathbb{Q}/\mathbb{Z}[n] &= (\sum_p \mathbb{Z}(p^\infty))[n] \\
+    &= \sum_p (\mathbb{Z}(p^\infty)[n]) \\
+    &= \sum_{i = 1}^{k} (\mathbb{Z}(p_i^\infty)[p_i^{r_i}]) \\
+    &= \sum_{i = 1}^{k} \mathbb{Z}_{p_i^{r_i}} \\
+    &= \mathbb{Z}_n.
+\end{aligned}
+$$
+
+::math-env-end{proof}
+
+::math-env-start{exercise}
+
+Prove that a group $G$ is divisible if and only if $G$ has
+the injective property.
+
+::math-env-end{exercise}
+
+::math-env-start{proof}
+
+The "only if" part is given by previous theorem.
+For the "if" part, we prove that if a group $D$ contains $G$,
+$G$ is a direct summand of $D$.
+And then by previous corollary, $G$ is divisible.
+
+By injective property, we have the following diagram,
+where $\varphi$ is an extension of $1_G$.
+
+```tikz
+\begin{tikzcd}[row sep=huge]
+   & G\\
+   0\ar[r] & G \ar[u,"1_G"]\ar[r,hookrightarrow,"i"] & D\ar[ul, dashed, "\varphi"]
+\end{tikzcd}
+```
+
+Then by previous theorem about group extension,
+$G$ is a direct summand of $D$.
+
+::math-env-end{proof}
+
+::math-env-start{exercise}
+
+A group $G$ is divisible if and only if $G = pG$ for all prime $p$.
+
+::math-env-end{exercise}
+
+::math-env-start{proof}
+
+If $G$ is divisible,
+then for any element $g \in G$, as $G$ is divisible,
+there exists $h \in G$ such that $ph = g$.
+Thus, we have $G \le pG$.
+And as $pG \le G$ obviously, we have $G = pG$.
+
+Then, if $G = pG$ for all prime $p$,
+then for any $n\in \mathbb{N}$,
+we do induction on $n$.
+The base case $n=1$ is obvious,
+any element $g \in G$ is divisible by $1$.
+Now we assume that any element $g \in G$ is divisible by all natural numbers less than $n$,
+and we prove that $g$ is divisible by $n$.
+If $n$ is a prime, then as $G = nG$, there exists $h \in G$ such that $nh = g$.
+If $n$ is not a prime, then there exists $n_1 \neq 1$ and $n_2 \neq 1$ such that $n = n_1 n_2$.
+As $g$ is now divisible by $n_1$ by induction hypothesis,
+there exists $h_1 \in G$ such that $n_1 h_1 = g$.
+And as $h_1$ is now divisible by $n_2$ by induction hypothesis,
+there exists $h_2 \in G$ such that $n_2 h_2 = h_1$.
+Thus, $n h_2 = g$.
+
+::math-env-end{proof}
+
+::math-env-start{exercise}
+
+A $p$-primary group $G$ is divisible if and only if $G=pG$.
+
+::math-env-end{exercise}
+
+::math-env-start{proof}
+
+If $G$ is divisible,
+then for any element $g \in G$, as $G$ is divisible,
+there exists $h \in G$ such that $ph = g$.
+Thus, we have $G \le pG$.
+And as $pG \le G$ obviously, we have $G = pG$.
+
+Then, if $G = pG$,
+then for any $n\in \mathbb{N}$,
+we do induction on $n$.
+The base case $n=1$ is obvious,
+any element $g \in G$ is divisible by $1$.
+Now we assume that any element $g \in G$ is divisible by
+all natural numbers less than $n$,
+and we prove that $g$ is divisible by $n$.
+If $n = p$,
+then as $G = pG$, there exists $h \in G$ such that $ph = g$.
+If $n$ is a prime that is not $p$,
+then we assume the order of $g$ is $p^r$,
+and by Bézout identity, there exists $x,y$ such that $p^rx + ny = 1$.
+Then we have $n (yg) = ny g = (1-p^rx)g = g$, thus $g$ is divisible by $n$.
+If $n$ is not a prime,
+then there exists $n_1 \neq 1$ and $n_2 \neq 1$ such that $n = n_1 n_2$.
+As $g$ is now divisible by $n_1$ by induction hypothesis,
+there exists $h_1 \in G$ such that $n_1 h_1 = g$.
+And as $h_1$ is now divisible by $n_2$ by induction hypothesis,
+there exists $h_2 \in G$ such that $n_2 h_2 = h_1$.
+
+::math-env-end{proof}
+
+::math-env-start{exercise}
+
+The following are equivalent for a group $G$:
+1. $G$ is divisible.
+2. Every non-zero quotient of $G$ is infinite.
+3. $G$ has no maximal proper subgroup.
+
+::math-env-end{exercise}
+
+::math-env-start{proof}
+
+From 1 to 2:
+If $G$ is divisible,
+then for any non-zero quotient $H$ of $G$,
+$H$ is divisible.
+And by previous theorem, $H$ is a direct summand of $\mathbb{Q}$,
+and $\mathbb{Z}(p^\infty)$,
+thus $H$ is infinite.
+
+From 2 to 3:
+We assume $G$ has $H$ as a maximal proper subgroup,
+and derive a contradiction.
+As $H$ is maximal, $G/H$ is simple.
+And by 2, $G/H$ is infinite.
+Take $x \in G/H$, if $x$ has finite order,
+then $\langle x \rangle$ is a proper subgroup of $G/H$,
+contradicts the simplicity of $G/H$.
+If $x$ has infinite order,
+then $\langle 2x \rangle$ is a proper subgroup of $G/H$,
+contradicts the simplicity of $G/H$.
+
+From 3 to 1:
+We assume that $G$ has no maximal proper subgroup,
+and $G$ is now not divisible, and tries to derive a contradiction.
+As $G$ is not divisible, then there exists $p$ such that $G \neq pG$.
+And we assume $\varphi: G \rightarrow G/pG$ is the canonical map.
+Then $G/pG[p] = G/pG$, obviously.
+Thus, $G/pG$ is a vector space over $\mathbb{F}_p$,
+we select a basis of $G/pG$, namely $\{x_1, x_2, \dots\}$.
+Then, we define $\phi: G/pG \rightarrow \mathbb{F}_p$ by
+$\phi(m_1 x_2 + m_2 x_2 + \dots) = m_1$. Then $\phi$ is a surjection.
+And $\phi\varphi: G \rightarrow \mathbb{F}_p$ is a surjection.
+Thus, $\ker{\phi\varphi}$ is a maximal proper subgroup of $G$,
+which contradicts the assumption.
+
+::math-env-end{proof}

@@ -30,6 +30,7 @@ import rehypeStringify from "rehype-stringify";
 import { getHashKey, putCache, readCache } from "./buildCache";
 import * as gitLog from "git-log-parser";
 import toArray from "stream-to-array";
+import { defaultTheoremOptions } from "remark-math-environment/dist/options";
 
 export async function getLastModifiedDate(filePath: string): Promise<Date> {
   // get from cache
@@ -468,7 +469,17 @@ async function parseMarkdown2Html(
     .use(remarkAutoNumberHeadings)
     .use(remarkMath)
     .use(remarkToc, { heading: "0.1 Contents" })
-    .use(remarkMathEnv)
+    .use(remarkMathEnv, {
+      theoremEnvs: new Map([
+        ["theorem", defaultTheoremOptions("theorem")],
+        ["lemma", defaultTheoremOptions("lemma")],
+        ["corollary", defaultTheoremOptions("corollary")],
+        ["proposition", defaultTheoremOptions("proposition")],
+        ["definition", defaultTheoremOptions("definition")],
+        ["example", defaultTheoremOptions("example")],
+        ["exercise", defaultTheoremOptions("exercise")],
+      ]),
+    })
     .use(remarkTikzSupport)
     .use(remarkRehype, remarkRehypeOptions)
     .use(rehypeKatex)
