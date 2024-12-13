@@ -388,3 +388,63 @@ Every divisible group $D$ is a direct sum of copies of
 $\mathbb{Q}$ and of copies of $\mathbb{Z}(p^\infty)$ for various primes $p$.
 
 ::math-env-end{theorem}
+
+::math-env-start{proof}
+
+It is easy to check that $tD$, the torsion group of $D$ is divisible,
+so $tD$ is a direct summand of $D$.
+Thus, there exists $V \subset D$ such that $D= tD \oplus V$.
+As now $V$ is torsion free, and divisible, it is a vector space over $\mathbb{Q}$,
+and thus, $V$ is a direct sum of copies of $\mathbb{Q}$.
+
+Now we prove that $tD$ is a direct sum of copies of $\mathbb{Z}(p^\infty)$,
+for various primes $p$.
+For prime $p$, let $B_p = \{
+    x \in tD \mid p^nx = 0 \text{ for some } n \in \mathbb{N}
+\}$.
+Then $B_p$ is a divisible p-primary group.
+It is easy to check that $tD = \bigoplus_{p} B_p$.
+So, we only focus on $B_p$.
+
+It is easy to check that the group $B_p[p]$ is now a vector space over $\mathbb{F}_p$,
+let $r_p$ be the dimension of $B_p[p]$.
+By previous lemma, $B_p$ is isomorphic to direct sum of $r_p$ copies of $\mathbb{Z}(p^\infty)$.
+
+::math-env-end{proof}
+
+There is an analogy between theorems about free Abelian groups and divisible groups,
+that may be formalized as follows.
+Given a commutative diagram containing exact sequences,
+then its **dual diagram** is the diagram obtained by reversing all the arrows.
+For example, the dual diagram of $0 \rightarrow A \rightarrow B$ is $B^* \rightarrow A^* \rightarrow 0$,
+and this leads on the say that "subgroup" and "quotient" are dual concepts.
+
+::math-env-start{theorem}
+
+Every group $G$ can be embedded in a divisible group $D$.
+
+::math-env-end{theorem}
+
+::math-env-start{proof}
+
+As every Abelian group can be written as $F/R$,
+where $F$ is a free Abelian group and $R$ is a subgroup of $F$.
+Now $F = \sum \mathbb{Z}$, so that $F \le \sum \mathbb{Q}$.
+Hence, $G = F/R = (\sum\mathbb{Z})/R \le (\sum\mathbb{Q})/R$.
+As $(\sum\mathbb{Q})/R$ is a quotient of a divisible group, it is divisible.
+
+::math-env-end{proof}
+
+::math-env-start{corollary}
+
+A group $G$ is divisible if and only if it is a direct summand of any group containing it.
+
+::math-env-end{corollary}
+
+::math-env-start{proof}
+
+By previous theorem, we can embed $G$ in a divisible group $D$.
+Then $G$ is a direct summand of $D$.
+And any direct summand of divisible group is divisible.
+
+::math-env-end{proof}
