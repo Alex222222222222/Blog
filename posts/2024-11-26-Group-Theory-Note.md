@@ -663,3 +663,156 @@ Thus, $\ker{\phi\varphi}$ is a maximal proper subgroup of $G$,
 which contradicts the assumption.
 
 ::math-env-end{proof}
+
+::math-env-start{exercise}
+
+If $G$ and $H$ are divisible groups each of which is
+isomorphic to a subgroup of the other,
+then $G \cong H$.
+Is this true if we drop the adjective "divisible"?
+
+::math-env-end{exercise}
+
+::math-env-start{proof}
+
+Let $\varphi: G \rightarrow H$ be the embedding of $G$ to the
+subgroup of $H$ that is isomorphic to $G$.
+And let $\psi: H \rightarrow G$ be the embedding of $H$ to the
+subgroup of $G$ that is isomorphic to $H$.
+Then for any prime $p$,
+we can restrict $\varphi$ and $\psi$ to $G[p]$ and $H[p]$,
+and we have $\varphi[p]: G[p] \rightarrow H[p]$ and $\psi[p]: H[p] \rightarrow G[p]$.
+As $G[p]$ and $H[p]$ are now vector spaces over $\mathbb{F}_p$,
+and as we have the embedding as above, 
+the dimension of $G[p]$ is less than or equal to the dimension of $H[p]$, and vice versa.
+Thus, the dimension of $G[p]$ is equal to the dimension of $H[p]$.
+And thus, $G[p]$ is isomorphic to $H[p]$.
+By previous lemma, $tG$ is isomorphic to $tH$.
+
+For the torsion free part,
+we define $G' = G/tG$ and $H' = H/tH$.
+And $\varphi' : G' \rightarrow H'$ by $\phi'(g + tG) = \varphi(g) + tH$, and $\psi' : H' \rightarrow G'$ by $\psi'(h + tH) = \psi(h) + tG$.
+To prove $\varphi'$ is well-defined, we assume $g + tG = g' + tG$,
+then there exists $t \in tG$ such that $g = g' + t$,
+thus we have:
+
+$$
+\begin{aligned}
+    \varphi'(g+tG) - \varphi'(g'+ tG) &= \varphi(g) - \varphi(g') + tH \\
+    &= \varphi(g') + \varphi(t) - \varphi(g') + tH \\
+    &= \varphi(t) + tH \\
+\end{aligned}
+$$
+
+As $t\in tG$, $\varphi(t) \in tH$,
+thus $\varphi'(g+tG) = \varphi'(g'+ tG)$.
+In the same way, we can prove $\psi'$ is well-defined.
+
+We then check that $\varphi'$ is injective.
+Assume $\varphi'(g + tG) = 0 + tH$,
+then $\varphi(g) \in tH$.
+As $\varphi$ is an isomorphism between $G$ and $\text{Img}(\varphi)$,
+the order of $g$ is same as the order of $\varphi(g)$ in $\text{Img}(\varphi)$,
+thus $g \in tG$.
+In the same way, we can prove $\psi'$ is injective.
+
+Also, $G/tG$ and $H/tH$ are divisible,
+thus are vector spaces over $\mathbb{Q}$,
+and as both $\varphi'$ and $\psi'$ are injective,
+the dimension of $G/tG$ is equal to the dimension of $H/tH$.
+
+Thus, $G$ is isomorphic to $H$.
+
+If we drop the adjective "divisible",
+then the statement is not true.
+For instance, we take $G = \mathbb{Q}^{\omega} = \prod_{i\in \mathbb{N}} \mathbb{Q}$.
+And $H = Z \times G$.
+Then $G$ is obviously divisible, but $H$ is not.
+
+We define $\varphi: G \rightarrow H$ by $\varphi((q_i)_{i\in \mathbb{N}}) = (0, (q_i)_{i\in \mathbb{N}})$.
+And $\psi: H \rightarrow G$ by $\psi((z, (q_i)_{i\in \mathbb{N}})) = (z, (q_{i-1})_{i\in \mathbb{N}\setminus\{0\}})$.
+Then both $\varphi$ and $\psi$ are injective,
+which are both embedding.
+But $G$ is not isomorphic to $H$, as one is divisible and the other is not.
+
+::math-env-end{proof}
+
+::math-env-start{exercise}
+
+1. Prove that the following groups are all isomorphic:
+   1. $\mathbb{R}/\mathbb{Z}$.
+   2. The circle group $\mathbf{T}$.
+   3. $\prod_p\mathbb{Z}(p^{\infty})$.
+   4. $\mathbb{R}\oplus(\mathbb{Q}/\mathbb{Z})$.
+   5. $\mathbb{C}^{\times}$.
+2. Prove that $t(\mathbb{C}^{\times})\cong \mathbb{Q}/\mathbb{Z}$.
+
+::math-env-end{exercise}
+
+::math-env-start{proof}
+
+The isomorphism between $\mathbb{R}/\mathbb{Z}$ and
+the circle group is obvious.
+
+By consider a real number as decimal representation,
+the cardinality of $\mathbb{R}/\mathbb{Z}$
+is the same as $\prod_p\mathbb{Z}(p^{\infty})$.
+And it is also easy to verify that the torsion group of
+$\mathbb{R}/\mathbb{Z}$ and $\prod_p\mathbb{Z}(p^{\infty})$
+is isomorphic to $\sum_p\mathbb{Z}(p^{\infty})$.
+Thus, $(\mathbb{R}/\mathbb{Z})/t(\mathbb{R}/\mathbb{Z})$
+and 
+$(\prod_p\mathbb{Z}(p^{\infty}))/t(\prod_p\mathbb{Z}(p^{\infty}))$ 
+must have the same cardinality,
+by looking at the cardinal number division.
+And we could say $(\mathbb{R}/\mathbb{Z})/t(\mathbb{R}/\mathbb{Z})$
+and 
+$(\prod_p\mathbb{Z}(p^{\infty}))/t(\prod_p\mathbb{Z}(p^{\infty}))$
+have the say dimension, again by cardinal number arithmetic.
+Thus, they are isomorphic.
+
+As $\mathbb{Q}/\mathbb{Z} \cong \sum_p\mathbb{Z}(p^{\infty})$,
+$
+    (\mathbb{R}\oplus(\mathbb{Q}/\mathbb{Z}))
+    /
+    t(\mathbb{R}\oplus(\mathbb{Q}/\mathbb{Z})) 
+    =
+    \mathbb{R}
+$.
+Thus, we only need to verify that $\mathbb{R}$ is isomorphic to
+$(\mathbb{R}/\mathbb{Z})/(\mathbb{Q}/\mathbb{Z})$,
+which is equal to $\mathbb{R}/\mathbb{Q}$.
+As $\mathbb{R}$ is an infinite dimensional vector space over $\mathbb{Q}$,
+quotient by $\mathbb{Q}$ will minus one dimension,
+thus, the dimension of $\mathbb{R}/\mathbb{Q}$ is equal
+the dimension of $\mathbb{R}$,
+which verify that $\mathbb{R}$ is isomorphic to $\mathbb{R}/\mathbb{Q}$.
+
+As $\mathbb{C}^{\times}$ is isomorphic to $\mathbb{R}_{+}^{\times}\oplus\mathbf{T}$,
+which $\mathbb{R}_{+}^{\times}$ is the multiplicative group of positive real numbers.
+And $\mathbb{R}_{+}^{\times}$ is isomorphic to $\mathbb{R}$,
+by the natural logarithm map.
+Thus, $\mathbb{C}^{\times}\cong \mathbb{R} \oplus \mathbf{T}$,
+and $t(\mathbb{C}^{\times}) = \mathbb{Q}/\mathbb{Z}$.
+Also $
+    (\mathbb{C}^{\times})/t(\mathbb{C}^{\times})
+    \cong
+    \mathbb{R} \oplus ((\mathbb{R}/\mathbb{Z})/(\mathbb{R}/\mathbb{Z}))
+$.
+By above discussion,
+we already now that $(\mathbb{R}/\mathbb{Z})/(\mathbb{R}/\mathbb{Z}) \cong \mathbb{R}$,
+thus, $
+    (\mathbb{C}^{\times})/t(\mathbb{C}^{\times})
+    \cong 
+    \mathbb{R} \oplus \mathbb{R}
+$.
+It is obvious that $\mathbb{R} \oplus \mathbb{R}$ is then a
+vector space over $\mathbb{Q}$,
+and the dimension of it is equal to square of the dimension of $\mathbb{R}$.
+By the cardinal number arithmetic,
+square of infinite cardinal number is still the same as the original infinite cardinal number.
+Thus, we have $\mathbb{R} \oplus \mathbb{R} \cong \mathbb{R}$.
+Then by previous result,
+we have $\mathbb{R}/\mathbb{Z} \cong \mathbb{C}^{\times}$.
+
+::math-env-end{proof}
