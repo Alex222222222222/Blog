@@ -816,3 +816,115 @@ Then by previous result,
 we have $\mathbb{R}/\mathbb{Z} \cong \mathbb{C}^{\times}$.
 
 ::math-env-end{proof}
+
+### Torsion Groups
+
+The torsion groups are quite complicated,
+but it can be expressed as an extension of a direct sum of cyclic groups
+by a divisible group.
+The proof involves a special kind of subgroup that we now 
+introduce.
+
+::math-env-start{definition}
+
+A subgroup $S \le G$ is a **pure subgroup** if for every $g \in G$ and $n \in \mathbb{N}$,
+if $ng \in S$, then there exists $g' \in S$ such that $ng' = ng$.
+Or equivalently, for every $n \in \mathbb{N}$,
+$S \cap nG = nS$.
+
+::math-env-end{definition}
+
+> It is always true that $S \cap nG \ge nS$,
+> so it is only the reverse inclusion that is interesting.
+
+::math-env-start{example}
+
+Every direct summand $S$ of a group $G$ is pure.
+
+::math-env-start{proof}
+
+Let $G = S \oplus A$.
+Then for $n \in \mathbb{N}$,a
+and $s+a \in G$ for $s\in S$ and $a \in A$.
+If $n(s+a) \in S$,
+then $na = 0$,
+thus $n(s+a) = ns$,
+and $s \in S$,
+which implies $S$ is pure.
+
+::math-env-end{proof}
+
+::math-env-end{example}
+
+::math-env-start{example}
+
+If $S\le G$ and $G/S$ is torsion-free, then $S$ is pure.
+
+::math-env-start{proof}
+
+Let $n\in \mathbb{N}$ and $g+s \in G$.
+If $n(g+s) \in S$, then $ng \in S$, then $n(gS) = S$.
+As $G/S$ is torsion free, $gS = S$,
+thus $g \in S$,
+which implies $S$ is pure.
+
+::math-env-end{proof}
+
+::math-env-end{example}
+
+::math-env-start{lemma}
+
+Let $S$ be a pure subgroup of $G$,
+and let $v: G \rightarrow G/S$ be the natural map.
+If $y \in G/S$, then there is a $x \in G$ with $v(x) = y$
+such that $x$ and $y$ have the same order.
+
+::math-env-end{lemma}
+
+::math-env-start{proof}
+
+Let $n$ be the order of $y$.
+Take any $x_0$ such that $v(x_0) = y$.
+Then it is obvious that $v(x_0+S) = y$.
+As $v(nx_0) = ny = 0$, $nx_0 \in S$,
+thus there exists $x_1 \in S$ such that $nx_1 = nx_0$.
+Then $v(x_0 - x_1) = y$, and $n(x_0 - x_1) = 0$.
+The order of $x_0 - x_1$ must be $n$,
+as if it has order $n_1 < n$,
+then $n_1y = n_1v(x_0-x_1) =  v(n_1(x_0-x_1))=0$,
+which is a contradiction.
+
+::math-env-end{proof}
+
+::math-env-start{lemma}
+
+Let $T \le G$ be pure.
+If $T \le S \le G$, then $S/T$ is pure in $G/T$ if and only
+if $S$ is pure in $G$.
+
+::math-env-end{lemma}
+
+::math-env-start{proof}
+
+If $S$ is pure in $G$,
+then for any $n \in \mathbb{N}$,
+and $g+T \in G/T$.
+If $n(g+T) \in S/T$, then $ng + T \in S/T$,
+which implies $ng \in S$,
+as $S$ is pure in $G$,
+there exists $s \in S$ such that $ns = ng$,
+thus $n(s+T) = n(g+T)$, and $s+T \in S/T$,
+which implies $S/T$ is pure in $G/T$.
+
+Conversely, if $S/T$ is pure in $G/T$,
+then for any $n \in \mathbb{N}$,
+and $g \in G$.
+If $ng \in S$, then $n(g+T) \in S/T$,
+thus there exists $s+T \in S/T$ such that $n(s+T) = n(g+T)$.
+And therefore, there exists $t \in T$, such that $ns + t=ng$.
+And then $t=n(g-s)$. As $T$ is pure in $G$,
+there exists $t' \in T$ such that $nt' = t$,
+thus $n(s+t') = ng$,
+which implies $S$ is pure in $G$.
+
+::math-env-end{proof}
