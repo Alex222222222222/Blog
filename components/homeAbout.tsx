@@ -14,12 +14,6 @@ const HomeAbout: React.FC = () => {
       <h2>Contact Me:</h2>
       <ul className="ml-5">
         <li>
-          <a href="mailto:smyzh5@nottingham.ac.uk" className="underline">
-            smyzh5@nottingham.ac.uk
-          </a>{" "}
-          (Work Address)
-        </li>
-        <li>
           <a href="mailto:huazifan@gmail.com" className="underline">
             huazifan@gmail.com
           </a>{" "}
