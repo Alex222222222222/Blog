@@ -1,6 +1,8 @@
 // interfaces/contactBadge.ts
 export enum ContactType {
   // eslint-disable-next-line no-unused-vars
+  GITHUBSTARS = "githubstarts",
+  // eslint-disable-next-line no-unused-vars
   GITHUB = "github",
   // eslint-disable-next-line no-unused-vars
   LINKEDIN = "linkedin",
