@@ -2,6 +2,8 @@ import { ContactType } from "@/interfaces/contactBadge";
 
 export function stringToContactType(contactType: string): ContactType {
   switch (contactType.toLowerCase()) {
+    case "githubstars":
+      return ContactType.GITHUBSTARS;
     case "github":
       return ContactType.GITHUB;
     case "linkedin":

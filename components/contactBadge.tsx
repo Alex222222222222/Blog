@@ -18,6 +18,8 @@ const ContactBadge: React.FC<ContactBadgeProps> = ({ type, link }) => {
 
   const renderLabel = () => {
     switch (type) {
+      case ContactType.GITHUBSTARS:
+        return "GitHub Stars";
       case ContactType.GITHUB:
         return "GitHub";
       case ContactType.LINKEDIN:
