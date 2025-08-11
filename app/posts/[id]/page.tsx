@@ -1,5 +1,4 @@
 import Post from "@/interfaces/post";
-import "katex/dist/katex.min.css"; // Import KaTeX styles
 import PostPageContent from "@/components/post";
 import fs from "fs";
 
