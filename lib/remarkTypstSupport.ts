@@ -1,5 +1,5 @@
 import { NodeCompiler } from "@myriaddreamin/typst-ts-node-compiler";
-import { Html, PhrasingContent, Root, RootContent } from "mdast";
+import { Html, Root, RootContent } from "mdast";
 import crypto from "crypto";
 import fs from "fs";
 
@@ -16,7 +16,7 @@ const mathFontSize = 20;
 export function remarkTypstSupport() {
   return async (tree: Root): Promise<undefined> => {
     const newChildren: RootContent[] = await Promise.all(
-      tree.children.map((node) => renderNode(node))
+      tree.children.map((node) => renderNode(node)),
     );
 
     tree.children = newChildren;
@@ -68,7 +68,7 @@ async function renderNode(node: RootContent): Promise<any> {
       console.log(
         "Error rendering math, error:\n",
         e,
-        `\nmath:\n${node.value}`
+        `\nmath:\n${node.value}`,
       );
 
       return node;
@@ -83,47 +83,47 @@ async function renderNode(node: RootContent): Promise<any> {
     return renderMath(node);
   } else if (node.type === "paragraph") {
     node.children = await Promise.all(
-      node.children.map(async (node) => renderNode(node))
+      node.children.map(async (node) => renderNode(node)),
     );
     return node;
   } else if (node.type === "blockquote") {
     node.children = await Promise.all(
-      node.children.map((node) => renderNode(node))
+      node.children.map((node) => renderNode(node)),
     );
     return node;
   } else if (node.type === "emphasis") {
     node.children = await Promise.all(
-      node.children.map((node) => renderNode(node))
+      node.children.map((node) => renderNode(node)),
     );
     return node;
   } else if (node.type === "footnoteDefinition") {
     node.children = await Promise.all(
-      node.children.map((node) => renderNode(node))
+      node.children.map((node) => renderNode(node)),
     );
     return node;
   } else if (node.type === "heading") {
     node.children = await Promise.all(
-      node.children.map((node) => renderNode(node))
+      node.children.map((node) => renderNode(node)),
     );
     return node;
   } else if (node.type === "list") {
     node.children = await Promise.all(
       node.children.map(async (node) => {
         node.children = await Promise.all(
-          node.children.map((node) => renderNode(node))
+          node.children.map((node) => renderNode(node)),
         );
         return node;
-      })
+      }),
     );
     return node;
   } else if (node.type === "listItem") {
     node.children = await Promise.all(
-      node.children.map((node) => renderNode(node))
+      node.children.map((node) => renderNode(node)),
     );
     return node;
   } else if (node.type === "strong") {
     node.children = await Promise.all(
-      node.children.map((node) => renderNode(node))
+      node.children.map((node) => renderNode(node)),
     );
     return node;
   } else if (node.type === "table") {
@@ -132,28 +132,28 @@ async function renderNode(node: RootContent): Promise<any> {
         node.children = await Promise.all(
           node.children.map(async (node) => {
             node.children = await Promise.all(
-              node.children.map((node) => renderNode(node))
+              node.children.map((node) => renderNode(node)),
             );
             return node;
-          })
+          }),
         );
         return node;
-      })
+      }),
     );
     return node;
   } else if (node.type === "tableCell") {
     node.children = await Promise.all(
-      node.children.map((node) => renderNode(node))
+      node.children.map((node) => renderNode(node)),
     );
     return node;
   } else if (node.type === "tableRow") {
     node.children = await Promise.all(
       node.children.map(async (node) => {
         node.children = await Promise.all(
-          node.children.map((node) => renderNode(node))
+          node.children.map((node) => renderNode(node)),
         );
         return node;
-      })
+      }),
     );
     return node;
   } else {

@@ -7,7 +7,6 @@ import readTime from "./read_time";
 import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
 import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import rehypeHeadingLink from "@/lib/rehypeHeadingLink";
@@ -83,18 +82,18 @@ export function get_date_from_filename(filename: string): Date {
 }
 
 export async function get_markdown_file(
-  filename: string
+  filename: string,
 ): Promise<[string | null, string]> {
   const isDir = fs.lstatSync(path.join("posts", filename)).isDirectory();
   if (isDir) {
     const dir = fs.readdirSync(path.join("posts", filename));
     const mdFile = dir.find(
-      (file) => file === "index.md" || file === `${filename}.md`
+      (file) => file === "index.md" || file === `${filename}.md`,
     );
     if (mdFile) {
       // get the last modified date
       const last_modified = await getLastModifiedDate(
-        path.join("posts", filename, mdFile)
+        path.join("posts", filename, mdFile),
       );
 
       return [
@@ -131,7 +130,7 @@ function add_0_to_date(date: number): string {
 /// filter out nulls
 /// map the remaining files to the Post interface
 export async function get_markdown_data(
-  filename: string
+  filename: string,
 ): Promise<Post | null> {
   // get from cache
   const key = getHashKey(filename);
@@ -197,7 +196,7 @@ export async function get_all_posts(): Promise<Post[]> {
   const posts: (Post | null)[] = await Promise.all(
     files.map((filename) => {
       return get_markdown_data(filename);
-    })
+    }),
   );
   const valid_posts = posts.filter((post) => post !== null) as Post[];
   // sort by date descending
@@ -291,7 +290,7 @@ export async function get_posts_paths_with_alias(): Promise<string[]> {
 
 /// export find matching paths with alias
 export async function find_matching_paths_with_alias(
-  path: string
+  path: string,
 ): Promise<string | undefined> {
   // check the cache first
   const key = getHashKey(`matching_paths_with_alias_${path}`);
@@ -324,7 +323,7 @@ export async function find_matching_paths_with_alias(
 
 /// export get previous and next posts
 export async function get_previous_and_next_posts(
-  path: string
+  path: string,
 ): Promise<[string | null, string | null]> {
   // check the cache first
   const key = getHashKey(`previous_and_next_posts_${path}`);
@@ -399,7 +398,7 @@ export async function get_all_categories(): Promise<string[]> {
 /// parse markdown to html
 async function parseMarkdown2Html(
   markdown: string,
-  toc: Boolean
+  toc: Boolean,
 ): Promise<string> {
   const key = getHashKey(markdown);
   const cachedFile = readCache("markdown", key);
@@ -429,7 +428,6 @@ async function parseMarkdown2Html(
     .use(remarkTypstSupport)
     .use(remarkToc, { heading: "0.1 Contents" })
     .use(remarkRehype, remarkRehypeOptions)
-    //  .use(rehypeKatex)
     .use(rehypeRaw)
     .use(rehypeSlug)
     .use(rehypeHeadingLink)
