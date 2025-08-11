@@ -64,20 +64,20 @@ const HomeCredits: React.FC = () => {
           Math Rendering:{" "}
           <a
             target="_blank"
-            href="https://katex.org/"
+            href="https://typst.app/"
             rel="noreferrer"
             className="underline"
           >
-            KaTeX
+            typst
           </a>
           ,{" "}
           <a
             target="_blank"
-            href="https://tikzjax.com/"
+            href="https://github.com/Myriad-Dreamin/typst.ts"
             rel="noreferrer"
             className="underline"
           >
-            TikZJax
+            typst.ts
           </a>
         </li>
         <li>
