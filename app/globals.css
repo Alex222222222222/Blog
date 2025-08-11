@@ -24,3 +24,7 @@
   font-weight: bold;
   font-style: italic;
 }
+
+.inline_math_svg {
+  display: inline !important;
+}
