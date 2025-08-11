@@ -79,6 +79,15 @@ const HomeCredits: React.FC = () => {
           >
             typst.ts
           </a>
+          ,{" "}
+          <a
+            target="_blank"
+            href="https://github.com/remarkjs/remark-math"
+            rel="noreferrer"
+            className="underline"
+          >
+            remark-math
+          </a>
         </li>
         <li>
           Comments:{" "}
