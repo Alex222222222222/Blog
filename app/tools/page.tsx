@@ -69,6 +69,36 @@ export default async function Page() {
           </Link>
         </li>
       </ul>
+      Commutative Diagram Editor:
+      <ul className="ml-5">
+        <li>
+          <Link href="https://tikzcd-editor.alex1222.com" className="underline">
+            TikZCD Editor
+          </Link>
+          ; Original repo:
+          <Link
+            href="https://github.com/yishn/tikzcd-editor"
+            className="underline"
+          >
+            tikzcd-editor
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="https://typst-commut-editor.alex1222.com"
+            className="underline"
+          >
+            Typst Commutative Diagram Editor
+          </Link>
+          ; Original repo:
+          <Link
+            href="https://github.com/EricWay1024/tikzcd-editor"
+            className="underline"
+          >
+            tikzcd-editor
+          </Link>
+        </li>
+      </ul>
       {
         // TODO add inch to cm
         // TODO add cm to inch
