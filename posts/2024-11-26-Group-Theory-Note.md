@@ -210,11 +210,17 @@ If $f: A \rightarrow D$ is a homomorphism,
 then $f$ can be extended to a homomorphism $\phi: B \rightarrow D$;
 that is, the following diagram commutes:
 
-```tikz
-\begin{tikzcd}[row sep=huge]
-   & D\\
-   0\ar[r] & A \ar[u,"f"]\ar[r,hookrightarrow,"i"] & B\ar[ul, dashed, "\varphi"]
-\end{tikzcd}
+```typst
+#align(center, commutative-diagram(
+  node((1, 0), [$0$]),
+  node((1, 1), [$A$]),
+  node((1, 2), [$B$]),
+  node((0, 1), [$D$]),
+  arr((1, 0), (1, 1), []),
+  arr((1, 1), (1, 2), [$i$], "inj"),
+  arr((1, 1), (0, 1), [$f$]),
+  arr((1, 2), (0, 1), [$phi$], "dotted"),
+))
 ```
 
 ::math-env-end{theorem}
@@ -261,11 +267,17 @@ then $D$ is a direct summand of $B$.
 
 We consider the following diagram:
 
-```tikz
-\begin{tikzcd}[row sep=huge]
-   & D\\
-   0\ar[r] & D \ar[u,"1_D"]\ar[r,hookrightarrow,"i"] & B\ar[ul, dashed, "\varphi"]
-\end{tikzcd}
+```typst
+#align(center, commutative-diagram(
+  node((1, 0), [$0$]),
+  node((1, 1), [$D$]),
+  node((1, 2), [$B$]),
+  node((0, 1), [$D$]),
+  arr((1, 0), (1, 1), []),
+  arr((1, 1), (1, 2), [$i$], "inj"),
+  arr((1, 1), (0, 1), [$1_D$]),
+  arr((1, 2), (0, 1), [$phi$], "dotted"),
+))
 ```
 
 As $D$ is divisible, we can extend $1_D$ to $\varphi: B \rightarrow D$.
@@ -463,10 +475,18 @@ then $B$ is reduced.
 
 We name the maps in the exact sequence as follows:
 
-```tikz
-\begin{tikzcd}[row sep=huge]
-   0\ar[r] & A \ar[r,"i"] & B \ar[r,"j"] & C \ar[r] & 0
-\end{tikzcd}
+```typst
+#align(center, commutative-diagram(
+  node((0, 0), [$0$]),
+  node((0, 1), [$A$]),
+  node((0, 2), [$B$]),
+  node((0, 3), [$C$]),
+  node((0, 4), [$0$]),
+  arr((0, 0), (0, 1), []),
+  arr((0, 1), (0, 2), [$i$]),
+  arr((0, 2), (0, 3), [$j$]),
+  arr((0, 3), (0, 4), []),
+))
 ```
 
 As $i$ is injective, we now assume $A \le B$.
@@ -537,11 +557,17 @@ And then by previous corollary, $G$ is divisible.
 By injective property, we have the following diagram,
 where $\varphi$ is an extension of $1_G$.
 
-```tikz
-\begin{tikzcd}[row sep=huge]
-   & G\\
-   0\ar[r] & G \ar[u,"1_G"]\ar[r,hookrightarrow,"i"] & D\ar[ul, dashed, "\varphi"]
-\end{tikzcd}
+```typst
+#align(center, commutative-diagram(
+  node((1, 0), [$0$]),
+  node((1, 1), [$G$]),
+  node((1, 2), [$D$]),
+  node((0, 1), [$G$]),
+  arr((1, 0), (1, 1), []),
+  arr((1, 1), (1, 2), [$i$], "inj"),
+  arr((1, 1), (0, 1), [$1_G$]),
+  arr((1, 2), (0, 1), [$phi$], "dotted"),
+))
 ```
 
 Then by previous theorem about group extension,

@@ -4,7 +4,6 @@ import path from "path";
 import matter from "gray-matter";
 import Post from "@/interfaces/post";
 import readTime from "./read_time";
-import tex2svg from "./tikzjax";
 import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
 import remarkMath from "remark-math";
@@ -15,16 +14,11 @@ import rehypeHeadingLink from "@/lib/rehypeHeadingLink";
 import rehypeHighlight from "rehype-highlight";
 import remarkAutoNumberHeadings from "@/lib/remarkAutoNumberHeadings";
 import { remarkMathEnv } from "remark-math-environment";
-import {
-  remarkTikzSupport,
-  remarkFindTikzScripts,
-  TIKZ_SCRIPTS,
-} from "@/lib/remarkTikzSupport";
+import { remarkTypstSupport } from "@/lib/remarkTypstSupport";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 import { VFile } from "vfile";
-import AsyncLock from "async-lock";
 import { minify } from "html-minifier";
 import rehypeStringify from "rehype-stringify";
 import { getHashKey, putCache, readCache } from "./buildCache";
@@ -89,18 +83,18 @@ export function get_date_from_filename(filename: string): Date {
 }
 
 export async function get_markdown_file(
-  filename: string
+  filename: string,
 ): Promise<[string | null, string]> {
   const isDir = fs.lstatSync(path.join("posts", filename)).isDirectory();
   if (isDir) {
     const dir = fs.readdirSync(path.join("posts", filename));
     const mdFile = dir.find(
-      (file) => file === "index.md" || file === `${filename}.md`
+      (file) => file === "index.md" || file === `${filename}.md`,
     );
     if (mdFile) {
       // get the last modified date
       const last_modified = await getLastModifiedDate(
-        path.join("posts", filename, mdFile)
+        path.join("posts", filename, mdFile),
       );
 
       return [
@@ -137,7 +131,7 @@ function add_0_to_date(date: number): string {
 /// filter out nulls
 /// map the remaining files to the Post interface
 export async function get_markdown_data(
-  filename: string
+  filename: string,
 ): Promise<Post | null> {
   // get from cache
   const key = getHashKey(filename);
@@ -169,8 +163,6 @@ export async function get_markdown_data(
     add_0_to_date(date.getDate());
   const read_time = readTime(content);
 
-  // const binary = fs.readFileSync("./lib/tikzjax/tex.wasm");
-  // const code = new WebAssembly.Module(binary);
   const html = await parseMarkdown2Html(content, toc);
 
   // put into cache
@@ -205,7 +197,7 @@ export async function get_all_posts(): Promise<Post[]> {
   const posts: (Post | null)[] = await Promise.all(
     files.map(async (filename) => {
       return await get_markdown_data(filename);
-    })
+    }),
   );
   const valid_posts = posts.filter((post) => post !== null) as Post[];
   // sort by date descending
@@ -299,7 +291,7 @@ export async function get_posts_paths_with_alias(): Promise<string[]> {
 
 /// export find matching paths with alias
 export async function find_matching_paths_with_alias(
-  path: string
+  path: string,
 ): Promise<string | undefined> {
   // check the cache first
   const key = getHashKey(`matching_paths_with_alias_${path}`);
@@ -332,7 +324,7 @@ export async function find_matching_paths_with_alias(
 
 /// export get previous and next posts
 export async function get_previous_and_next_posts(
-  path: string
+  path: string,
 ): Promise<[string | null, string | null]> {
   // check the cache first
   const key = getHashKey(`previous_and_next_posts_${path}`);
@@ -404,60 +396,15 @@ export async function get_all_categories(): Promise<string[]> {
   return categories;
 }
 
-const BUILD_TIKZ_LOCK = new AsyncLock();
-
+/// parse markdown to html
 async function parseMarkdown2Html(
   markdown: string,
-  toc: Boolean
+  toc: Boolean,
 ): Promise<string> {
   const key = getHashKey(markdown);
   const cachedFile = readCache("markdown", key);
   if (cachedFile) {
     return cachedFile;
-  }
-
-  const findTikzProcessor = unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkFindTikzScripts);
-
-  const find_file = new VFile();
-  find_file.value = markdown;
-  const find_mdastTree = findTikzProcessor.parse(find_file);
-  findTikzProcessor.runSync(find_mdastTree, find_file);
-
-  // build tikz images to ./public/tikz/
-  await BUILD_TIKZ_LOCK.acquire("tikz", async () => {
-    // check if dir ./public/tikz/ exists
-    if (!fs.existsSync("./public/tikz/")) {
-      fs.mkdirSync("./public/tikz/", { recursive: true });
-    }
-  });
-
-  for (const [key, value] of TIKZ_SCRIPTS.entries()) {
-    await BUILD_TIKZ_LOCK.acquire("tikz", async () => {
-      if (value.output) {
-        return;
-      }
-      let res = await tex2svg(value.script, {
-        showConsole: true,
-        fontCssUrl: "https://alex1222.com/static/tikz/styles/tikz.css",
-        embedFontCss: true,
-        texPackages: {
-          "tikz-cd": "",
-          amsmath: "",
-          amstext: "",
-          amsfonts: "",
-          amssymb: "",
-          pgfplots: "",
-          chemfig: "",
-          array: "",
-          "tikz-3dplot": "",
-        },
-      });
-      fs.writeFileSync(`./public/tikz/${key}.svg`, res);
-      value.output = `/tikz/${key}.svg`;
-    });
   }
 
   const content = toc ? `## Contents\n\n${markdown}` : markdown;
@@ -480,7 +427,7 @@ async function parseMarkdown2Html(
         ["exercise", defaultTheoremOptions("exercise")],
       ]),
     })
-    .use(remarkTikzSupport)
+    .use(remarkTypstSupport)
     .use(remarkRehype, remarkRehypeOptions)
     .use(rehypeKatex)
     .use(rehypeRaw)

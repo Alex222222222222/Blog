@@ -11,6 +11,7 @@
     "serve": "serve out"
   },
   "dependencies": {
+    "@myriaddreamin/typst-ts-node-compiler": "^0.6.1-rc2",
     "@next/third-parties": "^15.0.4",
     "@prinsss/dvi2html": "0.0.1",
     "async-lock": "1.4.1",
