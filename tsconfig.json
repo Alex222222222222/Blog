@@ -29,7 +29,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "out/types/**/*.ts",
-    "lib/remarkTikzLibrary.js"
   ],
   "exclude": ["node_modules", "functions/**/*"]
 }

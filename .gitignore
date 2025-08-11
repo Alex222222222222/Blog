@@ -14,7 +14,7 @@
 /out/
 
 # build output
-/public/tikz
+/public/typst_svg
 /public/words
 /public/rss.xml
 /public/sitemap.xml
