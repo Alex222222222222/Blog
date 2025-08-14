@@ -25,136 +25,27 @@ export function remarkTypstSupport() {
 }
 
 async function renderNode(node: RootContent): Promise<any> {
-  if (node.type === "code" && node.lang === "typst") {
-    // render typst code block
-    // compile the typst to svg
-    try {
-      // check if dir ./public/typst_svg/ exists
-      if (!fs.existsSync("./public/typst_svg/")) {
-        fs.mkdirSync("./public/typst_svg/", { recursive: true });
-      }
-      const key = crypto.createHash("sha1").update(node.value).digest("hex");
-      const svg_path = `/typst_svg/${key}.svg`;
-      // check if `./public/typst_svg/${key}.svg` already exists
-      if (fs.existsSync(`./public/typst_svg/${key}.svg`)) {
-        return {
-          type: "html",
-          value: `
-          <object type="image/svg+xml" data="${svg_path}">
-            <img src="${svg_path}" alt="${node.value}"/>
-          </object>`,
-        };
-      }
-
-      const svg = NodeCompiler.create().svg({
-        mainFileContent: `
-            #set page(width: auto, height: auto, margin: 10pt)
-            #import "@preview/commute:0.3.0": *
-            #set text( size: ${mathFontSize}pt )
-
-            ${node.value}
-          `,
-      });
-
-      fs.writeFileSync(`./public/typst_svg/${key}.svg`, svg);
-
-      return {
-        type: "html",
-        value: `
-          <object type="image/svg+xml" data="${svg_path}">
-            <img src="${svg_path}" alt="${node.value}"/>
-          </object>`,
-      };
-    } catch (e) {
-      console.log(
-        "Error rendering math, error:\n",
-        e,
-        `\nmath:\n${node.value}`,
-      );
-
-      return node;
-    }
-  } else if (node.type === "math") {
-    // render math block
-    // compile the typst to svg
+  if (
+    (node.type === "code" && node.lang === "typst") ||
+    node.type === "inlineMath" ||
+    node.type === "math"
+  ) {
     return renderMath(node);
-  } else if (node.type === "inlineMath") {
-    // render inline math block
-    // compile the typst to svg
-    return renderMath(node);
-  } else if (node.type === "paragraph") {
+  } else if (
+    node.type === "paragraph" ||
+    node.type === "blockquote" ||
+    node.type === "emphasis" ||
+    node.type === "footnoteDefinition" ||
+    node.type === "heading" ||
+    node.type === "listItem" ||
+    node.type === "list" ||
+    node.type === "strong" ||
+    node.type === "table" ||
+    node.type === "tableCell" ||
+    node.type === "tableRow"
+  ) {
     node.children = await Promise.all(
       node.children.map(async (node) => renderNode(node)),
-    );
-    return node;
-  } else if (node.type === "blockquote") {
-    node.children = await Promise.all(
-      node.children.map((node) => renderNode(node)),
-    );
-    return node;
-  } else if (node.type === "emphasis") {
-    node.children = await Promise.all(
-      node.children.map((node) => renderNode(node)),
-    );
-    return node;
-  } else if (node.type === "footnoteDefinition") {
-    node.children = await Promise.all(
-      node.children.map((node) => renderNode(node)),
-    );
-    return node;
-  } else if (node.type === "heading") {
-    node.children = await Promise.all(
-      node.children.map((node) => renderNode(node)),
-    );
-    return node;
-  } else if (node.type === "list") {
-    node.children = await Promise.all(
-      node.children.map(async (node) => {
-        node.children = await Promise.all(
-          node.children.map((node) => renderNode(node)),
-        );
-        return node;
-      }),
-    );
-    return node;
-  } else if (node.type === "listItem") {
-    node.children = await Promise.all(
-      node.children.map((node) => renderNode(node)),
-    );
-    return node;
-  } else if (node.type === "strong") {
-    node.children = await Promise.all(
-      node.children.map((node) => renderNode(node)),
-    );
-    return node;
-  } else if (node.type === "table") {
-    node.children = await Promise.all(
-      node.children.map(async (node) => {
-        node.children = await Promise.all(
-          node.children.map(async (node) => {
-            node.children = await Promise.all(
-              node.children.map((node) => renderNode(node)),
-            );
-            return node;
-          }),
-        );
-        return node;
-      }),
-    );
-    return node;
-  } else if (node.type === "tableCell") {
-    node.children = await Promise.all(
-      node.children.map((node) => renderNode(node)),
-    );
-    return node;
-  } else if (node.type === "tableRow") {
-    node.children = await Promise.all(
-      node.children.map(async (node) => {
-        node.children = await Promise.all(
-          node.children.map((node) => renderNode(node)),
-        );
-        return node;
-      }),
     );
     return node;
   } else {
@@ -164,14 +55,21 @@ async function renderNode(node: RootContent): Promise<any> {
 
 async function renderMath(node: any): Promise<any> {
   if (node.type == "math") {
-    let res = await renderMathInner(node.value, false);
+    let res = await renderMathInner(node.value, false, false);
     if (res) {
       return res;
     } else {
       return node;
     }
   } else if (node.type == "inlineMath") {
-    let res = await renderMathInner(node.value, true);
+    let res = await renderMathInner(node.value, true, false);
+    if (res) {
+      return res;
+    } else {
+      return node;
+    }
+  } else if (node.type == "code") {
+    let res = await renderMathInner(node.value, false, true);
     if (res) {
       return res;
     } else {
@@ -182,9 +80,12 @@ async function renderMath(node: any): Promise<any> {
   }
 }
 
+const svgCompiler = NodeCompiler.create();
+
 async function renderMathInner(
   value: string,
   inline: boolean,
+  code: boolean,
 ): Promise<Html | null> {
   // render math block
   // compile the typst to svg
@@ -201,14 +102,15 @@ async function renderMathInner(
       return htmlFromSVG(key, inline, value);
     }
 
-    const svg = NodeCompiler.create().plainSvg({
+    const valueString = code ? value : `#mitex(\` ${value} \`)`;
+    const svg = svgCompiler.plainSvg({
       mainFileContent: `
             #set page(width: auto, height: auto, margin: ${margin}pt, fill: rgb("FEFCE8"))
             #import "@preview/commute:0.3.0": *
             #import "@preview/mitex:0.2.5": *
             #set text( size: ${mathFontSize}pt )
 
-            #mitex(\` ${value} \`)
+            ${valueString}
           `,
     });
     const result = optimize(svg, {
@@ -231,7 +133,7 @@ function htmlFromSVG(key: string, inline: boolean, alt: string): Html {
   // if svg.length < 100, inline, otherwise, use file
   if (
     fs.existsSync(`./public/typst_svg/${key}.svg`) &&
-    fs.statSync(`./public/typst_svg/${key}.svg`).size < 5000
+    fs.statSync(`./public/typst_svg/${key}.svg`).size < 8000
   ) {
     svg =
       "data:image/svg+xml;utf8," +
