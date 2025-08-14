@@ -2,8 +2,9 @@ import { NodeCompiler } from "@myriaddreamin/typst-ts-node-compiler";
 import { Html, Root, RootContent } from "mdast";
 import crypto from "crypto";
 import fs from "fs";
+import { optimize } from "svgo";
 
-const mathFontSize = 20;
+const mathFontSize = 15;
 
 /**
  * Add `auto-numbering` to headings in Markdown.
@@ -16,7 +17,7 @@ const mathFontSize = 20;
 export function remarkTypstSupport() {
   return async (tree: Root): Promise<undefined> => {
     const newChildren: RootContent[] = await Promise.all(
-      tree.children.map((node) => renderNode(node))
+      tree.children.map((node) => renderNode(node)),
     );
 
     tree.children = newChildren;
@@ -68,7 +69,7 @@ async function renderNode(node: RootContent): Promise<any> {
       console.log(
         "Error rendering math, error:\n",
         e,
-        `\nmath:\n${node.value}`
+        `\nmath:\n${node.value}`,
       );
 
       return node;
@@ -83,47 +84,47 @@ async function renderNode(node: RootContent): Promise<any> {
     return renderMath(node);
   } else if (node.type === "paragraph") {
     node.children = await Promise.all(
-      node.children.map(async (node) => renderNode(node))
+      node.children.map(async (node) => renderNode(node)),
     );
     return node;
   } else if (node.type === "blockquote") {
     node.children = await Promise.all(
-      node.children.map((node) => renderNode(node))
+      node.children.map((node) => renderNode(node)),
     );
     return node;
   } else if (node.type === "emphasis") {
     node.children = await Promise.all(
-      node.children.map((node) => renderNode(node))
+      node.children.map((node) => renderNode(node)),
     );
     return node;
   } else if (node.type === "footnoteDefinition") {
     node.children = await Promise.all(
-      node.children.map((node) => renderNode(node))
+      node.children.map((node) => renderNode(node)),
     );
     return node;
   } else if (node.type === "heading") {
     node.children = await Promise.all(
-      node.children.map((node) => renderNode(node))
+      node.children.map((node) => renderNode(node)),
     );
     return node;
   } else if (node.type === "list") {
     node.children = await Promise.all(
       node.children.map(async (node) => {
         node.children = await Promise.all(
-          node.children.map((node) => renderNode(node))
+          node.children.map((node) => renderNode(node)),
         );
         return node;
-      })
+      }),
     );
     return node;
   } else if (node.type === "listItem") {
     node.children = await Promise.all(
-      node.children.map((node) => renderNode(node))
+      node.children.map((node) => renderNode(node)),
     );
     return node;
   } else if (node.type === "strong") {
     node.children = await Promise.all(
-      node.children.map((node) => renderNode(node))
+      node.children.map((node) => renderNode(node)),
     );
     return node;
   } else if (node.type === "table") {
@@ -132,28 +133,28 @@ async function renderNode(node: RootContent): Promise<any> {
         node.children = await Promise.all(
           node.children.map(async (node) => {
             node.children = await Promise.all(
-              node.children.map((node) => renderNode(node))
+              node.children.map((node) => renderNode(node)),
             );
             return node;
-          })
+          }),
         );
         return node;
-      })
+      }),
     );
     return node;
   } else if (node.type === "tableCell") {
     node.children = await Promise.all(
-      node.children.map((node) => renderNode(node))
+      node.children.map((node) => renderNode(node)),
     );
     return node;
   } else if (node.type === "tableRow") {
     node.children = await Promise.all(
       node.children.map(async (node) => {
         node.children = await Promise.all(
-          node.children.map((node) => renderNode(node))
+          node.children.map((node) => renderNode(node)),
         );
         return node;
-      })
+      }),
     );
     return node;
   } else {
@@ -163,14 +164,14 @@ async function renderNode(node: RootContent): Promise<any> {
 
 async function renderMath(node: any): Promise<any> {
   if (node.type == "math") {
-    let res = await renderMathInner(node.value);
+    let res = await renderMathInner(node.value, false);
     if (res) {
       return res;
     } else {
       return node;
     }
   } else if (node.type == "inlineMath") {
-    let res = await renderInlineMathInner(node.value);
+    let res = await renderMathInner(node.value, true);
     if (res) {
       return res;
     } else {
@@ -181,60 +182,28 @@ async function renderMath(node: any): Promise<any> {
   }
 }
 
-async function renderInlineMathInner(value: string): Promise<Html | null> {
-  // render inline math block
-  // compile the typst to svg
-  try {
-    // check if dir ./public/typst_svg/ exists
-    if (!fs.existsSync("./public/typst_svg/")) {
-      fs.mkdirSync("./public/typst_svg/", { recursive: true });
-    }
-    const key = crypto.createHash("sha1").update(value).digest("hex");
-    const svg_path = `/typst_svg/${key}.svg`;
-    // check if `./public/typst_svg/${key}.svg` already exists
-    if (fs.existsSync(`./public/typst_svg/${key}.svg`)) {
-      return htmlFromSVG(key, true, value);
-    }
-
-    const svg = NodeCompiler.create().svg({
-      mainFileContent: `
-            #set page(width: auto, height: auto, margin: 1pt)
-            #import "@preview/commute:0.3.0": *
-            #import "@preview/mitex:0.2.5": *
-            #set text( size: ${mathFontSize}pt )
-
-            #mitex(\` ${value} \`)
-          `,
-    });
-
-    fs.writeFileSync(`./public/typst_svg/${key}.svg`, svg);
-
-    return htmlFromSVG(key, true, value);
-  } catch (e) {
-    console.log("Error rendering math, error:\n", e, `\nmath:\n${value}`);
-
-    return null;
-  }
-}
-
-async function renderMathInner(value: string): Promise<Html | null> {
+async function renderMathInner(
+  value: string,
+  inline: boolean,
+): Promise<Html | null> {
   // render math block
   // compile the typst to svg
   try {
+    const margin = inline ? 1 : 10;
+
     // check if dir ./public/typst_svg/ exists
     if (!fs.existsSync("./public/typst_svg/")) {
       fs.mkdirSync("./public/typst_svg/", { recursive: true });
     }
     const key = crypto.createHash("sha1").update(value).digest("hex");
-    const svg_path = `/typst_svg/${key}.svg`;
     // check if `./public/typst_svg/${key}.svg` already exists
     if (fs.existsSync(`./public/typst_svg/${key}.svg`)) {
-      return htmlFromSVG(key, false, value);
+      return htmlFromSVG(key, inline, value);
     }
 
-    const svg = NodeCompiler.create().svg({
+    const svg = NodeCompiler.create().plainSvg({
       mainFileContent: `
-            #set page(width: auto, height: auto, margin: 10pt)
+            #set page(width: auto, height: auto, margin: ${margin}pt, fill: rgb("FEFCE8"))
             #import "@preview/commute:0.3.0": *
             #import "@preview/mitex:0.2.5": *
             #set text( size: ${mathFontSize}pt )
@@ -242,10 +211,14 @@ async function renderMathInner(value: string): Promise<Html | null> {
             #mitex(\` ${value} \`)
           `,
     });
+    const result = optimize(svg, {
+      path: `./public/typst_svg/${key}.svg`, // recommended
+      multipass: true, // all other config fields are available here
+    });
 
-    fs.writeFileSync(`./public/typst_svg/${key}.svg`, svg);
+    fs.writeFileSync(`./public/typst_svg/${key}.svg`, result.data);
 
-    return htmlFromSVG(key, false, value);
+    return htmlFromSVG(key, inline, value);
   } catch (e) {
     console.log("Error rendering math, error:\n", e, `\nmath:\n${value}`);
 
@@ -263,7 +236,7 @@ function htmlFromSVG(key: string, inline: boolean, alt: string): Html {
     svg =
       "data:image/svg+xml;utf8," +
       encodeURIComponent(
-        fs.readFileSync(`./public/typst_svg/${key}.svg`, "utf8")
+        fs.readFileSync(`./public/typst_svg/${key}.svg`, "utf8"),
       );
   } else {
     svg = `/typst_svg/${key}.svg`;
