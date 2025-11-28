@@ -41,7 +41,7 @@ COPY . .
 # Your package.json includes "prebuild" hook (tsx lib/scripts/preBuild.ts), so dev deps are required.
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN npm run build && npx next export -o out
+RUN npm run build
 
 ############################
 # Runner stage: production #
