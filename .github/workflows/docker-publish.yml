@@ -13,7 +13,7 @@ permissions:
   packages: write
 
 env:
-  IMAGE_NAME: ghcr.io/${{ github.repository }}
+  IMAGE_NAME: ghcr.io/${{ toLower(github.repository) }}
 
 jobs:
   build-and-push:
@@ -43,7 +43,7 @@ jobs:
             type=ref,event=branch
             type=ref,event=tag
             type=sha
-            type=raw,value=latest,enable=${{ startsWith(github.ref, 'refs/heads/') && endsWith(github.ref_name, 'main') }}
+            type=raw,value=latest,enable=${{ startsWith(github.ref, 'refs/heads/') && endsWith(github.ref_name, 'master') }}
 
       - name: Build and push
         uses: docker/build-push-action@v6
