@@ -11,7 +11,7 @@ ARG NODE_VERSION=25
 FROM node:${NODE_VERSION}-alpine AS deps
 
 # Install system dependencies required by native modules (e.g., sharp)
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat git
 
 WORKDIR /app
 
@@ -28,7 +28,7 @@ RUN npm ci
 #############################
 FROM node:${NODE_VERSION}-alpine AS builder
 
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat git
 
 WORKDIR /app
 
