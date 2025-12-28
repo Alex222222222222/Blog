@@ -51,16 +51,17 @@ FROM nginx:alpine AS runner
 # Copy the exported static site to NGINX web root
 COPY --from=builder /app/out /usr/share/nginx/html
 
-# Configure NGINX to serve /post/*.md as *.md.html and apply site-wide fallback
+# Configure NGINX to serve /post/*.md as *.md.html, and map directory requests (/path/) to /path/index.html
 RUN printf '%s\n' \
     'server {' \
     '  listen 80;' \
     '  root /usr/share/nginx/html;' \
+    '  index index.html;' \
     '  location /post/ {' \
-    '    try_files $uri $uri.html =404;' \
+    '    try_files $uri $uri/ $uri/index.html $uri.html =404;' \
     '  }' \
     '  location / {' \
-    '    try_files $uri $uri.html =404;' \
+    '    try_files $uri $uri/ $uri/index.html $uri.html =404;' \
     '  }' \
     '}' > /etc/nginx/conf.d/default.conf
 
