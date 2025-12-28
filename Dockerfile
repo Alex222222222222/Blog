@@ -57,6 +57,10 @@ RUN printf '%s\n' \
     '  listen 80;' \
     '  root /usr/share/nginx/html;' \
     '  index index.html;' \
+    '  # Handle trailing-slash requests: /path/something/ -> try /path/something.html and /path/something/index.html' \
+    '  location ~ ^(/.+)/$ {' \
+    '    try_files $1 $1.html $1/index.html =404;' \
+    '  }' \
     '  location /post/ {' \
     '    try_files $uri $uri/ $uri/index.html $uri.html =404;' \
     '  }' \
