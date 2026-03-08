@@ -53,10 +53,16 @@ COPY --from=builder /app/out /usr/share/nginx/html
 
 # Configure NGINX to serve /post/*.md as *.md.html, and map directory requests (/path/) to /path/index.html
 RUN printf '%s\n' \
+    'map $status $loggable {' \
+    '  ~^[23] 0;' \
+    '  default 1;' \
+    '}' \
     'server {' \
     '  listen 80;' \
     '  root /usr/share/nginx/html;' \
     '  index index.html;' \
+    '  access_log /dev/stdout combined if=$loggable;' \
+    '  error_log /dev/stderr warn;' \
     '  # Handle trailing-slash requests: /path/something/ -> try /path/something.html and /path/something/index.html' \
     '  location ~ ^(/.+)/$ {' \
     '    try_files $1 $1.html $1/index.html =404;' \
