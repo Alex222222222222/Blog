@@ -15,6 +15,7 @@ const nextConfig = {
     }
     return config;
   },
+  turbopack: {},
 };
 
 module.exports = nextConfig;
