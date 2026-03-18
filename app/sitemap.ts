@@ -55,10 +55,6 @@ const otherPages = [
     lastmod: new Date().toISOString(),
   },
   {
-    url: "tools/pdf2pic",
-    lastmod: new Date().toISOString(),
-  },
-  {
     url: "tools/password_gen",
     lastmod: new Date().toISOString(),
   },

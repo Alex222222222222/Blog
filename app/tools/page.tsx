@@ -52,15 +52,6 @@ export default async function Page() {
         </li>
       </ul>
       <br />
-      PDF2Pic:
-      <ul className="ml-5">
-        <li>
-          <Link href="/tools/pdf2pic" className="underline">
-            Convert PDF to Image
-          </Link>
-        </li>
-      </ul>
-      <br />
       Password Generator:
       <ul className="ml-5">
         <li>
