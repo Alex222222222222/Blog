@@ -2,7 +2,6 @@ interface Post {
   title: string;
   filename: string;
   date: string;
-  last_modified: string;
   categories: string[];
   tags: string[];
   description: string;

@@ -34,8 +34,6 @@ const PostPageContent: React.FC<PostProps> = ({
         <h1>{post.title}</h1>
         Date: {post.date}
         <br />
-        Last Updated: {post.last_modified}
-        <br />
         Categories:{" "}
         {post.categories.map((category, index) => (
           <span key={index}>

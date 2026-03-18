@@ -21,41 +21,7 @@ import { VFile } from "vfile";
 import { minify } from "html-minifier";
 import rehypeStringify from "rehype-stringify";
 import { getHashKey, putCache, readCache } from "./buildCache";
-import * as gitLog from "git-log-parser";
-import toArray from "stream-to-array";
 import { defaultTheoremOptions } from "remark-math-environment/dist/options";
-
-export async function getLastModifiedDate(filePath: string): Promise<Date> {
-  // get from cache
-  const key = getHashKey(filePath);
-  const cachedFile = readCache("getLastModifiedDate", key);
-  if (cachedFile) {
-    return new Date(cachedFile);
-  }
-
-  const logs = gitLog.parse({
-    "1": true,
-    pretty: "format:%ci",
-    _: filePath,
-  });
-  const logs_array = await toArray(logs);
-
-  const stats = fs.statSync(filePath);
-  let last_modified = stats.mtime;
-
-  if (logs_array.length > 0) {
-    const last_commit = logs_array[0];
-    const author = last_commit.author;
-    last_modified = new Date(author.date);
-  }
-
-  console.log(`Last modified date for ${filePath}: ${last_modified}`);
-
-  // put into cache
-  putCache("getLastModifiedDate", key, last_modified.toISOString());
-
-  return last_modified;
-}
 
 export function get_date_from_filename(filename: string): Date {
   const date_split = filename.split("-");
@@ -83,7 +49,7 @@ export function get_date_from_filename(filename: string): Date {
 
 export async function get_markdown_file(
   filename: string,
-): Promise<[string | null, string]> {
+): Promise<string | null> {
   const isDir = fs.lstatSync(path.join("posts", filename)).isDirectory();
   if (isDir) {
     const dir = fs.readdirSync(path.join("posts", filename));
@@ -91,31 +57,17 @@ export async function get_markdown_file(
       (file) => file === "index.md" || file === `${filename}.md`,
     );
     if (mdFile) {
-      // get the last modified date
-      const last_modified = await getLastModifiedDate(
-        path.join("posts", filename, mdFile),
-      );
-
-      return [
-        fs.readFileSync(path.join("posts", filename, mdFile), "utf-8"),
-        last_modified.toISOString(),
-      ];
+      return fs.readFileSync(path.join("posts", filename, mdFile), "utf-8");
     }
-    return [null, ""];
+    return null;
   }
 
   const isMdFile = filename.endsWith(".md");
   if (!isMdFile) {
-    return [null, ""];
+    return null;
   }
 
-  // get the last modified date
-  const last_modified = await getLastModifiedDate(path.join("posts", filename));
-
-  return [
-    fs.readFileSync(path.join("posts", filename), "utf-8"),
-    last_modified.toISOString(),
-  ];
+  return fs.readFileSync(path.join("posts", filename), "utf-8");
 }
 
 function add_0_to_date(date: number): string {
@@ -139,7 +91,7 @@ export async function get_markdown_data(
     return JSON.parse(cachedFile);
   }
 
-  const [markdownWithMeta, last_modified] = await get_markdown_file(filename);
+  const markdownWithMeta = await get_markdown_file(filename);
   if (!markdownWithMeta) {
     return null;
   }
@@ -169,7 +121,6 @@ export async function get_markdown_data(
     filename: filename,
     title: title,
     date: date_string,
-    last_modified: last_modified,
     categories: categories,
     tags: tags,
     description: description,
@@ -203,11 +154,6 @@ export async function get_all_posts(): Promise<Post[]> {
   valid_posts.sort((a, b) => {
     let date_a = new Date(a.date);
     let date_b = new Date(b.date);
-    if (date_b.getTime() - date_a.getTime() !== 0) {
-      return date_b.getTime() - date_a.getTime();
-    }
-    date_a = new Date(a.last_modified);
-    date_b = new Date(b.last_modified);
     if (date_b.getTime() - date_a.getTime() !== 0) {
       return date_b.getTime() - date_a.getTime();
     }
