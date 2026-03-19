@@ -24,7 +24,7 @@
     "gray-matter": "4.0.3",
     "html-minifier": "4.0.0",
     "jsdom": "^29.0.0",
-    "memfs": "4.14.1",
+    "memfs": "4.56.11",
     "next": "^16.2.0",
     "next-mdx-remote": "^6.0.0",
     "pdfjs-dist": "5.5.207",
