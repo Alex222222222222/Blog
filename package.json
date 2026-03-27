@@ -73,7 +73,7 @@
     "serve": "^14.2.6",
     "tailwindcss": "^4.2.2",
     "tsx": "^4.21.0",
-    "typescript": "5.7.2"
+    "typescript": "6.0.2"
   },
   "overrides": {
     "@types/react": "19.2.14",
