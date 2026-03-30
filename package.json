@@ -25,7 +25,7 @@
     "html-minifier": "4.0.0",
     "jsdom": "^29.0.0",
     "memfs": "4.57.1",
-    "next": "^16.2.0",
+    "next": "^16.2.1",
     "next-mdx-remote": "^6.0.0",
     "pdfjs-dist": "5.5.207",
     "qr-scanner": "1.4.2",
