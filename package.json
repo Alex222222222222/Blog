@@ -23,7 +23,7 @@
     "git-log-parser": "^1.2.1",
     "gray-matter": "4.0.3",
     "html-minifier": "4.0.0",
-    "jsdom": "^29.0.0",
+    "jsdom": "^29.0.1",
     "memfs": "4.57.1",
     "next": "^16.2.0",
     "next-mdx-remote": "^6.0.0",
