@@ -27,7 +27,7 @@
     "memfs": "4.57.1",
     "next": "^16.2.0",
     "next-mdx-remote": "^6.0.0",
-    "pdfjs-dist": "5.5.207",
+    "pdfjs-dist": "5.6.205",
     "qr-scanner": "1.4.2",
     "qrcode": "^1.5.4",
     "react": "19.2.4",
