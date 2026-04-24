@@ -69,7 +69,7 @@
     "eslint": "^9.39.4",
     "eslint-config-next": "16.2.1",
     "eslint-plugin-unused-imports": "4.4.1",
-    "postcss": "^8.5.8",
+    "postcss": "^8.5.10",
     "serve": "^14.2.6",
     "tailwindcss": "^4.2.2",
     "tsx": "^4.21.0",
